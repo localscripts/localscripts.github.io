@@ -1,1 +1,188 @@
-Hello Reddit!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localscripts.github.io</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        .product-item {
+            width: 100%; /* Take up full width of the container */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background color */
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .product-item .info {
+            padding: 20px;
+        }
+        .product-item h2 {
+            margin-top: 0;
+        }
+        .product-item p {
+            margin: 10px 0;
+        }
+        .product-item .price {
+            font-weight: bold;
+            color: #ff6600; /* Price color */
+            animation: shake 0.8s infinite; /* Apply shake animation */
+        }
+        .discount {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+        .buy-btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .buy-btn {
+            display: inline-block;
+            padding: 10px 50px; /* Adjusted padding for wider buttons */
+            background-color: #32006b; /* Red buy button */
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .buy-btn:hover {
+            background-color: #32006b;
+        }
+
+        .red-text {
+             color: red;
+        }
+
+        .green-text {
+             color: green;
+        }
+
+        .orange-text {
+             color: #ffa200;
+        }
+
+
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            50% { transform: translateX(3px); }
+            75% { transform: translateX(-2px); }
+            100% { transform: translateX(2px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay loop muted>
+            <source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/628750/55ae4937eb64b8668a60f61be92f4eef968ff163.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <!-- Main Content Container -->
+    <div class="container">
+        <h1>Android</h1>
+        <!-- Product Section -->
+        <div class="product">
+            <!-- Product Item 1 -->
+            <div class="product-item">
+                <div class="info">
+                    <h2 class>Delta</h2>
+                    <p><span style="color: green;">+</span> <span style="font-style: italic;">Most used </span></p>
+                    <p><span style="color: green;">+</span> <span style="font-style: italic;">Best performance </span></p>
+                    <p><span style="color: orange;">~</span> <span style="font-style: italic;">Robux theft rumors [ 90days+ ago ] </span></p>
+                    <div class="buy-btn-container">
+                        <a href="https://deltaexploits.net/" class="buy-btn">FREE</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Item 2 -->
+            <div class="product-item">
+                <div class="info">
+                    <h2>Code X</h2>
+                    <p><span style="color: red;">-</span> <span style="font-style: italic;">Suspicious exploit </span></p>
+                    <p><span style="color: red;">-</span> <span style="font-style: italic;">Partnered with Arceus X </span></p>
+                    <div class="buy-btn-container">
+                        <a href="https://codex.lol/" class="buy-btn">FREE</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Item 3 -->
+            <div class="product-item">
+                <div class="info">
+                    <h2>Arceus X</h2>
+                    <p><span style="color: red;">-</span> <span style="font-style: italic;">Suspicious exploit </span></p>
+                    <p><span style="color: red;">-</span> <span style="font-style: italic;">Partnered with Code X </span></p>
+                    <p><span style="color: red;">-</span> <span style="font-style: italic;">Confirmed to be malware in the 2021 Build </span></p>
+                    <div class="buy-btn-container">
+                        <a href="https://spdmteam.com/" class="buy-btn">FREE</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more product items as needed -->
+        </div>
+        <!-- Additional Text Section -->
+    </div>
+    <div class="container">
+            <h1>MacOS</h1>
+        <!-- Product Section -->
+        <div class="product">
+            <!-- Product Item 1 -->
+            <div class="product-item">
+                <div class="info">
+                    <h2>Hydrogen</h2>
+                    <p><span style="color: green;">+</span> <span style="font-style: italic;">Most used for MacOS </span></p>
+                    <p><span style="color: green;">+</span> <span style="font-style: italic;">No negetive reputation </span></p>
+                    <div class="buy-btn-container">
+                        <a href="https://hydrogen.sh/" class="buy-btn">FREE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="info">
+                    <h2>MacSploit</h2>
+                    <p><span style="color: red;">-</span> <span style="font-style: italic;">Suspicious exploit </span></p>
+                    <p class="price"><span class="discount">Old Price: 10.00€</span> <br> New Price: <span class="shake">10.00€</span></p>
+                    <div class="buy-btn-container">
+                        <a href="https://discord.gg/macsploit" class="buy-btn">BUY</a>
+                    </div>
+                </div>
+            </div>
+
+</body>
+</html>
