@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Limited Calculator</title>
+    <link rel="icon" href="https://github.com/localscripts/BloxLose/blob/main/Tools/BloxLose.png?raw=true" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/roi.css">
+</head>
+<body>
+
+    <div id="loading-container">
+        <img src="https://github.com/localscripts/BloxLose/blob/main/Tools/Loading.png?raw=true" alt="Loading">
+    </div>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <span class="gray">Roblox</span> <span class="arrow">&gt;</span> <span class="white">Calculator</span>
+        </div>
+        <h1>ROI Calculator</h1>
+
+        <input type="number" id="limitedRAP" placeholder="Enter Limited RAP">
+
+        <input type="number" id="marketPrice" placeholder="Enter Market Price">
+
+        <div class="output">
+            <p id="percentageOverpay">%OP: </p>
+            <p id="rapOverpay">R$OP: </p>
+            <p id="saleProceeds">After Tax: </p>
+        </div>
+
+        <!-- Hyperlinks at the bottom of the card -->
+        <div class="links">
+            <p>Link to <a href="https://bloxflip.com/a/intel" target="_blank">Bloxflip</a></p>
+        </div>
+    </div>
+
+    <script>
+        function formatNumber(value) {
+            if (value >= 1000000) {
+                return `${(value / 1000000).toFixed(1)}Mil`;
+            }
+            if (value >= 1000) {
+                return `${(value / 1000).toFixed(1)}K`;
+            }
+            return value.toFixed(2);
+        }
+
+        function calculate() {
+            const limitedRAP = parseFloat(document.getElementById('limitedRAP').value);
+            const marketPrice = parseFloat(document.getElementById('marketPrice').value);
+
+            const percentageOverpayElement = document.getElementById('percentageOverpay');
+            const rapOverpayElement = document.getElementById('rapOverpay');
+            const saleProceedsElement = document.getElementById('saleProceeds');
+
+            if (isNaN(limitedRAP) || isNaN(marketPrice)) {
+                percentageOverpayElement.textContent = '%OP: ';
+                rapOverpayElement.textContent = 'R$OP: ';
+                saleProceedsElement.textContent = 'After Tax: ';
+                return;
+            }
+
+            // Calculate Percentage Overpay
+            const percentageOverpay = ((marketPrice - limitedRAP) / limitedRAP) * 100;
+
+            // Calculate RAP Overpay
+            const rapOverpay = marketPrice - limitedRAP;
+
+            // Calculate Sale Proceeds after 30% fee
+            const saleProceeds = limitedRAP * 0.7;
+
+            // Update the UI with the calculated values
+            percentageOverpayElement.textContent = `%OP: ${formatNumber(percentageOverpay)}%`;
+            rapOverpayElement.textContent = `R$OP: ${formatNumber(rapOverpay)} R$`;
+            saleProceedsElement.textContent = `After Tax: ${formatNumber(saleProceeds)} R$`;
+
+            // Set text colors based on overpay percentage
+            let color;
+            if (percentageOverpay <= 15) {
+                color = 'green';
+            } else if (percentageOverpay <= 30) {
+                color = 'orange';
+            } else {
+                color = 'red';
+            }
+
+            percentageOverpayElement.style.color = color;
+            rapOverpayElement.style.color = color;
+            saleProceedsElement.style.color = color;
+        }
+
+        window.onload = function() {
+            const loadingContainer = document.getElementById('loading-container');
+
+            // Fade in the loading image
+            loadingContainer.style.opacity = 1;
+
+            // Wait for 3 seconds, then fade out and show the main content
+            setTimeout(() => {
+                loadingContainer.style.opacity = 0;
+                setTimeout(() => {
+                    loadingContainer.style.display = 'none';
+                    document.querySelector('.container').style.display = 'block';
+                }, 1000); // Duration of fade-out effect
+            }, 3000);
+
+            // Add event listeners to input fields to calculate dynamically
+            document.getElementById('limitedRAP').addEventListener('input', calculate);
+            document.getElementById('marketPrice').addEventListener('input', calculate);
+        }
+    </script>
+
+</body>
+</html>

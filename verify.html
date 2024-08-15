@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloxLose.com - Verify</title>
+    <link rel="icon" href="https://github.com/localscripts/BloxLose/blob/main/Tools/BloxLose.png?raw=true" type="image/png">
+
+    <!-- Open Graph meta tags for embedding -->
+    <meta property="og:title" content="Bloxlose.com | The #1 Free-to-Use BloxFlip Guesser">
+    <meta property="og:description" content="Bloxlose.com is a free-to-use BloxFlip guesser featuring premium-looking commands and various game modes tailored for BloxFlip guessing.">
+    <meta property="og:image" content="https://github.com/localscripts/BloxLose/blob/main/Tools/BloxLoseBlack.png?raw=true">
+    <meta property="og:url" content="https://Bloxlose.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Include Titillium Web font -->
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="CSS/verify.css">
+</head>
+<body>
+    <div id="loading-container">
+        <img src="https://github.com/localscripts/BloxLose/blob/main/Tools/Loading.png?raw=true" alt="Loading">
+    </div>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <span class="gray">BloxLose</span> <span class="arrow">&gt;</span> <span class="white">Verify</span>
+        </div>
+        <h1>BloxLose Key Gen</h1>
+        <input type="text" id="userId" placeholder="UserID / Verify Key" />
+        <button id="convertButton" onclick="handleButtonClick()">Get Key</button>
+        <div class="popup-box" id="popupBox">
+            <p>Pop up will appear after one click, then you can view your key</p>
+            <button onclick="openKeyPopup()">View Key</button>
+        </div>
+        <div class="key-display" id="keyDisplay"></div>
+        <div class="key-info" id="keyInfo"></div>
+        <div class="discord-link">
+            <p>How to verify:<a href="https://www.youtube.com/watch?v=iAe8vGwZaJA&ab_channel=BloxLose" target="_blank"> YouTube</a></p>
+        </div>
+    </div>
+
+    <script>
+        const digitToChar = {
+            '0': 'A', '1': 'O', '2': 'G', '3': 'H',
+            '4': 'X', '5': 'R', '6': '8', '7': '4',
+            '8': '6', '9': '0'
+        };
+
+        let generatedKey = '';
+
+        function handleButtonClick() {
+            const userId = document.getElementById('userId').value;
+            const popupBox = document.getElementById('popupBox');
+
+            let result = '';
+            for (const digit of userId) {
+                if (digitToChar[digit] !== undefined) {
+                    result += digitToChar[digit];
+                }
+            }
+            
+            generatedKey = result;
+            popupBox.style.display = 'block';
+        }
+
+        function openKeyPopup() {
+            window.open("https://bloxflip.com/a/intel", '_blank');
+
+            const keyDisplay = document.getElementById('keyDisplay');
+            keyDisplay.textContent = `KEY: ${generatedKey}`;
+            keyDisplay.style.display = 'block';
+
+            const keyInfo = document.getElementById('keyInfo');
+            keyInfo.textContent = `1. /getcode (MUST DO THIS FIRST BEFORE GETTING A KEY)\n` +
+                                  `2. Get Key from the current site\n` +
+                                  `3. /verify ${generatedKey}`;
+            keyInfo.style.display = 'block';
+
+            const popupBox = document.getElementById('popupBox');
+            popupBox.remove(); // Remove the popup box from the DOM
+        }
+
+        window.onload = function() {
+            const loadingContainer = document.getElementById('loading-container');
+
+            // Fade in the loading image
+            loadingContainer.style.opacity = 1;
+
+            // Wait for 3 seconds, then fade out and show the main content
+            setTimeout(() => {
+                loadingContainer.style.opacity = 0;
+                setTimeout(() => {
+                    loadingContainer.style.display = 'none';
+                    document.querySelector('.container').style.display = 'block';
+                }, 1000); // Duration of fade-out effect
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

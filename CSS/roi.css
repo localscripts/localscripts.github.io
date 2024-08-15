@@ -1,0 +1,131 @@
+/* Basic styles */
+body {
+    font-family: 'Titillium Web', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #121212;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+#loading-container {
+    opacity: 0;
+    transition: opacity 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#loading-container img {
+    width: 66.67%;
+    animation: zoomInOut 3s infinite;
+}
+
+@keyframes zoomInOut {
+    0% { transform: scale(0.5); }
+    50% { transform: scale(0.75); }
+    100% { transform: scale(0.5); }
+}
+
+.container {
+    text-align: center;
+    z-index: 1;
+    background-color: #121212;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-sizing: border-box;
+    display: none;
+    border: 2px solid #555555;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.breadcrumb .gray {
+    color: gray;
+}
+
+.breadcrumb .white {
+    color: white;
+}
+
+.breadcrumb .arrow {
+    font-weight: bold;
+    margin: 0 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    background-color: #121212;
+    border: 2px solid #555555;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.output p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.links {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.links a {
+    color: #3656ff; /* Link color */
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Mobile background image */
+@media (max-width: 768px) {
+    .video-background {
+        display: none;
+    }
+    .image-background {
+        display: block;
+    }
+}
+
+/* Desktop background video */
+@media (min-width: 769px) {
+    .video-background {
+        display: block;
+    }
+    .image-background {
+        display: none;
+    }
+}
