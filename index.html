@@ -27,6 +27,7 @@
     p {
       font-size: 1.2rem;
       color: #aaa; /* Light gray text for the paragraph */
+      margin-bottom: 10px;
     }
 
     a {
@@ -37,10 +38,42 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .countdown {
+      font-size: 1rem; /* Set text color to red and make it smaller */
+      color: #f00; /* Set text color to red */
+    }
   </style>
 </head>
 <body>
   <h1>robloxhackers is for Sale</h1>
   <p>More information on <a href="https://robloxhackers.lol/discord" target="_blank">robloxhackers.lol/discord</a></p>
+  <p class="countdown" id="countdown">Redirecting to robloxhackers.lol/discord in 10 seconds...</p>
+
+  <script>
+    // Countdown timer duration in seconds
+    const countdownDuration = 10;
+    const countdownElement = document.getElementById('countdown');
+
+    function updateCountdown(seconds) {
+      countdownElement.textContent = `Redirecting to robloxhackers.lol/discord in ${seconds} seconds...`;
+    }
+
+    function startCountdown() {
+      let seconds = countdownDuration;
+      updateCountdown(seconds);
+
+      const interval = setInterval(function() {
+        seconds--;
+        updateCountdown(seconds);
+        if (seconds <= 0) {
+          clearInterval(interval);
+          window.location.href = "https://robloxhackers.lol/discord";
+        }
+      }, 1000); // Update every second
+    }
+
+    startCountdown();
+  </script>
 </body>
 </html>
