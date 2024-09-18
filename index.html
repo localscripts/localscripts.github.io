@@ -1,79 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>robloxhackers.lol</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #000; /* Set background color to black */
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>voxlis.NET</title>
+  <link rel="stylesheet" href="styles.css">
 
-    h1 {
-      font-size: 3rem;
-      color: #fff; /* Set text color to white */
-      margin-bottom: 20px;
-    }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="media/globe.ico">
 
-    p {
-      font-size: 1.2rem;
-      color: #aaa; /* Light gray text for the paragraph */
-      margin-bottom: 10px;
-    }
+  <!-- Font Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
+  <!-- Meta Tags -->
+  <meta name="title" content="voxlis.NET | Ready to Win?">
+  <meta name="description"
+    content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
 
-    a:hover {
-      text-decoration: underline;
-    }
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="voxlis.NET | Ready to Win?">
+  <meta property="og:description"
+    content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://voxlis.NET">
+  <meta property="og:image" content="/voxlis.NET.png">
 
-    .countdown {
-      font-size: 1rem; /* Set text color to red and make it smaller */
-      color: #f00; /* Set text color to red */
-    }
-  </style>
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#EF4444">
 </head>
+
 <body>
-  <h1>robloxhackers is being re-worked</h1>
-  <p>More information on <a href="https://robloxhackers.lol/discord" target="_blank">robloxhackers.lol/discord</a></p>
-  <p class="countdown" id="countdown">Redirecting to robloxhackers.lol/discord in 10 seconds...</p>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="brand">www.<span class="highlight">voxlis</span>.NET</a>
+      <div class="menu">
+        <a href="/" class="nav-link">Home</a>
+        <a href="https://discord.gg/exampleinvite" class="nav-link">Discord</a>
+        <a href="https://github.com/localscripts/localscripts.github.io" class="nav-link">Contribute</a>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu-items">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/discord" class="nav-link">Discord</a>
+      <a href="/contribute" class="nav-link">Contribute</a>
+    </div>
+  </nav>
 
+  <!-- Container for Notification Box and Cards -->
+  <div class="main-container" style="padding-top: 4rem;">
+    <!-- Notification Box -->
+    <div class="notification-box" id="notification-box">
+      <h2 class="notification-header">Start contributing for a special flair!</h2>
+      <p>
+        <a href="https://github.com/localscripts/localscripts.github.io" class="notification-link" target="_blank" rel="noopener noreferrer">
+          • Start contributing by clicking here!
+        </a>
+      </p>
+    </div>
+
+    <!-- Cards Wrapper -->
+    <div class="cards-wrapper" id="cards-wrapper">
+      <!-- Cards will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script id="cards-data" type="application/json">
+    [
+      {
+        "name": "Solara",
+        "pros": ["No keysystem", "70% UNC", "External"],
+        "cons": ["Frequent crashes", "Likely short-lived", "FREE"],
+        "neutral": [],
+        "link": "https://getsolara.dev",
+        "buttonText": "FREE",
+        "images": ["media/Windows.png"]
+      },
+      {
+        "name": "DX9WARE V2",
+        "pros": ["Zero traces of detection found", "Custom Lua environment", "Has a big script library", "Ton of features", "External"],
+        "cons": ["Doesn't have Lifetime subscription", "Early Beta - expect bugs", "3.25$ per week"],
+        "neutral": [],
+        "link": "https://cultofintellect.com/",
+        "buttonText": "3.25$ per week",
+        "images": ["media/Windows.png"]
+      },
+      {
+        "name": "Celery",
+        "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 7"],
+        "cons": [],
+        "neutral": ["Has/Had vulnerabilities", "10.00$ per month"],
+        "link": "https://celery.zip",
+        "buttonText": "8.00$ per month",
+        "images": ["media/Windows.png"]
+      },
+      {
+        "name": "Wave",
+        "pros": ["100% UNC", "Level 7"],
+        "cons": ["Frequent crashes", "Expensive"],
+        "neutral": ["Has vulnerabilities", "Barely updates", "UNKWN"],
+        "link": "https://getwave.gg",
+        "buttonText": "7.49$ per week",
+        "images": ["media/Windows.png"]
+      },
+      {
+        "name": "Apple-Ware",
+        "pros": ["80% UNC", "Level 7"],
+        "cons": ["Buggy", "Faked their UNC", "Skidding from Delta"],
+        "neutral": ["Owner has a shady background"],
+        "link": "https://appleware.dev/",
+        "buttonText": "FREE",
+        "images": ["media/IOS.png", "media/Key Purple.png"]
+      },
+      {
+        "name": "Nexus Admin",
+        "pros": ["Offers free and lifetime packages", "Executor hosted on the website", "Executes all Luau scripts", "No reported bans"],
+        "cons": ["Doesn't have a lot of games", "Small script hub"],
+        "neutral": ["Very strict TOS - very easy to lose Nexus Admin whitelist"],
+        "link": "https://robloxcheats.org/",
+        "buttonText": "FREE",
+        "images": ["media/Serverside.png"]
+      },
+      {
+        "name": "Domain",
+        "pros": ["Built a decent reputation", "Offers a lifetime package"],
+        "cons": ["Offers the same thing as Solara", "Low UNC", "Level 3"],
+        "neutral": [],
+        "link": "https://discord.gg/subdomain",
+        "buttonText": "15.00$ lifetime",
+        "images": ["media/Windows.png"]
+      },
+      {
+        "name": "Aimmy",
+        "pros": ["Supports other games", "No keysystem", "Safe to use", "AI-based"],
+        "cons": ["Requires training the model", "Requires GTX 1050 or better"],
+        "neutral": [],
+        "link": "https://aimmy.dev",
+        "buttonText": "FREE",
+        "images": ["media/Windows.png"]
+      },
+      {
+        "name": "Macsploit",
+        "pros": ["98% UNC", "Level 7", "Infrequent banwaves"],
+        "cons": ["Updates are slightly late", "Owner's background is questionable"],
+        "neutral": [],
+        "link": "https://discord.gg/macsploit",
+        "buttonText": "10.00$ lifetime",
+        "images": ["media/MacOS.png"]
+      },
+      {
+        "name": "CodeX",
+        "pros": ["Unlikely to discontinue in the near future", "Similar to ArceusX"],
+        "cons": ["Long keysystem", "Potential banwaves"],
+        "neutral": ["Uses core technology from ArceusX"],
+        "link": "https://codex.lol/",
+        "buttonText": "FREE",
+        "images": ["media/Android.png", "media/IOS.png"]
+      },
+      {
+        "name": "Delta",
+        "pros": ["Best performance", "Popular choice", "Unlikely to discontinue in the near future"],
+        "cons": ["Includes a keysystem", "Susceptible to banwaves", "Owner has a shady background"],
+        "neutral": [],
+        "link": "https://deltaexploits.gg",
+        "buttonText": "Free",
+        "images": ["media/IOS.png", "media/Android.png"]
+      },
+      {
+        "name": "Synapse Z",
+        "pros": ["Has a decompiler", "95% UNC~"],
+        "cons": ["Crashes ALOT"],
+        "neutral": ["Has vulnerabilities"],
+        "link": "https://synz.lol",
+        "buttonText": "6.49$ per week",
+        "images": ["media/Windows.png"]
+      },
+      {
+        "name": "Nezur",
+        "pros": ["External + AI-Based", "Ton of features"],
+        "cons": ["Includes a keysystem", "Owner has a shady background"],
+        "neutral": ["Uses old version of AIMMY"],
+        "link": "https://nezur.dev",
+        "buttonText": "FREE",
+        "images": ["media/Windows.png"]
+      },
+      {
+        "name": "VegaX",
+        "pros": ["Frequent updates", "Unlikely to discontinue in the near future"],
+        "cons": ["Includes a keysystem", "Potential banwaves", "Owned by 1 F0"],
+        "neutral": ["Partnered with ArceusX"],
+        "link": "https://vegax.gg",
+        "buttonText": "FREE",
+        "images": ["media/Android.png"]
+      },
+      {
+        "name": "Cryptic",
+        "pros": ["98% UNC", "Level 7"],
+        "cons": ["New exploit"],
+        "neutral": ["Future safety is uncertain"],
+        "link": "https://getcryptic.net/",
+        "buttonText": "FREE",
+        "images": ["media/Android.png"]
+      },
+      {
+        "name": "ArceusX",
+        "pros": ["Unlikely to discontinue in the near future", "Similar to CodeX"],
+        "cons": ["Long keysystem", "Potential banwaves", "Stole user data in 2021"],
+        "neutral": [],
+        "link": "https://spdmteam.com/index",
+        "buttonText": "FREE",
+        "images": ["media/Android.png"]
+      }
+    ]
+  </script>
+
+  <script src="scripts.js"></script>
   <script>
-    // Countdown timer duration in seconds
-    const countdownDuration = 10;
-    const countdownElement = document.getElementById('countdown');
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobileMenuItems = document.querySelector('.mobile-menu-items');
+      menuToggle.addEventListener('click', () => {
+        mobileMenuItems.classList.toggle('open');
+      });
 
-    function updateCountdown(seconds) {
-      countdownElement.textContent = `Redirecting to robloxhackers.lol/discord in ${seconds} seconds...`;
-    }
+      // Populate cards from JSON data
+      const cardsData = JSON.parse(document.getElementById('cards-data').textContent);
+      const cardsWrapper = document.getElementById('cards-wrapper');
 
-    function startCountdown() {
-      let seconds = countdownDuration;
-      updateCountdown(seconds);
+      // Clear any existing cards
+      cardsWrapper.innerHTML = '';
 
-      const interval = setInterval(function() {
-        seconds--;
-        updateCountdown(seconds);
-        if (seconds <= 0) {
-          clearInterval(interval);
-          window.location.href = "https://robloxhackers.lol/discord";
-        }
-      }, 1000); // Update every second
-    }
+      cardsData.forEach(card => {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card-container');
 
-    startCountdown();
+        // Generate images HTML with a wrapper
+        const imagesHtml = card.images.map(img => `<img src="${img}" alt="${card.name} Image" class="card-image">`).join('');
+
+        // Generate sections HTML
+        const prosHtml = card.pros.map(pro => `<li>${pro}</li>`).join('');
+        const consHtml = card.cons.map(con => `<li>${con}</li>`).join('');
+        const neutralHtml = card.neutral.length > 0 ?
+          `<div class="section neutral">
+            <h4 class="section-title">Neutral</h4>
+            <ul>${card.neutral.map(neutral => `<li>${neutral}</li>`).join('')}</ul>
+          </div>`
+          : '';
+
+        // Set custom button text or default to "Get it Now"
+        const buttonText = card.buttonText || 'Get it Now';
+
+        // Build the card HTML with conditional sections
+        const cardHtml = `
+  <!-- Images in the card -->
+  <div class="card-images">
+    ${imagesHtml}
+  </div>
+
+  <h3 class="card-header">${card.name}</h3>
+  <div class="card-content">
+    ${prosHtml ? `<div class="section pros">
+      <h4 class="section-title">Pros</h4>
+      <ul>${prosHtml}</ul>
+    </div>` : ''}
+    ${consHtml ? `<div class="section cons">
+      <h4 class="section-title">Cons</h4>
+      <ul>${consHtml}</ul>
+    </div>` : ''}
+    ${neutralHtml}
+  </div>
+  <div class="card-footer">
+    <a href="${card.link}" class="card-button" target="_blank" rel="noopener noreferrer">${buttonText}</a>
+  </div>
+`;
+
+        cardElement.innerHTML = cardHtml;
+        cardsWrapper.appendChild(cardElement);
+      });
+    });
   </script>
 </body>
+
 </html>
