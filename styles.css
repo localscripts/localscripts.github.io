@@ -26,12 +26,12 @@
 /* Wrapper for the cards */
 .cards-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive width */
+    grid-template-columns: 1fr; /* Single column by default (mobile) */
     gap: 20px; /* Space between cards */
-    justify-content: center; /* Center cards horizontally */
+    justify-content: center;
     padding: 20px;
-    max-width: 1200px; /* Limit the overall width of the grid on large screens */
-    margin: 0 auto; /* Center the grid on the page */
+    max-width: 100%; /* Take up full width of the container */
+    margin: 0 auto; /* Center the grid */
 }
 
 /* Card Container */
@@ -40,8 +40,8 @@
     background-color: #050505;
     border: 1px solid #27272A;
     border-radius: 10px;
-    width: 100%; /* Make the card take full width of its grid cell */
-    max-width: 350px; /* Set a maximum width for each card */
+    width: 100%; /* Full width within the grid cell */
+    max-width: 100%; /* Don't limit the width on mobile */
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease-in-out;
@@ -50,21 +50,27 @@
     overflow: hidden;
 }
 
-/* Media Query for 3 in a row */
-@media (min-width: 1024px) {
+/* Media Query for tablets (768px and above) */
+@media (min-width: 768px) {
     .cards-wrapper {
-        grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
-        max-width: 1100px; /* Limit the overall width of the grid */
+        grid-template-columns: repeat(2, 1fr); /* 2 cards in a row */
+        max-width: 720px; /* Adjust max-width to fit 2 cards nicely */
     }
 }
 
-
-      /* Media Query for 3 in a row */
-      @media (min-width: 1024px) {
-        .card-container {
-            min-height: 300px; /* Adjust as needed */
-        }
+/* Media Query for larger screens (1024px and above) */
+@media (min-width: 1024px) {
+    .cards-wrapper {
+        grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+        max-width: 1100px; /* Limit the total width of the grid on large screens */
     }
+
+    .card-container {
+        max-width: 350px; /* Restrict each card's maximum width on large screens */
+    }
+}
+
+    
     
 
       /* Card hover effect */
