@@ -13,42 +13,66 @@
           padding: 20px;
       }
 
-      /* Wrapper for the cards */
-      .cards-wrapper {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust the minmax value as needed */
-          gap: 20px; /* Space between cards */
-          justify-content: center; /* Center cards horizontally */
-          padding: 20px;
-      }
+/* Wrapper for the cards */
+.cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensures responsive width */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center cards horizontally */
+    padding: 20px;
+}
 
-      /* Card Container */
-      .card-container {
-          position: relative;
-          background-color: #050505;
-          border: 1px solid #27272A;
-          border-radius: 10px;
-          width: 100%; /* Full width within the grid cell */
-          min-height: 435px;
-          padding: 20px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          transition: transform 0.2s ease-in-out;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-      }
+
+/* Wrapper for the cards */
+.cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive width */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center cards horizontally */
+    padding: 20px;
+    max-width: 1200px; /* Limit the overall width of the grid on large screens */
+    margin: 0 auto; /* Center the grid on the page */
+}
+
+/* Card Container */
+.card-container {
+    position: relative;
+    background-color: #050505;
+    border: 1px solid #27272A;
+    border-radius: 10px;
+    width: 100%; /* Make the card take full width of its grid cell */
+    max-width: 350px; /* Set a maximum width for each card */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Media Query for 3 in a row */
+@media (min-width: 1024px) {
+    .cards-wrapper {
+        grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+        max-width: 1100px; /* Limit the overall width of the grid */
+    }
+}
+
+
+      /* Media Query for 3 in a row */
+      @media (min-width: 1024px) {
+        .card-container {
+            min-height: 300px; /* Adjust as needed */
+        }
+    }
+    
 
       /* Card hover effect */
       .card-container:hover {
           transform: scale(1.05);
       }
 
-      /* Media Query for 3 in a row */
-      @media (min-width: 1024px) { /* Adjust the breakpoint as needed */
-          .cards-wrapper {
-              grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
-          }
-      }
+    
 
       /* Card Images */
       .card-images {
@@ -77,16 +101,16 @@
 
       /* Card Content */
       .card-content {
-          display: flex;
-          flex-direction: column; /* Stack content vertically */
-          justify-content: center; /* Center content vertically */
-          flex: 1; /* Allow content to take up available space */
-          text-align: left; /* Align text to the left */
-          align-items: flex-start; /* Align items to the left */
-          overflow: hidden; /* Prevent scroll bars */
-          margin-bottom: 60px; /* Space for the button at the bottom */
-          color: #fff; /* White color for text */
-      }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        text-align: left;
+        align-items: flex-start;
+        margin-bottom: 60px; /* Space for the button at the bottom */
+        color: #fff;
+    }
+    
 
       /* Pros Section */
       .pros {
