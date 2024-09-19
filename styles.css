@@ -13,16 +13,14 @@
             padding: 20px;
         }
   
-/* Cards Wrapper Styles */
-.cards-wrapper {
-    display: grid;
-    grid-template-columns: 1fr; /* Single column by default (mobile) */
-    gap: 20px; /* Space between cards */
-    justify-content: center;
-    padding: 20px;
-    width: 100%; /* Full width of the content-wrapper */
-    box-sizing: border-box;
-}
+  /* Wrapper for the cards */
+  .cards-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensures responsive width */
+      gap: 20px; /* Space between cards */
+      justify-content: center; /* Center cards horizontally */
+      padding: 20px;
+  }
   
   
   /* Wrapper for the cards */
@@ -36,41 +34,43 @@
       margin: 0 auto; /* Center the grid */
   }
   
-  /* Card Container */
   .card-container {
-      position: relative;
-      background-color: #050505;
-      border: 1px solid #27272A;
-      border-radius: 10px;
-      width: 100%; /* Full width within the grid cell */
-      max-width: 100%; /* Don't limit the width on mobile */
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-  }
-  
-/* Media Query for tablets (768px and above) */
-@media (min-width: 768px) {
-    .content-wrapper {
-        max-width: 720px; /* Adjust for tablets */
-    }
-    .cards-wrapper {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards in a row */
-    }
+    position: relative;
+    background-color: #050505;
+    border: 1px solid #27272A;
+    border-radius: 10px;
+    width: 100%; /* Full width within the grid cell */
+    min-width: 450px; /* Set minimum width */
+    max-width: 500px; /* Optional: Set maximum width */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-/* Media Query for larger screens (1024px and above) */
-@media (min-width: 1024px) {
-    .content-wrapper {
-        max-width: 1100px; /* Match the maximum width of the cards for larger screens */
-    }
-    .cards-wrapper {
-        grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
-    }
-}
+
+  
+  /* Media Query for tablets (768px and above) */
+  @media (min-width: 768px) {
+      .cards-wrapper {
+          grid-template-columns: repeat(2, 1fr); /* 2 cards in a row */
+          max-width: 720px; /* Adjust max-width to fit 2 cards nicely */
+      }
+  }
+  
+  /* Media Query for larger screens (1024px and above) */
+  @media (min-width: 1024px) {
+      .cards-wrapper {
+          grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+          max-width: 1100px; /* Limit the total width of the grid on large screens */
+      }
+  
+      .card-container {
+          max-width: 350px; /* Restrict each card's maximum width on large screens */
+      }
+  }
   
       
       
@@ -217,34 +217,27 @@
             list-style-position: inside; /* Keep the dots inside the padding */
         }
   
+        /* Main Container Styles */
         .main-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            flex-direction: column; /* Stack notification box and cards vertically */
+            align-items: center; /* Center horizontally */
+            padding: 20px; /* Padding around the container */
         }
-
-                /* Wrapper for Notification Box and Cards */
-                .content-wrapper {
-                    width: 100%;
-                    /* Full width */
-                    max-width: 1100px;
-                    /* Match the maximum width of the cards */
-                }
   
-/* Notification Box Styles */
-.notification-box {
-    background-color: #050505;
-    border: 1px solid #27272A;
-    color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%; /* Full width of the content-wrapper */
-    box-sizing: border-box;
-    text-align: center; /* Center-align text inside */
-}
+        /* Notification Box Styles */
+        .notification-box {
+            background-color: #050505; /* Dark gray background */
+            border: 1px solid #27272A; /* Slightly lighter gray border */
+            color: #fff; /* White text */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the box */
+            margin-bottom: 20px; /* Margin below the notification box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            width: auto; /* Width will be adjusted dynamically */
+            box-sizing: border-box; /* Include padding in width calculation */
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
   
         /* Notification Header */
         .notification-header {
