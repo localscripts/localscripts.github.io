@@ -102,37 +102,38 @@ body {
     color: #ffffff;
 }
 
-/* Cons Section */
-.cons {
-    color: #FACC15;
-    font-weight: normal;
-    margin-top: 20px;
-    margin-bottom: 15px;
-}
-
-.cons .section-title {
-    color: #FACC15;
-}
-
-.cons ul li {
-    color: #ffffff;
-}
-
 /* Neutral Section */
 .neutral {
-    color: #CB5D5D;
+    color: #FACC15; /* Yellow color for neutral */
     font-weight: normal;
     margin-top: 20px;
     margin-bottom: 15px;
 }
 
 .neutral .section-title {
-    color: #CB5D5D;
+    color: #FACC15; /* Yellow color for the neutral title */
 }
 
 .neutral ul li {
     color: #ffffff;
 }
+
+/* Cons Section */
+.cons {
+    color: #E84848; /* Red color for cons */
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.cons .section-title {
+    color: #E84848; /* Red color for the cons title */
+}
+
+.cons ul li {
+    color: #ffffff;
+}
+
 
 /* Card Footer */
 .card-footer {
