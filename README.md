@@ -1,3 +1,9 @@
+# Domains 
+
+## https://robloxhackers.lol
+## https://voxlis.net
+
+
 # Project Setup Guide
 
 ## How to Set Up the Project
