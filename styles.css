@@ -1,389 +1,398 @@
         /* Reset default margin and padding */
         * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Montserrat', sans-serif; /* Apply font to all elements */
-      }
-
-      /* Background and body settings */
-      body {
-          background-color: #000000; /* Black background */
-          color: #fff;
-          padding: 20px;
-      }
-
-/* Wrapper for the cards */
-.cards-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensures responsive width */
-    gap: 20px; /* Space between cards */
-    justify-content: center; /* Center cards horizontally */
-    padding: 20px;
-}
-
-
-/* Wrapper for the cards */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif; /* Apply font to all elements */
+        }
+  
+        /* Background and body settings */
+        body {
+            background-color: #000000; /* Black background */
+            color: #fff;
+            padding: 20px;
+        }
+  
+/* Cards Wrapper Styles */
 .cards-wrapper {
     display: grid;
     grid-template-columns: 1fr; /* Single column by default (mobile) */
     gap: 20px; /* Space between cards */
     justify-content: center;
     padding: 20px;
-    max-width: 100%; /* Take up full width of the container */
-    margin: 0 auto; /* Center the grid */
+    width: 100%; /* Full width of the content-wrapper */
+    box-sizing: border-box;
 }
-
-/* Card Container */
-.card-container {
-    position: relative;
-    background-color: #050505;
-    border: 1px solid #27272A;
-    border-radius: 10px;
-    width: 100%; /* Full width within the grid cell */
-    max-width: 100%; /* Don't limit the width on mobile */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
+  
+  
+  /* Wrapper for the cards */
+  .cards-wrapper {
+      display: grid;
+      grid-template-columns: 1fr; /* Single column by default (mobile) */
+      gap: 20px; /* Space between cards */
+      justify-content: center;
+      padding: 20px;
+      max-width: 100%; /* Take up full width of the container */
+      margin: 0 auto; /* Center the grid */
+  }
+  
+  /* Card Container */
+  .card-container {
+      position: relative;
+      background-color: #050505;
+      border: 1px solid #27272A;
+      border-radius: 10px;
+      width: 100%; /* Full width within the grid cell */
+      max-width: 100%; /* Don't limit the width on mobile */
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+  }
+  
 /* Media Query for tablets (768px and above) */
 @media (min-width: 768px) {
+    .content-wrapper {
+        max-width: 720px; /* Adjust for tablets */
+    }
     .cards-wrapper {
         grid-template-columns: repeat(2, 1fr); /* 2 cards in a row */
-        max-width: 720px; /* Adjust max-width to fit 2 cards nicely */
     }
 }
 
 /* Media Query for larger screens (1024px and above) */
 @media (min-width: 1024px) {
+    .content-wrapper {
+        max-width: 1100px; /* Match the maximum width of the cards for larger screens */
+    }
     .cards-wrapper {
         grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
-        max-width: 1100px; /* Limit the total width of the grid on large screens */
-    }
-
-    .card-container {
-        max-width: 350px; /* Restrict each card's maximum width on large screens */
     }
 }
-
-    
-    
-
-      /* Card hover effect */
-      .card-container:hover {
-          transform: scale(1.05);
-      }
-
-    
-
-      /* Card Images */
-      .card-images {
-          position: absolute; /* Position images absolutely within the card */
-          top: 20px; /* Adjust top position */
-          right: 20px; /* Adjust right position */
+  
+      
+      
+  
+        /* Card hover effect */
+        .card-container:hover {
+            transform: scale(1.05);
+        }
+  
+      
+  
+        /* Card Images */
+        .card-images {
+            position: absolute; /* Position images absolutely within the card */
+            top: 20px; /* Adjust top position */
+            right: 20px; /* Adjust right position */
+            display: flex;
+            flex-direction: row; /* Align images horizontally */
+            gap: 10px; /* Space between images */
+        }
+  
+        .card-image {
+            width: 29px; /* Smaller width */
+            height: 29px; /* Smaller height */
+            object-fit: contain;
+        }
+  
+        /* Card Header */
+        .card-header {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 15px; /* Space below the header */
+            text-shadow: none; /* Ensure no text shadow */
+        }
+  
+        /* Card Content */
+        .card-content {
           display: flex;
-          flex-direction: row; /* Align images horizontally */
-          gap: 10px; /* Space between images */
-      }
-
-      .card-image {
-          width: 29px; /* Smaller width */
-          height: 29px; /* Smaller height */
-          object-fit: contain;
-      }
-
-      /* Card Header */
-      .card-header {
-          font-size: 22px;
-          font-weight: bold;
-          color: #ffffff;
-          margin-bottom: 15px; /* Space below the header */
-          text-shadow: none; /* Ensure no text shadow */
-      }
-
-      /* Card Content */
-      .card-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex: 1;
-        text-align: left;
-        align-items: flex-start;
-        margin-bottom: 60px; /* Space for the button at the bottom */
-        color: #fff;
-    }
-    
-
-      /* Pros Section */
-      .pros {
-          color: #4ADE80; /* Light green text */
-          font-weight: normal; /* Reset font weight to normal */
-          margin-bottom: 15px; /* Increase space below */
-          background: none; /* Ensure no background color */
-          text-shadow: none; /* Ensure no text shadow */
-      }
-
-      .pros .section-title {
-          color: #4ADE80; /* Light green */
-          font-weight: normal; /* Reset font weight to normal */
-          text-shadow: none; /* Ensure no text shadow */
-      }
-
-      /* Cons Section */
-      .cons {
-          color: #FACC15; /* Light yellow text */
-          font-weight: normal; /* Reset font weight to normal */
-          margin-top: 20px;  /* Increase space above */
-          margin-bottom: 15px; /* Increase space below */
-          background: none; /* Ensure no background color */
-          text-shadow: none; /* Ensure no text shadow */
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
-
-      .cons .section-title {
-          color: #FACC15; /* Light yellow */
-          font-weight: normal; /* Reset font weight to normal */
-          text-shadow: none; /* Ensure no text shadow */
-      }
-
-      /* Neutral Section */
-      .neutral {
-          color: #CB5D5D; /* Light red text */
-          font-weight: normal; /* Reset font weight to normal */
-          margin-top: 20px;  /* Increase space above */
-          margin-bottom: 15px; /* Increase space below */
-          background: none; /* Ensure no background color */
-          text-shadow: none; /* Ensure no text shadow */
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
-
-      .neutral .section-title {
-          color: #CB5D5D; /* Light red */
-          font-weight: normal; /* Reset font weight to normal */
-          text-shadow: none; /* Ensure no text shadow */
-      }
-
-      /* Card Footer */
-      .card-footer {
-          display: flex;
-          flex-direction: column; /* Stack button and text vertically */
-          align-items: center; /* Center horizontally */
-          padding: 20px 0; /* Vertical padding for space inside the footer */
-          box-sizing: border-box; /* Ensure padding does not affect the width */
-          background-color: #050505; /* Match background color with card */
-          position: relative; /* Ensure relative positioning for containing the button */
-      }
-
-      .card-button {
-          background-color: transparent; /* Make the background transparent */
-          color: #E84848; /* Red text color */
-          border: 2px solid #E84848; /* Red thick border */
-          border-radius: 25px; /* Rounded edges */
-          padding: 12px 0; /* Adjust padding for vertical space */
-          font-size: 16px; /* Adjust text size */
-          cursor: pointer;
-          transition: background-color 0.3s, color 0.3s; /* Smooth transition for color changes */
-          width: 100%; /* Make the button span the full width of the card */
-          max-width: none; /* Remove any maximum width restrictions */
-          text-align: center; /* Center text */
-          box-sizing: border-box; /* Ensure padding does not affect the width */
-          margin-top: 10px; /* Add space above the button */
-          text-decoration: none; /* Remove underline */
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
-
-      .card-button:hover {
-          background-color: #E84848; /* Red background on hover */
-          color: #fff; /* White text on hover */
-      }
-
-      /* Last Time Updated */
-      .last-updated {
-          color: #B0B0B0; /* Gray text */
-          font-size: 14px; /* Adjust font size */
-          margin-top: 5px; /* Small space above the text */
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
-
-      /* Adjust the list for better spacing */
-      ul {
-          padding-left: 20px; /* Add some padding to move the dots inward */
-          list-style-position: inside; /* Keep the dots inside the padding */
-      }
-
-      /* Main Container Styles */
-      .main-container {
-          display: flex;
-          flex-direction: column; /* Stack notification box and cards vertically */
-          align-items: center; /* Center horizontally */
-          padding: 20px; /* Padding around the container */
-      }
-
-      /* Notification Box Styles */
-      .notification-box {
-          background-color: #050505; /* Dark gray background */
-          border: 1px solid #27272A; /* Slightly lighter gray border */
-          color: #fff; /* White text */
-          border-radius: 10px; /* Rounded corners */
-          padding: 20px; /* Padding inside the box */
-          margin-bottom: 20px; /* Margin below the notification box */
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-          width: auto; /* Width will be adjusted dynamically */
-          box-sizing: border-box; /* Include padding in width calculation */
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
-
-      /* Notification Header */
-      .notification-header {
-          font-size: 1.125rem; /* Large text */
-          font-weight: 600; /* Semi-bold text */
-          color: #FACC15; /* Yellow text */
-          margin: 0 0 10px 0; /* Remove default margin and add space below */
-          text-shadow: none; /* Ensure no text shadow */
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
-
-      /* Notification Link */
-      .notification-link {
-          color: #E84848; /* Red text */
-          text-decoration: none; /* Remove underline */
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
-
-      .notification-link:hover {
-          text-decoration: underline; /* Underline on hover */
-      }
-
-      /* Basic styles for the navbar */
-      .navbar {
-          background-color: #000;
-          color: #fff;
-          border-bottom: 2px solid #f00;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          z-index: 50;
-          padding: 1rem;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
-
-      /* Navbar container to center content */
-      .navbar .container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 1rem;
-          width: 100%;
-      }
-
-      /* Brand styles */
-      .navbar .brand {
-          font-size: 1.5rem;
-          font-weight: bold;
-          text-transform: uppercase;
-          color: #fff;
-          text-decoration: none;
-      }
-
-      /* Highlight class */
-      .navbar .brand .highlight {
-          color: #f00;
-      }
-
-      /* Menu styles */
-      .navbar .menu {
-          display: flex;
-          gap: 1rem;
-      }
-
-      /* Menu link styles */
-      .navbar .menu .nav-link {
-          text-decoration: none;
-          color: #fff;
-          font-weight: bold;
-          position: relative;
-      }
-
-      .navbar .menu .nav-link:hover::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -5px;
-          width: 100%;
-          height: 2px;
-          background: #f00;
-          transform: scaleX(1);
-          transition: transform 0.3s ease;
-      }
-
-      .navbar .menu .nav-link::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -5px;
-          width: 100%;
-          height: 2px;
-          background: #f00;
-          transform: scaleX(0);
-          transition: transform 0.3s ease;
-      }
-
-      /* Mobile menu adjustments */
-      .navbar .mobile-menu {
-          display: none; /* Hide mobile menu by default */
-      }
-
-      .navbar .mobile-menu-items {
-          display: none; /* Hide mobile menu items by default */
           flex-direction: column;
-          position: absolute;
-          top: 60px; /* Adjust depending on navbar height */
-          left: 0;
-          width: 100%;
-          background-color: #000;
-          border-top: 2px solid #f00;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .navbar .mobile-menu-items.open {
-          display: flex; /* Show mobile menu items when 'open' class is added */
-      }
-
-      .navbar .menu-toggle {
-          display: none; /* Hide menu button by default */
-          font-size: 1.5rem;
-          cursor: pointer;
-          background: none;
-          border: none;
+          justify-content: center;
+          flex: 1;
+          text-align: left;
+          align-items: flex-start;
+          margin-bottom: 60px; /* Space for the button at the bottom */
           color: #fff;
       }
+      
+  
+        /* Pros Section */
+        .pros {
+            color: #4ADE80; /* Light green text */
+            font-weight: normal; /* Reset font weight to normal */
+            margin-bottom: 15px; /* Increase space below */
+            background: none; /* Ensure no background color */
+            text-shadow: none; /* Ensure no text shadow */
+        }
+  
+        .pros .section-title {
+            color: #4ADE80; /* Light green */
+            font-weight: normal; /* Reset font weight to normal */
+            text-shadow: none; /* Ensure no text shadow */
+        }
+  
+        /* Cons Section */
+        .cons {
+            color: #FACC15; /* Light yellow text */
+            font-weight: normal; /* Reset font weight to normal */
+            margin-top: 20px;  /* Increase space above */
+            margin-bottom: 15px; /* Increase space below */
+            background: none; /* Ensure no background color */
+            text-shadow: none; /* Ensure no text shadow */
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
+  
+        .cons .section-title {
+            color: #FACC15; /* Light yellow */
+            font-weight: normal; /* Reset font weight to normal */
+            text-shadow: none; /* Ensure no text shadow */
+        }
+  
+        /* Neutral Section */
+        .neutral {
+            color: #CB5D5D; /* Light red text */
+            font-weight: normal; /* Reset font weight to normal */
+            margin-top: 20px;  /* Increase space above */
+            margin-bottom: 15px; /* Increase space below */
+            background: none; /* Ensure no background color */
+            text-shadow: none; /* Ensure no text shadow */
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
+  
+        .neutral .section-title {
+            color: #CB5D5D; /* Light red */
+            font-weight: normal; /* Reset font weight to normal */
+            text-shadow: none; /* Ensure no text shadow */
+        }
+  
+        /* Card Footer */
+        .card-footer {
+            display: flex;
+            flex-direction: column; /* Stack button and text vertically */
+            align-items: center; /* Center horizontally */
+            padding: 20px 0; /* Vertical padding for space inside the footer */
+            box-sizing: border-box; /* Ensure padding does not affect the width */
+            background-color: #050505; /* Match background color with card */
+            position: relative; /* Ensure relative positioning for containing the button */
+        }
+  
+        .card-button {
+            background-color: transparent; /* Make the background transparent */
+            color: #E84848; /* Red text color */
+            border: 2px solid #E84848; /* Red thick border */
+            border-radius: 25px; /* Rounded edges */
+            padding: 12px 0; /* Adjust padding for vertical space */
+            font-size: 16px; /* Adjust text size */
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for color changes */
+            width: 100%; /* Make the button span the full width of the card */
+            max-width: none; /* Remove any maximum width restrictions */
+            text-align: center; /* Center text */
+            box-sizing: border-box; /* Ensure padding does not affect the width */
+            margin-top: 10px; /* Add space above the button */
+            text-decoration: none; /* Remove underline */
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
+  
+        .card-button:hover {
+            background-color: #E84848; /* Red background on hover */
+            color: #fff; /* White text on hover */
+        }
+  
+        /* Last Time Updated */
+        .last-updated {
+            color: #B0B0B0; /* Gray text */
+            font-size: 14px; /* Adjust font size */
+            margin-top: 5px; /* Small space above the text */
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
+  
+        /* Adjust the list for better spacing */
+        ul {
+            padding-left: 20px; /* Add some padding to move the dots inward */
+            list-style-position: inside; /* Keep the dots inside the padding */
+        }
+  
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
-      /* Mobile view */
-      @media (max-width: 768px) {
-          .navbar .menu {
-              display: none; /* Hide desktop menu */
-          }
-
-          .navbar .menu-toggle {
-              display: block; /* Show menu button */
-          }
-      }
-
-      /* General List Items */
-      .card-content ul li {
-          color: #fff; /* White color for list items */
-          background: none; /* Ensure no background color */
-          text-shadow: none; /* Ensure no text shadow */
-          font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
-      }
+                /* Wrapper for Notification Box and Cards */
+                .content-wrapper {
+                    width: 100%;
+                    /* Full width */
+                    max-width: 1100px;
+                    /* Match the maximum width of the cards */
+                }
+  
+/* Notification Box Styles */
+.notification-box {
+    background-color: #050505;
+    border: 1px solid #27272A;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Full width of the content-wrapper */
+    box-sizing: border-box;
+    text-align: center; /* Center-align text inside */
+}
+  
+        /* Notification Header */
+        .notification-header {
+            font-size: 1.125rem; /* Large text */
+            font-weight: 600; /* Semi-bold text */
+            color: #FACC15; /* Yellow text */
+            margin: 0 0 10px 0; /* Remove default margin and add space below */
+            text-shadow: none; /* Ensure no text shadow */
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
+  
+        /* Notification Link */
+        .notification-link {
+            color: #E84848; /* Red text */
+            text-decoration: none; /* Remove underline */
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
+  
+        .notification-link:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+  
+        /* Basic styles for the navbar */
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            border-bottom: 2px solid #f00;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
+  
+        /* Navbar container to center content */
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+  
+        /* Brand styles */
+        .navbar .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+        }
+  
+        /* Highlight class */
+        .navbar .brand .highlight {
+            color: #f00;
+        }
+  
+        /* Menu styles */
+        .navbar .menu {
+            display: flex;
+            gap: 1rem;
+        }
+  
+        /* Menu link styles */
+        .navbar .menu .nav-link {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            position: relative;
+        }
+  
+        .navbar .menu .nav-link:hover::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: #f00;
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
+        }
+  
+        .navbar .menu .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: #f00;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+  
+        /* Mobile menu adjustments */
+        .navbar .mobile-menu {
+            display: none; /* Hide mobile menu by default */
+        }
+  
+        .navbar .mobile-menu-items {
+            display: none; /* Hide mobile menu items by default */
+            flex-direction: column;
+            position: absolute;
+            top: 60px; /* Adjust depending on navbar height */
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            border-top: 2px solid #f00;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+  
+        .navbar .mobile-menu-items.open {
+            display: flex; /* Show mobile menu items when 'open' class is added */
+        }
+  
+        .navbar .menu-toggle {
+            display: none; /* Hide menu button by default */
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #fff;
+        }
+  
+        /* Mobile view */
+        @media (max-width: 768px) {
+            .navbar .menu {
+                display: none; /* Hide desktop menu */
+            }
+  
+            .navbar .menu-toggle {
+                display: block; /* Show menu button */
+            }
+        }
+  
+        /* General List Items */
+        .card-content ul li {
+            color: #fff; /* White color for list items */
+            background: none; /* Ensure no background color */
+            text-shadow: none; /* Ensure no text shadow */
+            font-family: 'Montserrat', sans-serif; /* Apply font explicitly */
+        }
