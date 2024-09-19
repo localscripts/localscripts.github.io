@@ -274,16 +274,17 @@
       <h4 class="section-title">Pros</h4>
       <ul>${prosHtml}</ul>
     </div>` : ''}
+    ${neutralHtml} <!-- Neutral section will appear after Pros -->
     ${consHtml ? `<div class="section cons">
       <h4 class="section-title">Cons</h4>
       <ul>${consHtml}</ul>
-    </div>` : ''}
-    ${neutralHtml}
+    </div>` : ''} <!-- Cons will always appear last -->
   </div>
   <div class="card-footer">
     <a href="${card.link}" class="card-button" target="_blank" rel="noopener noreferrer">${buttonText}</a>
   </div>
 `;
+
 
         cardElement.innerHTML = cardHtml;
         cardsWrapper.appendChild(cardElement);
