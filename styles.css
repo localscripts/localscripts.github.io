@@ -42,8 +42,11 @@ body {
     width: 100%;
     max-width: 450px; /* Maximum width for the card on desktop */
     min-height: 200px; /* Minimum height for the card */
+    min-width: 450px; /* Minimum width for the card */
+    max-height: 600px; /* Maximum height for the card */
     box-sizing: border-box;
 }
+
 
 /* Card hover effect */
 .card-container:hover {
@@ -161,8 +164,11 @@ body {
     box-sizing: border-box;
     margin-top: 10px;
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Font */
+    font-weight: 600; /* Adjust this value for thickness */
 }
+
+
 
 .card-button:hover {
     background-color: #E84848;
@@ -198,13 +204,15 @@ ul {
     color: #fff;
     border-radius: 10px;
     padding: 20px;
+    margin-top: 10px; /* Space from the navbar */
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 1100px;
+    width: calc(100% - 40px); /* Full width minus any padding/margin */
+    max-width: 1100px; /* Match the maximum width of the cards */
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
 
 /* Notification Header */
 .notification-header {
@@ -383,7 +391,11 @@ ul {
         max-width: 350px; /* Restrict each card's maximum width on larger screens */
     }
 
-    .notification-box {
-        max-width: 1100px; /* Match the width of the cards grid */
+        .cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+            gap: 20px;
+            max-width: 1100px; /* Limit the total width */
+            margin: 0 auto; /* Center the grid */
+        }
     }
-}
