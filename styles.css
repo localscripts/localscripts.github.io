@@ -374,11 +374,11 @@ ul {
       display: block;
     }
 
-    .card-container {
-        min-width: unset; /* Remove minimum width */
-        min-height: unset; /* Remove minimum height */
-    }
-
+.card-container {
+    min-width: unset;
+    min-height: unset;
+    max-width: 100%; /* Ensure card doesn't overflow on mobile */
+}
 
   }
 
