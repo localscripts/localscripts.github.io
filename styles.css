@@ -1,3 +1,4 @@
+/* Universal reset */
 * {
     margin: 0;
     padding: 0;
@@ -5,25 +6,28 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Body: Ensure the body uses full width */
 body {
-    background-color: #000000;
+    background-color: #000000; /* Black background */
     color: #fff;
     padding: 0;
     margin: 0;
     width: 100vw;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
+/* Wrapper for the cards */
 .cards-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping of cards */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center cards horizontally */
     padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Include padding and border in width */
 }
 
+/* Card container */
 .card-container {
     position: relative;
     background-color: #050505;
@@ -36,17 +40,20 @@ body {
     flex-direction: column;
     overflow: hidden;
     width: 100%;
-    max-width: 450px;
-    min-height: 200px;
-    min-width: 450px;
-    max-height: 600px;
+    max-width: 450px; /* Maximum width for the card on desktop */
+    min-height: 200px; /* Minimum height for the card */
+    min-width: 450px; /* Minimum width for the card */
+    max-height: 600px; /* Maximum height for the card */
     box-sizing: border-box;
 }
 
+
+/* Card hover effect */
 .card-container:hover {
     transform: scale(1.05);
 }
 
+/* Card Images */
 .card-images {
     position: absolute;
     top: 20px;
@@ -62,6 +69,7 @@ body {
     object-fit: contain;
 }
 
+/* Card Header */
 .card-header {
     font-size: 22px;
     font-weight: bold;
@@ -70,6 +78,7 @@ body {
     text-shadow: none;
 }
 
+/* Card Content */
 .card-content {
     display: flex;
     flex-direction: column;
@@ -81,6 +90,7 @@ body {
     color: #fff;
 }
 
+/* Pros Section */
 .pros {
     color: #4ADE80;
     font-weight: normal;
@@ -95,36 +105,40 @@ body {
     color: #ffffff;
 }
 
+/* Neutral Section */
 .neutral {
-    color: #FACC15;
+    color: #FACC15; /* Yellow color for neutral */
     font-weight: normal;
     margin-top: 20px;
     margin-bottom: 15px;
 }
 
 .neutral .section-title {
-    color: #FACC15;
+    color: #FACC15; /* Yellow color for the neutral title */
 }
 
 .neutral ul li {
     color: #ffffff;
 }
 
+/* Cons Section */
 .cons {
-    color: #E84848;
+    color: #E84848; /* Red color for cons */
     font-weight: normal;
     margin-top: 20px;
     margin-bottom: 15px;
 }
 
 .cons .section-title {
-    color: #E84848;
+    color: #E84848; /* Red color for the cons title */
 }
 
 .cons ul li {
     color: #ffffff;
 }
 
+
+/* Card Footer */
 .card-footer {
     display: flex;
     flex-direction: column;
@@ -150,15 +164,18 @@ body {
     box-sizing: border-box;
     margin-top: 10px;
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif; /* Font */
+    font-weight: 600; /* Adjust this value for thickness */
 }
+
+
 
 .card-button:hover {
     background-color: #E84848;
     color: #fff;
 }
 
+/* Last Time Updated */
 .last-updated {
     color: #B0B0B0;
     font-size: 14px;
@@ -166,11 +183,13 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Adjust the list for better spacing */
 ul {
     padding-left: 20px;
     list-style-position: inside;
 }
 
+/* Main Container Styles */
 .main-container {
     display: flex;
     flex-direction: column;
@@ -178,21 +197,24 @@ ul {
     padding: 20px;
 }
 
+/* Notification Box Styles */
 .notification-box {
     background-color: #050505;
     border: 1px solid #27272A;
     color: #fff;
     border-radius: 10px;
     padding: 20px;
-    margin-top: 30px;
+    margin-top: 10px; /* Space from the navbar */
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: calc(100% - 40px);
-    max-width: 1100px;
+    width: calc(100% - 40px); /* Full width minus any padding/margin */
+    max-width: 1100px; /* Match the maximum width of the cards */
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
 
+
+/* Notification Header */
 .notification-header {
     font-size: 1.125rem;
     font-weight: 600;
@@ -202,6 +224,7 @@ ul {
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Notification Link */
 .notification-link {
     color: #E84848;
     text-decoration: none;
@@ -212,6 +235,7 @@ ul {
     text-decoration: underline;
 }
 
+/* Basic styles for the navbar */
 .navbar {
     background-color: #000;
     color: #fff;
@@ -229,6 +253,7 @@ ul {
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Navbar container to center content */
 .navbar .container {
     display: flex;
     justify-content: space-between;
@@ -239,6 +264,7 @@ ul {
     width: 100%;
 }
 
+/* Brand styles */
 .navbar .brand {
     font-size: 1.5rem;
     font-weight: bold;
@@ -247,15 +273,18 @@ ul {
     text-decoration: none;
 }
 
+/* Highlight class */
 .navbar .brand .highlight {
     color: #f00;
 }
 
+/* Menu styles */
 .navbar .menu {
     display: flex;
     gap: 1rem;
 }
 
+/* Menu link styles */
 .navbar .menu .nav-link {
     text-decoration: none;
     color: #fff;
@@ -287,15 +316,16 @@ ul {
     transition: transform 0.3s ease;
 }
 
+/* Mobile menu adjustments */
 .navbar .mobile-menu {
-    display: none;
+    display: none; /* Hide mobile menu by default */
 }
 
 .navbar .mobile-menu-items {
-    display: none;
+    display: none; /* Hide mobile menu items by default */
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 60px; /* Adjust depending on navbar height */
     left: 0;
     width: 100%;
     background-color: #000;
@@ -304,11 +334,11 @@ ul {
 }
 
 .navbar .mobile-menu-items.open {
-    display: flex;
+    display: flex; /* Show mobile menu items when 'open' class is added */
 }
 
 .navbar .menu-toggle {
-    display: none;
+    display: none; /* Hide menu button by default */
     font-size: 1.5rem;
     cursor: pointer;
     background: none;
@@ -316,107 +346,63 @@ ul {
     color: #fff;
 }
 
-.card-footer-buttons {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    gap: 2px;
-}
-
-.card-button,
-.bloxproducts-button {
-    background-color: transparent;
-    border-radius: 25px;
-    padding: 12px 0;
-    /* Ensure both buttons have the same padding */
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    text-align: center;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    flex: 1;
-    line-height: 1.5;
-    /* Ensure both buttons have the same line-height */
-}
-
-.card-button {
-    color: #E84848;
-    border: 2px solid #E84848;
-}
-
-.bloxproducts-button {
-    color: #4ADE80;
-    border: 2px solid #4ADE80;
-}
-
-.bloxproducts-button:hover {
-    background-color: #4ADE80;
-    color: #fff;
-}
-
-.card-footer-buttons .card-button:not(:last-child) {
-    border-radius: 25px 0 0 25px;
-}
-
-.card-footer-buttons .bloxproducts-button:not(:first-child) {
-    border-radius: 0 25px 25px 0;
-}
-
-
 @media (max-width: 768px) {
     .navbar .menu {
-        display: none;
+      display: none; /* Hide the desktop menu on mobile */
     }
-
+  
     .navbar .mobile-menu-items {
-        display: none;
+      display: none; /* Hide the mobile menu by default */
     }
-
+  
     .navbar .menu-toggle {
-        display: block;
+      display: block; /* Show the menu toggle button on mobile */
     }
-
+  
     .navbar .mobile-menu-items.open {
-        display: block;
+      display: block; /* Show mobile menu items when 'open' class is added */
     }
-
+  
+    /* Hide specific items on mobile */
     .mobile-menu-items .home-link,
     .mobile-menu-items .contribute-link {
-        display: none;
+      display: none; /* Hide Home and Contribute links */
     }
-
+  
+    /* Show only Discord on mobile */
     .mobile-menu-items .discord-link {
-        display: block;
+      display: block;
     }
 
-    .card-container {
-        min-width: unset;
-        min-height: unset;
-        max-width: 100%;
-    }
+.card-container {
+    min-width: unset;
+    min-height: unset;
+    max-width: 100%; /* Ensure card doesn't overflow on mobile */
 }
 
+  }
+
+
+
+/* Desktop responsive design for cards */
 @media (min-width: 769px) {
     .cards-wrapper {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        max-width: 1100px;
-        margin: 0 auto;
+        grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+        gap: 20px; /* Space between cards */
+        max-width: 1100px; /* Limit the total width of the grid on large screens */
+        margin: 0 auto; /* Center the grid */
     }
 
     .card-container {
-        max-width: 350px;
+        max-width: 350px; /* Restrict each card's maximum width on larger screens */
     }
 
-    .cards-wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        max-width: 1100px;
-        margin: 0 auto;
+        .cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+            gap: 20px;
+            max-width: 1100px; /* Limit the total width */
+            margin: 0 auto; /* Center the grid */
+        }
     }
-}
