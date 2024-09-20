@@ -21,7 +21,7 @@
       "name": "Celery",
       "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 7"],
       "cons": [],
-      "neutral": ["Has/Had vulnerabilities", "10.00$ per month"],
+      "neutral": ["Has/Had vulnerabilities"],
       "link": "https://celery.zip",
       "buttonText": "FREE",
       "images": ["media/Windows.png"]
