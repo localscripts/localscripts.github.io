@@ -373,6 +373,13 @@ ul {
     .mobile-menu-items .discord-link {
       display: block;
     }
+
+    .card-container {
+        min-width: unset; /* Remove minimum width */
+        min-height: unset; /* Remove minimum height */
+    }
+
+
   }
 
 
