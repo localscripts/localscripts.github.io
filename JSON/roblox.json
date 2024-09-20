@@ -32,8 +32,10 @@
       "cons": ["Frequent crashes", "Expensive"],
       "neutral": ["Has vulnerabilities", "Barely updates"],
       "link": "https://getwave.gg",
-      "buttonText": "7.49$ per week",
-      "images": ["media/Windows.png"]
+      "buttonText": "Website",
+      "images": ["media/Windows.png"],
+      "bloxproducts": "0",
+      "bloxButtonText": "7.49$ weekly"
     },
     {
       "name": "Apple-Ware",
@@ -77,8 +79,10 @@
       "cons": ["Updates are slightly late", "Owner's background is questionable"],
       "neutral": [],
       "link": "https://discord.gg/macsploit",
-      "buttonText": "10.00$ lifetime",
-      "images": ["media/MacOS.png"]
+      "buttonText": "Website",
+      "images": ["media/MacOS.png"],
+      "bloxproducts": "3",
+      "bloxButtonText": "9.99$ lifetime"
     },
     {
       "name": "CodeX",
@@ -87,7 +91,9 @@
       "neutral": ["Uses core technology from ArceusX"],
       "link": "https://codex.lol/",
       "buttonText": "FREE",
-      "images": ["media/Android.png", "media/IOS.png", "media/Key Purple.png"]
+      "images": ["media/Android.png", "media/IOS.png", "media/Key Purple.png"],
+      "bloxproducts": "3",
+      "bloxButtonText": "4.97$ monthly"
     },
     {
       "name": "Delta",
@@ -104,8 +110,10 @@
       "cons": ["Crashes ALOT"],
       "neutral": ["Has vulnerabilities"],
       "link": "https://synapsez.net/",
-      "buttonText": "6.49$ per week",
-      "images": ["media/Windows.png"]
+      "buttonText": "Website",
+      "images": ["media/Windows.png"],
+      "bloxproducts": "1",
+      "bloxButtonText": "6.49$ weekly"
     },
     {
       "name": "Nezur",
