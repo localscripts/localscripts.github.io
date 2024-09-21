@@ -47,15 +47,6 @@
       "images": ["media/IOS.png", "media/Key Purple.png"]
     },
     {
-      "name": "Nexus Admin",
-      "pros": ["Offers free and lifetime packages", "Executor hosted on the website", "Executes all Luau scripts", "No reported bans"],
-      "cons": ["Doesn't have a lot of games", "Small script hub"],
-      "neutral": ["Very strict TOS - very easy to lose Nexus Admin whitelist"],
-      "link": "https://robloxcheats.org/",
-      "buttonText": "FREE",
-      "images": ["media/Serverside.png"]
-    },
-    {
       "name": "Domain",
       "pros": ["Built a decent reputation", "Offers a lifetime package"],
       "cons": ["Offers the same thing as Solara", "Low UNC", "Level 3"],
