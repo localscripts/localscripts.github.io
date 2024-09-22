@@ -2,7 +2,7 @@
     {
       "name": "Solara",
       "pros": ["No keysystem", "70% UNC", "External"],
-      "cons": ["Frequent crashes", "Likely short-lived", "FREE"],
+      "cons": ["Frequent crashes", "Likely short-lived"],
       "neutral": [],
       "link": "https://getsolara.dev",
       "buttonText": "FREE",
