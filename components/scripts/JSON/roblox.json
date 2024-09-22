@@ -1,0 +1,145 @@
+[
+    {
+      "name": "Solara",
+      "pros": ["No keysystem", "70% UNC", "External"],
+      "cons": ["Frequent crashes", "Likely short-lived"],
+      "neutral": [],
+      "link": "https://getsolara.dev",
+      "buttonText": "FREE",
+      "images": ["components/media/Windows.png"]
+    },
+    {
+      "name": "DX9WARE V2",
+      "pros": ["Zero traces of detection found", "Custom Lua environment", "Has a big script library", "Ton of features", "External"],
+      "cons": ["Doesn't have Lifetime subscription", "Early Beta - expect bugs", "3.25$ per week"],
+      "neutral": [],
+      "link": "https://cultofintellect.com/",
+      "buttonText": "3.25$ per week",
+      "images": ["components/media/Windows.png"]
+    },
+    {
+      "name": "Celery",
+      "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 7"],
+      "cons": [],
+      "neutral": ["Has/Had vulnerabilities", "8.00$ per month"],
+      "link": "https://celery.zip",
+      "buttonText": "8.00$ per month",
+      "images": ["components/media/Windows.png"]
+    },
+    {
+      "name": "Wave",
+      "pros": ["100% UNC", "Level 7"],
+      "cons": ["Frequent crashes", "Expensive"],
+      "neutral": ["Has vulnerabilities", "Barely updates"],
+      "link": "https://getwave.gg",
+      "buttonText": "Website",
+      "images": ["components/media/Windows.png"],
+      "bloxproducts": "0",
+      "bloxButtonText": "7.49$ weekly"
+    },
+    {
+      "name": "Apple-Ware",
+      "pros": ["80% UNC", "Level 7"],
+      "cons": ["Buggy", "Faked their UNC", "Skidding from Delta"],
+      "neutral": ["Owner has a shady background"],
+      "link": "https://appleware.dev/",
+      "buttonText": "FREE",
+      "images": ["components/media/IOS.png", "components/media/Key Purple.png"]
+    },
+    {
+      "name": "Domain",
+      "pros": ["Built a decent reputation", "Offers a lifetime package"],
+      "cons": ["Offers the same thing as Solara", "Low UNC", "Level 3"],
+      "neutral": [],
+      "link": "https://discord.gg/subdomain",
+      "buttonText": "15.00$ lifetime",
+      "images": ["components/media/Windows.png"]
+    },
+    {
+      "name": "Aimmy",
+      "pros": ["Supports other games", "No keysystem", "Safe to use", "AI-based"],
+      "cons": ["Requires training the model", "Requires GTX 1050 or better"],
+      "neutral": [],
+      "link": "https://aimmy.dev",
+      "buttonText": "FREE",
+      "images": ["components/media/Windows.png"]
+    },
+    {
+      "name": "Macsploit",
+      "pros": ["98% UNC", "Level 7", "Infrequent banwaves"],
+      "cons": ["Updates are slightly late", "Owner's background is questionable"],
+      "neutral": [],
+      "link": "https://discord.gg/macsploit",
+      "buttonText": "Website",
+      "images": ["components/media/MacOS.png"],
+      "bloxproducts": "3",
+      "bloxButtonText": "9.99$ lifetime"
+    },
+    {
+      "name": "CodeX",
+      "pros": ["Unlikely to discontinue in the near future", "Similar to ArceusX"],
+      "cons": ["Long keysystem", "Potential banwaves"],
+      "neutral": ["Uses core technology from ArceusX"],
+      "link": "https://codex.lol/",
+      "buttonText": "FREE",
+      "images": ["components/media/Android.png", "components/media/IOS.png", "components/media/Key Purple.png"],
+      "bloxproducts": "3",
+      "bloxButtonText": "4.97$ monthly"
+    },
+    {
+      "name": "Delta",
+      "pros": ["Best performance", "Popular choice", "Unlikely to discontinue in the near future"],
+      "cons": ["Includes a keysystem", "Susceptible to banwaves", "Owner has a shady background"],
+      "neutral": [],
+      "link": "https://deltaexploits.gg",
+      "buttonText": "FREE",
+      "images": ["components/media/IOS.png", "components/media/Android.png", "components/media/Key Purple.png"]
+    },
+    {
+      "name": "Synapse Z",
+      "pros": ["Has a decompiler", "95% UNC~"],
+      "cons": ["Crashes ALOT"],
+      "neutral": ["Has vulnerabilities"],
+      "link": "https://synapsez.net/",
+      "buttonText": "Website",
+      "images": ["components/media/Windows.png"],
+      "bloxproducts": "1",
+      "bloxButtonText": "6.49$ weekly"
+    },
+    {
+      "name": "Nezur",
+      "pros": ["External + AI-Based", "Ton of features"],
+      "cons": ["Includes a keysystem", "Owner has a shady background"],
+      "neutral": ["Uses old version of AIMMY"],
+      "link": "https://nezur.io",
+      "buttonText": "FREE",
+      "images": ["components/media/Windows.png", "components/media/Key Purple.png"]
+    },
+    {
+      "name": "VegaX",
+      "pros": ["Frequent updates", "Unlikely to discontinue in the near future"],
+      "cons": ["Includes a keysystem", "Potential banwaves", "Owned by 1 F0"],
+      "neutral": ["Partnered with ArceusX"],
+      "link": "https://vegax.gg",
+      "buttonText": "FREE",
+      "images": ["components/media/Android.png", "components/media/Key Purple.png"]
+    },
+    {
+      "name": "Cryptic",
+      "pros": ["98% UNC", "Level 7"],
+      "cons": ["New exploit"],
+      "neutral": ["Future safety is uncertain"],
+      "link": "https://getcryptic.net/",
+      "buttonText": "FREE",
+      "images": ["components/media/Android.png", "components/media/Key Purple.png"]
+    },
+    {
+      "name": "ArceusX",
+      "pros": ["Unlikely to discontinue in the near future", "Similar to CodeX"],
+      "cons": ["Long keysystem", "Potential banwaves", "Stole user data in 2021"],
+      "neutral": [],
+      "link": "https://spdmteam.com/index",
+      "buttonText": "FREE",
+      "images": ["components/media/Android.png", "components/media/Key Purple.png"]
+    }
+  ]

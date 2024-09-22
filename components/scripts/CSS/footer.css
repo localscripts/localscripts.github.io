@@ -1,0 +1,20 @@
+.footer {
+    background-color: transparent; /* Transparent background */
+    text-align: center; /* Center text */
+    padding: 20px; /* Padding */
+    position: relative; /* Positioning */
+    bottom: 0; /* Align to bottom */
+    width: 100%; /* Full width */
+    border-top: 2px solid #FF0000; /* Red line at the top */
+}
+
+.footer-content .footer-text {
+    color: #FFFFFF; /* White text for copyright */
+}
+
+.footer-content a.footer-link {
+    color: #FF0000; /* Red link color */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Removed hover effect */

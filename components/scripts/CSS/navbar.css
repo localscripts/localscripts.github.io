@@ -1,0 +1,123 @@
+.navbar {
+    background-color: #000;
+    color: #fff;
+    border-bottom: 2px solid #f00;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.navbar .brand {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .brand .highlight {
+    color: #f00;
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar .menu .nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    font-size: 0.875rem;
+}
+
+.navbar .menu .nav-link:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: #f00;
+    transform: scaleX(1);
+    transition: transform 0.3s ease;
+}
+
+.navbar .menu .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: #f00;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.navbar .mobile-menu {
+    display: none;
+}
+
+.navbar .mobile-menu-items {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    border-top: 2px solid #f00;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .mobile-menu-items.open {
+    display: flex;
+}
+
+.navbar .menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar .menu {
+        display: none;
+    }
+    
+    .navbar .mobile-menu-items {
+        display: none;
+    }
+    
+    .navbar .menu-toggle {
+        display: block;
+    }
+    
+    .navbar .mobile-menu-items.open {
+        display: block;
+    }
+}
