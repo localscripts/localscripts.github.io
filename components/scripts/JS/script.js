@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Load head
+  fetch('components/scripts/HTML/head.html') // Ensure this path is correct
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.text();
+      })
+      .then(data => {
+          document.head.innerHTML += data; // Append the fetched content to the head
+      })
+      .catch(error => {
+          console.error('Error loading head:', error);
+      });
+
   // Load navbar
   fetch('components/scripts/HTML/navbar.html')
       .then(response => {
@@ -13,16 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
           // Add toggle functionality for the mobile menu
           const menuToggle = document.querySelector('.menu-toggle');
           const mobileMenuItems = document.querySelector('.mobile-menu-items');
-          menuToggle.addEventListener('click', () => {
-              mobileMenuItems.classList.toggle('open');
-          });
+          if (menuToggle && mobileMenuItems) {
+              menuToggle.addEventListener('click', () => {
+                  mobileMenuItems.classList.toggle('open');
+              });
+          }
       })
       .catch(error => {
           console.error('Error loading navbar:', error);
       });
 
   // Fetch card data from roblox.json file
-  fetch('components/scripts/JSON/roblox.json') // Make sure this path is correct
+  fetch('components/scripts/JSON/roblox.json') // Ensure this path is correct
       .then(response => {
           if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -58,27 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
               // Build the card HTML with conditional sections and buttons
               const cardHtml = `
-                <div class="card-images">
-                  ${imagesHtml}
-                </div>
-                <h3 class="card-header">${card.name}</h3>
-                <div class="card-content">
-                  ${prosHtml ? `<div class="section pros">
-                    <h4 class="section-title">Pros</h4>
-                    <ul>${prosHtml}</ul>
-                  </div>` : ''}
-                  ${neutralHtml}
-                  ${consHtml ? `<div class="section cons">
-                    <h4 class="section-title">Cons</h4>
-                    <ul>${consHtml}</ul>
-                  </div>` : ''}
-                </div>
-                <div class="card-footer">
-                  <div class="card-footer-buttons">
-                    <a href="${card.link}" class="card-button red-button" target="_blank" rel="noopener noreferrer">${buttonText}</a>
-                    ${card.bloxproducts ? `<a href="https://bloxproducts.com/#f${card.bloxproducts}" class="card-button bloxproducts-button" target="_blank" rel="noopener noreferrer">${card.bloxButtonText || 'View on BloxProducts'}</a>` : ''}
+                  <div class="card-images">
+                      ${imagesHtml}
                   </div>
-                </div>
+                  <h3 class="card-header">${card.name}</h3>
+                  <div class="card-content">
+                      ${prosHtml ? `<div class="section pros">
+                          <h4 class="section-title">Pros</h4>
+                          <ul>${prosHtml}</ul>
+                      </div>` : ''}
+                      ${neutralHtml}
+                      ${consHtml ? `<div class="section cons">
+                          <h4 class="section-title">Cons</h4>
+                          <ul>${consHtml}</ul>
+                      </div>` : ''}
+                  </div>
+                  <div class="card-footer">
+                      <div class="card-footer-buttons">
+                          <a href="${card.link}" class="card-button red-button" target="_blank" rel="noopener noreferrer">${buttonText}</a>
+                          ${card.bloxproducts ? `<a href="https://bloxproducts.com/#f${card.bloxproducts}" class="card-button bloxproducts-button" target="_blank" rel="noopener noreferrer">${card.bloxButtonText || 'View on BloxProducts'}</a>` : ''}
+                      </div>
+                  </div>
               `;
 
               cardElement.innerHTML = cardHtml;
