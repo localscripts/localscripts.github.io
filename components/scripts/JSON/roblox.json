@@ -1,7 +1,7 @@
 [
     {
       "name": "Solara",
-      "pros": ["No keysystem", "70% UNC", "External"],
+      "pros": ["No keysystem", "70% UNC"],
       "cons": ["Frequent crashes", "Likely short-lived"],
       "neutral": [],
       "link": "https://lootdest.org/s?6bd1d3ed",
@@ -126,7 +126,7 @@
     },
     {
       "name": "Cryptic",
-      "pros": ["98% UNC", "Level 7"],
+      "pros": ["100% UNC", "Level 7"],
       "cons": ["New exploit"],
       "neutral": ["Future safety is uncertain"],
       "link": "https://loot-link.com/s?fdbe810b/",
