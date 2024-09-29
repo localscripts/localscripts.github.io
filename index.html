@@ -1,62 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>voxlis.NET</title>
-    
-    <link rel="stylesheet" href="components/scripts/CSS/styles.css">
-    <link rel="stylesheet" href="components/scripts/CSS/navbar.css"> <!-- Link to navbar CSS -->
-    <link rel="stylesheet" href="components/scripts/CSS/footer.css"> <!-- Link to footer CSS -->
-    
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="components/media/globe.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genery</title>
 
-    <!-- Font Link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Genery - Celery Key Generator">
+  <meta property="og:description" content="Totally real not fake key generator. Generate keys instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://robloxhackers.lol/Celery-Keygen/">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/99403280?s=200&v=4">
 
-    <!-- Meta Tags -->
-    <meta name="title" content="voxlis.NET | Ready to Win?">
-    <meta name="description" content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#00FF00">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="voxlis.NET | Ready to Win?">
-    <meta property="og:description" content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://voxlis.NET">
-    <meta property="og:image" content="https://localscripts.github.io/components/media/voxlis.png">
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00;
+      font-family: "Courier New", Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+    }
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#EF4444">
+    .header {
+      background-color: #007700;
+      color: white;
+      padding: 20px;
+      font-size: 1.5em;
+      text-align: center;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .key {
+      font-size: 1.5em;
+      letter-spacing: 0.2em;
+      margin: 5px 0;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 24px;
+      background-color: #00FF00;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% {
+        opacity: 1;
+      }
+      50%, 100% {
+        opacity: 0;
+      }
+    }
+
+    button {
+      background-color: #00FF00;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+  </style>
 </head>
-
 <body>
-    <div id="navbar"></div>
 
-    <!-- Container for Notification Box and Cards -->
-    <div class="main-container" style="padding-top: 4rem;">
-        <!-- Notification Box -->
-        <div class="notification-box" id="notification-box">
-            <h2 class="notification-header">robloxhackers is for sale</h2>
-            <p>
-                <a href="/discord" class="notification-link" target="_blank" rel="noopener noreferrer">
-                    • Contact @voxlis on Discord
-                </a>
-            </p>
-        </div>
+<div class="container">
+  <button id="generate-button">Generate Keys</button>
+  <div id="keys-container"></div>
+</div>
 
-        <div class="cards-wrapper" id="cards-wrapper">
-            <!-- Cards will be populated here -->
-        </div>
-    </div>
+<script>
+  function generateRandomKey() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let key = '';
+    for (let i = 0; i < 16; i++) {
+      if (i > 0 && i % 4 === 0) {
+        key += '-';
+      }
+      key += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return key;
+  }
 
-    <div id="footer"></div>
+  function typeKey(key, index) {
+    const keysContainer = document.getElementById('keys-container');
+    const keyElement = document.createElement('div');
+    keyElement.className = 'key';
+    keysContainer.appendChild(keyElement);
 
-    <script src="components/scripts/JS/script.js" defer></script>
+    let charIndex = 0;
+    function typeChar() {
+      if (charIndex < key.length) {
+        keyElement.textContent += key.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeChar, 100); // Speed up typing speed
+      } else {
+        keyElement.appendChild(document.createElement('div')).className = 'cursor'; // Add cursor at end
+      }
+    }
+
+    setTimeout(typeChar, index * 300); // Start typing with a delay based on key index
+  }
+
+  function generateKeys() {
+    const keysContainer = document.getElementById('keys-container');
+    keysContainer.innerHTML = ''; // Clear previous keys
+
+    for (let i = 0; i < 50; i++) {
+      const key = generateRandomKey();
+      typeKey(key, i);
+    }
+  }
+
+  document.getElementById('generate-button').onclick = generateKeys;
+</script>
+
 </body>
-
 </html>
