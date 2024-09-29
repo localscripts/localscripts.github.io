@@ -169,20 +169,24 @@ ul {
 }
 .notification-header {
     font-size: 1.125rem;
-    font-weight: 600;
-    color: #FACC15;
+    font-weight: 700; /* Thicker font weight */
+    color: #E84848;
     margin: 0 0 10px 0;
-    text-shadow: none;
     font-family: 'Montserrat', sans-serif;
+    text-shadow: 0 0 8px rgba(232, 72, 72, 0.8), /* Glow effect */
+                 0 0 16px rgba(232, 72, 72, 0.6),
+                 0 0 24px rgba(232, 72, 72, 0.4);
 }
 .notification-link {
-    color: #E84848;
+    color: #ffffff;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* Thicker font weight for the link */
 }
 .notification-link:hover {
     text-decoration: underline;
 }
+
 .card-footer-buttons {
     display: flex;
     justify-content: flex-end;
