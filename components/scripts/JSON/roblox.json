@@ -118,8 +118,8 @@
     {
       "name": "VegaX",
       "pros": ["Frequent updates", "Unlikely to discontinue in the near future"],
-      "cons": ["Includes a keysystem", "Potential banwaves", "Owned by 1 F0"],
-      "neutral": ["Partnered with ArceusX"],
+      "cons": ["Partnered with ArceusX"],
+      "neutral": ["Includes a keysystem", "Potential banwaves", "Owned by 1 F0"],
       "link": "ttps://loot-link.com/s?69c8310f",
       "buttonText": "FREE",
       "images": ["components/media/Android.png", "components/media/Key Purple.png"]
