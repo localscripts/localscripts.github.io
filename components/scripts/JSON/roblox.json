@@ -8,6 +8,15 @@
     "buttonText": "FREE",
     "images": ["components/media/Windows.png"]
   },
+    {
+    "name": "Xeno",
+    "pros": ["No keysystem", "77% UNC~"],
+    "cons": [],
+    "neutral": ["2 Months old", "Level 3"],
+    "link": "https://lootdest.org/s?0e6df239",
+    "buttonText": "3.25$ per week",
+    "images": ["components/media/Windows.png"]
+  },
   {
     "name": "DX9WARE V2",
     "pros": ["Zero traces of detection found", "Custom Lua environment", "Has a big script library", "Ton of features", "External"],
