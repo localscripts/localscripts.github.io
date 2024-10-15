@@ -167,6 +167,18 @@ ul {
     max-width: 1100px; /* Max width for larger screens */
     box-sizing: border-box;
 }
+
+.glow-link {
+    color: blue; /* Link color */
+    text-decoration: none; /* No underline */
+    text-shadow: 0 0 5px rgba(0, 0, 255, 0.8), /* Glow effect */
+                 0 0 10px rgba(0, 0, 255, 0.6),
+                 0 0 15px rgba(0, 0, 255, 0.4);
+}
+.glow-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
 .notification-header {
     font-size: 1.125rem;
     font-weight: 700; /* Thicker font weight */
