@@ -28,9 +28,9 @@
   },
   {
     "name": "Celery",
-    "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 7"],
+    "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 7", "Cheap"],
     "cons": [],
-    "neutral": ["Has/Had vulnerabilities", "8.00$ per month"],
+    "neutral": ["Has/Had vulnerabilities"],
     "link": "https://loot-link.com/s?28d85016",
     "buttonText": "2.99$ per week",
     "images": ["components/media/Windows.png"]
