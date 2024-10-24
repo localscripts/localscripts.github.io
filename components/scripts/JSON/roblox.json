@@ -18,6 +18,15 @@
     "images": ["components/media/Windows.png"]
   },
   {
+    "name": "Mint",
+    "pros": ["No keysystem", "67% UNC"],
+    "cons": [],
+    "neutral": ["Level 3"],
+    "link": "https://discord.gg/ce4gqbAwkD",
+    "buttonText": "FREE",
+    "images": ["components/media/Windows.png"]
+  },
+  {
     "name": "DX9WARE V2",
     "pros": ["Zero traces of detection found", "Custom Lua environment", "Has a big script library", "Ton of features", "External"],
     "cons": [],
