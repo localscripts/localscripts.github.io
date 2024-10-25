@@ -19,7 +19,7 @@
   },
   {
     "name": "Nihon",
-    "pros": ["100$ UNC", "Level 7"],
+    "pros": ["Luarmor support", "100$ UNC", "Level 7"],
     "cons": [],
     "neutral": [],
     "link": "https://lootdest.org/s?41541c5b",
@@ -37,7 +37,7 @@
   },
   {
     "name": "Celery",
-    "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 7", "Cheap"],
+    "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 8", "Cheap"],
     "cons": [],
     "neutral": ["Has/Had vulnerabilities"],
     "link": "https://loot-link.com/s?28d85016",
@@ -46,7 +46,7 @@
   },
   {
     "name": "Wave",
-    "pros": ["100% UNC~", "Level 7"],
+    "pros": ["100% UNC~", "Level 8"],
     "cons": [],
     "neutral": ["Frequent crashes", "Expensive"],
     "link": "https://loot-link.com/s?e31027c7",
@@ -57,7 +57,7 @@
   },
   {
     "name": "Apple-Ware",
-    "pros": ["80% UNC", "Level 7"],
+    "pros": ["80% UNC", "Level 8"],
     "cons": ["Owner has a shady background"],
     "neutral": ["Faked their UNC", "Buggy", "Skidding from Delta"],
     "link": "https://lootdest.org/s?39e80b8a",
@@ -84,7 +84,7 @@
   },
   {
     "name": "Macsploit",
-    "pros": ["98% UNC", "Level 7", "Infrequent banwaves"],
+    "pros": ["98% UNC", "Level 8", "Infrequent banwaves"],
     "cons": [],
     "neutral": ["Owner's background is questionable", "Updates are slightly late"],
     "link": "https://loot-link.com/s?e0379edc",
@@ -144,7 +144,7 @@
   },
   {
     "name": "Cryptic",
-    "pros": ["100% UNC", "Level 7"],
+    "pros": ["100% UNC", "Level 8"],
     "cons": ["Future safety is uncertain"],
     "neutral": ["New exploit"],
     "link": "https://loot-link.com/s?fdbe810b",
