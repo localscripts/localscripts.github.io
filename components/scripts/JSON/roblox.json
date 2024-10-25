@@ -18,6 +18,15 @@
     "images": ["components/media/Windows.png"]
   },
   {
+    "name": "Nihon",
+    "pros": ["100$ UNC", "Level 7"],
+    "cons": [],
+    "neutral": [],
+    "link": "https://lootdest.org/s?41541c5b",
+    "buttonText": "6.49$ per week",
+    "images": ["components/media/Windows.png"]
+  },
+  {
     "name": "DX9WARE V2",
     "pros": ["Zero traces of detection found", "Custom Lua environment", "Has a big script library", "Ton of features", "External"],
     "cons": [],
