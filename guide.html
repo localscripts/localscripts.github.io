@@ -6,10 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>voxlis.NET</title>
     
-    <link rel="stylesheet" href="components/scripts/CSS/styles.css">
-    <link rel="stylesheet" href="components/scripts/CSS/navbar.css"> <!-- Link to navbar CSS -->
-    <link rel="stylesheet" href="components/scripts/CSS/footer.css"> <!-- Link to footer CSS -->
-    
     <!-- Favicon -->
     <link rel="shortcut icon" href="components/media/globe.ico">
     <!-- Font Link -->
@@ -31,28 +27,23 @@
 
 <body>
     <div id="navbar"></div>
+    
     <!-- Container for Notification Box and Cards -->
     <div class="main-container" style="padding-top: 4rem;">
-        <!-- Notification Box -->
-        <div class="notification-box" id="notification-box">
-            <h2 class="notification-header">
-                New to exploiting? Have questions about Trojans?
-            </h2>
-            <p>
-                <a href="/guide.html" class="notification-link" target="_blank" rel="noopener noreferrer">
-                    • Check out our guide! Everything you need is on this page
-                </a>
-            </p>
+
+
+        <!-- Blog Posts Section -->
+        <div class="blog-posts-wrapper" id="blog-posts-wrapper">
+            <!-- Blog posts will be populated here -->
         </div>
+    </div>
+    
+    <div class="cards-wrapper" id="cards-wrapper">
+        <!-- Cards will be populated here -->
     </div>
 
-    
-        <div class="cards-wrapper" id="cards-wrapper">
-            <!-- Cards will be populated here -->
-        </div>
-    </div>
     <div id="footer"></div>
-    <script src="components/scripts/JS/script.js" defer></script>
+    <script src="components/scripts/JS/guide.js" defer></script>
 </body>
 
 </html>
