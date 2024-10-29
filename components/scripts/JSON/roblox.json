@@ -55,6 +55,15 @@
     "bloxproducts": "0",
     "bloxButtonText": "7.49$ weekly"
   },
+    {
+    "name": "Debugging Framework",
+    "pros": ["No installation needed"],
+    "cons": [],
+    "neutral": ["Works in one game", "Level 2", "0% UNC"],
+    "link": "https://loot-link.com/s?aef1e063",
+    "buttonText": "Website",
+    "images": ["components/media/Windows.png", "components/media/Android.png", "components/media/IOS.png"]
+  },
   {
     "name": "Apple-Ware",
     "pros": ["80% UNC", "Level 8"],
