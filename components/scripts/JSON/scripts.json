@@ -3,12 +3,24 @@
         "title": "[ LVL 2+ ] Night Mode",
         "author": "u/Failed_cocacola",
         "date": "2024-10-29",
-        "content": "Script: <a href='https://github.com/localscripts/Debugging-Framework/blob/main/LVL2/Night-Mode' class='link'>GitHub</a> ; You can modify the Skybox and Light values"
+        "content": "Script: <a href='https://github.com/localscripts/Debugging-Framework/blob/main/LVL2/Night-Mode.lua' class='link'>GitHub</a> ; You can modify the Skybox and Light values"
     },
     {
         "title": "[ LVL 2+ ] Make dick and balls explode",
         "author": "u/Failed_cocacola",
         "date": "2024-10-29",
-        "content": "Script: <a href='https://github.com/localscripts/Debugging-Framework/blob/main/LVL2/Explode-DnB' class='link'>GitHub</a> ; You can modify the Color, Size and Explosion values"
-    }
+        "content": "Script: <a href='https://github.com/localscripts/Debugging-Framework/blob/main/LVL2/Explode-DnB.lua' class='link'>GitHub</a> ; You can modify the Color, Size and Explosion values"
+    },
+    {
+        "title": "[ LVL 2+ ] Aim-Lock",
+        "author": "u/Failed_cocacola",
+        "date": "2024-10-29",
+        "content": "Script: <a href='https://github.com/localscripts/Debugging-Framework/blob/main/LVL2/Aim-Lock.lua' class='link'>GitHub</a> ; You can modify the script if needed, press 'e' to Aim-Lock"
+    },
+    {
+        "title": "[ LVL 2+ ] Highlight ESP",
+        "author": "u/Failed_cocacola",
+        "date": "2024-10-29",
+        "content": "Script: <a href='https://github.com/localscripts/Debugging-Framework/blob/main/LVL2/Highlight-ESP.lua' class='link'>GitHub</a> ; You can modify the Color values"
+    },
 ]
