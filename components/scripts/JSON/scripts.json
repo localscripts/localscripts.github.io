@@ -12,6 +12,12 @@
         "content": "Script: <a href='https://github.com/localscripts/Debugging-Framework/blob/main/LVL2/Explode-DnB.lua' class='link'>GitHub</a> ; You can modify the Color, Size and Explosion values, press 'e' to explode"
     },
     {
+        "title": "[ LVL 2+ ] Female Chest",
+        "author": "u/Failed_cocacola",
+        "date": "2024-10-29",
+        "content": "Script: <a href='https://github.com/localscripts/Debugging-Framework/blob/main/LVL2/Female-Chest.lua' class='link'>GitHub</a> ; You can modify the Color, Size, Orientation, Mesh, texture and more, this script does not explode"
+    },
+    {
         "title": "[ LVL 2+ ] Aim-Lock",
         "author": "u/Failed_cocacola",
         "date": "2024-10-29",
