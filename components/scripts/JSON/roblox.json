@@ -52,7 +52,7 @@
     "link": "https://loot-link.com/s?e31027c7",
     "buttonText": "Website",
     "images": ["components/media/Windows.png"],
-    "bloxproducts": "0",
+    "bloxproducts": "https://bloxproducts.com/",
     "bloxButtonText": "7.49$ weekly"
   },
     {
@@ -62,7 +62,9 @@
     "neutral": ["Works in one game", "Level 2", "0% UNC"],
     "link": "https://loot-link.com/s?aef1e063",
     "buttonText": "FREE",
-    "images": ["components/media/Windows.png", "components/media/Android.png", "components/media/IOS.png"]
+    "images": ["components/media/Windows.png", "components/media/Android.png", "components/media/IOS.png"],
+    "bloxproducts": "/scripts",
+    "bloxButtonText": "FREE"
   },
   {
     "name": "Apple-Ware",
@@ -99,7 +101,7 @@
     "link": "https://loot-link.com/s?e0379edc",
     "buttonText": "Website",
     "images": ["components/media/MacOS.png"],
-    "bloxproducts": "3",
+    "bloxproducts": "https://bloxproducts.com/",
     "bloxButtonText": "9.99$ lifetime"
   },
   {
@@ -110,7 +112,7 @@
     "link": "https://lootdest.org/s?e0d4be60",
     "buttonText": "FREE",
     "images": ["components/media/Android.png", "components/media/IOS.png", "components/media/Key Purple.png"],
-    "bloxproducts": "3",
+    "bloxproducts": "https://bloxproducts.com/",
     "bloxButtonText": "4.97$ monthly"
   },
   {
@@ -130,7 +132,7 @@
     "link": "https://loot-link.com/s?73b22172",
     "buttonText": "Website",
     "images": ["components/media/Windows.png"],
-    "bloxproducts": "1",
+    "bloxproducts": "https://bloxproducts.com/",
     "bloxButtonText": "6.49$ weekly"
   },
   {
