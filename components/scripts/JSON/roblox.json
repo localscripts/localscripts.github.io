@@ -64,7 +64,7 @@
     "buttonText": "FREE",
     "images": ["components/media/Windows.png", "components/media/Android.png", "components/media/IOS.png"],
     "bloxproducts": "/scripts",
-    "bloxButtonText": "FREE"
+    "bloxButtonText": "Scripts"
   },
   {
     "name": "Apple-Ware",
