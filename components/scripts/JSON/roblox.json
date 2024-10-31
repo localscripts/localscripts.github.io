@@ -20,7 +20,7 @@
   {
     "name": "Nihon",
     "pros": ["Luarmor support", "100% UNC", "Level 7"],
-    "cons": [],
+    "cons": ["Decompiler doesn't exist yet"],
     "neutral": [],
     "link": "https://lootdest.org/s?41541c5b",
     "buttonText": "6.49$ per week",
