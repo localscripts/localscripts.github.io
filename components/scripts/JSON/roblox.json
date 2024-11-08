@@ -76,15 +76,6 @@
     "images": ["components/media/IOS.png", "components/media/Key Purple.png"]
   },
   {
-    "name": "Domain",
-    "pros": ["Built a decent reputation", "Offers a lifetime package"],
-    "cons": [],
-    "neutral": ["Offers the same thing as Solara", "Low UNC", "Level 3"],
-    "link": "https://lootdest.org/s?d24703a8",
-    "buttonText": "15.00$ lifetime",
-    "images": ["components/media/Windows.png"]
-  },
-  {
     "name": "Aimmy",
     "pros": ["Supports other games", "No keysystem", "Safe to use", "AI-based"],
     "cons": [],
