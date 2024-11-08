@@ -144,15 +144,15 @@
     "buttonText": "FREE",
     "images": ["components/media/Android.png", "components/media/Key Purple.png"]
   },
-  {
-    "name": "Cryptic",
-    "pros": ["100% UNC", "Level 8"],
-    "cons": ["Future safety is uncertain"],
-    "neutral": ["New exploit"],
-    "link": "https://loot-link.com/s?fdbe810b",
-    "buttonText": "FREE",
-    "images": ["components/media/Android.png", "components/media/Key Purple.png"]
-  },
+    {
+      "name": "Cryptic",
+      "pros": ["100% UNC", "Level 8", "Undetected", "100% Virus Free", "Perfect Vulnerability Score"],
+      "neutral": ["Can Purchase Keyless"],
+      "cons": ["2 Checkpoint Key System"],
+      "link": "https://getcryptic.net/",
+      "buttonText": "FREE",
+      "images": ["media/Android.png", "media/Key Purple.png"]
+    },
   {
     "name": "ArceusX",
     "pros": ["Unlikely to discontinue in the near future", "Similar to CodeX"],
