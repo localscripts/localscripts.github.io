@@ -9,8 +9,6 @@ const typeList = {
 
 const wrapper = document.getElementById('cards-align');
 
-// JavaScript logic stays the same without the CSS
-
 document.addEventListener("DOMContentLoaded", () => {
     const mi = document.getElementById("menu-icon");
     const ml = document.getElementById("menu-list");
@@ -57,12 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Last edited by section
                 const lastEditedBy = card.lastEditedBy ? ` 
-                <div class="last-edited">
-                    <p>Last edited by <span class="editor-name">${card.lastEditedBy}</span></p>
-                    <img src="${card.lastEditedByImage}" alt="Editor avatar" width="20" height="20">
-                </div>
-            ` : '';
-            
+                    <div class="last-edited">
+                        <p>Last edited by <span class="editor-name">${card.lastEditedBy}</span></p>
+                        <img src="${card.lastEditedByImage}" alt="Editor avatar" width="20" height="20">
+                    </div>
+                ` : '';
 
                 const html = `
                     <div class="card-info">
@@ -94,6 +91,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 cardElement.innerHTML = html;
                 wrapper.appendChild(cardElement);
+
+                // Add warning popup for button if "warning" is true
+                if (card.warning) {
+                    const viewButton = cardElement.querySelector('.card-button.left');
+                    viewButton.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent default redirection
+
+                        if (confirm("⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️")) {
+                            window.open(card.link, '_blank'); // Open link if confirmed
+                        }
+                    });
+                }
             });
         });
 });

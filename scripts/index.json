@@ -172,5 +172,17 @@
         "types": ["android", "key"],
          "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Ratware",
+        "pros": ["Undetected", "Free to use", "100% UNC", "Level 8", "150k+ users"],
+        "neutral": [],
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "link": "/",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "Mr. Ratter",
+        "lastEditedByImage": "assets/unverified.png",
+        "warning": true
     }
 ]
