@@ -168,6 +168,26 @@ ul {
     box-sizing: border-box;
 }
 
+.filter-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-input {
+    width: 80%; /* Default width */
+    max-width: 600px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+
+
+
 .glow-link {
     color: blue; /* Link color */
     text-decoration: none; /* No underline */

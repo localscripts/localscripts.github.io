@@ -13,9 +13,9 @@
     justify-content: space-between;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
-}
-
-.navbar .container {
+  }
+  
+  .navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,34 +23,34 @@
     margin: 0 auto;
     padding: 0 1rem;
     width: 100%;
-}
-
-.navbar .brand {
+  }
+  
+  .navbar .brand {
     font-size: 1.25rem;
     font-weight: bold;
     text-transform: uppercase;
     color: #fff;
     text-decoration: none;
-}
-
-.navbar .brand .highlight {
+  }
+  
+  .navbar .brand .highlight {
     color: #f00;
-}
-
-.navbar .menu {
+  }
+  
+  .navbar .menu {
     display: flex;
     gap: 1rem;
-}
-
-.navbar .menu .nav-link {
+  }
+  
+  .navbar .menu .nav-link {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
     position: relative;
     font-size: 0.875rem;
-}
-
-.navbar .menu .nav-link:hover::after {
+  }
+  
+  .navbar .menu .nav-link:hover::after {
     content: "";
     position: absolute;
     left: 0;
@@ -60,9 +60,9 @@
     background: #f00;
     transform: scaleX(1);
     transition: transform 0.3s ease;
-}
-
-.navbar .menu .nav-link::after {
+  }
+  
+  .navbar .menu .nav-link::after {
     content: "";
     position: absolute;
     left: 0;
@@ -72,13 +72,26 @@
     background: #f00;
     transform: scaleX(0);
     transition: transform 0.3s ease;
-}
-
-.navbar .mobile-menu {
-    display: none;
-}
-
-.navbar .mobile-menu-items {
+  }
+  
+  .navbar .menu .announce-button {
+    display: inline-block;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #f00;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar .menu .announce-button:hover {
+    background-color: #f00;
+    color: #fff;
+  }
+  
+  .navbar .mobile-menu-items {
     display: none;
     flex-direction: column;
     position: absolute;
@@ -88,36 +101,36 @@
     background-color: #000;
     border-top: 2px solid #f00;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.navbar .mobile-menu-items.open {
+  }
+  
+  .navbar .mobile-menu-items.open {
     display: flex;
-}
-
-.navbar .menu-toggle {
+  }
+  
+  .navbar .menu-toggle {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
     background: none;
     border: none;
     color: #fff;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .navbar .menu {
-        display: none;
+      display: none;
     }
-    
+  
     .navbar .mobile-menu-items {
-        display: none;
+      display: none;
     }
-    
+  
     .navbar .menu-toggle {
-        display: block;
+      display: block;
     }
-    
+  
     .navbar .mobile-menu-items.open {
-        display: block;
+      display: block;
     }
-}
+  }
+  

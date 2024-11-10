@@ -1,0 +1,25 @@
+/* Global custom scrollbar styles for Firefox */
+* {
+    scrollbar-width: thin; /* Thin scrollbar */
+    scrollbar-color: #3F3F46 #18181b; /* Thumb color and track color for Firefox */
+  }
+  
+  /* Custom scrollbar styles for Webkit browsers (Chrome, Safari, etc.) */
+  ::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #18181b; /* Dark track background */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to bottom, #6366f1, #818cf8); /* Gradient for the thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 2px solid #18181b; /* Border around the thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(to bottom, #4f46e5, #6366f1); /* Hover effect with a different gradient */
+  }
+  
