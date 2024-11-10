@@ -8,7 +8,16 @@
     "buttonText": "FREE",
     "images": ["components/media/Windows.png"]
   },
-    {
+  {
+    "name": "Delta",
+    "pros": ["Best performance", "Popular choice", "Unlikely to discontinue in the near future"],
+    "cons": ["Includes a keysystem", "Susceptible to banwaves"],
+    "neutral": ["Owner has a shady background"],
+    "link": "https://loot-link.com/s?a6c62bd9",
+    "buttonText": "FREE",
+    "images": ["components/media/IOS.png", "components/media/Android.png", "components/media/Key Purple.png"]
+  },
+  {
     "name": "Xeno",
     "pros": ["No keysystem", "77% UNC~", "Open source"],
     "cons": [],
@@ -18,12 +27,30 @@
     "images": ["components/media/Windows.png"]
   },
   {
+    "name": "Wave",
+    "pros": ["100% UNC~", "Level 8"],
+    "cons": [],
+    "neutral": ["Frequent crashes", "Expensive"],
+    "link": "https://loot-link.com/s?e31027c7",
+    "buttonText": "7.49$ weekly",
+    "images": ["components/media/Windows.png"]
+  },
+  {
+    "name": "Synapse Z",
+    "pros": ["Has a decompiler", "95% UNC~"],
+    "cons": [],
+    "neutral": ["Crashes ALOT"],
+    "link": "https://loot-link.com/s?73b22172",
+    "buttonText": "6.49$ weekly",
+    "images": ["components/media/Windows.png"]
+  },
+  {
     "name": "Nihon",
     "pros": ["Luarmor support", "100% UNC", "Level 7"],
     "cons": [],
     "neutral": ["No decompiler yet", "Has/Had vulnerabilities"],
     "link": "https://lootdest.org/s?41541c5b",
-    "buttonText": "6.49$ per week",
+    "buttonText": "6.49$ weekly",
     "images": ["components/media/Windows.png"]
   },
   {
@@ -45,17 +72,6 @@
     "images": ["components/media/Windows.png"]
   },
   {
-    "name": "Wave",
-    "pros": ["100% UNC~", "Level 8"],
-    "cons": [],
-    "neutral": ["Frequent crashes", "Expensive"],
-    "link": "https://loot-link.com/s?e31027c7",
-    "buttonText": "Website",
-    "images": ["components/media/Windows.png"],
-    "bloxproducts": "https://bloxproducts.com/",
-    "bloxButtonText": "7.49$ weekly"
-  },
-    {
     "name": "DF",
     "pros": ["No installation needed"],
     "cons": [],
@@ -90,10 +106,8 @@
     "cons": [],
     "neutral": ["Owner's background is questionable", "Updates are slightly late"],
     "link": "https://loot-link.com/s?e0379edc",
-    "buttonText": "Website",
-    "images": ["components/media/MacOS.png"],
-    "bloxproducts": "https://bloxproducts.com/",
-    "bloxButtonText": "9.99$ lifetime"
+    "buttonText": "9.99$ lifetime",
+    "images": ["components/media/MacOS.png"]
   },
   {
     "name": "CodeX",
@@ -103,28 +117,8 @@
     "link": "https://lootdest.org/s?e0d4be60",
     "buttonText": "FREE",
     "images": ["components/media/Android.png", "components/media/IOS.png", "components/media/Key Purple.png"],
-    "bloxproducts": "https://bloxproducts.com/",
+    "bloxproducts": "",
     "bloxButtonText": "4.97$ monthly"
-  },
-  {
-    "name": "Delta",
-    "pros": ["Best performance", "Popular choice", "Unlikely to discontinue in the near future"],
-    "cons": ["Includes a keysystem", "Susceptible to banwaves"],
-    "neutral": ["Owner has a shady background"],
-    "link": "https://loot-link.com/s?a6c62bd9",
-    "buttonText": "FREE",
-    "images": ["components/media/IOS.png", "components/media/Android.png", "components/media/Key Purple.png"]
-  },
-  {
-    "name": "Synapse Z",
-    "pros": ["Has a decompiler", "95% UNC~"],
-    "cons": [],
-    "neutral": ["Crashes ALOT"],
-    "link": "https://loot-link.com/s?73b22172",
-    "buttonText": "Website",
-    "images": ["components/media/Windows.png"],
-    "bloxproducts": "https://bloxproducts.com/",
-    "bloxButtonText": "6.49$ weekly"
   },
   {
     "name": "Nezur",
