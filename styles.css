@@ -3,7 +3,7 @@
     --main-color-2: rgb(255, 0, 0);
     --main-transparent: rgba(0, 0, 0, 0);
 
-    --secondary-color-1: rgb(7, 7, 7);
+    --secondary-color-1: #070707;
     --secondary-color-2: rgb(46, 46, 51);
 
     --paid-color: rgb(0, 255, 0)
@@ -617,6 +617,87 @@ a.footer-link {
     font-weight: bold; /* Class to make text bold */
 }
 
+/* Notification */
+
+
+/* Popup notification styles for bottom-right corner */
+#popup-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #070707; /* Dark background */
+    color: #fff; /* White text color */
+    padding: 15px 20px; /* Add padding to notification container */
+    border-radius: 8px;
+    border: 1px solid #2E2E33; /* Gray outline border */
+    max-width: 300px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 9999;
+}
+
+#popup-notification.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+#popup-notification h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: none; /* No glowing text */
+}
+
+#popup-notification p {
+    font-size: 14px;
+    margin: 5px 0;
+    text-shadow: none; /* No glowing text */
+}
+
+#popup-notification .popup-links {
+    margin-top: 10px;
+}
+
+#popup-notification .popup-link {
+    color: yellow; /* Set yellow color for the links */
+    text-decoration: none; /* Remove underline */
+}
+
+
+#popup-notification button {
+    margin-top: 10px;
+    padding: 8px 0; /* Remove left and right padding */
+    width: 100%; /* Make the button fill the container width */
+    font-size: 14px;
+    background-color: var(--main-color-1); /* Light green button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-shadow: none; /* No glowing button */
+}
+
+#popup-notification button:hover {
+    background-color: var(--main-color-1); /* Darker green on hover */
+}
+
+#popup-notification .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-shadow: none; /* No glowing 'X' */
+}
+
+#popup-notification .close-btn:hover {
+    color: #32CD32; /* Green color when hovered */
+}
 
 /* Misc */
 
