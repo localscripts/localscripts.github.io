@@ -174,6 +174,18 @@
         "lastEditedByImage": "assets/verified.png"
     },
     {
+        "name": "Mint",
+        "pros": ["Free to use", "67% UNC", "Keyless"],
+        "neutral": ["Level 3"],
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "link": "https://discord.gg/Ujxxgf4HMe",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "Console",
+        "lastEditedByImage": "assets/unverified.png",
+        "warning": true
+    },
+    {
         "name": "Ratware",
         "pros": ["Undetected", "Free to use", "100% UNC", "Level 8", "150k+ users"],
         "neutral": [],
