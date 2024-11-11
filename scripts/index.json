@@ -93,6 +93,28 @@
         "lastEditedByImage": "assets/verified.png"
     },
     {
+        "name": "JJSploit",
+        "pros": ["No keysystem", "56% sUNC~"],
+        "neutral": ["It's Xeno with rebrand", "Level 3"],
+        "cons": [],
+        "link": "https://lootdest.org/s?5c24a9f5",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "DB Finder",
+        "lastEditedByImage": "assets/unknown.png"
+    },
+    {
+        "name": "Zorara",
+        "pros": ["56% sUNC~"],
+        "neutral": ["It's Xeno with rebrand", "Has a keysystem", "Level 3"],
+        "cons": [],
+        "link": "https://lootdest.org/s?35027b2d",
+        "buttonText": "FREE",
+        "types": ["windows", "key"],
+        "lastEditedBy": "DB Finder",
+        "lastEditedByImage": "assets/unknown.png"
+    },
+    {
         "name": "Aimmy",
         "pros": ["Supports other games", "No keysystem", "Safe to use", "AI-based"],
         "neutral": ["Requires GTX 1050 or better", "Requires training the model"],
@@ -182,6 +204,18 @@
         "buttonText": "FREE",
         "types": ["windows"],
         "lastEditedBy": "Console",
+        "lastEditedByImage": "assets/unverified.png",
+        "warning": true
+    },
+    {
+        "name": "ScytheX",
+        "pros": ["Quickest Injection", "Nice UI"],
+        "neutral": ["Includes a keysystem"],
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "link": "https://lootdest.org/s?3f2625a4",
+        "buttonText": "FREE",
+        "types": ["windows", "key"],
+        "lastEditedBy": "DB Finder",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true
     },
