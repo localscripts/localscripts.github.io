@@ -61,7 +61,7 @@
     {
         "name": "DX9WARE V2",
         "pros": ["Zero traces of detection found", "Custom Lua environment", "Has a big script library", "Ton of features", "External"],
-        "neutral": ["Doesn't have Lifetime subscription", "Early Beta - expect bugs", "3.25$ per week"],
+        "neutral": ["Doesn't have Lifetime subscription", "Early Beta - expect bugs and instability", "3.25$ per week"],
         "cons": [],
         "link": "https://lootdest.org/s?0e6df239",
         "buttonText": "3.25$ per week",
