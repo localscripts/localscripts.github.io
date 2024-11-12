@@ -199,11 +199,11 @@
         "name": "Mint",
         "pros": ["Free to use", "67% UNC", "Keyless"],
         "neutral": ["Level 3"],
-        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET", "Owner is known to be malicious"],
         "link": "https://loot-link.com/s?471fa603",
         "buttonText": "FREE",
         "types": ["windows"],
-        "lastEditedBy": "Console",
+        "lastEditedBy": "Orange",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true
     },
