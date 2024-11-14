@@ -145,7 +145,7 @@
         "cons": ["Uses core technology from ArceusX"],
         "link": "https://lootdest.org/s?e0d4be60",
         "buttonText": "FREE",
-        "types": ["android", "ios", "key"],
+        "types": ["android", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "c/404",
