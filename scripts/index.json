@@ -1,5 +1,18 @@
 [
     {
+        "name": "Wave",
+        "pros": ["Has a decompiler", "100% UNC~", "Level 8"],
+        "neutral": ["Frequent crashes", "Long updates", "Expensive"],
+        "link": "https://loot-link.com/s?e31027c7",
+        "cons": [],
+        "buttonText": "Website",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://olympuskeys.com/",
+        "buytext": "7.49$ per week"
+    },
+    {
         "name": "Solara v3",
         "pros": ["Built a decent reputation", "No keysystem", "70% UNC"],
         "neutral": ["Frequent crashes", "Level 3"],
@@ -20,8 +33,8 @@
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "buylink": "c/404",
-        "buytext": "$6.49 per week"
+        "buylink": "https://olympuskeys.com/",
+        "buytext": "6.49$ per week"
     },
     {
         "name": "Xeno",
@@ -33,19 +46,6 @@
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
-    },
-    {
-        "name": "Wave",
-        "pros": ["Has a decompiler", "100% UNC~", "Level 8"],
-        "neutral": ["Frequent crashes", "Long updates", "Expensive"],
-        "link": "https://loot-link.com/s?e31027c7",
-        "cons": [],
-        "buttonText": "Website",
-        "types": ["windows"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "c/404",
-        "buytext": "$7.49 per week"
     },
     {
         "name": "Delta",
@@ -64,7 +64,7 @@
         "neutral": ["Early Beta - expect bugs and instability", "Doesn't have Lifetime subscription", "3.25$ per week"],
         "cons": [],
         "link": "https://lootdest.org/s?0e6df239",
-        "buttonText": "$3.25 per week",
+        "buttonText": "3.25$ per week",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
@@ -75,7 +75,7 @@
         "neutral": ["Has/Had vulnerabilities", "8.00$ per month"],
         "cons": [],
         "link": "https://loot-link.com/s?28d85016",
-        "buttonText": "$2.99 per week",
+        "buttonText": "2.99$ per week",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
@@ -135,8 +135,8 @@
         "types": ["macos"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "buylink": "c/404",
-        "buytext": "$9.99 lifetime"
+        "buylink": "https://olympuskeys.com/",
+        "buytext": "9.99$ lifetime"
     },
     {
         "name": "CodeX",
@@ -148,8 +148,8 @@
         "types": ["android", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "buylink": "c/404",
-        "buytext": "$4.99 per month"
+        "buylink": "https://olympuskeys.com/",
+        "buytext": "4.99$ per month"
     },
     {
         "name": "Nezur",
