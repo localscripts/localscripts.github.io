@@ -29,12 +29,10 @@
         "neutral": ["Crashes ALOT", "Buggy"],
         "cons": [],
         "link": "https://loot-link.com/s?73b22172",
-        "buttonText": "Website",
+        "buttonText": "6.49$ per week",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://olympuskeys.com/",
-        "buytext": "6.49$ per week"
+        "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Xeno",
@@ -131,12 +129,10 @@
         "neutral": ["Owner's background is questionable", "Updates are slightly late"],
         "cons": [],
         "link": "https://loot-link.com/s?e0379edc",
-        "buttonText": "Website",
+        "buttonText": "9.99$ lifetime",
         "types": ["macos"],
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://olympuskeys.com/",
-        "buytext": "9.99$ lifetime"
+        "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "CodeX",
@@ -144,12 +140,10 @@
         "neutral": ["Potential banwaves", "Long keysystem"],
         "cons": ["Uses core technology from ArceusX"],
         "link": "https://lootdest.org/s?e0d4be60",
-        "buttonText": "FREE",
+        "buttonText": "4.99$ monthly",
         "types": ["android", "key"],
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://olympuskeys.com/",
-        "buytext": "4.99$ per month"
+        "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Nezur",
