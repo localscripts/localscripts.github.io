@@ -214,18 +214,6 @@
         "warning": true
     },
     {
-        "name": "ScytheX",
-        "pros": ["Quickest Injection", "Nice UI"],
-        "neutral": ["Includes a keysystem"],
-        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
-        "link": "https://lootdest.org/s?3f2625a4",
-        "buttonText": "FREE",
-        "types": ["windows", "key"],
-        "lastEditedBy": "DB Finder",
-        "lastEditedByImage": "assets/unverified.png",
-        "warning": true
-    },
-    {
         "name": "DF",
         "pros": ["No installation needed"],
         "neutral": ["Works in one game", "Level 2", "0% UNC"],
