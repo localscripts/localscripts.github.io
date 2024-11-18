@@ -1,3 +1,4 @@
+
 [
     {
         "name": "Wave",
@@ -24,23 +25,23 @@
         "lastEditedByImage": "assets/verified.png"
     },
     {
-        "name": "Synapse Z",
-        "pros": ["Has a decompiler", "Decent price", "95% UNC~"],
-        "neutral": ["Crashes ALOT", "Buggy"],
-        "cons": [],
-        "link": "https://loot-link.com/s?73b22172",
-        "buttonText": "6.49$ per week",
-        "types": ["windows"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
-    },
-    {
         "name": "Xeno",
         "pros": ["Built a decent reputation", "Used by alot of exploits", "No keysystem", "77% UNC~"],
         "neutral": ["Level 3"],
         "cons": [],
         "link": "https://lootdest.org/s?038852f4",
         "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Synapse Z",
+        "pros": ["Has a decompiler", "Decent price", "95% UNC~"],
+        "neutral": ["Crashes ALOT", "Buggy"],
+        "cons": [],
+        "link": "https://loot-link.com/s?73b22172",
+        "buttonText": "6.49$ per week",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
@@ -57,6 +58,17 @@
         "lastEditedByImage": "assets/verified.png"
     },
     {
+        "name": "Nihon",
+        "pros": ["Luarmor support", "100% UNC", "Level 8"],
+        "neutral": ["No decompiler yet", "Has/Had vulnerabilities"],
+        "cons": [],
+        "link": "https://lootdest.org/s?41541c5b",
+        "buttonText": "6.49$ per week",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
         "name": "DX9WARE V2",
         "pros": ["Zero traces of detection found", "Custom Lua environment", "Has a big script library", "Ton of features", "External"],
         "neutral": ["Early Beta - expect bugs and instability", "Doesn't have Lifetime subscription", "3.25$ per week"],
@@ -69,7 +81,7 @@
     },
     {
         "name": "Celery",
-        "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 7"],
+        "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 8"],
         "neutral": ["Has/Had vulnerabilities", "8.00$ per month"],
         "cons": [],
         "link": "https://loot-link.com/s?28d85016",
@@ -81,7 +93,7 @@
     },
     {
         "name": "Apple-Ware",
-        "pros": ["80% UNC", "Level 7"],
+        "pros": ["80% UNC", "Level 8"],
         "neutral": ["Skidding from Delta", "Faked their UNC", "Buggy"],
         "cons": ["Owner has a shady background"],
         "link": "https://lootdest.org/s?39e80b8a",
@@ -125,7 +137,7 @@
     },
     {
         "name": "Macsploit",
-        "pros": ["Infrequent banwaves", "98% UNC", "Level 7"],
+        "pros": ["Infrequent banwaves", "98% UNC", "Level 8"],
         "neutral": ["Owner's background is questionable", "Updates are slightly late"],
         "cons": [],
         "link": "https://loot-link.com/s?e0379edc",
@@ -212,6 +224,18 @@
         "lastEditedBy": "DB Finder",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true
+    },
+    {
+        "name": "DF",
+        "pros": ["No installation needed"],
+        "neutral": ["Works in one game", "Level 2", "0% UNC"],
+        "cons": [],
+        "link": "https://loot-link.com/s?aef1e063",
+        "buttonText": "FREE",
+        "types": ["windows", "ios", "android"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "warning": false
     },
     {
         "name": "Ratware",
