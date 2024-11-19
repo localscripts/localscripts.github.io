@@ -15,20 +15,6 @@
         "glow": "#06A3F1"
     },
     {
-        "name": "CodeX",
-        "pros": ["Unlikely to discontinue in the near future", "Similar to ArceusX"],
-        "neutral": ["Issues with keysystem", "Uses core technology from ArceusX"],
-        "cons": [],
-        "link": "https://lootdest.org/s?e0d4be60",
-        "buttonText": "Website",
-        "types": ["android", "key"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://robloxcheatz.com/group/53c7a019-6470-4a9c-8e37-bd3ad7474517?p=84ef7f27-f38a-4448-b839-54701c99e699",
-        "buytext": "4.98$ per month",
-        "glow": ""
-    },
-    {
         "name": "Synapse Z",
         "pros": ["Has a decompiler", "100% UNC~", "Level 8"],
         "neutral": ["Crashes ALOT"],
@@ -43,7 +29,7 @@
     },
     {
         "name": "Seliware",
-        "pros": ["100% UNC", "Level 8"],
+        "pros": ["Has a decompiler", "100% UNC", "Level 8"],
         "neutral": ["New Executor", "Public Beta"],
         "cons": [],
         "link": "https://loot-link.com/s?73b22172",
@@ -53,6 +39,20 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/product/d7a3d96a-2497-43e5-b8b0-c4046a63b0da",
         "buytext": "9.99$ per month"
+    },
+    {
+        "name": "CodeX",
+        "pros": ["Unlikely to discontinue in the near future", "Similar to ArceusX"],
+        "neutral": ["Issues with keysystem", "Uses core technology from ArceusX"],
+        "cons": [],
+        "link": "https://lootdest.org/s?e0d4be60",
+        "buttonText": "Website",
+        "types": ["android", "key"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://robloxcheatz.com/group/53c7a019-6470-4a9c-8e37-bd3ad7474517?p=84ef7f27-f38a-4448-b839-54701c99e699",
+        "buytext": "4.98$ per month",
+        "glow": ""
     },
     {
         "name": "Solara v3",
