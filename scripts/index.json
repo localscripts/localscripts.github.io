@@ -247,8 +247,8 @@
     },
     {
         "name": "Ratware",
-        "pros": ["Undetected", "Free to use", "100% UNC", "Level 8", "150k+ users"],
-        "neutral": [],
+        "pros": ["Undetected", "Free to use", "150k+ users", "100% UNC", "Level 8"],
+        "neutral": ["🐀💨"],
         "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
         "link": "https://loot-link.com/s?f24e8c15",
         "buttonText": "FREE",
