@@ -53,9 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 `).join('');
 
                 // Generate HTML for pros, cons, and neutral sections
-                const pros = card.pros.map(pro => `<li>${pro}</li>`).join('');
-                const neutral = card.neutral.map(item => `<li>${item}</li>`).join('');
-                const cons = card.cons.map(con => `<li>${con}</li>`).join('');
+                const pros = card.pros?.map(pro => `<li>${pro}</li>`).join('');
+                const neutral = card.neutral?.map(item => `<li>${item}</li>`).join('');
+                const cons = card.cons?.map(con => `<li>${con}</li>`).join('');
+                const unc = card.unc;
+                const level = card.level;
 
                 // Define button text or default
                 const buttonText = card.buttonText || 'View';
@@ -77,6 +79,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="card-info">
                         <div class="card-types">${types}</div>
                         <h3 class="card-title">${card.name}</h3>
+                        <div ${(unc || level) ? `style="margin-bottom: 10px;"` : ''}>
+                            ${unc ? `<p>
+                                <span>UNC:</span>
+                                <span style="color:${getColorHex(unc)};">${unc}%</span>
+                            </p>` : ''}
+                            ${level ? `<p>
+                                <span>Level:</span>
+                                <span style="color:${getColorHex(level, false)}">${level}</span>
+                            </p>` : ''}
+                        </div>
                     </div>
                     <div class="card-content">
                         ${pros ? `<div class="section pros">
@@ -182,4 +194,25 @@ if (new Date().getMonth() === 10) { // 11 = December
     animate();
 } else {
     canvas.remove();
+}
+
+function getColorHex(value, calculateUnc = true) {
+    let scaleFactor = 100;
+
+    if (!calculateUnc) {
+        scaleFactor = 7;
+
+        if (value > 7) {
+            // 8 is the same as 1 and no executor will ever have 7.
+            // The significance of this is obviously up for debate or can be vetoed.
+            value = 1;
+        }
+    }
+
+    const scaledValue = value / scaleFactor;
+    const red = Math.round(255 * (1 - scaledValue));
+    const green = Math.round(255 * scaledValue);
+    const hex = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}00`;
+
+    return hex;
 }
