@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
             wrapper.innerHTML = ''; // Clear any existing cards
 
             cards.forEach(card => {
+                // If card has "hide" set to true, skip rendering it
+                if (card.hide) {
+                    return; // Skip this card
+                }
+
                 const cardElement = document.createElement('div');
                 cardElement.classList.add('card');
 
