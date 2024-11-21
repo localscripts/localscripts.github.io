@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +13,21 @@
     <!-- Font Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Link -->
     <link rel="stylesheet" href="./styles.css">
 
     <!-- Meta Tags -->
     <meta name="title" content="voxlis.NET | Ready to Win?">
-    <meta name="description" content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
+    <meta name="description"
+        content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="voxlis.NET | Ready to Win?">
-    <meta property="og:description" content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
+    <meta property="og:description"
+        content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://voxlis.net">
     <meta property="og:image" content="/assets/voxlis.png">
@@ -35,7 +39,7 @@
     <script defer src="scripts/index.js"></script>
     <script defer>
         // Show the notification popup when the page loads
-        window.onload = function() {
+        window.onload = function () {
             document.getElementById('popup-notification').style.visibility = 'visible';
             document.getElementById('popup-notification').style.opacity = '1';
         };
@@ -43,47 +47,54 @@
 </head>
 
 <body>
-    <canvas id="particle-container"></canvas>
+    <canvas id="particle-container" style="z-index: 0;"></canvas>
 
     <nav>
         <div id="nav-container">
             <p id="brand">www.<span id="brand-highlight">voxlis</span>.NET</p>
             <div id="nav-items">
-                <button type="button" aria-label="Mobile menu" id="menu-icon" class="unselectable"><img class="unselectable" src="assets/menu.svg" alt="" width="30" height="30"></button>
+                <button type="button" aria-label="Mobile menu" id="menu-icon" class="unselectable"><img
+                        class="unselectable" src="assets/menu.svg" alt="" width="30" height="30"></button>
                 <ul id="menu-list" class="unselectable">
                     <li><a class="unselectable" href="/">Home</a></li>
                     <li><a class="unselectable" href="/discord">Discord</a></li>
-                    <li><a class="unselectable" href="https://github.com/localscripts/localscripts.github.io/blob/main/scripts/index.json">Contribute</a></li>
+                    <li><a class="unselectable"
+                            href="https://github.com/localscripts/localscripts.github.io/blob/main/scripts/index.json">Contribute</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-<!-- Popup Notification -->
-<div id="popup-notification">
-    <div class="popup-content">
-        <h2><span class="glow-red">🌊 Cheap Wave Keys! 🌊</span></h2>
-        <p> 💎 Check out <a href="https://olympuskeys.com/" class="popup-link">OlympusKeys.com</a>!</p>
-        <button onclick="document.getElementById('popup-notification').style.visibility = 'hidden'; document.getElementById('popup-notification').style.opacity = '0';">idc cuh!</button>
+    <!-- Popup Notification -->
+    <div id="popup-notification">
+        <div class="popup-content">
+            <h2><span class="glow-red">🌊 Cheap Wave Keys! 🌊</span></h2>
+            <p> 💎 Check out <a href="https://olympuskeys.com/" class="popup-link">OlympusKeys.com</a>!</p>
+            <button
+                onclick="document.getElementById('popup-notification').style.visibility = 'hidden'; document.getElementById('popup-notification').style.opacity = '0';">idc
+                cuh!</button>
+        </div>
     </div>
-</div>
 
 
     <main>
         <div id="notification">
             <h2>
-                <span class="glow-red">How to install exploits</span> - 
-                <a href="https://www.youtube.com/watch?v=E28mo6mn3HU" class="glow-link" target="_blank" rel="noopener noreferrer">Android</a> - 
-                <a href="https://youtu.be/PRJJYT0l7IE" class="glow-link" target="_blank" rel="noopener noreferrer">PC</a>
+                <span class="glow-red">How to install exploits</span> -
+                <a href="https://www.youtube.com/watch?v=E28mo6mn3HU" class="glow-link" target="_blank"
+                    rel="noopener noreferrer">Android</a> -
+                <a href="https://youtu.be/PRJJYT0l7IE" class="glow-link" target="_blank"
+                    rel="noopener noreferrer">PC</a>
             </h2>
             <p>
-                <div class="notification-link">
-                    ➡️ Check the YouTube videos by clicking on them!
-                </div>
+            <div class="notification-link">
+                ➡️ Check the YouTube videos by clicking on them!
+            </div>
             </p>
         </div>
     </main>
-    
+
     <div>
         <div id="cards-wrapper">
             <div id="cards-align">
@@ -91,13 +102,15 @@
             </div>
         </div>
     </div>
-    
+
     <footer>
         <div>
             <p>&copy; 2024 voxlis.NET. All rights reserved.</p>
             <p>Optimized by <a href="https://waza80.com">waza80</a></p>
             <p>
-                <a class="footer-link" href="https://github.com/localscripts/localscripts.github.io/blob/main/scripts/index.json" target="_blank">Contribute</a> • 
+                <a class="footer-link"
+                    href="https://github.com/localscripts/localscripts.github.io/blob/main/scripts/index.json"
+                    target="_blank">Contribute</a> •
                 <a class="footer-link" href="/discord" target="_blank">Discord</a>
             </p>
         </div>
