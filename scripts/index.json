@@ -11,7 +11,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://olympuskeys.com/",
-        "buytext": "7.49$ per week",
+        "buytext": "$7.49 per week",
         "glow": "#06A3F1"
     },
     {
@@ -25,7 +25,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/5ec69f2e-303f-45dc-8070-1b14b9ea4870?p=055223a1-4865-42c5-9e1b-9a34c95b3336",
-        "buytext": "6.49$ per week"
+        "buytext": "$6.49 per week"
     },
     {
         "name": "Seliware",
@@ -38,7 +38,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/product/d7a3d96a-2497-43e5-b8b0-c4046a63b0da",
-        "buytext": "9.99$ per month"
+        "buytext": "$9.99 per month"
     },
     {
         "name": "CodeX",
@@ -51,7 +51,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/53c7a019-6470-4a9c-8e37-bd3ad7474517?p=84ef7f27-f38a-4448-b839-54701c99e699",
-        "buytext": "4.98$ per month",
+        "buytext": "$4.98 per month",
         "glow": ""
     },
     {
@@ -94,7 +94,7 @@
         "neutral": ["No decompiler yet", "Has/Had vulnerabilities"],
         "cons": [],
         "link": "https://lootdest.org/s?41541c5b",
-        "buttonText": "6.49$ per week",
+        "buttonText": "$6.49 per week",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
@@ -105,7 +105,7 @@
         "neutral": ["Early Beta - expect bugs and instability", "Doesn't have Lifetime subscription", "3.25$ per week"],
         "cons": [],
         "link": "https://lootdest.org/s?0e6df239",
-        "buttonText": "3.25$ per week",
+        "buttonText": "$3.25 per week",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
@@ -116,7 +116,7 @@
         "neutral": ["Has/Had vulnerabilities", "8.00$ per month"],
         "cons": [],
         "link": "https://loot-link.com/s?28d85016",
-        "buttonText": "2.99$ per week",
+        "buttonText": "$2.99 per week",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
@@ -172,7 +172,7 @@
         "neutral": ["Owner's background is questionable", "Updates are slightly late"],
         "cons": [],
         "link": "https://loot-link.com/s?e0379edc",
-        "buttonText": "9.99$ lifetime",
+        "buttonText": "$9.99 lifetime",
         "types": ["macos"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
