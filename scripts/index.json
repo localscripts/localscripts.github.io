@@ -17,8 +17,8 @@
     {
         "name": "Synapse Z",
         "pros": ["Has a decompiler", "100% UNC~", "Level 8"],
-        "neutral": ["Crashes ALOT"],
-        "cons": [],
+        "neutral": [""],
+        "cons": ["Crashes ALOT"],
         "link": "https://loot-link.com/s?73b22172",
         "buttonText": "Webiste",
         "types": ["windows"],
