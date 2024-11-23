@@ -119,7 +119,8 @@
         "buttonText": "$2.99 per week",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
+        "lastEditedByImage": "assets/verified.png",
+        "hide": true
 
     },
     {
