@@ -1,6 +1,6 @@
 :root {
-    --main-color-1: rgb(255, 0, 0);
-    --main-color-2: rgb(255, 0, 0);
+    --main-color-1: #CC1D03;
+    --main-color-2: #CC1D03;
     --main-transparent: rgba(0, 0, 0, 0);
 
     --secondary-color-1: #070707;
