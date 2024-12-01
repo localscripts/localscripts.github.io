@@ -117,6 +117,18 @@
         "hide": false
     },
     {
+        "name": "Atlantis",
+        "pros": ["Has a decompiler", "100% sUNC", "Level 8"],
+        "neutral": ["Sometimes crashes"],
+        "cons": [],
+        "link": "https://loot-link.com/s?a38157dc",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "hide": false
+    },
+    {
         "name": "Nihon",
         "pros": ["Luarmor support", "100% UNC~", "Level 8"],
         "neutral": ["No decompiler yet"],
