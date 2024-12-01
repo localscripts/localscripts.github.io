@@ -617,6 +617,21 @@ a.footer-link {
     font-weight: bold; /* Class to make text bold */
 }
 
+.error {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.error-gif {
+    display: block;
+    margin: 20px auto;
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+}
+
+
 /* Notification */
 
 

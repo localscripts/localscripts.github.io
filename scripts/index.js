@@ -23,9 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
         mi.classList.toggle("opened"), mb.classList.toggle("show");
     });
 
-    // Fetch JSON and generate cards
+    // Fetch JSON and generate cards with error handling
+    const wrapper = document.getElementById('cards-align');
+
     fetch("scripts/index.json")
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
         .then(cards => {
             wrapper.innerHTML = ''; // Clear any existing cards
 
@@ -129,8 +136,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                 }
             });
+        })
+        .catch(err => {
+            // Display error message and fail GIF on the page
+            wrapper.innerHTML = `
+                <div class="error">
+                    An error occurred while loading the cards: ${err.message}
+                </div>
+                <img src="assets/fail.gif" alt="Error" class="error-gif">
+            `;
+            console.error("Error loading JSON:", err);
         });
 });
+
 
 const canvas = document.getElementById('particle-container');
 

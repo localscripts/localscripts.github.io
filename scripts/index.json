@@ -105,6 +105,18 @@
         "glow": "#5D3FD3"
     },
     {
+        "name": "Luna",
+        "pros": ["67% UNC~", "External", "Level 8"],
+        "neutral": ["No decompiler yet"],
+        "cons": [],
+        "link": "https://loot-link.com/s?8df33642",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "hide": false
+    },
+    {
         "name": "Nihon",
         "pros": ["Luarmor support", "100% UNC~", "Level 8"],
         "neutral": ["No decompiler yet"],
@@ -160,18 +172,6 @@
         "lastEditedByImage": "assets/verified.png",
         "hide": true
 
-    },
-    {
-        "name": "Luna",
-        "pros": ["67% UNC~", "Level 8"],
-        "neutral": ["No decompiler yet"],
-        "cons": [],
-        "link": "",
-        "buttonText": "FREE",
-        "types": ["windows", "key"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "hide": true
     },
     {
         "name": "Apple-Ware",
