@@ -1,6 +1,6 @@
 :root {
-    --main-color-1: #CC1D03;
-    --main-color-2: #CC1D03;
+    --main-color-1: #B32624;
+    --main-color-2: #B32624;
     --main-transparent: rgba(0, 0, 0, 0);
 
     --secondary-color-1: #070707;
@@ -8,13 +8,22 @@
     --tooltip-color-1: #070707;
     --tooltip-color-2: rgb(46, 46, 51);
 
-    --paid-color: rgb(0, 255, 0)
+    --paid-color: rgb(0, 255, 0);
+
+    --backround-color: #09090B;
+    --navbar-backround: #09090B;
+    --navbar-line: #B32624;
+    /*Card */
+    --card-border: #27272A;
+    --card-color: #0C0C0E;
+    --link-button: #B32624;
+    --buy-button: #4ADE80;
 }
 
 html, body {
     overflow-x: hidden;
     width: 100vw;
-    background-color: black;
+    background-color: var(--backround-color);
 }
 
 * {
@@ -40,8 +49,8 @@ nav {
     height: 60px;
     padding: 1rem;
 
-    background-color: black;
-    border-bottom: 2px solid var(--main-color-1);
+    background-color: var(--navbar-backround);
+    border-bottom: 2px solid var(--navbar-line);
 }
 
 #nav-container {
@@ -101,7 +110,7 @@ nav {
     height: 2px;
 
     content: "";
-    background: var(--main-color-1);
+    background: var(--link-button);
 
     transform: scaleX(0);
     transition: transform 0.3s ease;
@@ -127,7 +136,7 @@ nav {
     height: 30px;
     border-radius: 10px;
 
-    background-color: var(--secondary-color-1);
+    background-color: var(--navbar-backround);
 
     transition: 0.5s;
 }
@@ -152,8 +161,8 @@ nav {
     left: 0;
     gap: 0;
 
-    background-color: rgb(0, 0, 0);
-    border-bottom: 2px solid var(--main-color-1);
+    background-color: var(--navbar-backround);
+    border-bottom: 2px solid var(--navbar-line);
 
     transition: all;
 }
@@ -169,7 +178,7 @@ nav {
 }
 
 .menu-blur li a:hover {
-    background-color: var(--secondary-color-2);
+    background-color: var(--navbar-backround);
 }
 
 @media only screen and (max-width: 552px) {
@@ -236,12 +245,13 @@ main {
     margin: 20px;
     border-radius: 12px;
 
-    border: 1px solid var(--secondary-color-2);
-    background-color: var(--secondary-color-1);
+    border: 1px solid var(--card-border);
+    background-color: transparent; /* Fully transparent background */
 }
 
+
 #notification > h2 {
-    color: var(--main-color-2);
+    color: var(--navbar-backround);
 
     margin-bottom: 10px;
 
@@ -279,8 +289,8 @@ main {
     padding: 20px;
     border-radius: 12px;
 
-    background-color: var(--secondary-color-1);
-    border: 1px solid var(--secondary-color-2);
+    background-color: var(--card-backround);
+    border: 1px solid var(--card-border);
 
     transition: transform 0.1s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
@@ -469,7 +479,7 @@ main {
 .card-button {
     background-color: transparent;
     color: #333; /* Initial text color */
-    border: 2px solid var(--main-color-2);
+    border: 3px solid var(--main-color-2);
     border-radius: 25px;
     padding: 12px 0;
     font-size: 16px;
@@ -502,14 +512,14 @@ main {
 
 /* For the 'left' button */
 .card-button.left:hover {
-    background-color: #E84848; /* Fill with the same current background color */
+    background-color: var(--link-button); /* Fill with the same current background color */
     color: #fff; /* Ensure text is readable */
 }
 
 
 .card-button {
-    color: #E84848;
-    border: 2px solid #E84848;
+    color: var(--link-button);
+    border: 2px solid var(--link-button);
 }
 
 /* Container for the buttons */
@@ -538,8 +548,8 @@ main {
 .card-button.right {
     border-radius: 0 20px 20px 0;
     margin-left: 2.5px; /* Adds gap between the left and right buttons */
-    color: #4ADE80;
-    border: 2px solid #4ADE80;
+    color:var(--buy-button);
+    border: 2px solid var(--buy-button);
 }
 
 
@@ -658,11 +668,11 @@ a.footer-link {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #070707; /* Dark background */
+    background: var(--card-color); /* Dark background */
     color: #fff; /* White text color */
     padding: 15px 20px; /* Add padding to notification container */
     border-radius: 8px;
-    border: 1px solid #2E2E33; /* Gray outline border */
+    border: 1px solid var(--card-border); /* Gray outline border */
     max-width: 300px;
     visibility: hidden;
     opacity: 0;
