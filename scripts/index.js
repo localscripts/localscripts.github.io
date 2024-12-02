@@ -22,10 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     mi.addEventListener("click", function () {
         mi.classList.toggle("opened"), mb.classList.toggle("show");
     });
-
-    // Fetch JSON and generate cards with error handling
-    const wrapper = document.getElementById('cards-align');
-
     fetch("scripts/index.json")
         .then(res => {
             if (!res.ok) {
@@ -116,12 +112,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 cardElement.innerHTML = html;
                 wrapper.appendChild(cardElement);
 
+                
+
                 // Add glow outline and text color to Buy Now button if "glow" exists and not expired
                 if (card.glow && card.buylink && !isExpired) {
                     const buyButton = cardElement.querySelector('.card-button.right');
-                    buyButton.style.border = `2px solid ${card.glow}`;
-                    buyButton.style.boxShadow = `0 0 5px ${card.glow}, 0 0 10px ${card.glow}`;
-                    buyButton.style.color = card.glow; // Change text color to glow color
+
+                    // Set the text color and background color to the glow color
+                    buyButton.style.color = card.glow; // Set text color to glow color
+                    buyButton.style.border = `2px solid ${card.glow}`; // Glow border
+                    buyButton.style.boxShadow = `0 0 5px ${card.glow}, 0 0 10px ${card.glow}`; // Glow shadow
+
+                    // Hover effect for Buy Now button
+                    buyButton.addEventListener('mouseenter', () => {
+                        buyButton.style.backgroundColor = card.glow;  // Set background color to the glow color
+                        buyButton.style.color = 'white';  // Set text color to white on hover
+                    });
+
+                    buyButton.addEventListener('mouseleave', () => {
+                        buyButton.style.backgroundColor = '';  // Remove background color on hover leave
+                        buyButton.style.color = card.glow;  // Ensure text stays glow color when not hovering
+                    });
                 }
 
                 // Add warning popup for button if "warning" is true
@@ -148,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error loading JSON:", err);
         });
 });
+
 
 
 const canvas = document.getElementById('particle-container');
