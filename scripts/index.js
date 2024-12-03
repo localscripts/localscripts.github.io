@@ -9,6 +9,37 @@ const typeList = {
 
 const wrapper = document.getElementById('cards-align');
 
+// Utility function to replace words with hyperlinks and style the whole line
+function hyperlinkContent(content, type) {
+    // Define the words to replace and their associated URLs
+    const replacements = [
+        { word: 'UNC', url: 'https://github.com/unified-naming-convention/NamingStandard?tab=readme-ov-file#unified-naming-convention' },
+        { word: 'sUNC', url: 'https://discord.gg/MAymEszyaK' },
+        { word: 'Level', url: 'https://roblox.fandom.com/wiki/Security_context' },
+        { word: 'decompiler', url: 'https://www.reddit.com/r/explainlikeimfive/comments/xe2fvf/comment/ioeez4k/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button' }
+    ];
+
+    // Define colors based on type
+    const typeColors = {
+        pros: '#ffffff ', // Green for pros
+        neutral: '#ffffff', // Yellow for neutral
+        cons: '#ffffff' // Red for cons
+    };
+
+    // Get the color based on type
+    const color = typeColors[type] || '#e8e8e8'; // Default to gray if type is not specified
+
+    // Wrap the whole line containing the word in a styled hyperlink
+    replacements.forEach(({ word, url }) => {
+        const regex = new RegExp(`^(.*?\\b${word}\\b.*)$`, 'gm'); // Match the entire line containing the word
+        content = content.replace(regex, `<a href="${url}" target="_blank" style="color: ${color}; text-decoration: none; display: block;">$1</a>`);
+    });
+
+    return content;
+}
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const mi = document.getElementById("menu-icon");
     const ml = document.getElementById("menu-list");
@@ -22,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mi.addEventListener("click", function () {
         mi.classList.toggle("opened"), mb.classList.toggle("show");
     });
+
     fetch("scripts/index.json")
         .then(res => {
             if (!res.ok) {
@@ -61,9 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 `).join('');
 
                 // Generate HTML for pros, cons, and neutral sections
-                const pros = card.pros.map(pro => `<li>${pro}</li>`).join('');
-                const neutral = card.neutral.map(item => `<li>${item}</li>`).join('');
-                const cons = card.cons.map(con => `<li>${con}</li>`).join('');
+                const pros = card.pros.map(pro => `<li>${hyperlinkContent(pro, 'pros')}</li>`).join('');
+                const neutral = card.neutral.map(item => `<li>${hyperlinkContent(item, 'neutral')}</li>`).join('');
+                const cons = card.cons.map(con => `<li>${hyperlinkContent(con, 'cons')}</li>`).join('');
 
                 // Define button text based on expiration
                 const buttonText = isExpired ? (card.buytext || 'View') : (card.buttonText || 'View');
@@ -84,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const html = `
                     <div class="card-info">
                         <div class="card-types">${types}</div>
-                        <h3 class="card-title">${card.name}</h3>
+                        <h3 class="card-title">${hyperlinkContent(card.name)}</h3>
                     </div>
                     <div class="card-content">
                         ${pros ? `<div class="section pros">
@@ -112,29 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 cardElement.innerHTML = html;
                 wrapper.appendChild(cardElement);
 
-                
-
-                // Add glow outline and text color to Buy Now button if "glow" exists and not expired
-                if (card.glow && card.buylink && !isExpired) {
-                    const buyButton = cardElement.querySelector('.card-button.right');
-
-                    // Set the text color and background color to the glow color
-                    buyButton.style.color = card.glow; // Set text color to glow color
-                    buyButton.style.border = `2px solid ${card.glow}`; // Glow border
-                    buyButton.style.boxShadow = `0 0 5px ${card.glow}, 0 0 10px ${card.glow}`; // Glow shadow
-
-                    // Hover effect for Buy Now button
-                    buyButton.addEventListener('mouseenter', () => {
-                        buyButton.style.backgroundColor = card.glow;  // Set background color to the glow color
-                        buyButton.style.color = 'white';  // Set text color to white on hover
-                    });
-
-                    buyButton.addEventListener('mouseleave', () => {
-                        buyButton.style.backgroundColor = '';  // Remove background color on hover leave
-                        buyButton.style.color = card.glow;  // Ensure text stays glow color when not hovering
-                    });
-                }
-
                 // Add warning popup for button if "warning" is true
                 if (card.warning) {
                     const viewButton = cardElement.querySelector('.card-button.left');
@@ -159,74 +168,3 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error loading JSON:", err);
         });
 });
-
-
-
-const canvas = document.getElementById('particle-container');
-
-// Define winter months: November (10), December (11), January (0)
-const winterMonths = [10, 11, 0]; // November, December, January
-
-if (winterMonths.includes(new Date().getMonth())) {
-    const ctx = canvas.getContext('2d');
-
-    // Resize the canvas to fit the window
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight > 500 ? window.innerHeight : 500;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const numImages = 16; // Number of snowflakes
-    const images = [];
-    const imageSrc = '/assets/snowflake.svg'; // Path to the snowflake image
-
-    // Create and initialize snowflakes
-    for (let i = 0; i < numImages; i++) {
-        const img = new Image();
-        img.src = imageSrc;
-        images.push({
-            img: img,
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height + 30,
-            dx: 0.25,
-            dy: -(0.5 + Math.random() / 2) / (30 / 100),
-            size: 10 + Math.random() * 20, // Random size for each snowflake
-        });
-    }
-
-    // Function to animate the snowflakes
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        images.forEach(image => {
-            image.x -= image.dx; // Move snowflake horizontally
-            image.y -= image.dy; // Move snowflake vertically
-
-            // If snowflake goes off the left or right, reset its position
-            if (image.x < 0 - image.size || image.x > canvas.width + image.size) {
-                image.y = canvas.height + 30;
-                image.x = Math.random() * canvas.width;
-                image.dy = -(0.5 + Math.random() / 2) / (30 / 100);
-            }
-
-            // If snowflake goes off the bottom, reset its position
-            if (image.y > canvas.height) {
-                image.y = 0;
-                image.x = Math.random() * canvas.width;
-                image.dy = -(0.5 + Math.random() / 2) / (30 / 100);
-            }
-
-            // Draw the snowflake
-            ctx.drawImage(image.img, image.x, image.y, image.size, image.size);
-        });
-        requestAnimationFrame(animate); // Repeat animation
-    }
-
-    animate();
-} else {
-    // Remove the canvas if it's not winter months
-    canvas.remove();
-}

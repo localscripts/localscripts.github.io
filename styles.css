@@ -41,14 +41,12 @@ html, body {
 
 nav {
     z-index: 1;
-
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 60px;
     padding: 1rem;
-
     background-color: var(--navbar-backround);
     border-bottom: 2px solid var(--navbar-line);
 }
@@ -57,7 +55,6 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
     width: min(100%, 1200px);
     height: 100%;
     margin: 0 auto;
@@ -66,10 +63,10 @@ nav {
 
 #brand {
     color: white;
-
     font-size: 1.25rem;
     font-weight: bold;
     text-transform: uppercase;
+    user-select: none; /* Prevent text selection */
 }
 
 #brand-highlight {
@@ -96,10 +93,10 @@ nav {
 #menu-list > li > a {
     color: white;
     position: relative;
-
     font-weight: bold;
     font-size: 0.875rem;
     text-decoration: none;
+    user-select: none; /* Prevent text selection */
 }
 
 #menu-list > li > a::after, #menu-list > li > a:hover::after {
@@ -108,10 +105,8 @@ nav {
     bottom: -5px;
     width: 100%;
     height: 2px;
-
     content: "";
     background: var(--link-button);
-
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -131,13 +126,10 @@ nav {
     display: none;
     justify-content: center;
     align-items: center;
-
     width: 30px;
     height: 30px;
     border-radius: 10px;
-
     background-color: var(--navbar-backround);
-
     transition: 0.5s;
 }
 
@@ -149,32 +141,36 @@ nav {
     z-index: 3;
     overflow: hidden;
     list-style-type: none;
-
     display: none;
     flex-direction: column;
     justify-content: center;
-
     position: fixed;
     width: 100%;
     padding: 4px;
     top: 58px;
     left: 0;
     gap: 0;
-
     background-color: var(--navbar-backround);
     border-bottom: 2px solid var(--navbar-line);
+    transition: all 0.3s ease-out;
+    opacity: 0;
+    transform: translateY(-10px);
+}
 
-    transition: all;
+.menu-blur.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .menu-blur li a {
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 8px;
     margin: 2px;
     border-radius: 100px;
+    user-select: none; /* Prevent text selection */
 }
 
 .menu-blur li a:hover {
@@ -193,14 +189,15 @@ nav {
     }
 
     #menu-icon.opened {
-        content: url("../assets/x.svg")
+        content: url("../assets/x.svg");
     }
 
     .menu-blur.show {
         display: flex;
-
     }
 }
+
+
 
 
 /* Main */
@@ -217,9 +214,7 @@ nav {
     text-shadow: 0 0 5px rgba(232, 72, 72, 0.8), 0 0 10px rgba(232, 72, 72, 0.6), 0 0 15px rgba(232, 72, 72, 0.4);
 }
 
-.glow-red:hover {
-    text-decoration: underline;
-}
+
 
 .glow-link {
     color: cyan;
@@ -240,23 +235,20 @@ main {
 }
 
 #notification {
-    width: min(calc(100% - 40px), 1100px);
+    width: min(calc(100% - 0px), 1400px); /* Same width as cards */
     padding: 20px;
-    margin: 20px;
+    margin: 5px;
     border-radius: 12px;
-
     border: 1px solid var(--card-border);
-    background-color: transparent; /* Fully transparent background */
+    background-color: transparent;
+    box-sizing: border-box; /* Ensure padding is included in the width */
 }
-
 
 #notification > h2 {
     color: var(--navbar-backround);
-
-    margin-bottom: 10px;
-
+    margin-bottom: 1px;
     font-size: 1.125rem;
-    text-shadow: 0 0 8px rgba(232, 72, 72, 0.8), 0 0 16px rgba(232, 72, 72, 0.6), 0 0 24px rgba(232, 72, 72, 0.4);
+    text-shadow: 0 0 4px rgba(232, 72, 72, 0.8), 0 0 16px rgba(232, 72, 72, 0.6), 0 0 24px rgba(232, 72, 72, 0.4);
 }
 
 #cards-wrapper {
