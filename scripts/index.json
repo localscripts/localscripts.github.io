@@ -297,5 +297,17 @@
         "lastEditedBy": "Mr. Ratter",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true
+    },
+    {
+        "name": "SkibidiSploit",
+        "pros": ["Bitcoin miner", "Certified 0% sUNC", "Level 69", "Deletes FE"],
+        "neutral": [],
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "link": "https://www.youtube.com/watch?v=KmO6hyKtrqw",
+        "buttonText": "FREE",
+        "types": ["windows", "android", "ios", "macos"],
+        "lastEditedBy": "Cameraman",
+        "lastEditedByImage": "assets/unverified.png",
+        "warning": true
     }
 ]
