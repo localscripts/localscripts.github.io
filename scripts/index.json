@@ -91,20 +91,6 @@
         "lastEditedByImage": "assets/verified.png"
     },
     {
-        "name": "Expensive Hub",
-        "pros": ["Has YBA, AUT and Dungeon Quest!", "Supports mosts exploits", "Full of features"],
-        "neutral": [],
-        "cons": [],
-        "link": "https://expensive.cc",
-        "buttonText": "Website",
-        "types": [],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://expensive.cc",
-        "buytext": "$12.00 lifetime",
-        "glow": "#5D3FD3"
-    },
-    {
         "name": "Luna",
         "pros": ["67% UNC~", "External", "Level 8"],
         "neutral": ["No decompiler yet"],
