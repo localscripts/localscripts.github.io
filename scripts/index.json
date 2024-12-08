@@ -246,7 +246,7 @@
         "cons": ["Stole user data in 2021"],
         "link": "https://loot-link.com/s?3dd91995",
         "buttonText": "FREE",
-        "types": ["android", "key"],
+        "types": ["android", "ios", "key"],
          "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
