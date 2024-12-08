@@ -77,7 +77,8 @@
         "buttonText": "FREE",
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
+        "lastEditedByImage": "assets/verified.png",
+        "hide": true
     },
     {
         "name": "Delta",
