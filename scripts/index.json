@@ -78,7 +78,7 @@
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "hide": true
+        "hide": false
     },
     {
         "name": "Delta",
