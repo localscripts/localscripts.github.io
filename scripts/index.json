@@ -27,7 +27,7 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/5ec69f2e-303f-45dc-8070-1b14b9ea4870?p=055223a1-4865-42c5-9e1b-9a34c95b3336",
         "buytext": "$6.49 per week",
-        "expires": "2024-12-19T23:59:59Z"
+        "expires": "2024-01-19T23:59:59Z"
     },
     {
         "name": "Seliware",
@@ -41,7 +41,7 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/product/d7a3d96a-2497-43e5-b8b0-c4046a63b0da",
         "buytext": "$9.99 monthly",
-        "expires": "2024-12-19T23:59:59Z"
+        "expires": "2024-01-19T23:59:59Z"
     },
     {
         "name": "CodeX",
@@ -55,7 +55,35 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/53c7a019-6470-4a9c-8e37-bd3ad7474517?p=84ef7f27-f38a-4448-b839-54701c99e699",
         "buytext": "$4.98 monthly",
-        "expires": "2024-12-19T23:59:59Z"
+        "expires": "2024-01-19T23:59:59Z"
+    },
+    {
+        "name": "Nihon",
+        "pros": ["Luarmor support", "100% UNC~", "Level 8"],
+        "neutral": ["No decompiler yet"],
+        "cons": [],
+        "link": "https://lootdest.org/s?41541c5b",
+        "buttonText": "Website",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+        "buylink": "https://robloxcheatz.com/group/22ae8f49-4d75-4600-b5c1-b91ae4f33bf6?p=5c74ff52-276d-4885-9795-7e6429792c7d",
+        "buytext": "$6.99 weekly",
+        "expires": "2024-01-19T23:59:59Z"
+    },
+     {
+        "name": "AWP.gg",
+        "pros": ["Luarmor support", "100% UNC~", "Level 8"],
+        "neutral": ["Possibly owned by Krampus"],
+        "cons": [],
+        "link": "https://lootdest.org/s?2cf8ec54",
+        "buttonText": "Website",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+        "buylink": "https://robloxcheatz.com/group/22ae8f49-4d75-4600-b5c1-b91ae4f33bf6?p=5c74ff52-276d-4885-9795-7e6429792c7d",
+        "buytext": "$6.50 weekly",
+        "expires": "2024-01-19T23:59:59Z"
     },
     {
         "name": "Solara v3",
@@ -102,17 +130,6 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "hide": false
-    },
-    {
-        "name": "Nihon",
-        "pros": ["Luarmor support", "100% UNC~", "Level 8"],
-        "neutral": ["No decompiler yet"],
-        "cons": [],
-        "link": "https://lootdest.org/s?41541c5b",
-        "buttonText": "$6.49 per week",
-        "types": ["windows"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Zorara",
