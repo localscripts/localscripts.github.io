@@ -86,7 +86,7 @@
     },
     {
         "name": "Solara v3",
-        "pros": ["Built a decent reputation", "No keysystem", "70% UNC~"],
+        "pros": ["Built a decent reputation", "No keysystem", "51% sUNC"],
         "neutral": ["Level 3", "Frequent crashes"],
         "cons": [],
         "link": "https://lootdest.org/s?6bd1d3ed",
@@ -97,7 +97,7 @@
     },
     {
         "name": "Xeno",
-        "pros": ["Source used by big exploits", "Built a decent reputation", "No keysystem", "77% UNC~"],
+        "pros": ["Source used by big exploits", "Built a decent reputation", "No keysystem", "39% sUNC"],
         "neutral": ["Level 3"],
         "cons": [],
         "link": "https://lootdest.org/s?038852f4",
@@ -120,7 +120,7 @@
     },
     {
         "name": "Luna",
-        "pros": ["67% UNC~", "External", "Level 8"],
+        "pros": ["8% sUNC", "External", "Level 8"],
         "neutral": ["No decompiler yet"],
         "cons": [],
         "link": "https://loot-link.com/s?8df33642",
@@ -132,7 +132,7 @@
     },
     {
         "name": "Swift",
-        "pros": ["93% sUNC", "Level 8"],
+        "pros": ["87% sUNC", "Level 8"],
         "neutral": ["Frequent crashes"],
         "cons": [],
         "link": "https://loot-link.com/s?142c0b00",
@@ -143,7 +143,7 @@
     },
     {
         "name": "Zorara",
-        "pros": ["56% sUNC~"],
+        "pros": ["41% sUNC"],
         "neutral": ["Level 3", "Has a keysystem", "Xeno - rebranded"],
         "cons": [],
         "link": "https://lootdest.org/s?35027b2d",
@@ -200,7 +200,7 @@
     },
     {
         "name": "JJSploit",
-        "pros": ["No keysystem", "56% sUNC~"],
+        "pros": ["No keysystem", "40% sUNC~"],
         "neutral": ["Level 3", "Xeno - rebranded"],
         "cons": [],
         "link": "https://lootdest.org/s?5c24a9f5",
@@ -278,7 +278,7 @@
     },
     {
         "name": "Mint",
-        "pros": ["Free to use", "67% UNC", "Keyless"],
+        "pros": ["Free to use", "34% sUNC", "Keyless"],
         "neutral": ["Level 3"],
         "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
         "link": "https://loot-link.com/s?471fa603",
