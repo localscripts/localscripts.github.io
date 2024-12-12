@@ -86,23 +86,23 @@
     },
     {
         "name": "Solara v3",
-        "pros": ["Built a decent reputation", "No keysystem", "51% sUNC"],
+        "pros": ["Built a decent reputation", "51% sUNC [66% UNC]", "No keysystem"],
         "neutral": ["Level 3", "Frequent crashes"],
         "cons": [],
         "link": "https://lootdest.org/s?6bd1d3ed",
         "buttonText": "FREE",
-        "types": ["windows"],
+        "types": ["unc", "windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Xeno",
-        "pros": ["Source used by big exploits", "Built a decent reputation", "No keysystem", "39% sUNC"],
+        "pros": ["Source used by big exploits", "Built a decent reputation", "39% sUNC [80% UNC]", "No keysystem"],
         "neutral": ["Level 3"],
         "cons": [],
         "link": "https://lootdest.org/s?038852f4",
         "buttonText": "FREE",
-        "types": ["windows"],
+        "types": ["unc", "windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "hide": false
@@ -119,38 +119,26 @@
         "lastEditedByImage": "assets/verified.png"
     },
     {
-        "name": "Luna",
-        "pros": ["8% sUNC", "External", "Level 8"],
-        "neutral": ["No decompiler yet"],
-        "cons": [],
-        "link": "https://loot-link.com/s?8df33642",
-        "buttonText": "FREE",
-        "types": ["windows"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "hide": false
-    },
-    {
         "name": "Swift",
-        "pros": ["87% sUNC", "Level 8"],
+        "pros": ["87% sUNC [92% UNC]", "Level 8"],
         "neutral": ["Frequent crashes"],
         "cons": [],
         "link": "https://loot-link.com/s?142c0b00",
         "buttonText": "FREE",
-        "types": ["windows"],
+        "types": ["unc", "windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Zorara",
-        "pros": ["41% sUNC"],
+        "pros": ["41% sUNC [89% UNC]"],
         "neutral": ["Level 3", "Has a keysystem", "Xeno - rebranded"],
         "cons": [],
         "link": "https://lootdest.org/s?35027b2d",
         "buttonText": "FREE",
-        "types": ["windows", "key"],
-        "lastEditedBy": "DB Finder",
-        "lastEditedByImage": "assets/unknown.png"
+        "types": ["unc", "windows", "key"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Macsploit",
@@ -278,12 +266,12 @@
     },
     {
         "name": "Mint",
-        "pros": ["Free to use", "34% sUNC", "Keyless"],
+        "pros": ["Free to use", "34% sUNC [67% UNC]", "Keyless"],
         "neutral": ["Level 3"],
         "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
         "link": "https://loot-link.com/s?471fa603",
         "buttonText": "FREE",
-        "types": ["windows"],
+        "types": ["unc", "windows"],
         "lastEditedBy": "Console",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true

@@ -768,3 +768,10 @@ a.footer-link {
     -ms-user-select: none;
     user-select: none;
 }
+
+.small-text {
+    font-size: 0.7em; /* Adjust size as needed */
+    vertical-align: middle; /* Align text properly */
+    color: gray; /* Set the text color to gray */
+}
+
