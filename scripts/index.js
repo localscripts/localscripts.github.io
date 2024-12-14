@@ -17,8 +17,8 @@ if (!wrapper) {
 
 function hyperlinkContent(content, type) {
     const replacements = [
-        { word: 'UNC', url: 'https://github.com/unified-naming-convention/NamingStandard?tab=readme-ov-file#unified-naming-convention' },
-        { word: 'sUNC', url: 'https://discord.gg/MAymEszyaK' },
+        { word: 'UNC', url: 'https://www.reddit.com/r/robloxhackers/comments/1he474r/what_are_the_difference_between_sunc_and_unc/' },
+        { word: 'sUNC', url: 'https://www.reddit.com/r/robloxhackers/comments/1he474r/what_are_the_difference_between_sunc_and_unc/' },
         { word: 'Level', url: 'https://roblox.fandom.com/wiki/Security_context' },
         { word: 'decompiler', url: 'https://www.reddit.com/r/explainlikeimfive/comments/xe2fvf/comment/ioeez4k/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button' }
     ];
