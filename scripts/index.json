@@ -99,7 +99,7 @@
         "name": "Xeno",
         "pros": ["Source used by big exploits", "Built a decent reputation", "39% sUNC [80% UNC]", "No keysystem"],
         "neutral": ["Level 3"],
-        "cons": [],
+        "cons": ["Discontinued - the last update is 1.1.0"],
         "link": "https://lootdest.org/s?038852f4",
         "buttonText": "FREE",
         "types": ["unc", "windows"],
