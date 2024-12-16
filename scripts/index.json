@@ -15,6 +15,20 @@
         "expires": "2024-12-25T23:59:59Z"
     },
     {
+        "name": "Nihon",
+        "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
+        "neutral": [],
+        "cons": [],
+        "link": "https://lootdest.org/s?41541c5b",
+        "buttonText": "Website",
+        "types": ["unc", "windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://robloxcheatz.com/group/22ae8f49-4d75-4600-b5c1-b91ae4f33bf6?p=5c74ff52-276d-4885-9795-7e6429792c7d",
+        "buytext": "$6.99 weekly",
+        "expires": "2025-01-19T23:59:59Z"
+    },
+    {
         "name": "Synapse Z",
         "pros": ["Has a decompiler", "100% UNC~", "Level 8"],
         "neutral": ["Crashes ALOT"],
@@ -26,20 +40,6 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/5ec69f2e-303f-45dc-8070-1b14b9ea4870?p=055223a1-4865-42c5-9e1b-9a34c95b3336",
         "buytext": "$6.49 per week",
-        "expires": "2025-01-19T23:59:59Z"
-    },
-    {
-        "name": "Nihon",
-        "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
-        "neutral": [],
-        "cons": [],
-        "link": "https://lootdest.org/s?41541c5b",
-        "buttonText": "Website",
-        "types": ["windows"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://robloxcheatz.com/group/22ae8f49-4d75-4600-b5c1-b91ae4f33bf6?p=5c74ff52-276d-4885-9795-7e6429792c7d",
-        "buytext": "$6.99 weekly",
         "expires": "2025-01-19T23:59:59Z"
     },
     {
