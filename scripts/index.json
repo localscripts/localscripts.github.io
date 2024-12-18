@@ -1,12 +1,12 @@
 [
     {
         "name": "Wave",
-        "pros": ["Has a decompiler", "100% sUNC", "Level 8"],
+        "pros": ["Has a decompiler", "98% sUNC [100% UNC]", "Level 8"],
         "neutral": [],
         "link": "https://loot-link.com/s?e31027c7",
         "cons": [],
         "buttonText": "Website",
-        "types": ["windows"],
+        "types": ["unc", "windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://olympuskeys.com/",
@@ -35,7 +35,7 @@
         "cons": [],
         "link": "https://loot-link.com/s?73b22172",
         "buttonText": "Website",
-        "types": ["windows"],
+        "types": ["unc", "windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/5ec69f2e-303f-45dc-8070-1b14b9ea4870?p=055223a1-4865-42c5-9e1b-9a34c95b3336",
