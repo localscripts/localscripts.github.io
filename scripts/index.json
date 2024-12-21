@@ -109,12 +109,12 @@
     },
     {
         "name": "Delta",
-        "pros": ["Best script support", "100% UNC~", "Level 8"],
+        "pros": ["Best script support", "100% UNC", "Level 8"],
         "neutral": ["Includes a keysystem"],
         "cons": [],
         "link": "https://loot-link.com/s?a6c62bd9",
         "buttonText": "FREE",
-        "types": ["android", "ios", "key"],
+        "types": ["unc", "android", "ios", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
@@ -199,12 +199,12 @@
     },
     {
         "name": "VegaX",
-        "pros": ["2 day long keys", "98% UNC~", "Level 8"],
+        "pros": ["2 day long keys", "99% UNC", "Level 8"],
         "neutral": ["Owned By 1 F0", "Includes a Key System"],
         "cons": [],
         "link": "https://loot-link.com/s?69c8310f",
         "buttonText": "FREE",
-        "types": ["android", "key"],
+        "types": ["unc","android", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
