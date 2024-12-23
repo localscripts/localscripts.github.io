@@ -125,7 +125,7 @@
         "cons": [],
         "link": "https://loot-link.com/s?142c0b00",
         "buttonText": "FREE",
-        "types": ["unc", "windows"],
+        "types": ["unc", "windows", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
