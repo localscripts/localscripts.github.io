@@ -1,7 +1,7 @@
 [
     {
         "name": "Wave",
-        "pros": ["Has a decompiler", "98% sUNC [100% UNC]", "Level 8"],
+        "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
         "neutral": [],
         "link": "https://loot-link.com/s?e31027c7",
         "cons": [],
@@ -10,7 +10,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://olympuskeys.com/",
-        "buytext": "$7.48 per week",
+        "buytext": "$5.99 per week",
         "glow": "#06A3F1",
         "expires": "2024-12-25T23:59:59Z"
     },
