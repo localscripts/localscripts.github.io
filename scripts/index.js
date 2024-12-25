@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const expires = card.expires ? new Date(card.expires) : null;
                     const isExpired = expires && now > expires;
 
+                    // Apply glow to the card
                     if (card.glow && !isExpired) {
                         cardElement.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 0px ${card.glow}`;
                         cardElement.style.borderColor = card.glow;
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const buttonText = isExpired ? (card.buytext || 'View') : (card.buttonText || 'View');
 
                     const buyLink = card.buylink && !isExpired ? `
-                        <a href="${card.buylink}" class="card-button right" target="_blank" rel="noopener noreferrer">${card.buytext || 'Buy Now'}</a>
+                        <a href="${card.buylink}" class="card-button right buylink" target="_blank" rel="noopener noreferrer">${card.buytext || 'Buy Now'}</a>
                     ` : '';
 
                     const lastEditedBy = card.lastEditedBy ? `
@@ -132,6 +133,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     cardElement.innerHTML = html;
                     wrapper.appendChild(cardElement);
+
+                    // Apply glow and text color to the "Buy Now" button
+                    const buyButton = cardElement.querySelector('.card-button.right.buylink');
+                    if (buyButton && card.glow && !isExpired) {
+                        // Set the initial glow effect on the Buy Now button
+                        buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+                        buyButton.style.borderColor = card.glow;
+                        buyButton.style.color = card.glow; // Set text color to the glow color
+                    
+                        // Ensure hover changes the background color to the glow color and makes the text readable
+                        buyButton.addEventListener('mouseover', () => {
+                            buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+                            buyButton.style.color = '#ffffff'; // Set text color to white on hover for contrast
+                            buyButton.style.backgroundColor = card.glow; // Set background color on hover
+                        });
+                    
+                        buyButton.addEventListener('mouseout', () => {
+                            buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+                            buyButton.style.color = card.glow; // Reset text color to glow color
+                            buyButton.style.backgroundColor = ''; // Reset background color after hover
+                        });
+                    }
+                    
+                    
 
                     if (card.warning) {
                         const viewButton = cardElement.querySelector('.card-button.left');
