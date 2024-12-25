@@ -214,8 +214,6 @@ nav {
     text-shadow: 0 0 5px rgba(232, 72, 72, 0.8), 0 0 10px rgba(232, 72, 72, 0.6), 0 0 15px rgba(232, 72, 72, 0.4);
 }
 
-
-
 .glow-link {
     color: cyan;
     text-decoration: none;
@@ -487,8 +485,6 @@ main {
     font-weight: 600;
 }
 
-
-
 /* Hover effect for the button */
 .card-button:hover {
     background-color: var(--main-color-2); /* Fill with the same current background color */
@@ -520,6 +516,7 @@ main {
     justify-content: space-between;
     gap: 0;
     width: 100%;
+    height: 46px;
 }
 
 /* Style for the last-edited image */
@@ -551,6 +548,10 @@ main {
     border-radius: 25px;
 }
 
+.rounded-btn {
+    border-radius: 25px !important;
+}
+
 /* Last edited section styling */
 .last-edited {
     margin-top: 10px;
@@ -574,13 +575,16 @@ main {
     object-fit: cover; /* Ensures the image maintains its aspect ratio */
 }
 
+.unc-btn, .unc-img {
+    height: 100%;
+}
+
 .last-edited img {
     border-radius: 50%;
     width: 20px;
     height: 20px;
     object-fit: cover;  /* Ensures the image maintains aspect ratio */
 }
-
 
 /* Footer */
 

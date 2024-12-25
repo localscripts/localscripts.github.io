@@ -7,6 +7,7 @@
         "cons": [],
         "buttonText": "Website",
         "types": ["unc", "windows"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://olympuskeys.com/",
@@ -22,6 +23,7 @@
         "link": "https://lootdest.org/s?41541c5b",
         "buttonText": "Website",
         "types": ["unc", "windows"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/22ae8f49-4d75-4600-b5c1-b91ae4f33bf6?p=5c74ff52-276d-4885-9795-7e6429792c7d",
@@ -36,6 +38,7 @@
         "link": "https://lootdest.org/s?5d027a2b",
         "buttonText": "Discord",
         "types": ["unc", "windows"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/product/d7a3d96a-2497-43e5-b8b0-c4046a63b0da",
@@ -50,6 +53,7 @@
         "link": "https://lootdest.org/s?2cf8ec54",
         "buttonText": "Website",
         "types": ["unc", "windows"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/1218b29b-bf30-4193-9bf9-7de0d788b163?p=fb87d4e7-cb6f-4ea1-bf2f-5da115e8e151",
@@ -64,6 +68,7 @@
         "link": "https://loot-link.com/s?73b22172",
         "buttonText": "Website",
         "types": ["unc", "windows"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/5ec69f2e-303f-45dc-8070-1b14b9ea4870?p=055223a1-4865-42c5-9e1b-9a34c95b3336",
@@ -92,6 +97,7 @@
         "link": "https://loot-link.com/s?142c0b00",
         "buttonText": "FREE",
         "types": ["unc", "windows", "key"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
@@ -103,6 +109,7 @@
         "link": "https://lootdest.org/s?6bd1d3ed",
         "buttonText": "FREE",
         "types": ["unc", "windows"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
@@ -114,6 +121,7 @@
         "link": "https://lootdest.org/s?038852f4",
         "buttonText": "FREE",
         "types": ["unc", "windows"],
+        "unc": "/sunc/xeno.txt",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "hide": false
@@ -126,6 +134,7 @@
         "link": "https://loot-link.com/s?a6c62bd9",
         "buttonText": "FREE",
         "types": ["unc", "android", "ios", "key"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
@@ -137,6 +146,7 @@
         "link": "https://lootdest.org/s?35027b2d",
         "buttonText": "FREE",
         "types": ["unc", "windows", "key"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
@@ -205,6 +215,7 @@
         "link": "https://loot-link.com/s?69c8310f",
         "buttonText": "FREE",
         "types": ["unc","android", "key"],
+        "unc": "/",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
@@ -272,6 +283,7 @@
         "link": "https://loot-link.com/s?471fa603",
         "buttonText": "FREE",
         "types": ["unc", "windows"],
+        "unc": "/",
         "lastEditedBy": "Console",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true

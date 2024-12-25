@@ -5,7 +5,7 @@ const typeList = {
     "key": "Has a Key System",
     "ios": "iOS",
     "server": "Serversided",
-    "unc": "sUNC and UNC tested by voxlis.NET"
+    "unc": "UNC and sUNC tested by voxlis.NET" // UNC comes before sUNC because sUNC is a subset of UNC
 };
 
 // Ensure the wrapper is defined
@@ -105,6 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="${card.buylink}" class="card-button right buylink" target="_blank" rel="noopener noreferrer">${card.buytext || 'Buy Now'}</a>
                     ` : '';
 
+                    const uncLink = card.unc ? `<a href="${card.unc}" class="unc-btn" target="_blank" rel="noopener noreferrer"><img class="unselectable unc-img" src="./assets/unc.png" alt=""></a>
+                    ` : '';
+
                     const lastEditedBy = card.lastEditedBy ? `
                         <div class="last-edited">
                             <p>Last edited by <span class="editor-name">${card.lastEditedBy}</span></p>
@@ -124,8 +127,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="card-footer">
                             <div class="button-wrapper">
-                                <a href="${card.link}" class="card-button left" target="_blank" rel="noopener noreferrer">${buttonText}</a>
+                                <a href="${card.link}" class="card-button left ${buyLink === '' ? 'rounded-btn' : ''}" target="_blank" rel="noopener noreferrer">${buttonText}</a>
                                 ${buyLink}
+                                ${uncLink}
                             </div>
                             ${lastEditedBy}
                         </div>
