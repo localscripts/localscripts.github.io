@@ -1,12 +1,12 @@
 <p align="center">
-   ✨ It's really not a secret, the Website is mostly written with GPT ✨
+   ✨ It's not really a secret, the website is mostly written with GPT ✨
 </p>
 <img src="./assets/banner-embed-cropped.png" />
 
 # Domains 
 
 1. [robloxhackers.lol](https://robloxhackers.lol)
-1. [voxolis.net](https://voxlis.net)
+2. [voxlis.net](https://voxlis.net)
 
 # Table of Contents
 
