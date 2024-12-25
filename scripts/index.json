@@ -29,6 +29,34 @@
         "expires": "2025-01-19T23:59:59Z"
     },
     {
+        "name": "Seliware",
+        "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
+        "neutral": [],
+        "cons": [],
+        "link": "https://lootdest.org/s?5d027a2b",
+        "buttonText": "Discord",
+        "types": ["unc", "windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://robloxcheatz.com/product/d7a3d96a-2497-43e5-b8b0-c4046a63b0da",
+        "buytext": "$9.99 monthly",
+        "expires": "2025-01-19T23:59:59Z"
+    },
+    {
+        "name": "AWP.gg",
+        "pros": ["99% sUNC [100% UNC]", "Level 8"],
+        "neutral": ["Missing decompiler"],
+        "cons": [],
+        "link": "https://lootdest.org/s?2cf8ec54",
+        "buttonText": "Website",
+        "types": ["unc", "windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://robloxcheatz.com/group/1218b29b-bf30-4193-9bf9-7de0d788b163?p=fb87d4e7-cb6f-4ea1-bf2f-5da115e8e151",
+        "buytext": "$4.50 weekly",
+        "expires": "2025-01-19T23:59:59Z"
+    },
+    {
         "name": "Synapse Z",
         "pros": ["Has a decompiler", "nil% sUNC [94% UNC]", "Level 8"],
         "neutral": ["Crashes ALOT"],
@@ -40,20 +68,6 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/5ec69f2e-303f-45dc-8070-1b14b9ea4870?p=055223a1-4865-42c5-9e1b-9a34c95b3336",
         "buytext": "$6.49 per week",
-        "expires": "2025-01-19T23:59:59Z"
-    },
-    {
-        "name": "Seliware",
-        "pros": ["Has a decompiler", "100% UNC~", "Level 8"],
-        "neutral": ["New beta executor "],
-        "cons": [],
-        "link": "https://lootdest.org/s?5d027a2b",
-        "buttonText": "Discord",
-        "types": ["windows"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://robloxcheatz.com/product/d7a3d96a-2497-43e5-b8b0-c4046a63b0da",
-        "buytext": "$9.99 monthly",
         "expires": "2025-01-19T23:59:59Z"
     },
     {
@@ -70,24 +84,21 @@
         "buytext": "$4.98 monthly",
         "expires": "2025-01-19T23:59:59Z"
     },
-     {
-        "name": "AWP.gg",
-        "pros": ["Luarmor support", "100% UNC~", "Level 8"],
-        "neutral": ["Possibly owned by Krampus"],
+    {
+        "name": "Swift",
+        "pros": ["Has a decompiler", "87% sUNC [92% UNC]", "Level 8"],
+        "neutral": ["Not stable, also with installation"],
         "cons": [],
-        "link": "https://lootdest.org/s?2cf8ec54",
-        "buttonText": "Website",
-        "types": ["windows"],
+        "link": "https://loot-link.com/s?142c0b00",
+        "buttonText": "FREE",
+        "types": ["unc", "windows", "key"],
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://robloxcheatz.com/group/1218b29b-bf30-4193-9bf9-7de0d788b163?p=fb87d4e7-cb6f-4ea1-bf2f-5da115e8e151",
-        "buytext": "$6.99 weekly",
-        "expires": "2025-01-19T23:59:59Z"
+        "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Solara v3",
-        "pros": ["Built a decent reputation", "51% sUNC [66% UNC]", "No keysystem"],
-        "neutral": ["Level 3", "Frequent crashes"],
+        "pros": ["Has a decompiler","51% sUNC [66% UNC]"],
+        "neutral": ["Level 3","Not stable"],
         "cons": [],
         "link": "https://lootdest.org/s?6bd1d3ed",
         "buttonText": "FREE",
@@ -97,8 +108,8 @@
     },
     {
         "name": "Xeno",
-        "pros": ["Source used by big exploits", "Built a decent reputation", "39% sUNC [80% UNC]", "No keysystem"],
-        "neutral": ["Level 3"],
+        "pros": ["Has a decompiler", "41% sUNC [81% UNC]"],
+        "neutral": ["Level 3","Not stable"],
         "cons": [],
         "link": "https://lootdest.org/s?038852f4",
         "buttonText": "FREE",
@@ -115,17 +126,6 @@
         "link": "https://loot-link.com/s?a6c62bd9",
         "buttonText": "FREE",
         "types": ["unc", "android", "ios", "key"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
-    },
-    {
-        "name": "Swift",
-        "pros": ["87% sUNC [92% UNC]", "Level 8"],
-        "neutral": ["Frequent crashes"],
-        "cons": [],
-        "link": "https://loot-link.com/s?142c0b00",
-        "buttonText": "FREE",
-        "types": ["unc", "windows", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
