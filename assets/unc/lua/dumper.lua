@@ -16,7 +16,7 @@ print([[
       \$$\$$  / $$ /  $$ | \$$$$  / $$ |$$ |\$$$$$$\      $$ \$$$$ |$$  __|      $$ |   
        \$$$  /  $$ |  $$ | $$  $$<  $$ |$$ | \____$$\     $$ |\$$$ |$$ |         $$ |   
         \$  /   \$$$$$$  |$$  /\$$\ $$ |$$ |$$$$$$$  |$$\ $$ | \$$ |$$$$$$$$\    $$ |   
-         \_/     \______/ \__/  \__|\__|\__|\_______/ \__|\__|  \__|\________|   \__|   
+         \_/     \______/ \__/  \__|\__|\__|\_______/ \__|\__|  \__|\________|   \__|   v1.0
    
             Z - Runs sUNC | X - Runs UNC | C - Saves Console Output to workspace                                                        
                                                                                    
@@ -65,8 +65,16 @@ local function executeSUNC()
 
     Script: https://voxlis.net/assets/unc/lua/dumper.lua
 ]])
+    print([[
+
+
+    ]])
     print("Testing Date and Time: " .. currentTime)
     print(identifyexecutor() .. " tested by " .. tester .. " for voxlis.NET")
+        print([[
+
+
+    ]])
     -- Load sUNC script (you can replace this URL with the correct one)
     loadstring(game:HttpGet("https://gitlab.com/sens3/nebunu/-/raw/main/HummingBird8's_sUNC_yes_i_moved_to_gitlab_because_my_github_acc_got_brickedd/sUNCm0m3n7.lua"))()
 end
@@ -85,8 +93,16 @@ local function executeUNC()
 
     Script: https://voxlis.net/assets/unc/lua/dumper.lua
 ]])
+    print([[
+
+
+    ]])
     print("Testing Date and Time: " .. currentTime)
     print(identifyexecutor() .. " tested by " .. tester .. " for voxlis.NET")
+        print([[
+
+
+    ]])
     -- Load UNC script (you can replace this URL with the correct one)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/unified-naming-convention/NamingStandard/refs/heads/main/UNCCheckEnv.lua"))()
 end
