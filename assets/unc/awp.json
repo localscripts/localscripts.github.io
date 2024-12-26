@@ -187,7 +187,7 @@
 11:26:08 ✅ debug.setconstant 
 11:26:08 ✅ debug.setstack 
 11:26:08 ✅ debug.setupvalue 
-11:26:08 ❌ decompile 
+11:26:08 ❌ decompile | COMMENT | zeniru: konstant can be used through their api
 11:26:08 ✅ delfile 
 11:26:08 ✅ delfolder 
 11:26:08 ✅ fireclickdetector 
