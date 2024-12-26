@@ -172,7 +172,7 @@ Interesting
 ✅ cleardrawcache
 ✅ clonefunction
 ✅ cloneref
-❌ compareinstances
+❌ compareinstances | COMMENT | voxlis: Possible sUNC dev issue
 ✅ crypt.decrypt
 ✅ crypt.encrypt
 ✅ crypt.generatebytes
