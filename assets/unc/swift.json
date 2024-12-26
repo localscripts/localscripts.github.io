@@ -155,7 +155,7 @@ Swift tested by DSDS for voxlis.NET
 Loading...
 Grabbing executor name...
 STARTING sUNC test. Join our Discord server if you want :‌) [discord.gg/rx4nbdQPx6]
-+ ❌ decompile Couldn't retrieve some constants from the decompiled output
++ ❌ decompile Couldn't retrieve some constants from the decompiled output | COMMENT | voxlis: You need to run decompiler.exe to enable decompiler, it should be 93% sUNC
 + ❌ sethiddenproperty size_xml is not a valid member of Fire "Workspace.asdasdsadda71.Head.Fire"
 ❗ Starting basic loadstring testing
 ❗ Finished basic loadstring testing
@@ -207,7 +207,7 @@ Interesting
 ✅ debug.setconstant
 ✅ debug.setstack
 ✅ debug.setupvalue
-❌ decompile
+❌ decompile | COMMENT | voxlis: You need to run decompiler.exe to enable decompiler, it should be 93% sUNC
 ✅ delfile
 ✅ delfolder
 ✅ fireclickdetector
@@ -266,7 +266,7 @@ Interesting
 ✅ writefile
 
 
-😎 Passed the test with 92% succеss rate (80 ‌out ‌of ‌87)
+😎 Passed the test with 92% succеss rate (80 ‌out ‌of ‌87) | COMMENT | voxlis: You need to run decompiler.exe to enable decompiler, it should be 93% sUNC
 ❌ Total tests failed: ‌7
 😏 This test was made by senS (fuck all the inco pastes/‌unc fakers)‌
 Finished the test in 20 seconds
