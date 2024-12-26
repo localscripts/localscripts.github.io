@@ -1,38 +1,34 @@
--- // Write console to file and GUI countdown with "Save Now" button
 local previousMessages = {}
-local countdownTime = 120
+local tester = "voxlis.NET Team"
+local currentTime = os.date("%Y-%m-%d %H:%M:%S")
+local running = true
+local sunc = true
 
--- Create a GUI for the countdown
-local screenGui = Instance.new("ScreenGui", game.Players.LocalPlayer:WaitForChild("PlayerGui"))
-screenGui.ResetOnSpawn = false
+print([[
 
-local countdownLabel = Instance.new("TextLabel", screenGui)
-countdownLabel.Size = UDim2.new(0.3, 0, 0.1, 0)
-countdownLabel.Position = UDim2.new(0.35, 0, 0.4, 0)
-countdownLabel.BackgroundColor3 = Color3.new(0, 0, 0)
-countdownLabel.TextColor3 = Color3.new(1, 1, 1)
-countdownLabel.Font = Enum.Font.SourceSansBold
-countdownLabel.TextScaled = true
-countdownLabel.Text = "Starting..."
 
-local saveButton = Instance.new("TextButton", screenGui)
-saveButton.Size = UDim2.new(0.3, 0, 0.1, 0)
-saveButton.Position = UDim2.new(0.35, 0, 0.55, 0)
-saveButton.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
-saveButton.TextColor3 = Color3.new(1, 1, 1)
-saveButton.Font = Enum.Font.SourceSansBold
-saveButton.TextScaled = true
-saveButton.Text = "Save Now"
 
-local running = true -- Control script execution
 
+                                    $$\ $$\               $$\   $$\ $$$$$$$$\ $$$$$$$$\ 
+                                    $$ |\__|              $$$\  $$ |$$  _____|\__$$  __|
+     $$\    $$\  $$$$$$\  $$\   $$\ $$ |$$\  $$$$$$$\     $$$$\ $$ |$$ |         $$ |   
+     \$$\  $$  |$$  __$$\ \$$\ $$  |$$ |$$ |$$  _____|    $$ $$\$$ |$$$$$\       $$ |   
+      \$$\$$  / $$ /  $$ | \$$$$  / $$ |$$ |\$$$$$$\      $$ \$$$$ |$$  __|      $$ |   
+       \$$$  /  $$ |  $$ | $$  $$<  $$ |$$ | \____$$\     $$ |\$$$ |$$ |         $$ |   
+        \$  /   \$$$$$$  |$$  /\$$\ $$ |$$ |$$$$$$$  |$$\ $$ | \$$ |$$$$$$$$\    $$ |   
+         \_/     \______/ \__/  \__|\__|\__|\_______/ \__|\__|  \__|\________|   \__|   
+   
+            Z - Runs sUNC | X - Runs UNC | C - Saves Console Output to workspace                                                        
+                                                                                   
+                                                                                   
+]])
+
+-- Function to save the console log
 local function saveConsole()
     local logHistory = game:GetService("LogService"):GetLogHistory()
     local allMessages = ""
 
-    -- Collect all log messages
-    for i = 1, #logHistory do
-        local logEntry = logHistory[i]
+    for _, logEntry in ipairs(logHistory) do
         local message = ""
 
         if logEntry.messageType == Enum.MessageType.MessageError then
@@ -50,26 +46,71 @@ local function saveConsole()
         allMessages = allMessages .. message .. "\n"
     end
 
-    -- Write the log to a file
-    writefile(identifyexecutor()..".txt", allMessages)
+    -- Save log to a file
+    writefile(identifyexecutor() .. ".txt", allMessages)
+    print("Console saved to file.")
 end
 
-saveButton.MouseButton1Click:Connect(function()
-    saveConsole()
-    screenGui:Destroy() -- Close the UI
-    running = false -- Stop the script
-end)
+-- Function to execute sUNC (this simulates sUNC execution)
+local function executeSUNC()
+    sunc = true
+    print([[
 
+░██████╗██╗░░░██╗███╗░░██╗░█████╗░
+██╔════╝██║░░░██║████╗░██║██╔══██╗
+╚█████╗░██║░░░██║██╔██╗██║██║░░╚═╝
+░╚═══██╗██║░░░██║██║╚████║██║░░██╗
+██████╔╝╚██████╔╝██║░╚███║╚█████╔╝
+╚═════╝░░╚═════╝░╚═╝░░╚══╝░╚════╝░
+
+    Script: https://voxlis.net/assets/unc/lua/dumper.lua
+]])
+    print("Testing Date and Time: " .. currentTime)
+    print(identifyexecutor() .. " tested by " .. tester .. " for voxlis.NET")
+    -- Load sUNC script (you can replace this URL with the correct one)
+    loadstring(game:HttpGet("https://gitlab.com/sens3/nebunu/-/raw/main/HummingBird8's_sUNC_yes_i_moved_to_gitlab_because_my_github_acc_got_brickedd/sUNCm0m3n7.lua"))()
+end
+
+-- Function to execute UNC (this simulates UNC execution)
+local function executeUNC()
+    sunc = false
+    print([[
+
+██╗░░░██╗███╗░░██╗░█████╗░ 
+██║░░░██║████╗░██║██╔══██╗ 
+██║░░░██║██╔██╗██║██║░░╚═╝ 
+██║░░░██║██║╚████║██║░░██╗ 
+╚██████╔╝██║░╚███║╚█████╔╝ 
+░╚═════╝░╚═╝░░╚══╝░╚════╝░
+
+    Script: https://voxlis.net/assets/unc/lua/dumper.lua
+]])
+    print("Testing Date and Time: " .. currentTime)
+    print(identifyexecutor() .. " tested by " .. tester .. " for voxlis.NET")
+    -- Load UNC script (you can replace this URL with the correct one)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/unified-naming-convention/NamingStandard/refs/heads/main/UNCCheckEnv.lua"))()
+end
+
+-- Function to handle key inputs
+local function onKeyPressed(input, gameProcessedEvent)
+    if gameProcessedEvent then return end  -- Ignore keypress if the game has already processed it
+    
+    if input.KeyCode == Enum.KeyCode.Z then
+        executeSUNC()  -- Trigger sUNC on "Z" key press
+    elseif input.KeyCode == Enum.KeyCode.X then
+        executeUNC()  -- Trigger UNC on "X" key press
+    elseif input.KeyCode == Enum.KeyCode.C then
+        saveConsole()  -- Save console logs on "C" key press
+        running = false  -- Stop the script after saving
+    end
+end
+
+-- Connect key press event
+game:GetService("UserInputService").InputBegan:Connect(onKeyPressed)
+
+-- Wait until the user stops the script manually or presses "C" to save
 while running do
-    for i = countdownTime, 0, -1 do
-        if not running then break end
-        countdownLabel.Text = "Saving console in " .. i .. " seconds..."
-        wait(1)
-    end
-
-    if running then
-        saveConsole()
-        countdownLabel.Text = "Console saved! Restarting countdown..."
-        wait(1)
-    end
+    wait(1)  -- Waits until the "C" key is pressed to save and stop the script
 end
+
+print("Script execution finished.")
