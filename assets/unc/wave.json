@@ -190,7 +190,7 @@ Interesting
 ✅ debug.setconstant
 ✅ debug.setstack
 ✅ debug.setupvalue
-❌ decompile
+❌ decompile | COMMENT | voxlis: It doesnt have one yet
 ✅ delfile
 ✅ delfolder
 ✅ fireclickdetector
@@ -204,7 +204,7 @@ Interesting
 ✅ getgc
 ✅ getgenv_access
 ✅ gethiddenproperty
-❌ gethui
+❌ gethui | COMMENT | voxlis: Works, sUNC devs messed up
 ✅ getinstances
 ✅ getloadedmodules
 ✅ getnamecallmethod
