@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="${card.buylink}" class="card-button right buylink" target="_blank" rel="noopener noreferrer">${card.buytext || 'Buy Now'}</a>
                     ` : '';
 
-                    const uncLink = card.unc ? `<a href="${card.unc}" class="unc-btn" target="_blank" rel="noopener noreferrer"><img class="unselectable unc-img" src="./assets/unc.png" alt=""></a>
+                    const uncLink = card.unc ? `<a href="${card.unc}" class="unc-btn" target="_blank" rel="noopener noreferrer"><img class="unselectable unc-img" src="./assets/glow-unc.png" alt=""></a>
                     ` : '';
 
                     const lastEditedBy = card.lastEditedBy ? `
