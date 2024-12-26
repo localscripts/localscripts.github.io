@@ -53,6 +53,7 @@
         "link": "https://lootdest.org/s?2cf8ec54",
         "buttonText": "Website",
         "types": ["unc", "windows"],
+        "unc": "/assets/unc/awp.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/group/1218b29b-bf30-4193-9bf9-7de0d788b163?p=fb87d4e7-cb6f-4ea1-bf2f-5da115e8e151",
