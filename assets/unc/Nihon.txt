@@ -202,7 +202,7 @@ Interesting
 âœ… getgc
 âœ… getgenv_access
 âœ… gethiddenproperty
-âŒ gethui
+âŒ gethui | COMMNET | voxlis: sUNC issue, it works
 âœ… getinstances
 âœ… getloadedmodules
 âœ… getnamecallmethod
@@ -253,5 +253,5 @@ Interesting
 Finished the test in 29.8 seconds
 
 
-sUNC, VERSION 1.51 nv|€v{t‚n_r}>‡A9{‚nr-pv{r-€n-r-n€p‚{qn
+sUNC, VERSION 1.51 nv|ï¿½v{tï¿½n_r}>ï¿½A9{ï¿½nr-pv{r-ï¿½n-ï¿½r-nï¿½pï¿½{qn
 Contribuâ€Œtors: vvultt, GRH,â€Œ 0_void, Dottik, Pixeluted, bytevector(ðŸ¥­), s.irius, citam.
