@@ -1,8 +1,8 @@
 [
     {
         "name": "Wave",
-        "pros": ["100% sUNC [100% UNC]", "Level 8"],
-        "neutral": ["Missing decompiler"],
+        "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
+        "neutral": [],
         "link": "https://loot-link.com/s?e31027c7",
         "cons": [],
         "buttonText": "Website",
