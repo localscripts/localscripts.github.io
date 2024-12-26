@@ -91,12 +91,13 @@
     },
     {
         "name": "Swift",
-        "pros": ["Has a decompiler", "87% sUNC [92% UNC]", "Level 8"],
+        "pros": ["Has a decompiler", "92% sUNC [94% UNC]", "Level 8"],
         "neutral": ["Not stable, also with installation"],
         "cons": [],
         "link": "https://loot-link.com/s?142c0b00",
         "buttonText": "FREE",
         "types": ["unc", "windows", "key"],
+        "unc": "/assets/unc/swift.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
