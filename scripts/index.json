@@ -92,7 +92,7 @@
     {
         "name": "Swift",
         "pros": ["Has a decompiler", "93% sUNC [94% UNC]", "Level 8"],
-        "neutral": [],
+        "neutral": ["Expect crashes"],
         "cons": [],
         "link": "https://loot-link.com/s?142c0b00",
         "buttonText": "FREE",
