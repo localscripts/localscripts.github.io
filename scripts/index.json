@@ -271,6 +271,18 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
+        {
+        "name": "Argon",
+        "pros": ["Has a decompiler", "100% sUNC", "Level 8"],
+        "neutral": [],
+        "cons": ["Old owner used to exit scam ALOT", "Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "link": "https://loot-link.com/s?4696PVxK",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "Requested",
+        "lastEditedByImage": "assets/unverified.png",
+        "warning": true
+    },
     {
         "name": "Mint",
         "pros": ["Free to use", "34% sUNC [67% UNC]", "Keyless"],
