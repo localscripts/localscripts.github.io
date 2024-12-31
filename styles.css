@@ -738,6 +738,26 @@ a.footer-link {
     color: #32CD32; /* Green color when hovered */
 }
 
+#popup-notification .popup-content {
+    position: relative; /* To position the close button */
+    text-align: center; /* Center align the content */
+}
+
+#popup-notification .popup-image {
+    max-width: 100%; /* Ensure the image doesn't overflow the popup */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px 0; /* Add spacing around the image */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+@media screen and (max-width: 600px) {
+    #popup-notification .popup-image {
+        display: none; /* Hide the image on small screens */
+    }
+}
+
+
+
 /* Misc */
 
 * {
