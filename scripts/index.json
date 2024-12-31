@@ -16,6 +16,24 @@
         "expires": "2025-02-01T23:59:59Z"
     },
     {
+        "name": "Swift",
+        "pros": ["Has a decompiler", "93% sUNC [94% UNC]", "Level 8"],
+        "neutral": ["Expect crashes"],
+        "cons": [],
+        "link": "https://lootdest.org/s?bHTXxerk",
+        "buttonText": "FREE",
+        "types": ["unc", "windows", "key"],
+        "unc": "/assets/unc/swift.json",
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "warning": true,
+        "warningText": "Coupon 'voxlis' for 5% off!",
+        "buylink": "https://swift.sellsn.io/group/6af7ec28-c6b8-492e-9e04-1a56d1a46874?p=773872a0-90c7-461c-b656-4af3ae3db288",
+        "buytext": "$9.99 Lifetime",
+        "glow": "#967343",
+        "expires": "2025-02-01T23:59:59Z"
+    },
+    {
         "name": "Nihon",
         "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
         "neutral": [],
@@ -88,18 +106,6 @@
         "buylink": "https://robloxcheatz.com/group/53c7a019-6470-4a9c-8e37-bd3ad7474517?p=84ef7f27-f38a-4448-b839-54701c99e699",
         "buytext": "$4.98 monthly",
         "expires": "2025-01-19T23:59:59Z"
-    },
-    {
-        "name": "Swift",
-        "pros": ["Has a decompiler", "93% sUNC [94% UNC]", "Level 8"],
-        "neutral": ["Expect crashes"],
-        "cons": [],
-        "link": "https://loot-link.com/s?142c0b00",
-        "buttonText": "FREE",
-        "types": ["unc", "windows", "key"],
-        "unc": "/assets/unc/swift.json",
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Solara v3",

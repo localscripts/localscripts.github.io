@@ -36,9 +36,7 @@ function hyperlinkContent(content, type) {
         content = content.replace(regex, `<a href="${url}" target="_blank" style="color: ${color}; text-decoration: none; display: block;">$1</a>`);
     });
 
-    // Add styling for text inside square brackets
     content = content.replace(/\[(.*?)\]/g, '<span class="small-text">[$1]</span>');
-
     return content;
 }
 
@@ -82,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     const expires = card.expires ? new Date(card.expires) : null;
                     const isExpired = expires && now > expires;
 
-                    // Apply glow to the card
                     if (card.glow && !isExpired) {
                         cardElement.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 0px ${card.glow}`;
                         cardElement.style.borderColor = card.glow;
@@ -105,7 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="${card.buylink}" class="card-button right buylink" target="_blank" rel="noopener noreferrer">${card.buytext || 'Buy Now'}</a>
                     ` : '';
 
-                    const uncLink = card.unc ? `<a href="${card.unc}" class="unc-btn" target="_blank" rel="noopener noreferrer"><img class="unselectable unc-img" src="./assets/glow-unc.png" alt=""></a>
+                    const uncLink = card.unc ? `
+                        <a href="${card.unc}" class="unc-btn" target="_blank" rel="noopener noreferrer">
+                            <img class="unselectable unc-img" src="./assets/glow-unc.png" alt="">
+                        </a>
                     ` : '';
 
                     const lastEditedBy = card.lastEditedBy ? `
@@ -138,43 +138,44 @@ document.addEventListener("DOMContentLoaded", () => {
                     cardElement.innerHTML = html;
                     wrapper.appendChild(cardElement);
 
-                    // Apply glow and text color to the "Buy Now" button
                     const buyButton = cardElement.querySelector('.card-button.right.buylink');
                     if (buyButton && card.glow && !isExpired) {
-                        // Set the initial glow effect on the Buy Now button
                         buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
                         buyButton.style.borderColor = card.glow;
-                        buyButton.style.color = card.glow; // Set text color to the glow color
-                    
-                        // Ensure hover changes the background color to the glow color and makes the text readable
+                        buyButton.style.color = card.glow;
+
                         buyButton.addEventListener('mouseover', () => {
-                            buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
-                            buyButton.style.color = '#ffffff'; // Set text color to white on hover for contrast
-                            buyButton.style.backgroundColor = card.glow; // Set background color on hover
+                            buyButton.style.boxShadow = `0 0 15px ${card.glow}, 0 0 20px ${card.glow}, 0 0 10px ${card.glow}`;
+                            buyButton.style.color = '#ffffff';
+                            buyButton.style.backgroundColor = card.glow;
                         });
-                    
+
                         buyButton.addEventListener('mouseout', () => {
                             buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
-                            buyButton.style.color = card.glow; // Reset text color to glow color
-                            buyButton.style.backgroundColor = ''; // Reset background color after hover
+                            buyButton.style.color = card.glow;
+                            buyButton.style.backgroundColor = '';
                         });
                     }
-                    
-                    
 
                     if (card.warning) {
-                        const viewButton = cardElement.querySelector('.card-button.left');
-                        viewButton.addEventListener('click', (e) => {
-                            e.preventDefault();
-
-                            if (confirm("⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️")) {
-                                window.open(card.link, '_blank');
-                            }
-                        });
-                    }
-                });
-            }
-        })
+                            const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
+                            const buttons = cardElement.querySelectorAll('.card-button');
+                        
+                            buttons.forEach(button => {
+                                button.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    if (confirm(warningText)) {
+                                        const url = button.getAttribute('href');
+                                        if (url) {
+                                            window.open(url, '_blank');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }
+            })
         .catch(err => {
             if (wrapper) {
                 wrapper.innerHTML = `
