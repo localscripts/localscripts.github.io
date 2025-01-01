@@ -132,6 +132,7 @@
         "unc": "/assets/unc/swift.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
+     },
     {
         "name": "Solara v3",
         "pros": ["Has a decompiler","51% sUNC [66% UNC]"],
