@@ -117,6 +117,9 @@
         "types": ["unc", "android", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
+        "buytext": "$4.98 monthly",
+        "expires": "2025-01-19T23:59:59Z"
     },
     {
         "name": "Macsploit",
@@ -127,7 +130,10 @@
         "buttonText": "$9.99 lifetime",
         "types": ["macos"],
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f8",
+        "buytext": "$4.98 monthly",
+        "expires": "2025-01-19T23:59:59Z"
     },
     {
         "name": "Solara v3",
