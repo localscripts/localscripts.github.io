@@ -58,6 +58,8 @@
         "types": ["unc", "windows"],
         "unc": "/assets/unc/seliware.json",
         "lastEditedBy": "voxlis.NET",
+        "warning": true,
+        "warningText": "Coupon 'voxlis' for 5% off!",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://robloxcheatz.com/product/d7a3d96a-2497-43e5-b8b0-c4046a63b0da",
         "buytext": "$9.99 monthly",
@@ -74,6 +76,8 @@
         "unc": "/assets/unc/awp.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
+        "warning": true,
+        "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://robloxcheatz.com/group/1218b29b-bf30-4193-9bf9-7de0d788b163?p=fb87d4e7-cb6f-4ea1-bf2f-5da115e8e151",
         "buytext": "$4.50 weekly",
         "expires": "2025-01-19T23:59:59Z"
