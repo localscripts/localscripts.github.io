@@ -160,7 +160,7 @@
     {
         "name": "Delta",
         "pros": ["Best script support", "100% UNC", "Level 8"],
-        "neutral": ["Includes a keysystem"],
+        "neutral": ["Includes a keysystem", "Not updated for 2 months"],
         "cons": [],
         "link": "https://loot-link.com/s?a6c62bd9",
         "buttonText": "FREE",
