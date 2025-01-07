@@ -48,6 +48,20 @@
         "expires": "2025-01-31T23:59:59Z"
     },
     {
+        "name": "Cryptic",
+        "pros": ["100% UNC", "Level 8"],
+        "neutral": ["has a keysystem"],
+        "cons": [],
+        "link": "https://loot-link.com/s?fdbe810b",
+        "buttonText": "FREE",
+        "types": ["unc", "android", "windows", "key"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
+        "buytext": "$4.99 monthly",
+        "expires": "2025-01-19T23:59:59Z"
+    },
+    {
         "name": "AWP.gg",
         "pros": ["99% sUNC [100% UNC]", "Level 8"],
         "neutral": ["Missing decompiler"],
@@ -91,20 +105,6 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f6",
         "buytext": "$4.98 monthly",
-        "expires": "2025-01-19T23:59:59Z"
-    },
-    {
-        "name": "Cryptic",
-        "pros": ["100% UNC", "Level 8"],
-        "neutral": ["has a keysystem"],
-        "cons": [],
-        "link": "https://loot-link.com/s?fdbe810b",
-        "buttonText": "FREE",
-        "types": ["unc", "android", "key"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
-        "buytext": "$4.99 monthly",
         "expires": "2025-01-19T23:59:59Z"
     },
     {
