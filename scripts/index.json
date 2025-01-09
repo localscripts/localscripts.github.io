@@ -123,7 +123,7 @@
     },
      {
         "name": "Swift",
-        "pros": ["Has a decompiler", "93% sUNC [94% UNC]", "Level 8"],
+        "pros": ["Has a decompiler", "97% sUNC [96% UNC]", "Level 8"],
         "neutral": ["Expect crashes"],
         "cons": [],
         "link": "https://lootdest.org/s?bHTXxerk",
