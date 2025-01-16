@@ -30,7 +30,7 @@
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://robloxcheatz.org/voxlisnihon",
         "buytext": "$6.49 weekly",
-        "expires": "2025-01-19T23:59:59Z"
+        "expires": "2025-01-26T23:59:59Z"
     },
     {
         "name": "Seliware",
@@ -49,7 +49,7 @@
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://robloxcheatz.org/voxlisseliware",
         "buytext": "$9.99 monthly",
-        "expires": "2025-01-31T23:59:59Z"
+        "expires": "2025-01-26T23:59:59Z"
     },
     {
         "name": "Cryptic",
@@ -62,8 +62,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
-        "buytext": "$4.99 monthly",
-        "expires": "2025-01-19T23:59:59Z"
+        "buytext": "$4.99 monthly"
     },
     {
         "name": "AWP.gg",
@@ -80,7 +79,7 @@
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://robloxcheatz.org/voxlisawp",
         "buytext": "$6.99 weekly",
-        "expires": "2025-01-31T23:59:59Z"
+        "expires": "2025-01-26T23:59:59Z"
     },
     {
         "name": "Synapse Z",
@@ -97,7 +96,7 @@
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://robloxcheatz.org/voxlissynz",
         "buytext": "$6.49 weekly",
-        "expires": "2025-01-19T23:59:59Z"
+        "expires": "2025-01-26T23:59:59Z"
     },
     {
         "name": "CodeX",
@@ -113,7 +112,7 @@
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://robloxcheatz.org/voxliscodex",
         "buytext": "$4.98 monthly",
-        "expires": "2025-01-19T23:59:59Z"
+        "expires": "2025-01-26T23:59:59Z"
     },
     {
         "name": "Macsploit",
@@ -126,8 +125,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f8",
-        "buytext": "$9.99 lifetime",
-        "expires": "2025-01-19T23:59:59Z"
+        "buytext": "$9.99 lifetime"
     },
      {
         "name": "Swift",
