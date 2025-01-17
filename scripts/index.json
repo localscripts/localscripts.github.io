@@ -244,14 +244,15 @@
     },
     {
         "name": "Ronix",
-        "pros": ["2 day long keys", "99% UNC", "Level 8"],
+        "pros": ["2 day long keys", "97% sUNC [99% UNC]", "Level 8"],
         "neutral": ["New exploit", "Includes a Key System"],
         "cons": [],
         "link": "https://loot-link.com/s?1WNU8as0",
         "buttonText": "FREE",
-        "types": ["unc","android", "key"],
+        "types": ["unc", "windows", "android", "key"],
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
+        "lastEditedByImage": "assets/verified.png",
+        "warning": true
     },
     {
         "name": "Aimmy",
