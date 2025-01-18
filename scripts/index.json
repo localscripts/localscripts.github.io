@@ -154,7 +154,7 @@
         "name": "Xeno",
         "pros": ["Has a decompiler", "41% sUNC [81% UNC]"],
         "neutral": ["Level 3","Not stable"],
-        "cons": ["Not safe to use newer versions"],
+        "cons": [],
         "link": "https://lootdest.org/s?038852f4",
         "buttonText": "FREE",
         "types": ["unc", "windows"],
