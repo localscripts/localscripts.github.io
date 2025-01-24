@@ -66,8 +66,8 @@
     },
     {
         "name": "AWP.gg",
-        "pros": ["99% sUNC [100% UNC]", "Level 8"],
-        "neutral": ["Missing decompiler"],
+        "pros": ["Has a decompiler", "99% sUNC [100% UNC]", "Level 8"],
+        "neutral": [],
         "cons": [],
         "link": "https://lootdest.org/s?2cf8ec54",
         "buttonText": "Website",
