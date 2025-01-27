@@ -29,8 +29,7 @@
         "warning": false,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://nihon.bloxproducts.com",
-        "buytext": "$6.49 weekly",
-        "expires": "2025-01-26T23:59:59Z"
+        "buytext": "$6.49 weekly"
     },
     {
         "name": "Seliware",
@@ -48,8 +47,7 @@
         "warning": true,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://robloxcheatz.org/voxlisseliware",
-        "buytext": "$9.99 monthly",
-        "expires": "2025-01-26T23:59:59Z"
+        "buytext": "$9.99 monthly"
     },
     {
         "name": "Cryptic",
@@ -61,8 +59,7 @@
         "types": ["unc", "android", "windows", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
-        "buytext": "$4.99 monthly"
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5"
     },
     {
         "name": "AWP.gg",
@@ -78,8 +75,7 @@
         "warning": false,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f1",
-        "buytext": "$6.99 weekly",
-        "expires": "2025-01-26T23:59:59Z"
+        "buytext": "$6.99 weekly"
     },
     {
         "name": "Synapse Z",
@@ -95,8 +91,7 @@
         "warning": false,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f2",
-        "buytext": "$6.49 weekly",
-        "expires": "2025-01-26T23:59:59Z"
+        "buytext": "$6.49 weekly"
     },
     {
         "name": "CodeX",
@@ -111,8 +106,7 @@
         "warning": false,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f6",
-        "buytext": "$4.97 monthly",
-        "expires": "2025-01-26T23:59:59Z"
+        "buytext": "$4.97 monthly"
     },
     {
         "name": "Macsploit",
