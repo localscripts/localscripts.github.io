@@ -2,7 +2,7 @@
     {
         "name": "iNIURIA",
         "pros": ["Best for legit and closet cheating", "Held as the safest internal", "Offers a lifetime package"],
-        "neutral": [],
+        "neutral": ["Lack of functions"],
         "cons": [],
         "link": "https://iniuria.us",
         "buttonText": "15.00$ per month",
@@ -12,7 +12,7 @@
     },
     {
         "name": "Neverlose",
-        "pros": ["Compensates 3x for major downtime", "Dozens of functions available", "Really aggressive rage cheat"],
+        "pros": ["Compensates 3x for major downtime.", "Dozens of functions available", "Really aggressive rage cheat"],
         "neutral": ["Very high price point"],
         "cons": [],
         "link": "https://neverlose.cc",
@@ -34,8 +34,8 @@
     },
     {
         "name": "Midnight",
-        "pros": ["Very cheap price point"],
-        "neutral": ["Might be unstable", "Doesn't have a lifetime package"],
+        "pros": ["Decent amount of features", "Very cheap price point", "Pretty good semi-rage"],
+        "neutral": ["Doesn't have a lifetime package"],
         "cons": [],
         "link": "https://midnight.im/",
         "buttonText": "3.65$ per 2 weeks",
@@ -56,8 +56,8 @@
     },
     {
         "name": "Nixware",
-        "pros": ["Cheapest rage cheat", "Good rage the price"],
-        "neutral": ["Detected alot by VAC", "No lifetime package"],
+        "pros": ["Best for semi-rage", "Cheapest rage cheat", "Good visuals"],
+        "neutral": ["No lifetime package"],
         "cons": [],
         "link": "https://nixware.cc/",
         "buttonText": "5.00$ per month",
@@ -67,7 +67,7 @@
     },
     {
         "name": "Gamesense",
-        "pros": ["Really aggressive rage cheat"],
+        "pros": ["Amazing for rage cheating"],
         "neutral": ["300$ to get invited", "Not worth the overall price"],
         "cons": ["Moderators will ban anyone for money"],
         "link": "https://gamesense.pub",
@@ -78,7 +78,7 @@
     },
     {
         "name": "Aimware",
-        "pros": ["Offers a lifetime package"],
+        "pros": ["Good for cracked accounts", "Offers a lifetime package"],
         "neutral": ["Often detected", "Not worth the price"],
         "cons": [],
         "link": "https://aimware.net",
@@ -89,7 +89,7 @@
     },
     {
         "name": "Fatality",
-        "pros": ["Really aggressive rage cheat", "Beats most rage cheats"],
+        "pros": ["Really good for rage cheating", "Beats most rage cheats"],
         "neutral": ["Invite only"],
         "cons": [],
         "link": "https://fatality.win/",
