@@ -799,3 +799,146 @@ a.footer-link {
     color: gray; /* Set the text color to gray */
 }
 
+/* home */
+
+/* Left Text Section */
+#left-text {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+}
+
+.website-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.slogan {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Game Cards Container */
+#game-cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 20px;
+    height: 300px;
+    margin: 50px 0;
+}
+
+/* Game Card Styling */
+.game-card {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Center Card */
+.game-card.center {
+    transform: scale(1.2);
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Left Card */
+.game-card.left {
+    transform: translateX(-150px) rotate(-15deg) scale(0.9);
+    opacity: 0.7;
+    z-index: 5;
+}
+
+/* Right Card */
+.game-card.right {
+    transform: translateX(150px) rotate(15deg) scale(0.9);
+    opacity: 0.7;
+    z-index: 5;
+}
+
+/* Hover Effects - Shake and Red Glow */
+.game-card:hover {
+    animation: shake 0.3s infinite ease-in-out, redGlow 0.3s infinite ease-in-out;
+}
+
+/* Left Card Hover - Retain Position */
+.game-card.left:hover {
+    animation: shakeLeft 0.3s infinite ease-in-out, redGlow 0.3s infinite ease-in-out;
+}
+
+/* Right Card Hover - Retain Position */
+.game-card.right:hover {
+    animation: shakeRight 0.3s infinite ease-in-out, redGlow 0.3s infinite ease-in-out;
+}
+
+.game-card.center:hover {
+    animation: shakeCenter 0.3s infinite ease-in-out, redGlow 0.3s infinite ease-in-out;
+}
+
+/* Shake Animations with Aggressive Base Transform */
+@keyframes shakeLeft {
+    0%, 100% { transform: translateX(-150px) rotate(-15deg) scale(0.9); }
+    25% { transform: translateX(-170px) rotate(-15deg) scale(0.9); }
+    50% { transform: translateX(-130px) rotate(-15deg) scale(0.9); }
+    75% { transform: translateX(-170px) rotate(-15deg) scale(0.9); }
+}
+
+@keyframes shakeRight {
+    0%, 100% { transform: translateX(150px) rotate(15deg) scale(0.9); }
+    25% { transform: translateX(170px) rotate(15deg) scale(0.9); }
+    50% { transform: translateX(130px) rotate(15deg) scale(0.9); }
+    75% { transform: translateX(170px) rotate(15deg) scale(0.9); }
+}
+
+@keyframes shakeCenter {
+    0%, 100% { transform: scale(1.2); }
+    25% { transform: translateX(-5px) scale(1.2); }
+    50% { transform: translateX(5px) scale(1.2); }
+    75% { transform: translateX(-5px) scale(1.2); }
+}
+
+/* Red Glow Animation - Increased Intensity */
+@keyframes redGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 0, 1); }
+    50% { box-shadow: 0 0 40px rgba(255, 0, 0, 1); }
+}
+
+/* Mobile View */
+@media (max-width: 640px) {
+    #game-cards-container {
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+    }
+
+    .game-card {
+        transform: none !important;
+        opacity: 1;
+        width: 80%;
+        max-width: 200px;
+    }
+
+    #left-text {
+        position: static;
+        text-align: center;
+        margin: 20px 0;
+    }
+}
