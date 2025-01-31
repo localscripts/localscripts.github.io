@@ -1,3 +1,8 @@
+const protectedLinks = true // Money printer toggle
+
+
+
+
 const typeList = {
     "windows": "Windows",
     "macos": "MacOS",
@@ -5,7 +10,7 @@ const typeList = {
     "key": "Has a Key System",
     "ios": "iOS",
     "server": "Serversided",
-    "unc": "UNC and sUNC tested by voxlis.NET" // UNC comes before sUNC because sUNC is a subset of UNC
+    "unc": "UNC and sUNC tested by voxlis.NET"
 };
 
 // Ensure the wrapper is defined
@@ -17,10 +22,10 @@ if (!wrapper) {
 
 function hyperlinkContent(content, type) {
     const replacements = [
-        { word: 'UNC', url: 'https://www.reddit.com/r/robloxhackers/comments/1he474r/what_are_the_difference_between_sunc_and_unc/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button' },
-        { word: 'sUNC', url: 'https://www.reddit.com/r/robloxhackers/comments/1he474r/what_are_the_difference_between_sunc_and_unc/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button' },
+        { word: 'UNC', url: 'https://www.reddit.com/r/robloxhackers/comments/1he474r/what_are_the_difference_between_sunc_and_unc/' },
+        { word: 'sUNC', url: 'https://www.reddit.com/r/robloxhackers/comments/1he474r/what_are_the_difference_between_sunc_and_unc/' },
         { word: 'Level', url: 'https://roblox.fandom.com/wiki/Security_context' },
-        { word: 'decompiler', url: 'https://www.reddit.com/r/explainlikeimfive/comments/xe2fvf/comment/ioeez4k/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button' }
+        { word: 'decompiler', url: 'https://www.reddit.com/r/explainlikeimfive/comments/xe2fvf/comment/ioeez4k/' }
     ];
 
     const typeColors = {
@@ -85,6 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         cardElement.style.borderColor = card.glow;
                     }
 
+                    const cardLink = protectedLinks && card.linkprotected ? card.linkprotected : card.link;
+
                     const types = card.types.map(type => `
                         <div class="type-holder">
                             <img class="unselectable card-type" src="./assets/${type}.png" alt="">
@@ -127,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="card-footer">
                             <div class="button-wrapper">
-                                <a href="${card.link}" class="card-button left ${buyLink === '' ? 'rounded-btn' : ''}" target="_blank" rel="noopener noreferrer">${buttonText}</a>
+                                <a href="${cardLink}" class="card-button left ${buyLink === '' ? 'rounded-btn' : ''}" target="_blank" rel="noopener noreferrer">${buttonText}</a>
                                 ${buyLink}
                                 ${uncLink}
                             </div>
@@ -138,44 +145,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     cardElement.innerHTML = html;
                     wrapper.appendChild(cardElement);
 
-                    const buyButton = cardElement.querySelector('.card-button.right.buylink');
-                    if (buyButton && card.glow && !isExpired) {
-                        buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
-                        buyButton.style.borderColor = card.glow;
-                        buyButton.style.color = card.glow;
+                    if (card.warning) {
+                        const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️";
+                        const buttons = cardElement.querySelectorAll('.card-button');
 
-                        buyButton.addEventListener('mouseover', () => {
-                            buyButton.style.boxShadow = `0 0 15px ${card.glow}, 0 0 20px ${card.glow}, 0 0 10px ${card.glow}`;
-                            buyButton.style.color = '#ffffff';
-                            buyButton.style.backgroundColor = card.glow;
-                        });
-
-                        buyButton.addEventListener('mouseout', () => {
-                            buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
-                            buyButton.style.color = card.glow;
-                            buyButton.style.backgroundColor = '';
+                        buttons.forEach(button => {
+                            button.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                if (confirm(warningText)) {
+                                    const url = button.getAttribute('href');
+                                    if (url) {
+                                        window.open(url, '_blank');
+                                    }
+                                }
+                            });
                         });
                     }
-
-                    if (card.warning) {
-                            const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
-                            const buttons = cardElement.querySelectorAll('.card-button');
-                        
-                            buttons.forEach(button => {
-                                button.addEventListener('click', (e) => {
-                                    e.preventDefault();
-                                    if (confirm(warningText)) {
-                                        const url = button.getAttribute('href');
-                                        if (url) {
-                                            window.open(url, '_blank');
-                                        }
-                                    }
-                                });
-                            });
-                        }
-                    });
-                }
-            })
+                });
+            }
+        })
         .catch(err => {
             if (wrapper) {
                 wrapper.innerHTML = `
