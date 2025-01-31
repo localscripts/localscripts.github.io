@@ -1,4 +1,4 @@
-const protectedLinks = true // Money printer toggle
+const protectedLinks = false // Money printer toggle
 
 
 
