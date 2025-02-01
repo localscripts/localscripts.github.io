@@ -145,25 +145,44 @@ document.addEventListener("DOMContentLoaded", () => {
                     cardElement.innerHTML = html;
                     wrapper.appendChild(cardElement);
 
-                    if (card.warning) {
-                        const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️";
-                        const buttons = cardElement.querySelectorAll('.card-button');
+                    const buyButton = cardElement.querySelector('.card-button.right.buylink');
+                    if (buyButton && card.glow && !isExpired) {
+                        buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+                        buyButton.style.borderColor = card.glow;
+                        buyButton.style.color = card.glow;
 
-                        buttons.forEach(button => {
-                            button.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                if (confirm(warningText)) {
-                                    const url = button.getAttribute('href');
-                                    if (url) {
-                                        window.open(url, '_blank');
-                                    }
-                                }
-                            });
+                        buyButton.addEventListener('mouseover', () => {
+                            buyButton.style.boxShadow = `0 0 15px ${card.glow}, 0 0 20px ${card.glow}, 0 0 10px ${card.glow}`;
+                            buyButton.style.color = '#ffffff';
+                            buyButton.style.backgroundColor = card.glow;
+                        });
+
+                        buyButton.addEventListener('mouseout', () => {
+                            buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+                            buyButton.style.color = card.glow;
+                            buyButton.style.backgroundColor = '';
                         });
                     }
-                });
-            }
-        })
+
+                    if (card.warning) {
+                            const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
+                            const buttons = cardElement.querySelectorAll('.card-button');
+                        
+                            buttons.forEach(button => {
+                                button.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    if (confirm(warningText)) {
+                                        const url = button.getAttribute('href');
+                                        if (url) {
+                                            window.open(url, '_blank');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }
+            })
         .catch(err => {
             if (wrapper) {
                 wrapper.innerHTML = `
