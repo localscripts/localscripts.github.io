@@ -669,7 +669,6 @@ a.footer-link {
 
 /* Notification */
 
-
 /* Popup notification styles for bottom-right corner */
 #popup-notification {
     position: fixed;
@@ -714,23 +713,29 @@ a.footer-link {
     text-decoration: none; /* Remove underline */
 }
 
-
+/* Updated button styles */
 #popup-notification button {
-    margin-top: 10px;
-    padding: 8px 0; /* Remove left and right padding */
-    width: 100%; /* Make the button fill the container width */
-    font-size: 14px;
-    background-color: var(--main-color-1); /* Light green button */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+    background-color: transparent;
+    color: #ff0000; /* Initial text color */
+    border: 1px solid var(--main-color-2);
+    border-radius: 10px;
+    padding: 12px 0;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Transition for background and text color */
+    width: 100%;
+    max-width: none;
+    text-align: center;
     box-sizing: border-box;
-    text-shadow: none; /* No glowing button */
+    margin-top: 10px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 
 #popup-notification button:hover {
-    background-color: var(--main-color-1); /* Darker green on hover */
+    background-color: var(--main-color-2); /* Fill background on hover */
+    color: #fff; /* Change text color on hover */
 }
 
 #popup-notification .close-btn {
@@ -766,6 +771,7 @@ a.footer-link {
         display: none; /* Hide the image on small screens */
     }
 }
+
 
 
 
