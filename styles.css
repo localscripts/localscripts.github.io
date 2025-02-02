@@ -10,12 +10,12 @@
 
     --paid-color: rgb(0, 255, 0);
 
-    --backround-color: #09090B;
-    --navbar-backround: #09090B;
+    --backround-color: #000000;
+    --navbar-backround: #000000;
     --navbar-line: #B32624;
     /*Card */
-    --card-border: #27272A;
-    --card-color: #0C0C0E;
+    --card-border: #0e0d0d;
+    --card-color: #000000;
     --link-button: #B32624;
     --buy-button: #4ADE80;
 }
@@ -240,7 +240,18 @@ main {
     border: 1px solid var(--card-border);
     background-color: transparent;
     box-sizing: border-box; /* Ensure padding is included in the width */
+    text-align: center; /* Centers inline text */
 }
+
+
+#sfs {
+    text-align: center; /* Centers inline text */
+    display: flex; /* Enables flexbox */
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+}
+
 
 #notification > h2 {
     color: var(--navbar-backround);
@@ -762,28 +773,27 @@ a.footer-link {
 
 * {
     scrollbar-width: thin; /* Thin scrollbar */
-    scrollbar-color: #3F3F46 #18181b; /* Thumb color and track color for Firefox */
-  }
-  
-  /* Custom scrollbar styles for Webkit browsers (Chrome, Safari, etc.) */
-  ::-webkit-scrollbar {
+    scrollbar-color: #B32624 #070707; /* Thumb color and track color for Firefox */
+}
+
+/* Custom scrollbar styles for Webkit browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
     width: 8px; /* Width of the scrollbar */
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: #18181b; /* Dark track background */
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(to bottom, #6366f1, #818cf8); /* Gradient for the thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #070707; /* Dark track background */
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to bottom, rgb(46, 46, 51), #070707); /* Gradient for the thumb */
     border-radius: 10px; /* Rounded corners for the thumb */
-    border: 2px solid #18181b; /* Border around the thumb */
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background-image: linear-gradient(to bottom, #4f46e5, #6366f1); /* Hover effect with a different gradient */
-  }
-  
+    border: 2px solid #070707; /* Border around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(to bottom, rgb(31, 31, 36), rgb(46, 46, 51)); /* Hover effect with a different gradient */
+}
 
 .unselectable {
     -webkit-user-drag: none;
@@ -792,6 +802,7 @@ a.footer-link {
     -ms-user-select: none;
     user-select: none;
 }
+
 
 .small-text {
     font-size: 0.7em; /* Adjust size as needed */
