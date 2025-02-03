@@ -30,7 +30,8 @@
         "warning": false,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://nihon.bloxproducts.com",
-        "buytext": "$6.49 weekly"
+        "buytext": "$6.49 weekly",
+        "hide": true
     },
     {
         "name": "Seliware",
