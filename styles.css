@@ -10,20 +10,23 @@
 
     --paid-color: rgb(0, 255, 0);
 
-    --backround-color: #000000;
-    --navbar-backround: #000000;
+    --background-color: #000000;
+    --navbar-background: #000000;
     --navbar-line: #B32624;
+
     /*Card */
+    --card-background: rgba(0, 0, 0, 0.26);
     --card-border: #0e0d0d;
     --card-color: #000000;
     --link-button: #B32624;
     --buy-button: #4ADE80;
 }
 
-html, body {
+html,
+body {
     overflow-x: hidden;
     width: 100vw;
-    background-color: var(--backround-color);
+    background-color: var(--background-color);
 }
 
 * {
@@ -47,7 +50,7 @@ nav {
     width: 100%;
     height: 60px;
     padding: 1rem;
-    background-color: var(--navbar-backround);
+    background-color: var(--navbar-background);
     border-bottom: 2px solid var(--navbar-line);
 }
 
@@ -66,14 +69,16 @@ nav {
     font-size: 1.25rem;
     font-weight: bold;
     text-transform: uppercase;
-    user-select: none; /* Prevent text selection */
+    user-select: none;
+    /* Prevent text selection */
 }
 
 #brand-highlight {
     color: var(--main-color-1);
 }
 
-#nav-items, #nav-items ul {
+#nav-items,
+#nav-items ul {
     display: flex;
     gap: 1rem;
     list-style-type: none;
@@ -85,21 +90,23 @@ nav {
     background: transparent;
 }
 
-#menu-icon > svg {
+#menu-icon>svg {
     width: 24px;
     aspect-ratio: 1;
 }
 
-#menu-list > li > a {
+#menu-list>li>a {
     color: white;
     position: relative;
     font-weight: bold;
     font-size: 0.875rem;
     text-decoration: none;
-    user-select: none; /* Prevent text selection */
+    user-select: none;
+    /* Prevent text selection */
 }
 
-#menu-list > li > a::after, #menu-list > li > a:hover::after {
+#menu-list>li>a::after,
+#menu-list>li>a:hover::after {
     position: absolute;
     left: 0;
     bottom: -5px;
@@ -111,11 +118,11 @@ nav {
     transition: transform 0.3s ease;
 }
 
-#menu-list > li > a::after {
+#menu-list>li>a::after {
     transform: scaleX(0);
 }
 
-#menu-list > li > a:hover::after {
+#menu-list>li>a:hover::after {
     transform: scaleX(1);
 }
 
@@ -129,7 +136,7 @@ nav {
     width: 30px;
     height: 30px;
     border-radius: 10px;
-    background-color: var(--navbar-backround);
+    background-color: var(--navbar-background);
     transition: 0.5s;
 }
 
@@ -150,7 +157,7 @@ nav {
     top: 58px;
     left: 0;
     gap: 0;
-    background-color: var(--navbar-backround);
+    background-color: var(--navbar-background);
     border-bottom: 2px solid var(--navbar-line);
     transition: all 0.3s ease-out;
     opacity: 0;
@@ -170,11 +177,12 @@ nav {
     padding: 8px;
     margin: 2px;
     border-radius: 100px;
-    user-select: none; /* Prevent text selection */
+    user-select: none;
+    /* Prevent text selection */
 }
 
 .menu-blur li a:hover {
-    background-color: var(--navbar-backround);
+    background-color: var(--navbar-background);
 }
 
 @media only screen and (max-width: 552px) {
@@ -219,6 +227,7 @@ nav {
     text-decoration: none;
     text-shadow: 0 0 5px rgba(0, 0, 255, 0.8), 0 0 10px rgba(0, 0, 255, 0.6), 0 0 15px rgba(0, 0, 255, 0.4);
 }
+
 .glow-link:hover {
     text-decoration: underline;
 }
@@ -233,28 +242,36 @@ main {
 }
 
 #notification {
-    width: min(calc(100% - 0px), 1400px); /* Same width as cards */
+    width: min(calc(100% - 0px), 1400px);
+    /* Same width as cards */
     padding: 20px;
     margin: 5px;
     border-radius: 12px;
     border: 1px solid var(--card-border);
     background-color: transparent;
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    text-align: center; /* Centers inline text */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+    text-align: center;
+    /* Centers inline text */
 }
 
 
 #sfs {
-    text-align: center; /* Centers inline text */
-    display: flex; /* Enables flexbox */
-    flex-direction: column; /* Stacks items vertically */
-    align-items: center; /* Centers content horizontally */
-    justify-content: center; /* Centers content vertically */
+    text-align: center;
+    /* Centers inline text */
+    display: flex;
+    /* Enables flexbox */
+    flex-direction: column;
+    /* Stacks items vertically */
+    align-items: center;
+    /* Centers content horizontally */
+    justify-content: center;
+    /* Centers content vertically */
 }
 
 
-#notification > h2 {
-    color: var(--navbar-backround);
+#notification>h2 {
+    color: var(--navbar-background);
     margin-bottom: 1px;
     font-size: 1.125rem;
     text-shadow: 0 0 4px rgba(232, 72, 72, 0.8), 0 0 16px rgba(232, 72, 72, 0.6), 0 0 24px rgba(232, 72, 72, 0.4);
@@ -290,10 +307,15 @@ main {
     padding: 20px;
     border-radius: 12px;
 
-    background-color: var(--card-backround);
+    background-color: var(--card-background);
     border: 1px solid var(--card-border);
 
-    transition: transform 0.1s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
+
+    /* Smooth transitions */
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -320,7 +342,7 @@ main {
     object-fit: contain;
 }
 
-.card-type + .tooltip {
+.card-type+.tooltip {
     position: absolute;
 
     visibility: hidden;
@@ -341,7 +363,7 @@ main {
     white-space: pre;
 }
 
-.card-type + .tooltip::after {
+.card-type+.tooltip::after {
     content: "";
 
     position: absolute;
@@ -351,23 +373,23 @@ main {
     margin-left: -5px;
 
     border: 5px solid;
-    border-color:  var(--tooltip-color-2) transparent transparent transparent;
+    border-color: var(--tooltip-color-2) transparent transparent transparent;
 }
 
 @media only screen and (max-width: 578px) {
-    .type-holder:last-child > .card-type + .tooltip {
+    .type-holder:last-child>.card-type+.tooltip {
         left: unset;
         right: 0;
         transform: translateX(0)
     }
 
-    .type-holder:last-child > .card-type + .tooltip::after {
+    .type-holder:last-child>.card-type+.tooltip::after {
         left: unset;
         right: 9px;
     }
 }
-  
-.card-type:hover + .tooltip {
+
+.card-type:hover+.tooltip {
     visibility: visible;
     opacity: 1;
 }
@@ -398,6 +420,7 @@ main {
 .pros {
     color: #4ADE80;
 }
+
 .pros .section-title {
     color: #4ADE80;
 }
@@ -405,6 +428,7 @@ main {
 .neutral {
     color: #FACC15;
 }
+
 .neutral .section-title {
     color: #FACC15;
 }
@@ -412,6 +436,7 @@ main {
 .cons {
     color: #E84848;
 }
+
 .cons .section-title {
     color: #E84848;
 }
@@ -428,9 +453,12 @@ main {
 .card-footer .last-edited img {
     width: 20px;
     height: 20px;
-    object-fit: cover; /* Ensures the image fits nicely */
-    border-radius: 0; /* Ensure the image is not rounded */
-    opacity: 0.95; /* Apply 50% transparency */
+    object-fit: cover;
+    /* Ensures the image fits nicely */
+    border-radius: 0;
+    /* Ensure the image is not rounded */
+    opacity: 0.95;
+    /* Apply 50% transparency */
 }
 
 .card-footer .card-button {
@@ -444,25 +472,31 @@ main {
     gap: 6px;
 }
 
-.card-status > p {
+.card-status>p {
     font-size: 0.9rem;
     color: rgb(95, 102, 112);
 }
 
 /* Adjust the layout of the last-edited section */
 .card-footer .last-edited {
-    display: flex; /* Align elements horizontally */
-    align-items: center; /* Vertically center the items */
-    gap: 10px; /* Adds space between the user name and the icon */
-    color: gray; /* Make the text gray */
-    flex-direction: row; /* Ensure elements are aligned in a row */
+    display: flex;
+    /* Align elements horizontally */
+    align-items: center;
+    /* Vertically center the items */
+    gap: 10px;
+    /* Adds space between the user name and the icon */
+    color: gray;
+    /* Make the text gray */
+    flex-direction: row;
+    /* Ensure elements are aligned in a row */
 }
 
 /* Style for the last-edited image */
 .card-footer .last-edited img {
     width: 20px;
     height: 20px;
-    object-fit: cover; /* Ensures the image fits nicely */
+    object-fit: cover;
+    /* Ensures the image fits nicely */
 }
 
 /* Make sure the last-edited text doesn't overlap with the menu icon */
@@ -472,20 +506,24 @@ main {
 
 /* Optional: Style for the name and icon within last-edited */
 .card-footer .last-edited p {
-    margin: 0; /* Remove margin from the text */
-    font-size: 0.9rem; /* Adjust font size */
+    margin: 0;
+    /* Remove margin from the text */
+    font-size: 0.9rem;
+    /* Adjust font size */
 }
 
 
 .card-button {
     background-color: transparent;
-    color: #333; /* Initial text color */
+    color: #333;
+    /* Initial text color */
     border: 3px solid var(--main-color-2);
     border-radius: 25px;
     padding: 12px 0;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Transition for background and text color */
+    transition: background-color 0.3s, color 0.3s;
+    /* Transition for background and text color */
     width: 100%;
     max-width: none;
     text-align: center;
@@ -498,21 +536,27 @@ main {
 
 /* Hover effect for the button */
 .card-button:hover {
-    background-color: var(--main-color-2); /* Fill with the same current background color */
-    color: #fff; /* Make text white for readability */
+    background-color: var(--main-color-2);
+    /* Fill with the same current background color */
+    color: #fff;
+    /* Make text white for readability */
     filter: brightness(1.4);
 }
 
 /* For the 'right' button */
 .card-button.right:hover {
-    background-color: #4ADE80; /* Fill with the same current background color */
-    color: #fff; /* Ensure text is readable */
+    background-color: #4ADE80;
+    /* Fill with the same current background color */
+    color: #fff;
+    /* Ensure text is readable */
 }
 
 /* For the 'left' button */
 .card-button.left:hover {
-    background-color: var(--link-button); /* Fill with the same current background color */
-    color: #fff; /* Ensure text is readable */
+    background-color: var(--link-button);
+    /* Fill with the same current background color */
+    color: #fff;
+    /* Ensure text is readable */
 }
 
 
@@ -534,21 +578,25 @@ main {
 .card-footer .last-edited img {
     width: 20px;
     height: 20px;
-    object-fit: cover; /* Ensures the image fits nicely */
-    border-radius: 0; /* Ensure the image is not rounded */
+    object-fit: cover;
+    /* Ensures the image fits nicely */
+    border-radius: 0;
+    /* Ensure the image is not rounded */
 }
 
 /* Left button specific styling */
 .card-button.left {
     border-radius: 20px 0 0 20px;
-    margin-right: 2.5px; /* Adds gap between the left and right buttons */
+    margin-right: 2.5px;
+    /* Adds gap between the left and right buttons */
 }
 
 /* Right button specific styling */
 .card-button.right {
     border-radius: 0 20px 20px 0;
-    margin-left: 2.5px; /* Adds gap between the left and right buttons */
-    color:var(--buy-button);
+    margin-left: 2.5px;
+    /* Adds gap between the left and right buttons */
+    color: var(--buy-button);
     border: 2px solid var(--buy-button);
 }
 
@@ -569,24 +617,31 @@ main {
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Centers the content horizontally */
-    text-align: center;   /* Centers the text */
-    justify-content: center;  /* Vertically aligns content to center */
+    align-items: center;
+    /* Centers the content horizontally */
+    text-align: center;
+    /* Centers the text */
+    justify-content: center;
+    /* Vertically aligns content to center */
 }
 
 /* Make the entire last-edited section text gray */
 .card-footer .last-edited p,
 .card-footer .last-edited span {
-    color: gray; /* Apply gray to the entire text including 'Last edited by' and username */
+    color: gray;
+    /* Apply gray to the entire text including 'Last edited by' and username */
 }
 
 /* Make the image 50% transparent */
 .card-footer .last-edited img {
-    opacity: 0.5; /* Apply 50% transparency */
-    object-fit: cover; /* Ensures the image maintains its aspect ratio */
+    opacity: 0.5;
+    /* Apply 50% transparency */
+    object-fit: cover;
+    /* Ensures the image maintains its aspect ratio */
 }
 
-.unc-btn, .unc-img {
+.unc-btn,
+.unc-img {
     height: 100%;
 }
 
@@ -594,7 +649,8 @@ main {
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    object-fit: cover;  /* Ensures the image maintains aspect ratio */
+    object-fit: cover;
+    /* Ensures the image maintains aspect ratio */
 }
 
 /* Footer */
@@ -616,17 +672,21 @@ a.footer-link {
 /* /Guide */
 
 .blog-post {
-    border: 1px solid #27272A; /* Changed border color to red */
-    border-radius: 10px; /* Increased border-radius for more rounded corners */
+    border: 1px solid #27272A;
+    /* Changed border color to red */
+    border-radius: 10px;
+    /* Increased border-radius for more rounded corners */
     padding: 16px;
     margin: 16px 0;
-    background-color: #050505; /* Changed background color to green */
+    background-color: #050505;
+    /* Changed background color to green */
 }
 
 .post-title {
     font-size: 24px;
     margin-bottom: 8px;
-    font-weight: bold; /* Make title bold */
+    font-weight: bold;
+    /* Make title bold */
 }
 
 .post-meta {
@@ -640,16 +700,20 @@ a.footer-link {
 }
 
 .post-content a {
-    color: #EF4444; /* Link color */
-    text-decoration: none; /* Remove underline */
+    color: #EF4444;
+    /* Link color */
+    text-decoration: none;
+    /* Remove underline */
 }
 
 .post-content a:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline;
+    /* Underline on hover */
 }
 
 .bold {
-    font-weight: bold; /* Class to make text bold */
+    font-weight: bold;
+    /* Class to make text bold */
 }
 
 .error {
@@ -662,7 +726,8 @@ a.footer-link {
 .error-gif {
     display: block;
     margin: 20px auto;
-    width: 200px; /* Adjust size as needed */
+    width: 200px;
+    /* Adjust size as needed */
     height: auto;
 }
 
@@ -674,11 +739,15 @@ a.footer-link {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--card-color); /* Dark background */
-    color: #fff; /* White text color */
-    padding: 15px 20px; /* Add padding to notification container */
+    background: var(--card-color);
+    /* Dark background */
+    color: #fff;
+    /* White text color */
+    padding: 15px 20px;
+    /* Add padding to notification container */
     border-radius: 8px;
-    border: 1px solid var(--card-border); /* Gray outline border */
+    border: 1px solid var(--card-border);
+    /* Gray outline border */
     max-width: 300px;
     visibility: hidden;
     opacity: 0;
@@ -695,13 +764,15 @@ a.footer-link {
     margin: 0;
     font-size: 18px;
     font-weight: bold;
-    text-shadow: none; /* No glowing text */
+    text-shadow: none;
+    /* No glowing text */
 }
 
 #popup-notification p {
     font-size: 14px;
     margin: 5px 0;
-    text-shadow: none; /* No glowing text */
+    text-shadow: none;
+    /* No glowing text */
 }
 
 #popup-notification .popup-links {
@@ -709,20 +780,24 @@ a.footer-link {
 }
 
 #popup-notification .popup-link {
-    color: yellow; /* Set yellow color for the links */
-    text-decoration: none; /* Remove underline */
+    color: yellow;
+    /* Set yellow color for the links */
+    text-decoration: none;
+    /* Remove underline */
 }
 
 /* Updated button styles */
 #popup-notification button {
     background-color: transparent;
-    color: #ff0000; /* Initial text color */
+    color: #ff0000;
+    /* Initial text color */
     border: 1px solid var(--main-color-2);
     border-radius: 10px;
     padding: 12px 0;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Transition for background and text color */
+    transition: background-color 0.3s, color 0.3s;
+    /* Transition for background and text color */
     width: 100%;
     max-width: none;
     text-align: center;
@@ -734,8 +809,10 @@ a.footer-link {
 }
 
 #popup-notification button:hover {
-    background-color: var(--main-color-2); /* Fill background on hover */
-    color: #fff; /* Change text color on hover */
+    background-color: var(--main-color-2);
+    /* Fill background on hover */
+    color: #fff;
+    /* Change text color on hover */
 }
 
 #popup-notification .close-btn {
@@ -747,28 +824,37 @@ a.footer-link {
     background: none;
     border: none;
     cursor: pointer;
-    text-shadow: none; /* No glowing 'X' */
+    text-shadow: none;
+    /* No glowing 'X' */
 }
 
 #popup-notification .close-btn:hover {
-    color: #32CD32; /* Green color when hovered */
+    color: #32CD32;
+    /* Green color when hovered */
 }
 
 #popup-notification .popup-content {
-    position: relative; /* To position the close button */
-    text-align: center; /* Center align the content */
+    position: relative;
+    /* To position the close button */
+    text-align: center;
+    /* Center align the content */
 }
 
 #popup-notification .popup-image {
-    max-width: 100%; /* Ensure the image doesn't overflow the popup */
-    height: auto; /* Maintain aspect ratio */
-    margin: 10px 0; /* Add spacing around the image */
-    border-radius: 5px; /* Optional: rounded corners */
+    max-width: 100%;
+    /* Ensure the image doesn't overflow the popup */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin: 10px 0;
+    /* Add spacing around the image */
+    border-radius: 5px;
+    /* Optional: rounded corners */
 }
 
 @media screen and (max-width: 600px) {
     #popup-notification .popup-image {
-        display: none; /* Hide the image on small screens */
+        display: none;
+        /* Hide the image on small screens */
     }
 }
 
@@ -778,27 +864,35 @@ a.footer-link {
 /* Misc */
 
 * {
-    scrollbar-width: thin; /* Thin scrollbar */
-    scrollbar-color: #B32624 #070707; /* Thumb color and track color for Firefox */
+    scrollbar-width: thin;
+    /* Thin scrollbar */
+    scrollbar-color: #B32624 #070707;
+    /* Thumb color and track color for Firefox */
 }
 
 /* Custom scrollbar styles for Webkit browsers (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 8px;
+    /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #070707; /* Dark track background */
+    background-color: #070707;
+    /* Dark track background */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(to bottom, rgb(46, 46, 51), #070707); /* Gradient for the thumb */
-    border-radius: 10px; /* Rounded corners for the thumb */
-    border: 2px solid #070707; /* Border around the thumb */
+    background-image: linear-gradient(to bottom, rgb(46, 46, 51), #070707);
+    /* Gradient for the thumb */
+    border-radius: 10px;
+    /* Rounded corners for the thumb */
+    border: 2px solid #070707;
+    /* Border around the thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-image: linear-gradient(to bottom, rgb(31, 31, 36), rgb(46, 46, 51)); /* Hover effect with a different gradient */
+    background-image: linear-gradient(to bottom, rgb(31, 31, 36), rgb(46, 46, 51));
+    /* Hover effect with a different gradient */
 }
 
 .unselectable {
@@ -811,8 +905,10 @@ a.footer-link {
 
 
 .small-text {
-    font-size: 0.7em; /* Adjust size as needed */
-    vertical-align: middle; /* Align text properly */
-    color: gray; /* Set the text color to gray */
+    font-size: 0.7em;
+    /* Adjust size as needed */
+    vertical-align: middle;
+    /* Align text properly */
+    color: gray;
+    /* Set the text color to gray */
 }
-
