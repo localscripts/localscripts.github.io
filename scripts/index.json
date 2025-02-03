@@ -267,6 +267,18 @@
         "warning": true
     },
     {
+        "name": "Skidware",
+        "pros": ["500,000+ Users", "69% UNC", "Level 69"],
+        "neutral": [],
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "link": "https://www.youtube.com/watch?v=xvFZjo5PgG0",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "Mr. Skidder",
+        "lastEditedByImage": "assets/unverified.png",
+        "warning": true
+    },
+    {
         "name": "Aimmy",
         "pros": ["Supports other games", "No keysystem", "Safe to use", "AI-based"],
         "neutral": ["Requires GTX 1050 or better", "Requires training the model"],
