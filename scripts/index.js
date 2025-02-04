@@ -1,8 +1,5 @@
 const protectedLinks = false // Money printer toggle
 
-
-
-
 const typeList = {
     "windows": "Windows",
     "macos": "MacOS",
@@ -45,6 +42,147 @@ function hyperlinkContent(content, type) {
     return content;
 }
 
+function nameToId(name) {
+    return name.toLowerCase().replace(' ', '_');
+}
+
+let cachedJson;
+let cachedCards = [];
+
+function parseJsonCards(cards) {
+    if (!wrapper) {
+        return;
+    }
+
+    cards ??= cachedJson
+
+    wrapper.innerHTML = ''; // Clear any existing cards
+
+    cards.forEach(card => {
+        if (card.hide) {
+            return;
+        }
+
+        const cardId = nameToId(card.name);
+        const foundCard = cachedCards.find(c => c.id == cardId)
+        if (foundCard) {
+            wrapper.appendChild(foundCard.elm);
+            return;
+        }
+
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+
+        cardElement.id = cardId;
+        cachedCards.push({ id: cardId, elm: cardElement });
+
+        const now = new Date();
+        const expires = card.expires ? new Date(card.expires) : null;
+        const isExpired = expires && now > expires;
+
+        if (card.glow && !isExpired) {
+            cardElement.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 0px ${card.glow}`;
+            cardElement.style.borderColor = card.glow;
+        }
+
+        const cardLink = protectedLinks && card.linkprotected
+            ? card.linkprotected
+            : card.link;
+
+        const types = card.types.map(type => `
+                <div class="type-holder">
+                    <img class="unselectable card-type" src="./assets/${type}.png" alt="">
+                    <div class="unselectable tooltip">${typeList[type]}</div>
+                </div>`).join('');
+
+        const pros = card.pros.map(pro => `<li>${hyperlinkContent(pro, 'pros')}</li>`).join('');
+        const neutral = card.neutral.map(item => `<li>${hyperlinkContent(item, 'neutral')}</li>`).join('');
+        const cons = card.cons.map(con => `<li>${hyperlinkContent(con, 'cons')}</li>`).join('');
+
+        const buttonText = isExpired
+            ? (card.buytext || 'View')
+            : (card.buttonText || 'View');
+
+        const buyLink = card.buylink && !isExpired ? `
+                <a href="${card.buylink}" class="card-button right buylink" target="_blank" rel="noopener noreferrer">${card.buytext || 'Buy Now'}</a>
+            ` : '';
+
+        const uncLink = card.unc ? `
+                <a href="${card.unc}" class="unc-btn" target="_blank" rel="noopener noreferrer">
+                    <img class="unselectable unc-img" src="./assets/glow-unc.png" alt="">
+                </a>
+            ` : '';
+
+        const lastEditedBy = card.lastEditedBy ? `
+                <div class="last-edited">
+                    <p>Last edited by <span class="editor-name">${card.lastEditedBy}</span></p>
+                    <img src="${card.lastEditedByImage}" alt="Editor avatar" width="20" height="20">
+                </div>
+            ` : '';
+
+        const html = `
+                <div class="card-info">
+                    <div class="card-types">${types}</div>
+                    <h3 class="card-title">${hyperlinkContent(card.name)}</h3>
+                </div>
+                <div class="card-content">
+                    ${pros ? `<div class="section pros"><h4 class="section-title">Pros</h4><ul>${pros}</ul></div>` : ''}
+                    ${neutral ? `<div class="section neutral"><h4 class="section-title">Neutral</h4><ul>${neutral}</ul></div>` : ''}
+                    ${cons ? `<div class="section cons"><h4 class="section-title">Cons</h4><ul>${cons}</ul></div>` : ''}
+                </div>
+                <div class="card-footer">
+                    <div class="button-wrapper">
+                        <a href="${cardLink}" class="card-button left ${buyLink === '' ? 'rounded-btn' : ''}" target="_blank" rel="noopener noreferrer">${buttonText}</a>
+                        ${buyLink}
+                        ${uncLink}
+                    </div>
+                    ${lastEditedBy}
+                </div>
+            `;
+
+        cardElement.innerHTML = html;
+        wrapper.appendChild(cardElement);
+
+        const buyButton = cardElement.querySelector('.card-button.right.buylink');
+        if (buyButton && card.glow && !isExpired) {
+            buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+            buyButton.style.borderColor = card.glow;
+            buyButton.style.color = card.glow;
+
+            buyButton.addEventListener('mouseover', () => {
+                buyButton.style.boxShadow = `0 0 15px ${card.glow}, 0 0 20px ${card.glow}, 0 0 10px ${card.glow}`;
+                buyButton.style.color = '#ffffff';
+                buyButton.style.backgroundColor = card.glow;
+            });
+
+            buyButton.addEventListener('mouseout', () => {
+                buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+                buyButton.style.color = card.glow;
+                buyButton.style.backgroundColor = '';
+            });
+        }
+
+        if (card.warning) {
+            const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
+            const buttons = cardElement.querySelectorAll('.card-button');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (confirm(warningText)) {
+                        const url = button.getAttribute('href');
+                        if (url) {
+                            window.open(url, '_blank');
+                        }
+                    }
+                });
+            });
+        }
+
+        cachedCards[card]
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const mi = document.getElementById("menu-icon");
     const ml = document.getElementById("menu-list");
@@ -69,129 +207,44 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok) {
                 throw new Error(`HTTP error! Status: ${res.status}`);
             }
+
             return res.json();
         })
         .then(cards => {
-            if (wrapper) {
-                wrapper.innerHTML = ''; // Clear any existing cards
-
-                cards.forEach(card => {
-                    if (card.hide) return;
-
-                    const cardElement = document.createElement('div');
-                    cardElement.classList.add('card');
-
-                    const now = new Date();
-                    const expires = card.expires ? new Date(card.expires) : null;
-                    const isExpired = expires && now > expires;
-
-                    if (card.glow && !isExpired) {
-                        cardElement.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 0px ${card.glow}`;
-                        cardElement.style.borderColor = card.glow;
-                    }
-
-                    const cardLink = protectedLinks && card.linkprotected ? card.linkprotected : card.link;
-
-                    const types = card.types.map(type => `
-                        <div class="type-holder">
-                            <img class="unselectable card-type" src="./assets/${type}.png" alt="">
-                            <div class="unselectable tooltip">${typeList[type]}</div>
-                        </div>
-                    `).join('');
-
-                    const pros = card.pros.map(pro => `<li>${hyperlinkContent(pro, 'pros')}</li>`).join('');
-                    const neutral = card.neutral.map(item => `<li>${hyperlinkContent(item, 'neutral')}</li>`).join('');
-                    const cons = card.cons.map(con => `<li>${hyperlinkContent(con, 'cons')}</li>`).join('');
-
-                    const buttonText = isExpired ? (card.buytext || 'View') : (card.buttonText || 'View');
-
-                    const buyLink = card.buylink && !isExpired ? `
-                        <a href="${card.buylink}" class="card-button right buylink" target="_blank" rel="noopener noreferrer">${card.buytext || 'Buy Now'}</a>
-                    ` : '';
-
-                    const uncLink = card.unc ? `
-                        <a href="${card.unc}" class="unc-btn" target="_blank" rel="noopener noreferrer">
-                            <img class="unselectable unc-img" src="./assets/glow-unc.png" alt="">
-                        </a>
-                    ` : '';
-
-                    const lastEditedBy = card.lastEditedBy ? `
-                        <div class="last-edited">
-                            <p>Last edited by <span class="editor-name">${card.lastEditedBy}</span></p>
-                            <img src="${card.lastEditedByImage}" alt="Editor avatar" width="20" height="20">
-                        </div>
-                    ` : '';
-
-                    const html = `
-                        <div class="card-info">
-                            <div class="card-types">${types}</div>
-                            <h3 class="card-title">${hyperlinkContent(card.name)}</h3>
-                        </div>
-                        <div class="card-content">
-                            ${pros ? `<div class="section pros"><h4 class="section-title">Pros</h4><ul>${pros}</ul></div>` : ''}
-                            ${neutral ? `<div class="section neutral"><h4 class="section-title">Neutral</h4><ul>${neutral}</ul></div>` : ''}
-                            ${cons ? `<div class="section cons"><h4 class="section-title">Cons</h4><ul>${cons}</ul></div>` : ''}
-                        </div>
-                        <div class="card-footer">
-                            <div class="button-wrapper">
-                                <a href="${cardLink}" class="card-button left ${buyLink === '' ? 'rounded-btn' : ''}" target="_blank" rel="noopener noreferrer">${buttonText}</a>
-                                ${buyLink}
-                                ${uncLink}
-                            </div>
-                            ${lastEditedBy}
-                        </div>
-                    `;
-
-                    cardElement.innerHTML = html;
-                    wrapper.appendChild(cardElement);
-
-                    const buyButton = cardElement.querySelector('.card-button.right.buylink');
-                    if (buyButton && card.glow && !isExpired) {
-                        buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
-                        buyButton.style.borderColor = card.glow;
-                        buyButton.style.color = card.glow;
-
-                        buyButton.addEventListener('mouseover', () => {
-                            buyButton.style.boxShadow = `0 0 15px ${card.glow}, 0 0 20px ${card.glow}, 0 0 10px ${card.glow}`;
-                            buyButton.style.color = '#ffffff';
-                            buyButton.style.backgroundColor = card.glow;
-                        });
-
-                        buyButton.addEventListener('mouseout', () => {
-                            buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
-                            buyButton.style.color = card.glow;
-                            buyButton.style.backgroundColor = '';
-                        });
-                    }
-
-                    if (card.warning) {
-                            const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
-                            const buttons = cardElement.querySelectorAll('.card-button');
-                        
-                            buttons.forEach(button => {
-                                button.addEventListener('click', (e) => {
-                                    e.preventDefault();
-                                    if (confirm(warningText)) {
-                                        const url = button.getAttribute('href');
-                                        if (url) {
-                                            window.open(url, '_blank');
-                                        }
-                                    }
-                                });
-                            });
-                        }
-                    });
-                }
-            })
+            cachedJson = cards;
+            parseJsonCards(cards);
+        })
         .catch(err => {
             if (wrapper) {
                 wrapper.innerHTML = `
                     <div class="error">
                         An error occurred while loading the cards: ${err.message}
                     </div>
-                    <img src="assets/fail.gif" alt="Error" class="error-gif">
-                `;
+                    <img src="assets/fail.gif" alt="Error" class="error-gif">`;
             }
             console.error("Error loading JSON:", err);
         });
+});
+
+const searchbar = document.getElementById("exec-search");
+searchbar.addEventListener("keyup", (event) => {
+    const query = event.target.value.toLowerCase().trim();
+    if (query == "") {
+        parseJsonCards();
+        return;
+    }
+
+    const cards = Array.from(cachedCards).filter(
+        c => c.elm.innerText.toLowerCase().includes(query)
+    );
+
+    wrapper.innerHTML = '';
+
+    if (cards.length == 0) {
+        return;
+    }
+
+    cards.forEach(card => {
+        wrapper.appendChild(card.elm);
+    });
 });
