@@ -2,18 +2,14 @@
     --main-color-1: #B32624;
     --main-color-2: #B32624;
     --main-transparent: rgba(0, 0, 0, 0);
-
     --secondary-color-1: #070707;
     --secondary-color-2: rgb(46, 46, 51);
     --tooltip-color-1: #070707;
     --tooltip-color-2: rgb(46, 46, 51);
-
     --paid-color: rgb(0, 255, 0);
-
     --backround-color: #000000;
     --navbar-backround: #000000;
     --navbar-line: #B32624;
-    /*Card */
     --card-border: #0e0d0d;
     --card-color: #000000;
     --link-button: #B32624;
@@ -28,16 +24,12 @@ html, body {
 
 * {
     color: white;
-
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
 }
-
-
-/* Nav */
 
 nav {
     z-index: 1;
@@ -61,12 +53,51 @@ nav {
     padding: 0 1rem;
 }
 
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.search-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    width: 300px;
+    padding: 8px 35px 8px 15px;
+    border: 2px solid var(--navbar-line);
+    border-radius: 20px;
+    background: var(--navbar-backround);
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--main-color-1);
+    box-shadow: 0 0 10px rgba(179, 38, 36, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    font-size: 14px;
+    color: var(--navbar-line);
+    pointer-events: none;
+}
+
 #brand {
     color: white;
     font-size: 1.25rem;
     font-weight: bold;
     text-transform: uppercase;
-    user-select: none; /* Prevent text selection */
+    user-select: none;
 }
 
 #brand-highlight {
@@ -96,7 +127,7 @@ nav {
     font-weight: bold;
     font-size: 0.875rem;
     text-decoration: none;
-    user-select: none; /* Prevent text selection */
+    user-select: none;
 }
 
 #menu-list > li > a::after, #menu-list > li > a:hover::after {
@@ -170,11 +201,44 @@ nav {
     padding: 8px;
     margin: 2px;
     border-radius: 100px;
-    user-select: none; /* Prevent text selection */
+    user-select: none;
 }
 
 .menu-blur li a:hover {
     background-color: var(--navbar-backround);
+}
+
+@media only screen and (max-width: 768px) {
+    .search-container {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #search-input {
+        width: 100%;
+    }
+
+    #nav-container {
+        flex-direction: column;
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    nav {
+        height: auto;
+    }
+
+    .nav-left {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #nav-items {
+        margin-top: 10px;
+    }
 }
 
 @media only screen and (max-width: 552px) {
@@ -197,11 +261,6 @@ nav {
     }
 }
 
-
-
-
-/* Main */
-
 #particle-container {
     z-index: 10;
     position: fixed;
@@ -219,6 +278,7 @@ nav {
     text-decoration: none;
     text-shadow: 0 0 5px rgba(0, 0, 255, 0.8), 0 0 10px rgba(0, 0, 255, 0.6), 0 0 15px rgba(0, 0, 255, 0.4);
 }
+
 .glow-link:hover {
     text-decoration: underline;
 }
@@ -227,31 +287,20 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     padding: 20px;
     margin-top: calc(4rem - 20px);
 }
 
 #notification {
-    width: min(calc(100% - 0px), 1400px); /* Same width as cards */
+    width: min(calc(100% - 0px), 1400px);
     padding: 20px;
     margin: 5px;
     border-radius: 12px;
     border: 1px solid var(--card-border);
     background-color: transparent;
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    text-align: center; /* Centers inline text */
+    box-sizing: border-box;
+    text-align: center;
 }
-
-
-#sfs {
-    text-align: center; /* Centers inline text */
-    display: flex; /* Enables flexbox */
-    flex-direction: column; /* Stacks items vertically */
-    align-items: center; /* Centers content horizontally */
-    justify-content: center; /* Centers content vertically */
-}
-
 
 #notification > h2 {
     color: var(--navbar-backround);
@@ -264,7 +313,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 100%;
     padding: 10px 20px;
 }
@@ -275,7 +323,6 @@ main {
     justify-content: center;
     align-items: stretch;
     gap: 24px;
-
     width: min(100%, 1500px);
 }
 
@@ -284,16 +331,13 @@ main {
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-
     position: relative;
     width: clamp(450px, 100%, 450px);
     padding: 20px;
     border-radius: 12px;
-
     background-color: var(--card-backround);
     border: 1px solid var(--card-border);
-
-    transition: transform 0.1s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -304,7 +348,6 @@ main {
     display: flex;
     flex-direction: row;
     gap: 10px;
-
     position: absolute;
     top: 20px;
     right: 20px;
@@ -322,36 +365,28 @@ main {
 
 .card-type + .tooltip {
     position: absolute;
-
     visibility: hidden;
     left: 50%;
     bottom: 125%;
     padding: 5px;
     transform: translateX(-50%);
     border-radius: 6px;
-
     text-align: center;
-
     background-color: var(--tooltip-color-1);
     border: 1px solid var(--tooltip-color-2);
-
     opacity: 0;
     transition: opacity 0.3s;
-
     white-space: pre;
 }
 
 .card-type + .tooltip::after {
     content: "";
-
     position: absolute;
-
     top: 100%;
     left: 50%;
     margin-left: -5px;
-
     border: 5px solid;
-    border-color:  var(--tooltip-color-2) transparent transparent transparent;
+    border-color: var(--tooltip-color-2) transparent transparent transparent;
 }
 
 @media only screen and (max-width: 578px) {
@@ -366,7 +401,7 @@ main {
         right: 9px;
     }
 }
-  
+
 .card-type:hover + .tooltip {
     visibility: visible;
     opacity: 1;
@@ -374,7 +409,6 @@ main {
 
 .card-title {
     margin-bottom: 15px;
-
     text-shadow: none;
     font-size: 22px;
     font-weight: bold;
@@ -385,7 +419,6 @@ main {
     flex-direction: column;
     justify-content: space-between;
     gap: 30px;
-
     width: 100%;
     margin-top: -20px;
     margin-left: 20px;
@@ -398,6 +431,7 @@ main {
 .pros {
     color: #4ADE80;
 }
+
 .pros .section-title {
     color: #4ADE80;
 }
@@ -405,6 +439,7 @@ main {
 .neutral {
     color: #FACC15;
 }
+
 .neutral .section-title {
     color: #FACC15;
 }
@@ -412,25 +447,25 @@ main {
 .cons {
     color: #E84848;
 }
+
 .cons .section-title {
     color: #E84848;
 }
 
-/* Container for the buttons */
 .card-footer .button-wrapper {
     display: flex;
     justify-content: space-between;
     gap: 0;
     width: 100%;
+    height: 46px;
 }
 
-/* Style for the last-edited image */
 .card-footer .last-edited img {
     width: 20px;
     height: 20px;
-    object-fit: cover; /* Ensures the image fits nicely */
-    border-radius: 0; /* Ensure the image is not rounded */
-    opacity: 0.95; /* Apply 50% transparency */
+    object-fit: cover;
+    border-radius: 0;
+    opacity: 0.95;
 }
 
 .card-footer .card-button {
@@ -449,43 +484,37 @@ main {
     color: rgb(95, 102, 112);
 }
 
-/* Adjust the layout of the last-edited section */
 .card-footer .last-edited {
-    display: flex; /* Align elements horizontally */
-    align-items: center; /* Vertically center the items */
-    gap: 10px; /* Adds space between the user name and the icon */
-    color: gray; /* Make the text gray */
-    flex-direction: row; /* Ensure elements are aligned in a row */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: gray;
+    flex-direction: row;
 }
 
-/* Style for the last-edited image */
 .card-footer .last-edited img {
     width: 20px;
     height: 20px;
-    object-fit: cover; /* Ensures the image fits nicely */
+    object-fit: cover;
 }
 
-/* Make sure the last-edited text doesn't overlap with the menu icon */
 .card-footer .card-status p {
     z-index: 1;
 }
 
-/* Optional: Style for the name and icon within last-edited */
 .card-footer .last-edited p {
-    margin: 0; /* Remove margin from the text */
-    font-size: 0.9rem; /* Adjust font size */
+    margin: 0;
+    font-size: 0.9rem;
 }
 
-
 .card-button {
-    background-color: transparent;
-    color: #333; /* Initial text color */
-    border: 3px solid var(--main-color-2);
+    color: var(--link-button);
+    border: 2px solid var(--link-button);
     border-radius: 25px;
     padding: 12px 0;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Transition for background and text color */
+    transition: background-color 0.3s, color 0.3s;
     width: 100%;
     max-width: none;
     text-align: center;
@@ -496,64 +525,34 @@ main {
     font-weight: 600;
 }
 
-/* Hover effect for the button */
 .card-button:hover {
-    background-color: var(--main-color-2); /* Fill with the same current background color */
-    color: #fff; /* Make text white for readability */
+    background-color: var(--main-color-2);
+    color: #fff;
     filter: brightness(1.4);
 }
 
-/* For the 'right' button */
 .card-button.right:hover {
-    background-color: #4ADE80; /* Fill with the same current background color */
-    color: #fff; /* Ensure text is readable */
+    background-color: #4ADE80;
+    color: #fff;
 }
 
-/* For the 'left' button */
 .card-button.left:hover {
-    background-color: var(--link-button); /* Fill with the same current background color */
-    color: #fff; /* Ensure text is readable */
+    background-color: var(--link-button);
+    color: #fff;
 }
 
-
-.card-button {
-    color: var(--link-button);
-    border: 2px solid var(--link-button);
-}
-
-/* Container for the buttons */
-.card-footer .button-wrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 0;
-    width: 100%;
-    height: 46px;
-}
-
-/* Style for the last-edited image */
-.card-footer .last-edited img {
-    width: 20px;
-    height: 20px;
-    object-fit: cover; /* Ensures the image fits nicely */
-    border-radius: 0; /* Ensure the image is not rounded */
-}
-
-/* Left button specific styling */
 .card-button.left {
     border-radius: 20px 0 0 20px;
-    margin-right: 2.5px; /* Adds gap between the left and right buttons */
+    margin-right: 2.5px;
 }
 
-/* Right button specific styling */
 .card-button.right {
     border-radius: 0 20px 20px 0;
-    margin-left: 2.5px; /* Adds gap between the left and right buttons */
-    color:var(--buy-button);
+    margin-left: 2.5px;
+    color: var(--buy-button);
     border: 2px solid var(--buy-button);
 }
 
-
-/* When both buttons are present, remove inner radius to make the center straight */
 .card-footer .button-wrapper a:first-child.card-button.right,
 .card-footer .button-wrapper a:last-child.card-button.left {
     border-radius: 25px;
@@ -563,27 +562,24 @@ main {
     border-radius: 25px !important;
 }
 
-/* Last edited section styling */
 .last-edited {
     margin-top: 10px;
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Centers the content horizontally */
-    text-align: center;   /* Centers the text */
-    justify-content: center;  /* Vertically aligns content to center */
+    align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
-/* Make the entire last-edited section text gray */
 .card-footer .last-edited p,
 .card-footer .last-edited span {
-    color: gray; /* Apply gray to the entire text including 'Last edited by' and username */
+    color: gray;
 }
 
-/* Make the image 50% transparent */
 .card-footer .last-edited img {
-    opacity: 0.5; /* Apply 50% transparency */
-    object-fit: cover; /* Ensures the image maintains its aspect ratio */
+    opacity: 0.5;
+    object-fit: cover;
 }
 
 .unc-btn, .unc-img {
@@ -594,10 +590,8 @@ main {
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    object-fit: cover;  /* Ensures the image maintains aspect ratio */
+    object-fit: cover;
 }
-
-/* Footer */
 
 footer {
     background-color: transparent;
@@ -613,20 +607,18 @@ a.footer-link {
     color: var(--main-color-1);
 }
 
-/* /Guide */
-
 .blog-post {
-    border: 1px solid #27272A; /* Changed border color to red */
-    border-radius: 10px; /* Increased border-radius for more rounded corners */
+    border: 1px solid #27272A;
+    border-radius: 10px;
     padding: 16px;
     margin: 16px 0;
-    background-color: #050505; /* Changed background color to green */
+    background-color: #050505;
 }
 
 .post-title {
     font-size: 24px;
     margin-bottom: 8px;
-    font-weight: bold; /* Make title bold */
+    font-weight: bold;
 }
 
 .post-meta {
@@ -640,16 +632,16 @@ a.footer-link {
 }
 
 .post-content a {
-    color: #EF4444; /* Link color */
-    text-decoration: none; /* Remove underline */
+    color: #EF4444;
+    text-decoration: none;
 }
 
 .post-content a:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline;
 }
 
 .bold {
-    font-weight: bold; /* Class to make text bold */
+    font-weight: bold;
 }
 
 .error {
@@ -662,23 +654,19 @@ a.footer-link {
 .error-gif {
     display: block;
     margin: 20px auto;
-    width: 200px; /* Adjust size as needed */
+    width: 200px;
     height: auto;
 }
 
-
-/* Notification */
-
-/* Popup notification styles for bottom-right corner */
 #popup-notification {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--card-color); /* Dark background */
-    color: #fff; /* White text color */
-    padding: 15px 20px; /* Add padding to notification container */
+    background: var(--card-color);
+    color: #fff;
+    padding: 15px 20px;
     border-radius: 8px;
-    border: 1px solid var(--card-border); /* Gray outline border */
+    border: 1px solid var(--card-border);
     max-width: 300px;
     visibility: hidden;
     opacity: 0;
@@ -695,13 +683,13 @@ a.footer-link {
     margin: 0;
     font-size: 18px;
     font-weight: bold;
-    text-shadow: none; /* No glowing text */
+    text-shadow: none;
 }
 
 #popup-notification p {
     font-size: 14px;
     margin: 5px 0;
-    text-shadow: none; /* No glowing text */
+    text-shadow: none;
 }
 
 #popup-notification .popup-links {
@@ -709,33 +697,26 @@ a.footer-link {
 }
 
 #popup-notification .popup-link {
-    color: yellow; /* Set yellow color for the links */
-    text-decoration: none; /* Remove underline */
+    color: yellow;
+    text-decoration: none;
 }
 
-/* Updated button styles */
 #popup-notification button {
-    background-color: transparent;
-    color: #ff0000; /* Initial text color */
-    border: 1px solid var(--main-color-2);
-    border-radius: 10px;
-    padding: 12px 0;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Transition for background and text color */
-    width: 100%;
-    max-width: none;
-    text-align: center;
-    box-sizing: border-box;
     margin-top: 10px;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    padding: 8px 0;
+    width: 100%;
+    font-size: 14px;
+    background-color: var(--main-color-1);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-shadow: none;
 }
 
 #popup-notification button:hover {
-    background-color: var(--main-color-2); /* Fill background on hover */
-    color: #fff; /* Change text color on hover */
+    background-color: var(--main-color-1);
 }
 
 #popup-notification .close-btn {
@@ -747,58 +728,52 @@ a.footer-link {
     background: none;
     border: none;
     cursor: pointer;
-    text-shadow: none; /* No glowing 'X' */
+    text-shadow: none;
 }
 
 #popup-notification .close-btn:hover {
-    color: #32CD32; /* Green color when hovered */
+    color: #32CD32;
 }
 
 #popup-notification .popup-content {
-    position: relative; /* To position the close button */
-    text-align: center; /* Center align the content */
+    position: relative;
+    text-align: center;
 }
 
 #popup-notification .popup-image {
-    max-width: 100%; /* Ensure the image doesn't overflow the popup */
-    height: auto; /* Maintain aspect ratio */
-    margin: 10px 0; /* Add spacing around the image */
-    border-radius: 5px; /* Optional: rounded corners */
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 600px) {
     #popup-notification .popup-image {
-        display: none; /* Hide the image on small screens */
+        display: none;
     }
 }
 
-
-
-
-/* Misc */
-
 * {
-    scrollbar-width: thin; /* Thin scrollbar */
-    scrollbar-color: #B32624 #070707; /* Thumb color and track color for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #B32624 #070707;
 }
 
-/* Custom scrollbar styles for Webkit browsers (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #070707; /* Dark track background */
+    background-color: #070707;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(to bottom, rgb(46, 46, 51), #070707); /* Gradient for the thumb */
-    border-radius: 10px; /* Rounded corners for the thumb */
-    border: 2px solid #070707; /* Border around the thumb */
+    background-image: linear-gradient(to bottom, rgb(46, 46, 51), #070707);
+    border-radius: 10px;
+    border: 2px solid #070707;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-image: linear-gradient(to bottom, rgb(31, 31, 36), rgb(46, 46, 51)); /* Hover effect with a different gradient */
+    background-image: linear-gradient(to bottom, rgb(31, 31, 36), rgb(46, 46, 51));
 }
 
 .unselectable {
@@ -809,10 +784,98 @@ a.footer-link {
     user-select: none;
 }
 
-
 .small-text {
-    font-size: 0.7em; /* Adjust size as needed */
-    vertical-align: middle; /* Align text properly */
-    color: gray; /* Set the text color to gray */
+    font-size: 0.7em;
+    vertical-align: middle;
+    color: gray;
 }
 
+#search-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 16px;
+    border: 2px solid var(--navbar-line);
+}
+
+#search-toggle:hover {
+    background: var(--navbar-line);
+    transform: scale(1.05);
+}
+
+.search-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #search-toggle {
+        display: flex;
+    }
+
+    .search-container {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px 20px;
+        background-color: var(--navbar-backround);
+        border-bottom: 2px solid var(--navbar-line);
+        z-index: 999;
+        transform: none;
+    }
+
+    .search-container.show {
+        display: block;
+    }
+
+    #nav-container {
+        flex-direction: column;
+        padding-bottom: 0;
+    }
+
+    .nav-left {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav-buttons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    #menu-icon {
+        display: flex;
+    }
+
+    main {
+        margin-top: 80px;
+    }
+
+    .menu-blur {
+        top: 110px;
+    }
+
+    #notification {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 552px) {
+    .menu-blur {
+        top: 110px;
+    }
+}
