@@ -231,18 +231,17 @@
      padding: 20px;
      margin-top: calc(4rem - 20px);
 }
- #notification {
-     width: min(calc(100% - 0px), 1400px);
-    /* Same width as cards */
-     padding: 20px;
-     margin: 5px;
-     border-radius: 12px;
-     border: 1px solid var(--card-border);
-     background-color: transparent;
-     box-sizing: border-box;
-    /* Ensure padding is included in the width */
-     text-align: center;
-    /* Centers inline text */
+#notification {
+    width: min(100%, 1400px); /* Same width as cards */
+    padding: 20px;
+    margin: 5px;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    background-color: transparent;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    text-align: center; /* Centers inline text */
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
 }
  #sfs {
      text-align: center;
