@@ -1,0 +1,134 @@
+[
+    {
+        "name": "iNIURIA",
+        "pros": ["Best for legit and closet cheating", "Held as the safest internal", "Offers a lifetime package"],
+        "neutral": ["Lack of functions"],
+        "cons": [],
+        "link": "https://iniuria.us",
+        "buttonText": "15.00$ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Neverlose",
+        "pros": ["Compensates 3x for major downtime.", "Dozens of functions available", "Really aggressive rage cheat"],
+        "neutral": ["Very high price point"],
+        "cons": [],
+        "link": "https://neverlose.cc",
+        "buttonText": "29.00$ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Memesense",
+        "pros": ["Decent for legit cheating", "Very cheap price point"],
+        "neutral": ["Doesn't have a lifetime package", "Lack of functions"],
+        "cons": [],
+        "link": "https://memesense.gg",
+        "buttonText": "5.00$ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Midnight",
+        "pros": ["Decent amount of features", "Very cheap price point", "Pretty good semi-rage"],
+        "neutral": ["Doesn't have a lifetime package"],
+        "cons": [],
+        "link": "https://midnight.im/",
+        "buttonText": "3.65$ per 2 weeks",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Fantasy cat",
+        "pros": ["External - More security, fewer features", "Made for legit and closet cheating", "Has a custom Lua environment"],
+        "neutral": ["Very high price point"],
+        "cons": [],
+        "link": "https://constelia.ai/",
+        "buttonText": "200.00$ lifetime",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Nixware",
+        "pros": ["Best for semi-rage", "Cheapest rage cheat", "Good visuals"],
+        "neutral": ["No lifetime package"],
+        "cons": [],
+        "link": "https://nixware.cc/",
+        "buttonText": "5.00$ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Gamesense",
+        "pros": ["Amazing for rage cheating"],
+        "neutral": ["300$ to get invited", "Not worth the overall price"],
+        "cons": ["Moderators will ban anyone for money"],
+        "link": "https://gamesense.pub",
+        "buttonText": "20.00$ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Aimware",
+        "pros": ["Good for cracked accounts", "Offers a lifetime package"],
+        "neutral": ["Often detected", "Not worth the price"],
+        "cons": [],
+        "link": "https://aimware.net",
+        "buttonText": "20.00€ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Fatality",
+        "pros": ["Really good for rage cheating", "Beats most rage cheats"],
+        "neutral": ["Invite only"],
+        "cons": [],
+        "link": "https://fatality.win/",
+        "buttonText": "20.00$ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Underical",
+        "pros": ["Subscriptions extend during downtime", "Has GS, AW an Primordial"],
+        "neutral": ["HWID reset only once every two weeks", "Cracks might be old and unstable"],
+        "cons": ["The owner has a very shady background"],
+        "link": "https://unk.is",
+        "buttonText": "$5.99 per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "Primordial",
+        "pros": ["50.00$ lifetime CS:GO and CS2", "Decent for legit cheating"],
+        "neutral": ["Need to pay for the cheat after invited"],
+        "cons": ["Moderators ban people for money", "You can find their source code on github"],
+        "link": "https://primordial.dev/",
+        "buttonText": "10.00$ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
+        "name": "expandera",
+        "pros": ["Subscriptions extend during downtime", "Has Fatal, Plague, Prim and AW"],
+        "neutral": ["$0.50 to reset your HWID", "Cracks are usually unstable"],
+        "cons": ["Supports don't support you at all", "Very slow at updating cheats"],
+        "link": "https://expandera.win",
+        "buttonText": "From 3.99$ per month",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    }
+]

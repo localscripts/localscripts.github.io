@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>voxlis.NET</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/globe.ico">
+
+    <!-- Font Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Meta Tags -->
+    <meta name="title" content="voxlis.NET | Ready to Win?">
+    <meta name="description" content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="voxlis.NET | Ready to Win?">
+    <meta property="og:description" content="voxlis.NET - The go-to source for injectors: everything you will need, all in one place.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://voxlis.net">
+    <meta property="og:image" content="./assets/voxlis.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#EF4444">
+
+    <!-- Scripts -->
+    <script defer src="/scripts/404.js"></script>
+
+    <style>
+/* Additional styles for the text */
+/* Additional styles for the text */
+#center-text-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.big-text {
+    font-size: 4em;
+    color: red;
+    font-weight: bold;
+    /* Small glow effect */
+    text-shadow: 0 0 5px rgb(88, 0, 0), 0 0 10px rgb(83, 0, 0);
+}
+
+.small-text {
+    font-size: 1.5em;
+    color: red;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <canvas id="particle-container"></canvas>
+
+    <nav>
+        <div id="nav-container">
+            <p id="brand">www.<span id="brand-highlight">voxlis</span>.NET</p>
+            <div id="nav-items">
+                <button type="button" aria-label="Mobile menu" id="menu-icon" class="unselectable"><img class="unselectable" src="/assets/menu.svg" alt="" width="30" height="30"></button>
+                <ul id="menu-list" class="unselectable">
+                    <li><a class="unselectable" href="/">Home</a></li>
+                    <li><a class="unselectable" href="/discord">Discord</a></li>
+                    <li><a class="unselectable" href="https://github.com/localscripts/localscripts.github.io/blob/main/scripts/index.json">Contribute</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Centered text block -->
+    <div id="center-text-wrapper">
+        <p class="big-text">This page doesn't exist! D=</p>
+        <p class="small-text">Need help?</p>
+        <p class="small-text">voxlis.NET/discord</p>
+    </div>
+
+    <div>
+        <div id="cards-wrapper">
+            <div id="cards-align">
+                <!-- Cards are populated here -->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
