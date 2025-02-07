@@ -340,7 +340,8 @@
         "types": ["windows"],
         "lastEditedBy": "Requested",
         "lastEditedByImage": "assets/unverified.png",
-        "warning": true
+        "warning": true,
+        "hide": true
     },
     {
         "name": "Mint",
