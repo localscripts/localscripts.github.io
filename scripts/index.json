@@ -150,7 +150,7 @@
         "linkprotected": "https://lootdest.org/s?TRFUTJf5",
         "buttonText": "FREE",
         "types": ["windows"],
-        "unc": "http://voxlis.net/assets/unc/Velocity.json"
+        "unc": "http://voxlis.net/assets/unc/Velocity.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "warning": true
