@@ -1,7 +1,14 @@
-const protectedLinks = false // Money printer toggle
+const currentDate = new Date();
+const currentDay = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 5 = Friday, 6 = Saturday
 
+let protectedLinks = true;
 
+// Check if today is Friday (5) through Sunday (0) and set protectedLinks to true
+if (currentDay >= 6 || currentDay === 0) {
+    protectedLinks = true;
+}
 
+console.log(protectedLinks); // true if Friday to Sunday, false otherwise
 
 const typeList = {
     "windows": "Windows",
@@ -13,7 +20,6 @@ const typeList = {
     "unc": "UNC and sUNC tested by voxlis.NET"
 };
 
-// Ensure the wrapper is defined
 const wrapper = document.getElementById('cards-align');
 
 if (!wrapper) {
@@ -73,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(cards => {
             if (wrapper) {
-                wrapper.innerHTML = ''; // Clear any existing cards
+                wrapper.innerHTML = ''; 
 
                 cards.forEach(card => {
                     if (card.hide) return;
