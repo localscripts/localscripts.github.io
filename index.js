@@ -1,7 +1,14 @@
-const protectedLinks = false 
+const currentDate = new Date();
+const currentDay = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 5 = Friday, 6 = Saturday
 
+let protectedLinks = false;
 
+// Check if today is Friday (5) through Sunday (0) and set protectedLinks to true
+if (currentDay >= 6 || currentDay === 0) {
+    protectedLinks = true;
+}
 
+console.log(protectedLinks); // true if Friday to Sunday, false otherwise
 
 const typeList = {
     "windows": "Windows",
