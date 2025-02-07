@@ -204,6 +204,19 @@
         "lastEditedByImage": "assets/verified.png"
     },
     {
+        "name": "Velocity",
+        "pros": ["Level 8", "100% UNC"],
+        "neutral": ["New exploit"],
+        "cons": [],
+        "link": "https://discord.gg/79Cv7rQU8x",
+        "linkprotected": "https://lootdest.org/s?TRFUTJf5",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "warning": true
+    },
+    {
         "name": "Celery",
         "pros": ["Built a decent reputation", "Has a decompiler", "94% UNC~", "Level 8"],
         "neutral": ["Has/Had vulnerabilities", "8.00$ monthly"],
