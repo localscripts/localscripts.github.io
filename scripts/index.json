@@ -141,6 +141,20 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
      },
+      {
+        "name": "Velocity",
+        "pros": ["Has a decompiler", "98% UNC [98% UNC]", "Level 8"],
+        "neutral": ["New exploit- Safety is unknown"],
+        "cons": [],
+        "link": "https://discord.gg/79Cv7rQU8x",
+        "linkprotected": "https://lootdest.org/s?TRFUTJf5",
+        "buttonText": "FREE",
+        "types": ["windows"],
+        "unc": "http://voxlis.net/assets/unc/Velocity.json"
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "warning": true
+    },
     {
         "name": "Solara v3",
         "pros": ["Has a decompiler","51% sUNC [66% UNC]"],
@@ -202,19 +216,6 @@
         "types": ["windows"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
-    },
-    {
-        "name": "Velocity",
-        "pros": ["Level 8", "100% UNC"],
-        "neutral": ["New exploit"],
-        "cons": [],
-        "link": "https://discord.gg/79Cv7rQU8x",
-        "linkprotected": "https://lootdest.org/s?TRFUTJf5",
-        "buttonText": "FREE",
-        "types": ["windows"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "warning": true
     },
     {
         "name": "Celery",
