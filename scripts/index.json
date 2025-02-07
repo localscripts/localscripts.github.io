@@ -149,7 +149,7 @@
         "link": "https://discord.gg/79Cv7rQU8x",
         "linkprotected": "https://lootdest.org/s?TRFUTJf5",
         "buttonText": "FREE",
-        "types": ["windows"],
+        "types": ["unc", "windows"],
         "unc": "http://voxlis.net/assets/unc/Velocity.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
