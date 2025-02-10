@@ -1,7 +1,7 @@
 const currentDate = new Date();
 const currentDay = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 5 = Friday, 6 = Saturday
 
-let protectedLinks = true;
+let protectedLinks = false;
 
 // Check if today is Friday (5) through Sunday (0) and set protectedLinks to true
 if (currentDay >= 6 || currentDay === 0) {
