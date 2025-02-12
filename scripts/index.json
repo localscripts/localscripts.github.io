@@ -278,7 +278,8 @@
         "types": ["unc", "android", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "warning": true
+        "warning": true,
+        "hide": true
     },
     {
         "name": "Aimmy",
