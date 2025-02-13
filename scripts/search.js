@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', (e) => {
+        if (!searchToggle) {
+            return;
+        }
         if (!searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
             searchContainer.classList.remove('show');
         }

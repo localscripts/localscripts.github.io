@@ -55,6 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const mi = document.getElementById("menu-icon");
     const ml = document.getElementById("menu-list");
 
+    
+
     if (mi && ml) {
         let mb = ml.cloneNode(true);
         mb.removeAttribute('id');
