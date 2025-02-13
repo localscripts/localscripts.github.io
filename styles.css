@@ -19,6 +19,9 @@
     --link-button: #B32624;
     --buy-button: #4ADE80;
     --card-background: rgba(0, 0, 0, 0.26);
+    --color-negative: #E84848;
+    --color-neutral: #FACC15;
+    --color-positive: #4ADE80;
 }
 
 .purple {
@@ -42,6 +45,9 @@
     --link-button: #6716aa;
     --buy-button: #4ADE80;
     --card-background: rgba(0, 0, 0, 0.26);
+    --color-negative: #E84848;
+    --color-neutral: #FACC15;
+    --color-positive: #4ADE80;
 }
 
 
@@ -452,27 +458,27 @@ main {
 }
 
 .pros {
-    color: #4ADE80;
+    color: var(--color-positive);
 }
 
 .pros .section-title {
-    color: #4ADE80;
+    color: var(--color-positive);
 }
 
 .neutral {
-    color: #FACC15;
+    color: var(--color-neutral);
 }
 
 .neutral .section-title {
-    color: #FACC15;
+    color: var(--color-neutral);
 }
 
 .cons {
-    color: #E84848;
+    color: var(--color-negative);
 }
 
 .cons .section-title {
-    color: #E84848;
+    color: var(--color-negative);
 }
 
 /* Container for the buttons */
@@ -816,7 +822,7 @@ a.footer-link {
 /* Updated button styles */
 #popup-notification button {
     background-color: transparent;
-    color: #ff0000;
+    color: var(--main-color-1);
     /* Initial text color */
     border: 1px solid var(--main-color-2);
     border-radius: 10px;
@@ -889,7 +895,7 @@ a.footer-link {
 * {
     scrollbar-width: thin;
     /* Thin scrollbar */
-    scrollbar-color: #B32624 #070707;
+    scrollbar-color: var(--main-color-1) #070707;
     /* Thumb color and track color for Firefox */
 }
 
@@ -962,6 +968,12 @@ a.footer-link {
 .cons-small-text-card {
     color: #ff0000;
     /* Red for cons */
+}
+
+#theme-selector {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
 }
 
 #theme-selector, #theme-selector>option {

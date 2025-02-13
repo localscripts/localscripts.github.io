@@ -63,5 +63,5 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(text);
     container.appendChild(themeSelector);
 
-    menuList.appendChild(container);
+    document.body.appendChild(container);
 })
