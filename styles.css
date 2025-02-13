@@ -25,6 +25,7 @@
 }
 
 .purple {
+    /* Main Themeing */
     --main-color-1: #6716aa;
     --main-color-2: #6716aa;
     --main-color-dim-1: #6716aacc;
@@ -45,6 +46,7 @@
     --link-button: #6716aa;
     --buy-button: #4ADE80;
     --card-background: rgba(0, 0, 0, 0.26);
+    /* Pros, Cons, Neutral Colors */
     --color-negative: #E84848;
     --color-neutral: #FACC15;
     --color-positive: #4ADE80;
