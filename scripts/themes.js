@@ -2,7 +2,7 @@
 const themes = [
     {
         name: "Default",
-        author: "Voxlis.net"
+        author: "voxlis.NET"
     },
     {
         name: "Purple",
