@@ -1,4 +1,4 @@
-.default {
+.default, :root {
     --main-color-1: #B32624;
     --main-color-2: #B32624;
     --main-color-dim-1: #B32624cc;
