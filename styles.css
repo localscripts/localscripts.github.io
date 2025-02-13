@@ -789,3 +789,24 @@
     /* Set the text color to gray */
 }
  
+/* Base styling for small-text-card */
+.small-text-card {
+    font-size: 0.75em; /* Adjust size as needed */
+    font-weight: 600; /* Make the font thick like card-button */
+    color: inherit;  /* Allow it to inherit the color from its parent element */
+    font-family: 'Montserrat', sans-serif; /* Same font-family as card-button */
+}
+
+
+/* Color classes for each context */
+.pros-small-text-card {
+    color: #00ff00; /* Green for pros */
+}
+
+.neutral-small-text-card {
+    color: #ffffff; /* White for neutral */
+}
+
+.cons-small-text-card {
+    color: #ff0000; /* Red for cons */
+}
