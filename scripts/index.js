@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const buttons = cardElement.querySelectorAll('.card-button');
                     buttons.forEach(button => {
-                        button.innerHTML = button.innerHTML.replace(/\b(weekly|monthly)\b/gi, (match) => {
+                        button.innerHTML = button.innerHTML.replace(/\b(weekly|monthly|lifetime)\b/gi, (match) => {
                             // Check if the button has any color classes (pros, cons, neutral) and apply the appropriate color class
                             let colorClass = '';
                     
