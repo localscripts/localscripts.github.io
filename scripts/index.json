@@ -279,7 +279,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "warning": true,
-        "hide": true
+        "hide": false
     },
     {
         "name": "Aimmy",
