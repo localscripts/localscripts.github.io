@@ -380,5 +380,16 @@
         "types": ["windows"],
         "lastEditedBy": "sk337",
         "lastEditedByImage": "assets/unverified.png"
+    },
+    {
+        "name": "KRNL",
+        "pros": [],
+        "neutral": [],
+        "cons": [],
+        "link": "https://krnl.cat",
+        "types": ["windows"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
     }
+]
 ]
