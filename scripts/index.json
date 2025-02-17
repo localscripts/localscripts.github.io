@@ -116,7 +116,7 @@
     },
     {
         "name": "Macsploit",
-        "pros": ["Has a decompiler", "98% UNC~", "Level 8"],
+        "pros": ["Has a decompiler", "100% UNC", "Level 8"],
         "neutral": ["Updates are slightly late"],
         "cons": [],
         "link": "https://discord.gg/macsploit",
