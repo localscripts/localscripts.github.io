@@ -190,7 +190,7 @@
         "linkprotected": "https://loot-link.com/s?a6c62bd9",
         "buttonText": "FREE",
         "types": ["unc", "android", "ios", "key"],
-        "unc": "https://voxlis.net/assets/unc/delta.json"
+        "unc": "https://voxlis.net/assets/unc/delta.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
