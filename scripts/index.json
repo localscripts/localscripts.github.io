@@ -356,7 +356,7 @@
         "lastEditedBy": "Requested",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true,
-        "hide": true
+        "hide": false
     },
     {
         "name": "Mint",
