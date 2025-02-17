@@ -154,7 +154,7 @@
         "lastEditedByImage": "assets/verified.png",
         "lastEditedBy": "voxlis.NET",
         "warning": true,
-        "warningText": "Turns out a ratter was in the dev team, please do not fucking ignore warnings, we had this warning a long time ago, so please fucking think before installing shit with warnings"
+        "warningText": "⚠️ **Turns out a ratter was in the dev team!** ⚠️ 🚨 **DO NOT ignore warnings!** 🚨 We had this warning a long time ago, so **think** before fucking installing anything with warnings! ⚠️"
     },
     {
         "name": "Solara v3",
@@ -291,7 +291,7 @@
         "types": ["unc", "android", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "warningText": "The exploit owner has a history of multiple community warnings. Previously known as 'Nexam' before rebranding as 'Ronix.' Use it at your own risk, as it may contain malware or similar threats!",
+        "warningText": "⚠️ **The exploit owner has a history of multiple community warnings!** ⚠️ Previously known as **'Nexam'**, now rebranded as **'Ronix.'** 🚨 **Use at your own risk**—it may contain malware or similar threats! ⚠️",
         "warning": true,
         "hide": false
     },
