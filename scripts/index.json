@@ -50,13 +50,14 @@
     },
     {
         "name": "Cryptic",
-        "pros": ["100% UNC", "Level 8"],
+        "pros": ["100% UNC [ERR% sUNC]", "Level 8"],
         "neutral": ["Has a keysystem"],
         "cons": [],
         "link": "https://getcryptic.net",
         "linkprotected": "https://loot-link.com/s?fdbe810b",
         "buttonText": "FREE",
         "types": ["unc", "android", "windows", "key"],
+        "unc": "https://voxlis.net/assets/unc/cryptic.json"
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
@@ -98,13 +99,14 @@
     },
     {
         "name": "CodeX",
-        "pros": ["98% UNC~", "Level 8"],
+        "pros": ["98% UNC [ERR% sUNC]", "Level 8"],
         "neutral": ["Issues with the keysystem", "Uses core technology from ArceusX"],
         "cons": [],
         "link": "https://codex.lol",
         "linkprotected": "https://lootdest.org/s?e0d4be60",
         "buttonText": "Website",
         "types": ["android", "ios", "key"],
+        "unc": "https://voxlis.net/assets/unc/codex.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "warning": false,
@@ -141,7 +143,7 @@
      },
       {
         "name": "Velocity",
-        "pros": ["Has a decompiler", "98% UNC [98% UNC]", "Level 8"],
+        "pros": ["Has a decompiler", "98% sUNC [98% UNC]", "Level 8"],
         "neutral": ["New exploit- Safety is unknown"],
         "cons": [],
         "link": "https://discord.gg/79Cv7rQU8x",
@@ -181,13 +183,14 @@
     },
     {
         "name": "Delta",
-        "pros": ["Best script support", "100% UNC", "Level 8"],
+        "pros": ["Best script support", "100% UNC [91% sUNC]", "Level 8"],
         "neutral": ["Includes a keysystem"],
         "cons": [],
         "link": "https://deltaexploits.gg",
         "linkprotected": "https://loot-link.com/s?a6c62bd9",
         "buttonText": "FREE",
         "types": ["unc", "android", "ios", "key"],
+        "unc": "https://voxlis.net/assets/unc/delta.json"
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
@@ -265,13 +268,14 @@
     },
     {
         "name": "VegaX",
-        "pros": ["2 day long keys", "99% UNC", "Level 8"],
+        "pros": ["2 day long keys", "98% UNC [ERR% sUNC]", "Level 8"],
         "neutral": ["Owned By 1 F0", "Includes a Key System"],
         "cons": [],
         "link": "https://vegax.gg/",
         "linkprotected": "https://loot-link.com/s?69c8310f",
         "buttonText": "FREE",
         "types": ["unc","android", "key"],
+        "unc": "https://voxlis.net/assets/unc/vegax.json"
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
