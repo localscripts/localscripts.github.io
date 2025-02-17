@@ -193,7 +193,7 @@
     },
         {
         "name": "KRNL",
-        "pros": ["88% sUNC", "Level 8"],
+        "pros": ["88% UNC", "Level 8"],
         "neutral": ["Includes a keysystem"],
         "cons": [],
         "link": "https://krnl.cat",
