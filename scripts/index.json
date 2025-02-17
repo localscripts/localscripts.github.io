@@ -16,6 +16,37 @@
         "glow": "#06A3F1"
     },
     {
+        "name": "AWP.gg",
+        "pros": ["Has a decompiler", "99% sUNC [100% UNC]", "Level 8"],
+        "neutral": [],
+        "cons": [],
+        "link": "https://discord.gg/awpgg",
+        "linkprotected": "https://lootdest.org/s?2cf8ec54",
+        "buttonText": "Website",
+        "types": ["unc", "windows"],
+        "unc": "/assets/unc/awp.json",
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "warning": false,
+        "warningText": "Coupon 'voxlis' for 5% off!",
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f1",
+        "buytext": "$6.99 weekly"
+    },
+    {
+        "name": "Macsploit",
+        "pros": ["Has a decompiler", "98% UNC~", "Level 8"],
+        "neutral": ["Updates are slightly late"],
+        "cons": [],
+        "link": "https://discord.gg/macsploit",
+        "linkprotected": "https://loot-link.com/s?e0379edc",
+        "buttonText": "Website",
+        "types": ["macos"],
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f8",
+        "buytext": "$9.99 lifetime"
+    },
+    {
         "name": "Nihon",
         "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
         "neutral": [],
@@ -64,23 +95,6 @@
         "buytext": "$4.99 monthly"
     },
     {
-        "name": "AWP.gg",
-        "pros": ["Has a decompiler", "99% sUNC [100% UNC]", "Level 8"],
-        "neutral": [],
-        "cons": [],
-        "link": "https://discord.gg/awpgg",
-        "linkprotected": "https://lootdest.org/s?2cf8ec54",
-        "buttonText": "Website",
-        "types": ["unc", "windows"],
-        "unc": "/assets/unc/awp.json",
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "warning": false,
-        "warningText": "Coupon 'voxlis' for 5% off!",
-        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f1",
-        "buytext": "$6.99 weekly"
-    },
-    {
         "name": "Synapse Z",
         "pros": ["Has a decompiler", "nil% sUNC [100% UNC]", "Level 8"],
         "neutral": ["Very not stable, also with installation"],
@@ -113,20 +127,6 @@
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f6",
         "buytext": "$4.97 monthly"
-    },
-    {
-        "name": "Macsploit",
-        "pros": ["Has a decompiler", "98% UNC~", "Level 8"],
-        "neutral": ["Updates are slightly late"],
-        "cons": [],
-        "link": "https://discord.gg/macsploit",
-        "linkprotected": "https://loot-link.com/s?e0379edc",
-        "buttonText": "Website",
-        "types": ["macos"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f8",
-        "buytext": "$9.99 lifetime"
     },
      {
         "name": "Swift",
