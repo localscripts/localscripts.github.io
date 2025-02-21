@@ -9,6 +9,8 @@ if (currentDay >= 6 || currentDay === 0) {
 }
 
 console.log(protectedLinks); // true if Friday to Sunday, false otherwise
+console.log(currentDay);
+
 
 const typeList = {
     "windows": "Windows",
