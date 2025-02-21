@@ -140,21 +140,6 @@
         "unc": "/assets/unc/swift.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
-     },
-      {
-        "name": "Velocity",
-        "pros": ["Has a decompiler", "98% sUNC [98% UNC]", "Level 8"],
-        "neutral": ["New exploit- Safety is unknown"],
-        "cons": [],
-        "link": "https://discord.gg/79Cv7rQU8x",
-        "linkprotected": "https://lootdest.org/s?TRFUTJf5",
-        "buttonText": "FREE",
-        "types": ["unc", "windows"],
-        "unc": "http://voxlis.net/assets/unc/Velocity.json",
-        "lastEditedByImage": "assets/verified.png",
-        "lastEditedBy": "voxlis.NET",
-        "warning": true,
-        "warningText": "⚠️ **Turns out a ratter was in the dev team!** ⚠️ 🚨 **DO NOT ignore warnings!** 🚨 We had this warning a long time ago, so **think** before fucking installing anything with warnings! ⚠️"
     },
     {
         "name": "Solara v3",
@@ -240,7 +225,21 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "hide": true
-
+    },
+    {
+        "name": "Velocity",
+        "pros": ["Has a decompiler", "98% sUNC [98% UNC]", "Level 8"],
+        "neutral": ["New exploit- Safety is unknown"],
+        "cons": [],
+        "link": "https://discord.gg/79Cv7rQU8x",
+        "linkprotected": "https://lootdest.org/s?TRFUTJf5",
+        "buttonText": "FREE",
+        "types": ["unc", "windows"],
+        "unc": "http://voxlis.net/assets/unc/Velocity.json",
+        "lastEditedByImage": "assets/verified.png",
+        "lastEditedBy": "voxlis.NET",
+        "warning": true,
+        "warningText": "🐀🐀🐀⚠️ **Turns out a ratter was in the dev team!** ⚠️ 🚨 **DO NOT ignore warnings!** 🚨 We had this warning a long time ago, so **think** before fucking installing anything with warnings! ⚠️🐀🐀🐀"
     },
     {
         "name": "Apple-Ware",
