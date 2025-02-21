@@ -129,6 +129,19 @@
         "buytext": "$4.97 monthly"
     },
      {
+        "name": "Matcha",
+        "pros": ["External", "Driver based", "Decompiler + Explorer"],
+        "neutral": [],
+        "cons": [],
+        "link": "https://discord.gg/AURAHhSMxc",
+        "linkprotected": "https://loot-link.com/s?JoinvCGt",
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f3",
+        "buytext": "$9.99 lifetime",
+        "types": ["windows"],
+        "lastEditedBy": "sk337",
+        "lastEditedByImage": "assets/unverified.png"
+    },
+     {
         "name": "Swift",
         "pros": ["Has a decompiler", "97% sUNC [96% UNC]", "Level 8"],
         "neutral": ["Expect crashes"],
@@ -186,6 +199,7 @@
         "neutral": ["Includes a keysystem"],
         "cons": [],
         "link": "https://krnl.cat",
+        "linkprotected": "https://loot-link.com/s?1t1kGlLB",
         "types": ["unc", "android", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
@@ -363,7 +377,7 @@
         "neutral": ["Level 3"],
         "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
         "link": "https://discord.gg/vfjYpMs9js",
-        "linkp": "https://loot-link.com/s?471fa603",
+        "linkprotected": "https://loot-link.com/s?471fa603",
         "buttonText": "FREE",
         "types": ["unc", "windows"],
         "lastEditedBy": "Console",
@@ -382,17 +396,5 @@
         "lastEditedBy": "Mr. Ratter",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true
-    },
-    {
-        "name": "Matcha",
-        "pros": ["External", "Driver based", "Decompiler + Explorer"],
-        "neutral": [],
-        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
-        "link": "https://discord.gg/matchalol",
-        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f3",
-        "buytext": "$9.99 lifetime",
-        "types": ["windows"],
-        "lastEditedBy": "sk337",
-        "lastEditedByImage": "assets/unverified.png"
     }
 ]
