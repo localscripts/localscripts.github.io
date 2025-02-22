@@ -1,16 +1,30 @@
 const currentDate = new Date();
-const currentDay = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 5 = Friday, 6 = Saturday
+const currentDay = currentDate.getDay(); // Get current day (0-6)
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-let protectedLinks = true;
+let protectedLinks = false;
 
-// Check if today is Friday (5) through Sunday (0) and set protectedLinks to true
-if (currentDay >= 6 || currentDay === 0) {
+// Define which days enable link protection
+const protectedDays = [0, 1, 5, 6]; // Sunday (0), Friday (5), Saturday (6)
+// Generate table data
+const tableData = days.map((day, index) => ({
+    Day: day,
+    "Day Number": index,
+    "Protected Links": protectedDays.includes(index) ? "✅ Enabled" : "❌ Disabled"
+}));
+
+console.table(tableData);
+
+// Check if today requires protection
+if (protectedDays.includes(currentDay)) {
     protectedLinks = true;
+    console.log(`🔒 Protected links enabled because today is ${days[currentDay]}.`);
+    console.log('🔰 Current state: ' + protectedLinks)
+} else {
+    protectedLinks = false;
+    console.log(`🔓 Protected links disabled because today is ${days[currentDay]}.`);
+    console.log('🔰 Current state: ' + protectedLinks)
 }
-
-console.log(protectedLinks); // true if Friday to Sunday, false otherwise
-console.log(currentDay);
-
 
 const typeList = {
     "windows": "Windows",
@@ -21,6 +35,7 @@ const typeList = {
     "server": "Serversided",
     "unc": "UNC and sUNC tested by voxlis.NET"
 };
+
 
 const wrapper = document.getElementById('cards-align');
 
@@ -223,3 +238,85 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error loading JSON:", err);
         });
 });
+
+(function() {
+    // Save the original console.log function
+    const originalLog = console.log;
+
+    // Override console.log to add custom styling
+    console.log = function(...args) {
+        // Custom styles
+        const style = 'color: #fff; background-color: #007bff; font-weight: bold; padding: 2px 5px; border-radius: 4px;';
+
+        // Check if the input includes the 'printLinks' command
+        if (args.includes('printLinks')) {
+            // Fetch and print the links only when the command 'printLinks' is entered
+            fetch("scripts/index.json")
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error(`HTTP error! Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then(cards => {
+                    // Print all links from the JSON
+                    cards.forEach(card => {
+                        if (card.link) {
+                            originalLog(`%cName: ${card.name}`, style); // Highlight the name
+                            originalLog(`%cLink: ${card.link}`, style); // Highlight the link
+                        }
+                    });
+                })
+                .catch(err => {
+                    originalLog("Error loading JSON:", err);
+                });
+        } else {
+            // Otherwise, call the original console.log
+            originalLog(...args);
+        }
+    };
+
+    // Create the unpack function to search for a specific key in the JSON
+    window.unpack = function() {
+        const style = 'color: #fff; background-color:rgb(0, 0, 0); font-weight: bold; padding: 2px 5px; border-radius: 4px;';
+        // Fetch the JSON data
+        fetch("scripts/index.json")
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(cards => {
+                // Get all the keys of the cards (assuming the cards have consistent keys)
+                const keys = Object.keys(cards[0]);
+                originalLog("%cAvailable keys for selection:", style); // Highlight the "Available keys" label
+                keys.forEach((key, index) => {
+                    originalLog(`%c${index + 1}: ${key}`, style); // Highlight the key numbers and names
+                });
+
+                // Prompt the user to select a key (e.g., 1, 2, 3...)
+                const selectedIndex = prompt(`Enter the number of the key you want to view (1 to ${keys.length}):`);
+                const selectedKey = keys[parseInt(selectedIndex) - 1];
+
+                if (selectedKey) {
+                    // Print the name and selected key's values
+                    originalLog(`%cShowing values for key: ${selectedKey}`, style); // Highlight the selection message
+                    cards.forEach(card => {
+                        if (card[selectedKey] !== undefined) {
+                            originalLog(`%cName: ${card.name}`, style); // Highlight the name of the card
+                            originalLog(`%c${selectedKey}: ${card[selectedKey]}`, style); // Highlight the selected key's value
+                        }
+                    });
+                } else {
+                    originalLog("Invalid selection.");
+                }
+            })
+            .catch(err => {
+                originalLog("Error loading JSON:", err);
+            });
+    };
+
+    // Inform the user that the unpack function is active
+    console.log('%c✅ unpack() function is active', 'color: green; font-weight: bold;');
+})();
