@@ -1,7 +1,7 @@
 [
     {
         "name": "Wave",
-        "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
+        "pros": ["Amazing updating schedule", "Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
         "neutral": [],
         "link": "https://getwave.gg",
         "linkprotected": "https://loot-link.com/s?e31027c7",
@@ -13,11 +13,11 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f0",
         "buytext": "$7.49 weekly",
-        "glow": "#06A3F1"
+        "outline": "#06A3F1"
     },
     {
         "name": "AWP.gg",
-        "pros": ["Has a decompiler", "99% sUNC [100% UNC]", "Level 8"],
+        "pros": ["Emulates Roblox for safety", "Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
         "neutral": [],
         "cons": [],
         "link": "https://discord.gg/awpgg",
@@ -30,7 +30,8 @@
         "warning": false,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f1",
-        "buytext": "$6.99 weekly"
+        "buytext": "$6.99 weekly",
+        "outline": "#FFFFFF"
     },
     {
         "name": "Macsploit",
@@ -82,7 +83,7 @@
     },
     {
         "name": "Cryptic",
-        "pros": ["100% UNC [ERR% sUNC]", "Level 8"],
+        "pros": ["100% UNC [98% sUNC]", "Level 8"],
         "neutral": ["Has a keysystem"],
         "cons": [],
         "link": "https://getcryptic.net",

@@ -108,10 +108,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     const expires = card.expires ? new Date(card.expires) : null;
                     const isExpired = expires && now > expires;
 
-                    if (card.glow && !isExpired) {
-                        cardElement.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 0px ${card.glow}`;
-                        cardElement.style.borderColor = card.glow;
+                    if (!isExpired) {
+                        if (card.outline) {
+                            cardElement.style.borderColor = card.outline;
+                        }
+                    
+                        if (card.glow) {
+                            cardElement.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 0px ${card.glow}`;
+                            cardElement.style.borderColor = card.glow;
+                        }
                     }
+                    
 
                     const cardLink = protectedLinks && card.linkprotected ? card.linkprotected : card.link;
 
@@ -189,23 +196,47 @@ document.addEventListener("DOMContentLoaded", () => {
                     
 
                     const buyButton = cardElement.querySelector('.card-button.right.buylink');
-                    if (buyButton && card.glow && !isExpired) {
-                        buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
-                        buyButton.style.borderColor = card.glow;
-                        buyButton.style.color = card.glow;
-
-                        buyButton.addEventListener('mouseover', () => {
-                            buyButton.style.boxShadow = `0 0 15px ${card.glow}, 0 0 20px ${card.glow}, 0 0 10px ${card.glow}`;
-                            buyButton.style.color = '#ffffff';
-                            buyButton.style.backgroundColor = card.glow;
-                        });
-
-                        buyButton.addEventListener('mouseout', () => {
+                    if (buyButton && !isExpired) {
+                        if (card.outline) {
+                            buyButton.style.borderColor = card.outline;
+                        }
+                        if (buyButton && card.outline && !isExpired) {
+                            const color = card.outline; // Use outline color
+                        
+                            buyButton.style.borderColor = color;
+                            buyButton.style.color = color;
+                            buyButton.style.backgroundColor = 'transparent';
+                        
+                            buyButton.addEventListener('mouseover', () => {
+                                buyButton.style.backgroundColor = color;
+                                buyButton.style.color = '#ffffff';
+                            });
+                        
+                            buyButton.addEventListener('mouseout', () => {
+                                buyButton.style.backgroundColor = 'transparent';
+                                buyButton.style.color = color;
+                            });
+                        }
+                        
+                        if (card.glow) {
                             buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+                            buyButton.style.borderColor = card.glow;
                             buyButton.style.color = card.glow;
-                            buyButton.style.backgroundColor = '';
-                        });
+                    
+                            buyButton.addEventListener('mouseover', () => {
+                                buyButton.style.boxShadow = `0 0 15px ${card.glow}, 0 0 20px ${card.glow}, 0 0 10px ${card.glow}`;
+                                buyButton.style.color = '#ffffff';
+                                buyButton.style.backgroundColor = card.glow;
+                            });
+                    
+                            buyButton.addEventListener('mouseout', () => {
+                                buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
+                                buyButton.style.color = card.glow;
+                                buyButton.style.backgroundColor = '';
+                            });
+                        }
                     }
+                    
 
                     if (card.warning) {
                         const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
