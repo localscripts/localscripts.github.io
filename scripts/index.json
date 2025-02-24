@@ -258,6 +258,18 @@
         "warning": true,
         "warningText": "🐀🐀🐀⚠️ **Turns out a ratter was in the dev team!** ⚠️ 🚨 **DO NOT ignore warnings!** 🚨 We had this warning a long time ago, so **think** before fucking installing anything with warnings! ⚠️🐀🐀🐀"
     },
+        {
+        "name": "Dynamic",
+        "pros": ["99% sUNC [99% UNC]", "Level 8", "Cheap/Free", "Fast Injection"],
+        "neutral": ["New exploit, safety verified by a third party at Pulsery", "Exploit in Beta"],
+        "cons": ["Announced that its going to move to a key system", "Bad looking UI"],
+        "link": "https://discord.gg/getdynamic",
+        "buttonText": "FREE",
+        "types": ["unc", "windows", "key"],
+        "unc": "assets/unc/Dynamic.json",
+        "lastEditedByImage": "assets/unknown.png",
+        "lastEditedBy": "Ender",
+    },
     {
         "name": "Apple-Ware",
         "pros": ["100% UNC~", "Level 8"],
