@@ -13,7 +13,7 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f0",
         "buytext": "$7.49 weekly",
-        "outline": "#06A3F1"
+        "glow": "#06A3F1"
     },
     {
         "name": "AWP.gg",
@@ -31,7 +31,7 @@
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f1",
         "buytext": "$6.99 weekly",
-        "outline": "#FFFFFF"
+        "glow": "#FFFFFF"
     },
     {
         "name": "Macsploit",
