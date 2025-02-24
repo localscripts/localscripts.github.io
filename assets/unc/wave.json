@@ -1,15 +1,5 @@
--- MOST STUFF IS RUINED BY SUNC DEVS, ALMOST EVERY EXPLOIT HAS THE SAME FAILED CHECKPOINTS
--- MOST STUFF IS RUINED BY SUNC DEVS, ALMOST EVERY EXPLOIT HAS THE SAME FAILED CHECKPOINTS
--- MOST STUFF IS RUINED BY SUNC DEVS, ALMOST EVERY EXPLOIT HAS THE SAME FAILED CHECKPOINTS
--- MOST STUFF IS RUINED BY SUNC DEVS, ALMOST EVERY EXPLOIT HAS THE SAME FAILED CHECKPOINTS
--- MOST STUFF IS RUINED BY SUNC DEVS, ALMOST EVERY EXPLOIT HAS THE SAME FAILED CHECKPOINTS
--- MOST STUFF IS RUINED BY SUNC DEVS, ALMOST EVERY EXPLOIT HAS THE SAME FAILED CHECKPOINTS
--- SHOULD BE CLOSER TO 100%, FUCKING THANK YOU SUNC
 
-
-
-
-
+-- SUNC breaks shit, not accurite
 
 
                                     $$\ $$\               $$\   $$\ $$$$$$$$\ $$$$$$$$\ 
@@ -38,8 +28,8 @@
 
 
     
-Testing Date and Time: 2025-02-13 20:10:25
-Seliware tested by voxlis.NET Team for voxlis.NET
+Testing Date and Time: 2025-02-24 16:24:50
+Wave tested by voxlis.NET Team for voxlis.NET
 
 
     
@@ -47,17 +37,17 @@ Loading...
 Grabbing executor name...
 STARTING sUNC test. Join our Discord server if you want :‌) [discord.gg/rx4nbdQPx6]
 + ❌ getscriptclosure Constants is not a valid member of Folder "CoreGui.RobloxGui.Modules.Common"
-+ ❌ debug.setupvalue :1: missing argument #1 to 'setupvalue' (function or number expected)
-+ ❌ debug.setconstant :1: missing argument #1 (function or number expected)
++ ❌ gethiddenproperty Failed to get a hidden property's value
++ ❌ sethiddenproperty Can't verify due to 'gethiddenproperty' not working reliably
++ ❌ gethui Was able to find UI element directly, and the container was not clonerefd
 ❗ Starting basic loadstring testing
 ❗ Finished basic loadstring testing
 ❗ Starting simple loadstring URL testing...
 ✅ Passed the simple loadstring test. Short obfuscated scripts can be executed.‌
 ❗ Finished simple loadstring URL testing
 ❗ Starting complicated loadstring URL testing...‌
-+ ❌ loadstring Failed the complicated loadstring test. You won't be able to execute big-content scripts (e.g: DEX v4)
 ❗ Finished complicated loadstring URL testing
-loadstring[complicated] Request timed out (8 seconds). loadstring may not work on very large data.
+loadstring[complicated] true
 loadstring[simple] true
 loadstring[basic] true
 Interesting
@@ -92,9 +82,9 @@ Interesting
 ✅ debug.getstack
 ✅ debug.getupvalue
 ✅ debug.getupvalues
-❌ debug.setconstant
+✅ debug.setconstant
 ✅ debug.setstack
-❌ debug.setupvalue
+✅ debug.setupvalue
 ✅ decompile
 ✅ delfile
 ✅ delfolder
@@ -108,8 +98,8 @@ Interesting
 ✅ getcustomasset
 ✅ getgc
 ✅ getgenv_access
-✅ gethiddenproperty
-✅ gethui
+❌ gethiddenproperty
+❌ gethui
 ✅ getinstances
 ✅ getloadedmodules
 ✅ getnamecallmethod
@@ -137,7 +127,7 @@ Interesting
 ✅ isscriptable
 ✅ listfiles
 ✅ loadfile
-❌ loadstring
+✅ loadstring
 ✅ lz4compress
 ✅ lz4decompress
 ✅ makefolder
@@ -145,7 +135,7 @@ Interesting
 ✅ readfile
 ✅ request
 ✅ restorefunction
-✅ sethiddenproperty
+❌ sethiddenproperty
 ✅ setrawmetatable
 ✅ setreadonly
 ✅ setrenderproperty
@@ -157,12 +147,11 @@ Interesting
 😎 Passed the test with 95% succеss rate (83 ‌out ‌of ‌87)
 ❌ Total tests failed: ‌4
 😏 This test was made by senS (fuck all the inco pastes/‌unc fakers)‌
-Finished the test in 34.5 seconds
+Finished the test in 19.1 seconds
 
 
-sUNC, VERSION 1.51 Z|�uZn{==>FB>.<
+sUNC, VERSION 1.51 v{�vqrL|99sz�qLrnz��
 Contribu‌tors: vvultt, GRH,‌ 0_void, Dottik, Pixeluted, bytevector(🥭), s.irius, citam.
-- Failed to load animation with sanitized ID <error:  missing assetid>: Animation failed to load, assetId: https://assetdelivery.roblox.com/v1/asset?id&serverplaceid=4483381587
 
 ██╗░░░██╗███╗░░██╗░█████╗░ 
 ██║░░░██║████╗░██║██╔══██╗ 
@@ -176,8 +165,8 @@ Contribu‌tors: vvultt, GRH,‌ 0_void, Dottik, Pixeluted, bytevector(🥭), s.
 
 
     
-Testing Date and Time: 2025-02-13 20:10:25
-Seliware tested by voxlis.NET Team for voxlis.NET
+Testing Date and Time: 2025-02-24 16:24:50
+Wave tested by voxlis.NET Team for voxlis.NET
 
 
     
@@ -204,12 +193,9 @@ UNC Environment Check
 ⏺️ rconsoleclear
 ⏺️ rconsolecreate
 ⏺️ rconsoledestroy
-+ ⚠️ consoledestroy
 ⏺️ rconsoleinput
-+ ⚠️ consoleinput
 ⏺️ rconsoleprint
 ⏺️ rconsolesettitle
-+ ⚠️ rconsolename, consolesettitle
 ✅ crypt.base64encode
 ✅ crypt.base64decode
 ✅ crypt.encrypt
@@ -228,11 +214,7 @@ UNC Environment Check
 ✅ debug.setconstant
 ✅ debug.setstack
 ✅ debug.setupvalue
-✅ readfile
-✅ listfiles
-✅ writefile
 ✅ makefolder
-✅ appendfile
 ✅ isfile
 ✅ isfolder
 ✅ delfolder
@@ -252,7 +234,6 @@ UNC Environment Check
 ✅ fireclickdetector
 ✅ getcallbackvalue
 ✅ getconnections
-✅ getcustomasset
 ✅ gethiddenproperty
 ✅ sethiddenproperty
 ✅ gethui
@@ -265,7 +246,7 @@ UNC Environment Check
 ✅ hookmetamethod
 ✅ getnamecallmethod
 ✅ isreadonly
-✅ setrawmetatable • Returned the original object
+✅ setrawmetatable
 ✅ setreadonly
 ✅ identifyexecutor • Returns version as a string
 ✅ lz4compress
@@ -292,12 +273,17 @@ UNC Environment Check
 ✅ setrenderproperty
 ✅ cleardrawcache
 ⏺️ WebSocket
-✅ setfpscap • 68fps @60 • 382fps @0
+✅ readfile
+✅ listfiles
+✅ writefile
+✅ appendfile
+✅ getcustomasset
+✅ setfpscap • 69fps @60 • 60fps @0
 ✅ WebSocket.connect
-✅ request • User-Agent: Seliware/1.0
+✅ request • User-Agent: Wave
 
 
 UNC Summary
 ✅ Tested with a 99% success rate (82 out of 83)
 ⛔ 1 tests failed
-⚠️ 3 globals are missing aliases
+⚠️ 0 globals are missing aliases
