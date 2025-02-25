@@ -2,10 +2,10 @@ const currentDate = new Date();
 const currentDay = currentDate.getDay(); // Get current day (0-6)
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-let protectedLinks = false;
+let protectedLinks = true;
 
 // Define which days enable link protection
-const protectedDays = [0, 1, 5, 6]; // Sunday (0), Friday (5), Saturday (6)
+const protectedDays = [0, 1, 2, 3, 4, 5, 6]; // Sunday (0), Friday (5), Saturday (6)
 // Generate table data
 const tableData = days.map((day, index) => ({
     Day: day,
