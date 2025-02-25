@@ -41,7 +41,7 @@
         "link": "https://discord.gg/macsploit",
         "linkprotected": "https://loot-link.com/s?e0379edc",
         "buttonText": "Website",
-        "types": ["macos"],
+        "types": ["unc", "macos"],
         "unc": "/assets/unc/macsploit.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
