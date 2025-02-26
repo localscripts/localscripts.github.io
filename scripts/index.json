@@ -262,10 +262,10 @@
         "name": "Dynamic",
         "pros": ["99% sUNC [99% UNC]", "Level 8", "Cheap/Free", "Fast Injection"],
         "neutral": ["New exploit, safety verified by a third party at Pulsery", "Exploit in Beta"],
-        "cons": ["Announced that its going to move to a key system", "Bad looking UI"],
-        "link": "https://discord.gg/getdynamic",
+        "cons": ["Bad looking UI (for now)"],
+        "link": "https://discord.gg/f4uEtfDzsP",
         "buttonText": "FREE",
-        "types": ["unc", "windows", "key"],
+        "types": ["unc", "windows"],
         "unc": "assets/unc/Dynamic.json",
         "lastEditedByImage": "assets/unknown.png",
         "lastEditedBy": "Ender"
