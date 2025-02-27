@@ -29,7 +29,7 @@ git clone 'https://github.com/localscripts/localscripts.github.io.git' && cd loc
 
 There are two free static hosting providers that are the best:
 1. [Netlify](https://www.netlify.com/) (*suggested*)
-1. [Github Pages](https://pages.github.com/)
+2. [Github Pages](https://pages.github.com/)
 
 The instructions for both options are well documented and would add too much bloat if added here. [Instructions for Netlify](https://docs.netlify.com/get-started/), and [instructions for Github Pages](https://docs.github.com/en/pages/quickstart).
 
@@ -82,7 +82,7 @@ If you want to see the website but not host it, follow the [quick and dirty](#qu
   This will give several IP addresses, pick the first one that starts with `192`. The others are either APIPA addresses, loopback addresses, or explicitly set on your machine.
   - > [!IMPORTANT]
     > NOTE: that step can be skipped and you can go directly to either `http://localhost:8000` or `http://127.0.0.1:8000`  both of these are the previously stated loopback addresses
-    
+
 ---
 
 > [!WARNING]
@@ -90,4 +90,4 @@ If you want to see the website but not host it, follow the [quick and dirty](#qu
 hosting on a personal computer. If you want to host a public website, refer to the [public server instructions](#public-server).
 
 > [!IMPORTANT]
-> NOTE: this is mostly irrelevant and *most* of the time your router will prevent anybody from accessing your computer directly the only times when someone
+> NOTE: this is mostly irrelevant and *most* of the time your router will prevent anybody from accessing your computer directly the only times when someone might eb able to access this is if your router is exposing your private ip or if someone on you same wior ethernet knows your private ip address
