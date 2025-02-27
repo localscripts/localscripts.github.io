@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         
                             buyButton.addEventListener('mouseover', () => {
                                 buyButton.style.backgroundColor = color;
-                                buyButton.style.color = '#ffffff';
+                                buyButton.style.color = 'var(--text-color)';
                             });
                         
                             buyButton.addEventListener('mouseout', () => {
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                             buyButton.addEventListener('mouseover', () => {
                                 buyButton.style.boxShadow = `0 0 15px ${card.glow}, 0 0 20px ${card.glow}, 0 0 10px ${card.glow}`;
-                                buyButton.style.color = '#ffffff';
+                                buyButton.style.color = card.glowTextHoverColor || 'var(--text-color)';
                                 buyButton.style.backgroundColor = card.glow;
                             });
                     
