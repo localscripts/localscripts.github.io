@@ -90,4 +90,4 @@ If you want to see the website but not host it, follow the [quick and dirty](#qu
 hosting on a personal computer. If you want to host a public website, refer to the [public server instructions](#public-server).
 
 > [!IMPORTANT]
-> NOTE: this is mostly irrelevant and *most* of the time your router will prevent anybody from accessing your computer directly the only times when someone might eb able to access this is if your router is exposing your private ip or if someone on you same wior ethernet knows your private ip address
+> NOTE: this is mostly irrelevant and *most* of the time your router will prevent anybody from accessing your computer directly the only times when someone might eb able to access this is if your router is exposing your private ip which does not happen by default or if someone on you same wifi or ethernet knows your private ip address
