@@ -994,3 +994,9 @@ a.footer-link {
 .theme-selector-text {
     font-weight: bold;
 }
+
+.index-errorload {
+    text-align: center;
+    font-size: 24px; /* Adjust the size as needed */
+    font-weight: bold; /* Optional: Makes the text bolder */
+}

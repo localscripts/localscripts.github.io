@@ -47,11 +47,33 @@
     <script defer src="scripts/search.js"></script>
     <script defer src="scripts/themes.js" type="module"></script>
         <script defer>
+            
         // Show the notification popup when the page loads
         window.onload = function() {
             document.getElementById('popup-notification').style.visibility = 'visible';
             document.getElementById('popup-notification').style.opacity = '1';
         };
+
+        async function checkFiles() {
+    try {
+        let jsonResponse = await fetch("scripts/index.json");
+        let jsResponse = await fetch("scripts/index.js");
+
+        if (!jsonResponse.ok && !jsResponse.ok) {
+            let errorDiv = document.createElement("div");
+            errorDiv.className = "index-errorload";
+            errorDiv.innerHTML = `<p>Your browser encountered an error. Press <strong>Ctrl + R</strong> or refresh the page to try again.</p>`;
+            document.body.appendChild(errorDiv);
+        }
+    } catch (error) {
+        console.log("Failed to fetch files.");
+    }
+}
+
+checkFiles();
+
+
+
     </script>
 </head>
 
@@ -75,6 +97,7 @@
             
         </div>
     </nav>
+
 
 <!-- Popup Notification -->
 <div id="popup-notification">
