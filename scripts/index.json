@@ -32,8 +32,8 @@
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f1",
         "buytext": "$6.99 weekly",
-        "glow": "#000000",
-        "glowTextHoverColor": "var(--main-color-1)"
+        "glow": "#FFFFFF",
+        "glowTextHoverColor": "#000000"
     },
     {
         "name": "Macsploit",
