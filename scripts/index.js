@@ -1,12 +1,11 @@
 const currentDate = new Date();
-const currentDay = currentDate.getDay(); // Get current day (0-6)
+const currentDay = currentDate.getDay();
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 let protectedLinks = true;
 
-// Define which days enable link protection
-const protectedDays = [0, 1, 2, 3, 4, 5, 6]; // Sunday (0), Friday (5), Saturday (6)
-// Generate table data
+const protectedDays = [0, 1, 2, 3, 4, 5, 6];
+
 const tableData = days.map((day, index) => ({
     Day: day,
     "Day Number": index,
@@ -15,7 +14,6 @@ const tableData = days.map((day, index) => ({
 
 console.table(tableData);
 
-// Check if today requires protection
 if (protectedDays.includes(currentDay)) {
     protectedLinks = true;
     console.log(`🔒 Protected links enabled because today is ${days[currentDay]}.`);
@@ -35,7 +33,6 @@ const typeList = {
     "server": "Serversided",
     "unc": "UNC and sUNC tested by voxlis.NET"
 };
-
 
 const wrapper = document.getElementById('cards-align');
 
@@ -98,11 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (wrapper) {
                 wrapper.innerHTML = ''; 
 
-                cards.forEach(card => {
+                cards.forEach((card, index) => {
                     if (card.hide) return;
 
                     const cardElement = document.createElement('div');
                     cardElement.classList.add('card');
+                    cardElement.style.animationDelay = `${0.1 * (index % 10)}s`;
 
                     const now = new Date();
                     const expires = card.expires ? new Date(card.expires) : null;
@@ -119,13 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
                     
-
                     const cardLink = protectedLinks && card.linkprotected ? card.linkprotected : card.link;
 
                     const types = card.types.map(type => `
                         <div class="type-holder">
-                            <img class="unselectable card-type" src="./assets/${type}.png" alt="">
-                            <div class="unselectable tooltip">${typeList[type]}</div>
+                            <img class="unselectable card-type" src="./assets/${type}.png" alt="${typeList[type]}">
+                            <div class="tooltip">${typeList[type]}</div>
                         </div>
                     `).join('');
 
@@ -141,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const uncLink = card.unc ? `
                         <a href="${card.unc}" class="unc-btn" target="_blank" rel="noopener noreferrer">
-                            <img class="unselectable unc-img" src="./assets/glow-unc.png" alt="">
+                            <img class="unselectable unc-img" src="./assets/glow-unc.png" alt="UNC Test Results">
                         </a>
                     ` : '';
 
@@ -178,7 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     const buttons = cardElement.querySelectorAll('.card-button');
                     buttons.forEach(button => {
                         button.innerHTML = button.innerHTML.replace(/\b(weekly|monthly|lifetime)\b/gi, (match) => {
-                            // Check if the button has any color classes (pros, cons, neutral) and apply the appropriate color class
                             let colorClass = '';
                     
                             if (button.classList.contains('pros')) {
@@ -193,15 +189,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                     });
                     
-                    
-
                     const buyButton = cardElement.querySelector('.card-button.right.buylink');
                     if (buyButton && !isExpired) {
                         if (card.outline) {
                             buyButton.style.borderColor = card.outline;
                         }
                         if (buyButton && card.outline && !isExpired) {
-                            const color = card.outline; // Use outline color
+                            const color = card.outline;
                         
                             buyButton.style.borderColor = color;
                             buyButton.style.color = color;
@@ -236,7 +230,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             });
                         }
                     }
-                    
 
                     if (card.warning) {
                         const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
@@ -268,20 +261,29 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             console.error("Error loading JSON:", err);
         });
+        
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    setTimeout(() => {
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    }, 100);
 });
 
 (function() {
-    // Save the original console.log function
     const originalLog = console.log;
 
-    // Override console.log to add custom styling
     console.log = function(...args) {
-        // Custom styles
         const style = 'color: #fff; background-color: #007bff; font-weight: bold; padding: 2px 5px; border-radius: 4px;';
 
-        // Check if the input includes the 'printLinks' command
         if (args.includes('printLinks')) {
-            // Fetch and print the links only when the command 'printLinks' is entered
             fetch("scripts/index.json")
                 .then(res => {
                     if (!res.ok) {
@@ -290,11 +292,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     return res.json();
                 })
                 .then(cards => {
-                    // Print all links from the JSON
                     cards.forEach(card => {
                         if (card.link) {
-                            originalLog(`%cName: ${card.name}`, style); // Highlight the name
-                            originalLog(`%cLink: ${card.link}`, style); // Highlight the link
+                            originalLog(`%cName: ${card.name}`, style);
+                            originalLog(`%cLink: ${card.link}`, style);
                         }
                     });
                 })
@@ -302,15 +303,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     originalLog("Error loading JSON:", err);
                 });
         } else {
-            // Otherwise, call the original console.log
             originalLog(...args);
         }
     };
 
-    // Create the unpack function to search for a specific key in the JSON
     window.unpack = function() {
         const style = 'color: #fff; background-color:rgb(0, 0, 0); font-weight: bold; padding: 2px 5px; border-radius: 4px;';
-        // Fetch the JSON data
         fetch("scripts/index.json")
             .then(res => {
                 if (!res.ok) {
@@ -319,24 +317,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 return res.json();
             })
             .then(cards => {
-                // Get all the keys of the cards (assuming the cards have consistent keys)
                 const keys = Object.keys(cards[0]);
-                originalLog("%cAvailable keys for selection:", style); // Highlight the "Available keys" label
+                originalLog("%cAvailable keys for selection:", style);
                 keys.forEach((key, index) => {
-                    originalLog(`%c${index + 1}: ${key}`, style); // Highlight the key numbers and names
+                    originalLog(`%c${index + 1}: ${key}`, style);
                 });
 
-                // Prompt the user to select a key (e.g., 1, 2, 3...)
                 const selectedIndex = prompt(`Enter the number of the key you want to view (1 to ${keys.length}):`);
                 const selectedKey = keys[parseInt(selectedIndex) - 1];
 
                 if (selectedKey) {
-                    // Print the name and selected key's values
-                    originalLog(`%cShowing values for key: ${selectedKey}`, style); // Highlight the selection message
+                    originalLog(`%cShowing values for key: ${selectedKey}`, style);
                     cards.forEach(card => {
                         if (card[selectedKey] !== undefined) {
-                            originalLog(`%cName: ${card.name}`, style); // Highlight the name of the card
-                            originalLog(`%c${selectedKey}: ${card[selectedKey]}`, style); // Highlight the selected key's value
+                            originalLog(`%cName: ${card.name}`, style);
+                            originalLog(`%c${selectedKey}: ${card[selectedKey]}`, style);
                         }
                     });
                 } else {
@@ -348,6 +343,5 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     };
 
-    // Inform the user that the unpack function is active
     console.log('%c✅ unpack() function is active', 'color: green; font-weight: bold;');
 })();

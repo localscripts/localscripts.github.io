@@ -14,19 +14,21 @@
     --backround-color: #000000;
     --navbar-backround: #000000;
     --navbar-line: #B32624;
-    /*Card */
     --card-border: #0e0d0d;
     --card-color: #000000;
     --link-button: #B32624;
     --buy-button: #4ADE80;
+
     --card-background: rgba(0, 0, 0, 0.26);
     --color-negative: #E84848;
     --color-neutral: #FACC15;
     --color-positive: #4ADE80;
+    --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    --card-hover-shadow: 0 8px 40px rgba(179, 38, 36, 0.15);
+    --transition-speed: 0.3s;
 }
 
 .purple {
-    /* Main Themeing */
     --text-color:#FFFFFF;
     --main-color-1: #6716aa;
     --main-color-2: #6716aa;
@@ -42,24 +44,26 @@
     --backround-color: #000000;
     --navbar-backround: #000000;
     --navbar-line: #6716aa;
-    /*Card */
     --card-border: #0e0d0d;
     --card-color: #000000;
     --link-button: #6716aa;
     --buy-button: #4ADE80;
+    
     --card-background: rgba(0, 0, 0, 0.26);
-    /* Pros, Cons, Neutral Colors */
     --color-negative: #E84848;
     --color-neutral: #FACC15;
     --color-positive: #4ADE80;
+    --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    --card-hover-shadow: 0 8px 40px rgba(103, 22, 170, 0.15);
+    --transition-speed: 0.3s;
 }
-
 
 html,
 body {
     overflow-x: hidden;
     width: 100vw;
     background-color: var(--backround-color);
+    scroll-behavior: smooth;
 }
 
 * {
@@ -71,9 +75,8 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Nav */
 nav {
-    z-index: 1;
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;
@@ -82,6 +85,9 @@ nav {
     padding: 1rem;
     background-color: var(--navbar-backround);
     border-bottom: 2px solid var(--navbar-line);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all var(--transition-speed) ease;
 }
 
 #nav-container {
@@ -97,23 +103,25 @@ nav {
 .search-container {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 #search-input {
     width: 300px;
-    padding: 8px 35px 8px 15px;
+    padding: 10px 35px 10px 15px;
     border: 2px solid var(--card-border);
     border-radius: 20px;
-    background: var(--navbar-backround);
+    background: rgba(0, 0, 0, 0.3);
     color: var(--text-color);
     font-size: 14px;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease;
 }
 
 #search-input:focus {
     outline: none;
     border-color: var(--main-color-1);
     box-shadow: 0 0 10px rgba(179, 38, 36, 0.3);
+    width: 320px;
 }
 
 .search-icon {
@@ -130,7 +138,11 @@ nav {
     font-weight: bold;
     text-transform: uppercase;
     user-select: none;
-    /* Prevent text selection */
+    transition: transform var(--transition-speed) ease;
+}
+
+#brand:hover {
+    transform: scale(1.05);
 }
 
 #brand-highlight {
@@ -148,25 +160,31 @@ nav {
     display: none;
     border: none;
     background: transparent;
+    cursor: pointer;
+    transition: transform var(--transition-speed) ease;
 }
 
-#menu-icon>svg {
+#menu-icon:hover {
+    transform: scale(1.1);
+}
+
+#menu-icon > img {
     width: 24px;
     aspect-ratio: 1;
+    transition: filter var(--transition-speed) ease;
 }
 
-#menu-list>li>a {
+#menu-list > li > a {
     color: var(--text-color);
     position: relative;
     font-weight: bold;
     font-size: 0.875rem;
     text-decoration: none;
     user-select: none;
-    /* Prevent text selection */
+    transition: color var(--transition-speed) ease;
 }
 
-#menu-list>li>a::after,
-#menu-list>li>a:hover::after {
+#menu-list > li > a::after {
     position: absolute;
     left: 0;
     bottom: -5px;
@@ -175,14 +193,15 @@ nav {
     content: "";
     background: var(--link-button);
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) ease;
+    transform-origin: left;
 }
 
-#menu-list>li>a::after {
-    transform: scaleX(0);
+#menu-list > li > a:hover {
+    color: var(--main-color-1);
 }
 
-#menu-list>li>a:hover::after {
+#menu-list > li > a:hover::after {
     transform: scaleX(1);
 }
 
@@ -197,7 +216,7 @@ nav {
     height: 30px;
     border-radius: 10px;
     background-color: var(--navbar-backround);
-    transition: 0.5s;
+    transition: var(--transition-speed);
 }
 
 #menu-icon img {
@@ -205,7 +224,7 @@ nav {
 }
 
 .menu-blur {
-    z-index: 3;
+    z-index: 99;
     overflow: hidden;
     list-style-type: none;
     display: none;
@@ -217,9 +236,11 @@ nav {
     top: 58px;
     left: 0;
     gap: 0;
-    background-color: var(--navbar-backround);
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 2px solid var(--navbar-line);
-    transition: all 0.3s ease-out;
+    transition: all var(--transition-speed) ease-out;
     opacity: 0;
     transform: translateY(-10px);
 }
@@ -234,15 +255,16 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
-    margin: 2px;
-    border-radius: 100px;
+    padding: 12px;
+    margin: 4px;
+    border-radius: 8px;
     user-select: none;
-    /* Prevent text selection */
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
 .menu-blur li a:hover {
-    background-color: var(--navbar-backround);
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
 }
 
 @media only screen and (max-width: 888px) {
@@ -264,6 +286,7 @@ nav {
 
     #menu-icon.opened {
         content: url("../assets/x.svg");
+        transform: rotate(180deg);
     }
 
     .menu-blur.show {
@@ -271,7 +294,6 @@ nav {
     }
 }
 
-/* Main */
 #particle-container {
     z-index: 10;
     position: fixed;
@@ -282,16 +304,23 @@ nav {
     color: var(--main-color-1);
     text-decoration: none;
     text-shadow: 0 0 5px var(--main-color-dim-1), 0 0 10px var(--main-color-dim-2), 0 0 15px var(--main-color-dim-3);
+    transition: text-shadow var(--transition-speed) ease;
+}
+
+.glow-red:hover {
+    text-shadow: 0 0 8px var(--main-color-dim-1), 0 0 15px var(--main-color-dim-2), 0 0 20px var(--main-color-dim-3);
 }
 
 .glow-link {
     color: cyan;
     text-decoration: none;
     text-shadow: 0 0 5px rgba(0, 0, 255, 0.8), 0 0 10px rgba(0, 0, 255, 0.6), 0 0 15px rgba(0, 0, 255, 0.4);
+    transition: all var(--transition-speed) ease;
 }
 
 .glow-link:hover {
     text-decoration: underline;
+    text-shadow: 0 0 8px rgba(0, 0, 255, 0.9), 0 0 15px rgba(0, 0, 255, 0.7), 0 0 20px rgba(0, 0, 255, 0.5);
 }
 
 main {
@@ -300,42 +329,73 @@ main {
     align-items: center;
     padding: 20px;
     margin-top: calc(4rem - 20px);
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #notification {
     width: min(100%, 1400px);
-    /* Same width as cards */
     padding: 20px;
     margin: 5px;
     border-radius: 12px;
     border: 1px solid var(--card-border);
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
-    /* Ensure padding is included in the width */
     text-align: center;
-    /* Centers inline text */
-    backdrop-filter: blur(6.7px);
-    -webkit-backdrop-filter: blur(6.7px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+#notification:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0 8px 30px rgba(179, 38, 36, 0.15);
 }
 
 #sfs {
     text-align: center;
-    /* Centers inline text */
     display: flex;
-    /* Enables flexbox */
     flex-direction: column;
-    /* Stacks items vertically */
     align-items: center;
-    /* Centers content horizontally */
     justify-content: center;
-    /* Centers content vertically */
 }
 
-#notification>h2 {
+#notification > h2 {
     color: var(--navbar-background);
     margin-bottom: 1px;
     font-size: 1.125rem;
     text-shadow: 0 0 4px rgba(232, 72, 72, 0.8), 0 0 16px rgba(232, 72, 72, 0.6), 0 0 24px rgba(232, 72, 72, 0.4);
+}
+
+.notification-link {
+    margin-top: 8px;
+    transition: transform var(--transition-speed) ease;
+}
+
+.notification-link:hover {
+    transform: translateY(-2px);
+}
+
+.notification-link a {
+    color: #4ADE80;
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.notification-link a:hover {
+    color: #22c55e;
+    text-decoration: underline;
 }
 
 #cards-wrapper {
@@ -344,6 +404,7 @@ main {
     align-items: center;
     width: 100%;
     padding: 10px 20px;
+    margin-top: 20px;
 }
 
 #cards-align {
@@ -351,11 +412,30 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
-    gap: 24px;
+    gap: 30px;
     width: min(100%, 1500px);
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    width: clamp(450px, 100%, 450px);
+    padding: 25px;
+    border-radius: 16px;
+    background-color: rgba(10, 10, 10, 0.7);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform var(--transition-speed) ease, 
+                box-shadow var(--transition-speed) ease,
+                border-color var(--transition-speed) ease;
+}
+
+/* .card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -369,12 +449,30 @@ main {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.7px);
     -webkit-backdrop-filter: blur(6.7px);
-    /* Smooth transitions */
     transition: transform 0.1s ease, box-shadow 0.3s ease;
+} */
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+    z-index: -1;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: translateY(1px) scale(1.02);
+    box-shadow: var(--card-hover-shadow);
+    border-color: rgba(179, 38, 36, 0.3);
+}
+
+.card:hover::before {
+    opacity: 1;
 }
 
 .card-types {
@@ -388,6 +486,11 @@ main {
 
 .type-holder {
     position: relative;
+    transition: transform var(--transition-speed) ease;
+}
+
+.type-holder:hover {
+    transform: translateY(-3px);
 }
 
 .card-type {
@@ -396,23 +499,26 @@ main {
     object-fit: contain;
 }
 
-.card-type+.tooltip {
+.card-type + .tooltip {
     position: absolute;
     visibility: hidden;
     left: 50%;
     bottom: 125%;
-    padding: 5px;
+    padding: 8px 12px;
     transform: translateX(-50%);
-    border-radius: 6px;
+    border-radius: 8px;
     text-align: center;
     background-color: var(--tooltip-color-1);
     border: 1px solid var(--tooltip-color-2);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
     white-space: pre;
+    font-size: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateX(-50%) translateY(10px);
 }
 
-.card-type+.tooltip::after {
+.card-type + .tooltip::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -423,42 +529,80 @@ main {
 }
 
 @media only screen and (max-width: 578px) {
-    .type-holder:last-child>.card-type+.tooltip {
+    .type-holder:last-child > .card-type + .tooltip {
         left: unset;
         right: 0;
-        transform: translateX(0)
+        transform: translateX(0) translateY(10px);
     }
 
-    .type-holder:last-child>.card-type+.tooltip::after {
+    .type-holder:last-child > .card-type + .tooltip::after {
         left: unset;
         right: 9px;
     }
+    
+    .type-holder:last-child:hover > .card-type + .tooltip {
+        transform: translateX(0) translateY(0);
+    }
 }
 
-.card-type:hover+.tooltip {
+.card-type:hover + .tooltip {
     visibility: visible;
     opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 .card-title {
     margin-bottom: 15px;
     text-shadow: none;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
+    position: relative; /* if you dont want red line in the bottom of the title than comment this part */
+    display: inline-block;
+}
+
+.card-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--main-color-1);
+    transition: width var(--transition-speed) ease;
+}
+
+.card:hover .card-title::after {
+    width: 100%;
 }
 
 .card-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 30px;
+    gap: 25px;
     width: 100%;
-    margin-top: -20px;
+    margin-top: -10px;
     margin-left: 20px;
 }
 
 .card-content ul {
     padding-left: 20px;
+}
+
+.card-content li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.card-content li::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
 }
 
 .pros {
@@ -469,12 +613,20 @@ main {
     color: var(--color-positive);
 }
 
+.pros li::before {
+    background-color: var(--color-positive);
+}
+
 .neutral {
     color: var(--color-neutral);
 }
 
 .neutral .section-title {
     color: var(--color-neutral);
+}
+
+.neutral li::before {
+    background-color: var(--color-neutral);
 }
 
 .cons {
@@ -485,7 +637,17 @@ main {
     color: var(--color-negative);
 }
 
-/* Container for the buttons */
+.cons li::before {
+    background-color: var(--color-negative);
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
 .card-footer .button-wrapper {
     display: flex;
     justify-content: space-between;
@@ -493,16 +655,12 @@ main {
     width: 100%;
 }
 
-/* Style for the last-edited image */
 .card-footer .last-edited img {
     width: 20px;
     height: 20px;
     object-fit: cover;
-    /* Ensures the image fits nicely */
     border-radius: 0;
-    /* Ensure the image is not rounded */
     opacity: 0.95;
-    /* Apply 50% transparency */
 }
 
 .card-footer .card-button {
@@ -516,57 +674,61 @@ main {
     gap: 6px;
 }
 
-.card-status>p {
+.card-status > p {
     font-size: 0.9rem;
     color: rgb(95, 102, 112);
 }
 
-/* Adjust the layout of the last-edited section */
 .card-footer .last-edited {
     display: flex;
-    /* Align elements horizontally */
     align-items: center;
-    /* Vertically center the items */
     gap: 10px;
-    /* Adds space between the user name and the icon */
     color: gray;
-    /* Make the text gray */
     flex-direction: row;
-    /* Ensure elements are aligned in a row */
+    margin-top: 15px;
 }
 
-/* Style for the last-edited image */
 .card-footer .last-edited img {
     width: 20px;
     height: 20px;
     object-fit: cover;
-    /* Ensures the image fits nicely */
+    transition: transform var(--transition-speed) ease;
 }
 
-/* Make sure the last-edited text doesn't overlap with the menu icon */
+.card-footer .last-edited img:hover {
+    transform: scale(1.2);
+}
+
 .card-footer .card-status p {
     z-index: 1;
 }
 
-/* Optional: Style for the name and icon within last-edited */
 .card-footer .last-edited p {
     margin: 0;
-    /* Remove margin from the text */
     font-size: 0.9rem;
-    /* Adjust font size */
+}
+
+.editor-name {
+    font-weight: 600;
+    transition: color var(--transition-speed) ease;
+}
+
+.editor-name:hover {
+    color: var(--main-color-1);
 }
 
 .card-button {
     background-color: transparent;
     color: #333;
-    /* Initial text color */
-    border: 3px solid var(--main-color-2);
+    border: 2px solid var(--main-color-2);
     border-radius: 25px;
     padding: 12px 0;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    /* Transition for background and text color */
+    transition: background-color var(--transition-speed), 
+                color var(--transition-speed),
+                transform var(--transition-speed),
+                box-shadow var(--transition-speed);
     width: 100%;
     max-width: none;
     text-align: center;
@@ -575,31 +737,38 @@ main {
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Hover effect for the button */
+.card-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.card-button:hover::before {
+    left: 100%;
+}
+
 .card-button:hover {
-    background-color: var(--main-color-2);
-    /* Fill with the same current background color */
-    color: var(--text-color);
-    /* Make text white for readability */
-    filter: brightness(1.4);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* For the 'right' button */
-.card-button.right:hover {
-    background-color: #4ADE80;
-    /* Fill with the same current background color */
-    color: var(--text-color);
-    /* Ensure text is readable */
-}
-
-/* For the 'left' button */
 .card-button.left:hover {
     background-color: var(--link-button);
-    /* Fill with the same current background color */
     color: var(--text-color);
-    /* Ensure text is readable */
+}
+
+.card-button.right:hover {
+    background-color: var(--buy-button);
+    color: var(--text-color);
 }
 
 .card-button {
@@ -607,7 +776,6 @@ main {
     border: 2px solid var(--link-button);
 }
 
-/* Container for the buttons */
 .card-footer .button-wrapper {
     display: flex;
     justify-content: space-between;
@@ -616,33 +784,25 @@ main {
     height: 46px;
 }
 
-/* Style for the last-edited image */
 .card-footer .last-edited img {
     width: 20px;
     height: 20px;
     object-fit: cover;
-    /* Ensures the image fits nicely */
     border-radius: 0;
-    /* Ensure the image is not rounded */
 }
 
-/* Left button specific styling */
 .card-button.left {
     border-radius: 20px 0 0 20px;
     margin-right: 2.5px;
-    /* Adds gap between the left and right buttons */
 }
 
-/* Right button specific styling */
 .card-button.right {
     border-radius: 0 20px 20px 0;
     margin-left: 2.5px;
-    /* Adds gap between the left and right buttons */
     color: var(--buy-button);
     border: 2px solid var(--buy-button);
 }
 
-/* When both buttons are present, remove inner radius to make the center straight */
 .card-footer .button-wrapper a:first-child.card-button.right,
 .card-footer .button-wrapper a:last-child.card-button.left {
     border-radius: 25px;
@@ -652,38 +812,36 @@ main {
     border-radius: 25px !important;
 }
 
-/* Last edited section styling */
 .last-edited {
     margin-top: 10px;
     font-size: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Centers the content horizontally */
     text-align: center;
-    /* Centers the text */
     justify-content: center;
-    /* Vertically aligns content to center */
 }
 
-/* Make the entire last-edited section text gray */
 .card-footer .last-edited p,
 .card-footer .last-edited span {
     color: gray;
-    /* Apply gray to the entire text including 'Last edited by' and username */
 }
 
-/* Make the image 50% transparent */
 .card-footer .last-edited img {
     opacity: 0.5;
-    /* Apply 50% transparency */
     object-fit: cover;
-    /* Ensures the image maintains its aspect ratio */
 }
 
 .unc-btn,
 .unc-img {
     height: 100%;
+    transition: transform var(--transition-speed) ease, filter var(--transition-speed) ease;
+}
+
+.unc-btn:hover .unc-img,
+.unc-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
 }
 
 .last-edited img {
@@ -691,41 +849,71 @@ main {
     width: 20px;
     height: 20px;
     object-fit: cover;
-    /* Ensures the image maintains aspect ratio */
 }
 
-/* Footer */
 footer {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.3);
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
     position: relative;
     bottom: 0;
     width: 100%;
     border-top: 2px solid var(--main-color-1);
+    margin-top: 50px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+footer p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity var(--transition-speed) ease;
+}
+
+footer p:hover {
+    opacity: 1;
 }
 
 a.footer-link {
     color: var(--main-color-1);
+    transition: color var(--transition-speed) ease, text-decoration var(--transition-speed) ease;
+    position: relative;
 }
 
-/* /Guide */
+a.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--main-color-1);
+    transition: width var(--transition-speed) ease;
+}
+
+a.footer-link:hover::after {
+    width: 100%;
+}
+
 .blog-post {
     border: 1px solid #27272A;
-    /* Changed border color to red */
     border-radius: 10px;
-    /* Increased border-radius for more rounded corners */
     padding: 16px;
     margin: 16px 0;
     background-color: #050505;
-    /* Changed background color to green */
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .post-title {
     font-size: 24px;
     margin-bottom: 8px;
     font-weight: bold;
-    /* Make title bold */
 }
 
 .post-meta {
@@ -740,19 +928,17 @@ a.footer-link {
 
 .post-content a {
     color: #EF4444;
-    /* Link color */
     text-decoration: none;
-    /* Remove underline */
+    transition: color var(--transition-speed) ease;
 }
 
 .post-content a:hover {
     text-decoration: underline;
-    /* Underline on hover */
+    color: #f87171;
 }
 
 .bold {
     font-weight: bold;
-    /* Class to make text bold */
 }
 
 .error {
@@ -760,41 +946,54 @@ a.footer-link {
     font-size: 30px;
     text-align: center;
     margin: 20px 0;
+    animation: errorPulse 2s infinite;
+}
+
+@keyframes errorPulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
 }
 
 .error-gif {
     display: block;
     margin: 20px auto;
     width: 200px;
-    /* Adjust size as needed */
     height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Notification */
-/* Popup notification styles for bottom-right corner */
 #popup-notification {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--card-color);
-    /* Dark background */
+    background: rgba(10, 10, 10, 0.9);
     color: var(--text-color);
-    /* White text color */
-    padding: 15px 20px;
-    /* Add padding to notification container */
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 12px;
     border: 1px solid var(--card-border);
-    /* Gray outline border */
     max-width: 300px;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity var(--transition-speed) ease-in-out, 
+                transform var(--transition-speed) ease-in-out,
+                box-shadow var(--transition-speed) ease;
     z-index: 9999;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transform: translateY(20px);
 }
 
 #popup-notification.show {
     visibility: visible;
     opacity: 1;
+    transform: translateY(0);
+}
+
+#popup-notification:hover {
+    box-shadow: 0 8px 30px rgba(179, 38, 36, 0.2);
 }
 
 #popup-notification h2 {
@@ -802,14 +1001,12 @@ a.footer-link {
     font-size: 18px;
     font-weight: bold;
     text-shadow: none;
-    /* No glowing text */
 }
 
 #popup-notification p {
     font-size: 14px;
-    margin: 5px 0;
+    margin: 10px 0;
     text-shadow: none;
-    /* No glowing text */
 }
 
 #popup-notification .popup-links {
@@ -817,29 +1014,33 @@ a.footer-link {
 }
 
 #popup-notification .popup-link {
-    color: yellow;
-    /* Set yellow color for the links */
+    color: #FACC15;
     text-decoration: none;
-    /* Remove underline */
+    transition: color var(--transition-speed) ease;
+    font-weight: 600;
 }
 
-/* Updated button styles */
+#popup-notification .popup-link:hover {
+    color: #fde047;
+    text-decoration: underline;
+}
+
 #popup-notification button {
     background-color: transparent;
     color: var(--main-color-1);
-    /* Initial text color */
     border: 1px solid var(--main-color-2);
     border-radius: 10px;
     padding: 12px 0;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    /* Transition for background and text color */
+    transition: background-color var(--transition-speed), 
+                color var(--transition-speed),
+                transform var(--transition-speed);
     width: 100%;
     max-width: none;
     text-align: center;
     box-sizing: border-box;
-    margin-top: 10px;
+    margin-top: 15px;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -847,9 +1048,8 @@ a.footer-link {
 
 #popup-notification button:hover {
     background-color: var(--main-color-2);
-    /* Fill background on hover */
     color: var(--text-color);
-    /* Change text color on hover */
+    transform: translateY(-3px);
 }
 
 #popup-notification .close-btn {
@@ -862,70 +1062,58 @@ a.footer-link {
     border: none;
     cursor: pointer;
     text-shadow: none;
-    /* No glowing 'X' */
+    transition: color var(--transition-speed) ease;
 }
 
 #popup-notification .close-btn:hover {
     color: #32CD32;
-    /* Green color when hovered */
 }
 
 #popup-notification .popup-content {
     position: relative;
-    /* To position the close button */
     text-align: center;
-    /* Center align the content */
 }
 
 #popup-notification .popup-image {
     max-width: 100%;
-    /* Ensure the image doesn't overflow the popup */
     height: auto;
-    /* Maintain aspect ratio */
-    margin: 10px 0;
-    /* Add spacing around the image */
-    border-radius: 5px;
-    /* Optional: rounded corners */
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed) ease;
+}
+
+#popup-notification .popup-image:hover {
+    transform: scale(1.03);
 }
 
 @media screen and (max-width: 600px) {
     #popup-notification .popup-image {
         display: none;
-        /* Hide the image on small screens */
     }
 }
 
-/* Misc */
 * {
     scrollbar-width: thin;
-    /* Thin scrollbar */
     scrollbar-color: var(--main-color-1) #070707;
-    /* Thumb color and track color for Firefox */
 }
 
-/* Custom scrollbar styles for Webkit browsers (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
     width: 8px;
-    /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
     background-color: #070707;
-    /* Dark track background */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(to bottom, rgb(46, 46, 51), #070707);
-    /* Gradient for the thumb */
+    background-image: linear-gradient(to bottom, var(--main-color-1), #070707);
     border-radius: 10px;
-    /* Rounded corners for the thumb */
     border: 2px solid #070707;
-    /* Border around the thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-image: linear-gradient(to bottom, rgb(31, 31, 36), rgb(46, 46, 51));
-    /* Hover effect with a different gradient */
+    background-image: linear-gradient(to bottom, var(--main-color-2), var(--main-color-1));
 }
 
 .unselectable {
@@ -938,65 +1126,117 @@ a.footer-link {
 
 .small-text {
     font-size: 0.7em;
-    /* Adjust size as needed */
     vertical-align: middle;
-    /* Align text properly */
     color: gray;
-    /* Set the text color to gray */
 }
 
-/* Base styling for small-text-card */
 .small-text-card {
     font-size: 0.75em;
-    /* Adjust size as needed */
     font-weight: 600;
-    /* Make the font thick like card-button */
     color: inherit;
-    /* Allow it to inherit the color from its parent element */
     font-family: 'Montserrat', sans-serif;
-    /* Same font-family as card-button */
 }
 
+@media only screen and (max-width: 600px) {
+    .small-text-card {
+        font-size: 0.65em;
+    }
+}
 
-/* Color classes for each context */
 .pros-small-text-card {
     color: #00ff00;
-    /* Green for pros */
 }
 
 .neutral-small-text-card {
     color: #ffffff;
-    /* White for neutral */
 }
 
 .cons-small-text-card {
     color: #ff0000;
-    /* Red for cons */
+}
+
+.theme-selector-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(10, 10, 10, 0.7);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    z-index: 90;
+    transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+    opacity: 0.7;
+}
+
+.theme-selector-container:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+}
+
+.theme-selector-text {
+    font-weight: bold;
+    font-size: 14px;
 }
 
 #theme-selector {
-    position: fixed;
-    bottom: 50px;
-    left: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color var(--transition-speed) ease;
 }
 
-#theme-selector, #theme-selector>option {
-    background-color: var(--navbar-backround);
-    border: 0px transparent;
-    font: inherit;
+#theme-selector:hover {
+    border-color: var(--main-color-1);
 }
 
-#theme-selector-container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
-.theme-selector-text {
-    font-weight: bold;
+#theme-selector option {
+    background-color: #111;
+    color: var(--text-color);
 }
 
 .index-errorload {
     text-align: center;
-    font-size: 24px; /* Adjust the size as needed */
-    font-weight: bold; /* Optional: Makes the text bolder */
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    background-color: rgba(255, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    animation: errorPulse 2s infinite;
 }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeInUp 0.5s ease backwards;
+}
+
+#cards-align .card:nth-child(1) { animation-delay: 0.1s; }
+#cards-align .card:nth-child(2) { animation-delay: 0.2s; }
+#cards-align .card:nth-child(3) { animation-delay: 0.3s; }
+#cards-align .card:nth-child(4) { animation-delay: 0.4s; }
+#cards-align .card:nth-child(5) { animation-delay: 0.5s; }
+#cards-align .card:nth-child(6) { animation-delay: 0.6s; }
+#cards-align .card:nth-child(7) { animation-delay: 0.7s; }
+#cards-align .card:nth-child(8) { animation-delay: 0.8s; }
+#cards-align .card:nth-child(9) { animation-delay: 0.9s; }
+#cards-align .card:nth-child(10) { animation-delay: 1.0s; }
