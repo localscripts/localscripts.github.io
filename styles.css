@@ -724,6 +724,7 @@ footer {
     bottom: 0;
     width: 100%;
     border-top: 2px solid var(--main-color-1);
+    backdrop-filter: blur(6.7px);
 }
 
 a.footer-link {
