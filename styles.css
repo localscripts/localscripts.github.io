@@ -862,70 +862,51 @@ a.footer-link {
     border: none;
     cursor: pointer;
     text-shadow: none;
-    /* No glowing 'X' */
 }
 
 #popup-notification .close-btn:hover {
     color: #32CD32;
-    /* Green color when hovered */
 }
 
 #popup-notification .popup-content {
     position: relative;
-    /* To position the close button */
     text-align: center;
-    /* Center align the content */
 }
 
 #popup-notification .popup-image {
     max-width: 100%;
-    /* Ensure the image doesn't overflow the popup */
     height: auto;
-    /* Maintain aspect ratio */
     margin: 10px 0;
-    /* Add spacing around the image */
     border-radius: 5px;
-    /* Optional: rounded corners */
 }
 
 @media screen and (max-width: 600px) {
     #popup-notification .popup-image {
         display: none;
-        /* Hide the image on small screens */
     }
 }
 
-/* Misc */
 * {
     scrollbar-width: thin;
-    /* Thin scrollbar */
     scrollbar-color: var(--main-color-1) #070707;
-    /* Thumb color and track color for Firefox */
 }
 
-/* Custom scrollbar styles for Webkit browsers (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
     width: 8px;
-    /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
     background-color: #070707;
-    /* Dark track background */
 }
 
 ::-webkit-scrollbar-thumb {
     background-image: linear-gradient(to bottom, rgb(46, 46, 51), #070707);
-    /* Gradient for the thumb */
     border-radius: 10px;
-    /* Rounded corners for the thumb */
     border: 2px solid #070707;
-    /* Border around the thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background-image: linear-gradient(to bottom, rgb(31, 31, 36), rgb(46, 46, 51));
-    /* Hover effect with a different gradient */
 }
 
 .unselectable {
@@ -938,40 +919,28 @@ a.footer-link {
 
 .small-text {
     font-size: 0.7em;
-    /* Adjust size as needed */
     vertical-align: middle;
-    /* Align text properly */
     color: gray;
-    /* Set the text color to gray */
 }
 
-/* Base styling for small-text-card */
 .small-text-card {
     font-size: 0.75em;
-    /* Adjust size as needed */
     font-weight: 600;
-    /* Make the font thick like card-button */
     color: inherit;
-    /* Allow it to inherit the color from its parent element */
     font-family: 'Montserrat', sans-serif;
-    /* Same font-family as card-button */
 }
 
 
-/* Color classes for each context */
 .pros-small-text-card {
     color: #00ff00;
-    /* Green for pros */
 }
 
 .neutral-small-text-card {
     color: #ffffff;
-    /* White for neutral */
 }
 
 .cons-small-text-card {
     color: #ff0000;
-    /* Red for cons */
 }
 
 #theme-selector {
@@ -997,6 +966,6 @@ a.footer-link {
 
 .index-errorload {
     text-align: center;
-    font-size: 24px; /* Adjust the size as needed */
-    font-weight: bold; /* Optional: Makes the text bolder */
+    font-size: 24px;
+    font-weight: bold; 
 }
