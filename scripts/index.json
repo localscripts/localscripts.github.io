@@ -33,7 +33,7 @@
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f1",
         "buytext": "$6.99 weekly",
         "glow": "#FFFFFF",
-        "glowTextHoverColor": "var(--main-color-1)"
+        "glowTextHoverColor": "#000000"
     },
     {
         "name": "Macsploit",
