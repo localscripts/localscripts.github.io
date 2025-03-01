@@ -54,6 +54,26 @@
     --color-positive: #4ADE80;
 }
 
+.catppuccin {
+    --text-color: #c6d0f5;
+    --main-color-1: #ca9ee6;
+    --main-color-2: #ca9ee6;
+    --main-color-dim-1: #ca9ee6cc;
+    --main-color-dim-2: #ca9ee699;
+    --main-color-dim-3: #ca9ee666;
+    --main-transparent: rgba(0, 0, 0, 0);
+    --secondary-color-1: #232634;
+    --secondary-color-2: #292c3c;
+    --tooltip-color-1: #232634;
+    --tooltip-color-2: #292c3c;
+    --backround-color: #303446;
+    --navbar-backround: #303446;
+    --navbar-line: #ca9ee6;
+    --link-button: #ca9ee6;
+
+    --card-background: #414559;
+    --card-border: #ca9ee6;
+}
 
 html,
 body {
@@ -969,7 +989,8 @@ a.footer-link {
     /* White for neutral */
 }
 
-.cons-small-text-card {
+.cons-small-text-card 
+{
     color: #ff0000;
     /* Red for cons */
 }
