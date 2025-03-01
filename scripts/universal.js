@@ -3,7 +3,7 @@ const canvas = document.getElementById('particle-container');
 // Define months: Winter (November, December, January), Valentine (February)
 const month = new Date().getMonth();
 const winterMonths = [10, 11, 0]; // November, December, January
-const valentineMonth = 1; // February
+const valentineMonth = 1, 2; // February
 
 let imageSrc = '';
 let fallSpeedMultiplier = 1; // Default speed
