@@ -2,7 +2,7 @@ const canvas = document.getElementById('particle-container');
 
 const month = new Date().getMonth();
 const winterMonths = [10, 11, 0]; 
-const valentineMonth = 1; 
+const valentineMonth = 2; 
 
 let imageSrc = '';
 let fallSpeedMultiplier = 1;
