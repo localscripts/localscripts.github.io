@@ -7,6 +7,7 @@
 
 1. [robloxhackers.lol](https://robloxhackers.lol)
 2. [voxlis.net](https://voxlis.net)
+3. [voxlis.com](https://voxlis.com)
 
 # Table of Contents
 
