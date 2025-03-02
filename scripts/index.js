@@ -52,9 +52,9 @@ function hyperlinkContent(content, type) {
     ];
 
     const typeColors = {
-        pros: '#ffffff',
-        neutral: '#ffffff',
-        cons: '#ffffff'
+      pros: "var(--text-color)",
+      neutral: "var(--text-color)",
+      cons: "var(--text-color)",
     };
 
     const color = typeColors[type] || '#e8e8e8';
