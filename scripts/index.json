@@ -113,7 +113,8 @@
         "warning": false,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f2",
-        "buytext": "$6.49 weekly"
+        "buytext": "$6.49 weekly",
+        "hide": true
     },
     {
         "name": "CodeX",
@@ -157,7 +158,8 @@
         "types": ["unc", "windows", "key"],
         "unc": "/assets/unc/swift.json",
         "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
+        "lastEditedByImage": "assets/verified.png",
+        "hide": true
     },
     {
         "name": "Solara v3",
