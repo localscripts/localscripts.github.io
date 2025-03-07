@@ -1,4 +1,6 @@
-- Maximum event re-entrancy depth exceeded for BindableEvent.Event when calling anonymous function on line 425 in CoreGui.RobloxGui.Modules.Settings.Pages.GameSettings
+-- sUNC still manages to run! other mobile exec cant
+-- new functions like gethui(), better getrenv(), replicatesignal(), and other functions
+-- new tests results by wala_bingung (wala_new)
 
 
 
@@ -152,7 +154,7 @@ Interesting
 Finished the test in 24 seconds
 
 
-sUNC, VERSION 1.51 nr�|��ur|{rz�z|z�|yqzr{|��|�nyx�|L
+sUNC, VERSION 1.51 nr�|��ur|{rz�z|z�|yqzr{|��|�nyx�|L
 Contribu‌tors: vvultt, GRH,‌ 0_void, Dottik, Pixeluted, bytevector(🥭), s.irius, citam.
 
 ██╗░░░██╗███╗░░██╗░█████╗░ 
