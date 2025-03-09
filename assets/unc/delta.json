@@ -1,7 +1,7 @@
--- HELLA IMPRESVIE, THE ONLY ONE THAT RAN SUNC
--- HELLA IMPRESVIE, THE ONLY ONE THAT RAN SUNC
--- HELLA IMPRESVIE, THE ONLY ONE THAT RAN SUNC
--- HELLA IMPRESVIE, THE ONLY ONE THAT RAN SUNC
+-- sUNC still manages to run! other mobile exec cant
+-- new functions like gethui(), better getrenv(), replicatesignal(), and other functions
+-- new tests results by wala_bingung (wala_new, imveryh4ppy)
+
 
 
 
@@ -31,8 +31,8 @@
 
 
     
-Testing Date and Time: 2025-02-17 10:27:40
-Delta tested by voxlis.NET Team for voxlis.NET
+Testing Date and Time: 2025-03-07 19:56:02
+Delta tested by wala_bingung(wala_new, imveryh4ppy) for voxlis.NET
 
 
     
@@ -40,9 +40,10 @@ Loading...
 Grabbing executor name...
 STARTING sUNC test. Join our Discord server if you want :‌) [discord.gg/rx4nbdQPx6]
 + ❌ getscriptclosure Constants is not a valid member of Folder "CoreGui.RobloxGui.Modules.Common"
-+ ❌ gethiddenproperty Unable to get property Tags, type BinaryString
-+ ❌ sethiddenproperty Can't verify due to 'gethiddenproperty' not working reliably
-+ ❌ gethui Was able to find UI element directly, and the container was not clonerefd
++ ❌ getloadedmodules The Parent property of CoreGui is locked
++ ❌ debug.setupvalue invalid argument #1 (function or number expected)
++ ❌ debug.getprotos Invalid script's proto count
++ ❌ debug.setconstant invalid argument #1 (function or number expected)
 ❗ Starting basic loadstring testing
 ❗ Finished basic loadstring testing
 ❗ Starting simple loadstring URL testing...
@@ -53,18 +54,14 @@ STARTING sUNC test. Join our Discord server if you want :‌) [discord.gg/rx4nbd
 loadstring[complicated] true
 loadstring[simple] true
 loadstring[basic] true
-+ ❌ WebSocket.connect Couldn't retrieve a signal from OnClose
 Interesting
-+ ❌ getrenderproperty Output couldn't match expected Drawing's property
-+ ❌ restorefunction function is nil
-+ ❌ decompile function is nil
 
 
 
 
 ✅ Drawing.Fonts
 ✅ Drawing.new
-❌ WebSocket.connect
+✅ WebSocket.connect
 ✅ appendfile
 ✅ base64_decode
 ✅ base64_encode
@@ -85,14 +82,14 @@ Interesting
 ✅ debug.getconstants
 ✅ debug.getinfo
 ✅ debug.getproto
-✅ debug.getprotos
+❌ debug.getprotos
 ✅ debug.getstack
 ✅ debug.getupvalue
 ✅ debug.getupvalues
-✅ debug.setconstant
+❌ debug.setconstant
 ✅ debug.setstack
-✅ debug.setupvalue
-❌ decompile
+❌ debug.setupvalue
+✅ decompile
 ✅ delfile
 ✅ delfolder
 ✅ fireclickdetector
@@ -105,14 +102,14 @@ Interesting
 ✅ getcustomasset
 ✅ getgc
 ✅ getgenv_access
-❌ gethiddenproperty
-❌ gethui
+✅ gethiddenproperty
+✅ gethui
 ✅ getinstances
-✅ getloadedmodules
+❌ getloadedmodules
 ✅ getnamecallmethod
 ✅ getnilinstances
 ✅ getrawmetatable
-❌ getrenderproperty
+✅ getrenderproperty
 ✅ getrenv
 ✅ getrunningscripts
 ✅ getscriptbytecode
@@ -141,8 +138,8 @@ Interesting
 ✅ newcclosure
 ✅ readfile
 ✅ request
-❌ restorefunction
-❌ sethiddenproperty
+✅ restorefunction
+✅ sethiddenproperty
 ✅ setrawmetatable
 ✅ setreadonly
 ✅ setrenderproperty
@@ -151,13 +148,13 @@ Interesting
 ✅ writefile
 
 
-😎 Passed the test with 91% succеss rate (79 ‌out ‌of ‌87)
-❌ Total tests failed: ‌8
+😎 Passed the test with 94% succеss rate (82 ‌out ‌of ‌87)
+❌ Total tests failed: ‌5
 😏 This test was made by senS (fuck all the inco pastes/‌unc fakers)‌
-Finished the test in 27.1 seconds
+Finished the test in 24 seconds
 
 
-sUNC, VERSION 1.51 �y�nOn{n{=�A���L
+sUNC, VERSION 1.51 nr�|��ur|{rz�z|z�|yqzr{|��|�nyx�|L
 Contribu‌tors: vvultt, GRH,‌ 0_void, Dottik, Pixeluted, bytevector(🥭), s.irius, citam.
 
 ██╗░░░██╗███╗░░██╗░█████╗░ 
@@ -172,8 +169,8 @@ Contribu‌tors: vvultt, GRH,‌ 0_void, Dottik, Pixeluted, bytevector(🥭), s.
 
 
     
-Testing Date and Time: 2025-02-17 10:27:40
-Delta tested by voxlis.NET Team for voxlis.NET
+Testing Date and Time: 2025-03-07 19:56:02
+Delta tested by wala_bingung(wala_new, imveryh4ppy) for voxlis.NET
 
 
     
@@ -285,9 +282,9 @@ UNC Environment Check
 ✅ setrenderproperty
 ✅ cleardrawcache
 ⏺️ WebSocket
-✅ setfpscap • 71fps @60 • 78fps @0
+✅ setfpscap • 45fps @60 • 58fps @0
 ✅ WebSocket.connect
-✅ request • User-Agent: Delta Android
+✅ request • User-Agent: Delta Android/2.0
 
 
 UNC Summary

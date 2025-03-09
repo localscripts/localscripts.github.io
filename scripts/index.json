@@ -189,7 +189,7 @@
     },
     {
         "name": "Delta",
-        "pros": ["Best script support", "100% UNC [91% sUNC]", "Level 8"],
+        "pros": ["Best script support", "100% UNC [94% sUNC]", "Level 8"],
         "neutral": ["Includes a keysystem"],
         "cons": [],
         "link": "https://deltaexploits.gg",
@@ -197,8 +197,8 @@
         "buttonText": "FREE",
         "types": ["unc", "android", "ios", "key"],
         "unc": "https://voxlis.net/assets/unc/delta.json",
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
+        "lastEditedBy": "imveryh4ppy",
+        "lastEditedByImage": "assets/unverified.png"
     },
         {
         "name": "KRNL",
