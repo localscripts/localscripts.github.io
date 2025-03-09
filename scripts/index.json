@@ -1,19 +1,19 @@
 [
     {
-        "name": "Wave",
-        "pros": ["Amazing updating schedule", "Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
+        "name": "Zenith",
+        "pros": ["Amazing uptime, stability & power", "The best overall value", "Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
         "neutral": [],
-        "link": "https://getwave.gg",
-        "linkprotected": "https://loot-link.com/s?e31027c7",
+        "link": "https://zenith.wtf",
+        "linkprotected": "https://lootdest.org/s?rJQCZxCQ",
         "cons": [],
         "buttonText": "Website",
         "types": ["unc", "windows"],
-        "unc": "/assets/unc/wave.json",
+        "unc": "/assets/unc/zenith.json",
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f0",
-        "buytext": "$7.49 weekly",
-        "glow": "#06A3F1",
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f2",
+        "buytext": "$6.49 weekly",
+        "glow": "#A14AA1",
         "glowTextHoverColor": "#FFFFFF"
     },
     {
@@ -34,6 +34,23 @@
         "buytext": "$6.99 weekly",
         "glow": "#FFFFFF",
         "glowTextHoverColor": "#000000"
+    },
+    {
+        "name": "Wave",
+        "pros": ["Amazing updating schedule", "Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
+        "neutral": [],
+        "link": "https://getwave.gg",
+        "linkprotected": "https://loot-link.com/s?e31027c7",
+        "cons": [],
+        "buttonText": "Website",
+        "types": ["unc", "windows"],
+        "unc": "/assets/unc/wave.json",
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f0",
+        "buytext": "$7.49 weekly",
+        "glow": "#06A3F1",
+        "glowTextHoverColor": "#FFFFFF"
     },
     {
         "name": "Macsploit",
