@@ -54,6 +54,27 @@
     --color-positive: #4ADE80;
 }
 
+.catppuccin {
+    --text-color: #c6d0f5;
+    --main-color-1: #ca9ee6;
+    --main-color-2: #ca9ee6;
+    --main-color-dim-1: #ca9ee6cc;
+    --main-color-dim-2: #ca9ee699;
+    --main-color-dim-3: #ca9ee666;
+    --main-transparent: rgba(0, 0, 0, 0);
+    --secondary-color-1: #232634;
+    --secondary-color-2: #292c3c;
+    --tooltip-color-1: #232634;
+    --tooltip-color-2: #292c3c;
+    --backround-color: #303446;
+    --navbar-backround: #303446;
+    --navbar-line: #ca9ee6;
+    --link-button: #ca9ee6;
+
+    --card-background: #414559;
+    --card-border: #ca9ee6;
+    --card-color: #414559;
+}
 
 html,
 body {
@@ -445,6 +466,23 @@ main {
     text-shadow: none;
     font-size: 22px;
     font-weight: bold;
+    position: relative;
+    display: inline-block;
+}
+
+.card-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--main-color-1);
+    transition: width 0.3s ease;
+}
+
+.card:hover .card-title::after {
+    width: 100%;
 }
 
 .card-content {
@@ -703,6 +741,7 @@ footer {
     bottom: 0;
     width: 100%;
     border-top: 2px solid var(--main-color-1);
+    backdrop-filter: blur(6.7px);
 }
 
 a.footer-link {
@@ -969,30 +1008,58 @@ a.footer-link {
     /* White for neutral */
 }
 
-.cons-small-text-card {
+.cons-small-text-card 
+{
     color: #ff0000;
     /* Red for cons */
 }
 
-#theme-selector {
+.theme-selector-container {
     position: fixed;
-    bottom: 50px;
-    left: 50px;
-}
-
-#theme-selector, #theme-selector>option {
-    background-color: var(--navbar-backround);
-    border: 0px transparent;
-    font: inherit;
-}
-
-#theme-selector-container {
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(10, 10, 10, 0.7);
+    padding: 10px 15px;
+    border-radius: 8px;
     display: flex;
-    flex-direction: row;
+    align-items: center;
     gap: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    z-index: 90;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
 }
+
+.theme-selector-container:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+}
+
 .theme-selector-text {
     font-weight: bold;
+    font-size: 14px;
+}
+
+#theme-selector {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+#theme-selector:hover {
+    border-color: var(--main-color-1);
+}
+
+#theme-selector option {
+    background-color: #111;
+    color: var(--text-color);
 }
 
 .index-errorload {
