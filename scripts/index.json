@@ -205,6 +205,18 @@
         "hide": false
     },
     {
+        "name": "KRNL",
+        "pros": ["98% sUNC [98% UNC]", "Level 8"],
+        "neutral": ["Includes a keysystem"],
+        "cons": [],
+        "link": "https://krnl.cat",
+        "linkprotected": "https://loot-link.com/s?1t1kGlLB",
+        "types": ["unc", "android", "key"],
+        "unc": "https://voxlis.net/assets/unc/krnl.json",
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png"
+    },
+    {
         "name": "Delta",
         "pros": ["Best script support", "100% UNC [94% sUNC]", "Level 8"],
         "neutral": ["Includes a keysystem"],
@@ -216,17 +228,6 @@
         "unc": "https://voxlis.net/assets/unc/delta.json",
         "lastEditedBy": "imveryh4ppy",
         "lastEditedByImage": "assets/unverified.png"
-    },
-        {
-        "name": "KRNL",
-        "pros": ["88% UNC", "Level 8"],
-        "neutral": ["Includes a keysystem"],
-        "cons": [],
-        "link": "https://krnl.cat",
-        "linkprotected": "https://loot-link.com/s?1t1kGlLB",
-        "types": ["unc", "android", "key"],
-        "lastEditedBy": "voxlis.NET",
-        "lastEditedByImage": "assets/verified.png"
     },
     {
         "name": "Zorara",
