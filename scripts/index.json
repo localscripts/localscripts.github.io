@@ -193,7 +193,7 @@
     {
         "name": "Xeno",
         "pros": ["Has a decompiler", "41% sUNC [81% UNC]"],
-        "neutral": ["Level 3","Not stable"],
+        "neutral": ["Level 3",],
         "cons": [],
         "link": "https://xeno.now",
         "linkprotected": "https://lootdest.org/s?6ND7jl03",
@@ -206,7 +206,7 @@
     },
     {
         "name": "KRNL",
-        "pros": ["98% sUNC [98% UNC]", "Level 8"],
+        "pros": ["100% sUNC [100% UNC]", "Level 8"],
         "neutral": ["Includes a keysystem"],
         "cons": [],
         "link": "https://krnl.cat",
