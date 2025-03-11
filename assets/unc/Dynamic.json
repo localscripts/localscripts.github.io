@@ -1,0 +1,154 @@
+Dynamic Loaded!
++ By: /xstroy - 1arize/
+- :133: Incomplete statement: expected assignment or a function call
+
+
+
+
+                                    $$\ $$\               $$\   $$\ $$$$$$$$\ $$$$$$$$\ 
+                                    $$ |\__|              $$$\  $$ |$$  _____|\__$$  __|
+     $$\    $$\  $$$$$$\  $$\   $$\ $$ |$$\  $$$$$$$\     $$$$\ $$ |$$ |         $$ |   
+     \$$\  $$  |$$  __$$\ \$$\ $$  |$$ |$$ |$$  _____|    $$ $$\$$ |$$$$$\       $$ |   
+      \$$\$$  / $$ /  $$ | \$$$$  / $$ |$$ |\$$$$$$\      $$ \$$$$ |$$  __|      $$ |   
+       \$$$  /  $$ |  $$ | $$  $$<  $$ |$$ | \____$$\     $$ |\$$$ |$$ |         $$ |   
+        \$  /   \$$$$$$  |$$  /\$$\ $$ |$$ |$$$$$$$  |$$\ $$ | \$$ |$$$$$$$$\    $$ |   
+         \_/     \______/ \__/  \__|\__|\__|\_______/ \__|\__|  \__|\________|   \__|   v1.0
+   
+            Z - Runs sUNC | X - Runs UNC | C - Saves Console Output to workspace                                                        
+                                                                                   
+                                                                                   
+
+
+ââââââââââââââââââââââââââââââââââ
+ââââââââââââââââââââââââââââââââââ
+ââââââââââââââââââââââââââââââââââ
+ââââââââââââââââââââââââââââââââââ
+ââââââââââââââââââââââââââââââââââ
+ââââââââââââââââââââââââââââââââââ
+
+    Script: https://voxlis.net/assets/unc/lua/dumper.lua
+
+
+
+    
+Testing Date and Time: 2025-02-26 07:25:37
+Dynamic tested by ender for voxlis.NET
+
+
+    
+Loading...
+Grabbing executor name...
+STARTING sUNC test. Join our Discord server if you want :‌) [discord.gg/rx4nbdQPx6]
++ ❌ getscriptclosure Constants is not a valid member of Folder "CoreGui.RobloxGui.Modules.Common"
+❗ Starting basic loadstring testing
+❗ Finished basic loadstring testing
+❗ Starting simple loadstring URL testing...
+✅ Passed the simple loadstring test. Short obfuscated scripts can be executed.‌
+❗ Finished simple loadstring URL testing
+❗ Starting complicated loadstring URL testing...‌
+❗ Finished complicated loadstring URL testing
+loadstring[complicated] true
+loadstring[simple] true
+loadstring[basic] true
+Interesting
+
+
+
+
+✅ Drawing.Fonts
+✅ Drawing.new
+✅ WebSocket.connect
+✅ appendfile
+✅ base64_decode
+✅ base64_encode
+✅ cache.invalidate
+✅ cache.iscached
+✅ cache.replace
+✅ checkcaller
+✅ cleardrawcache
+✅ clonefunction
+✅ cloneref
+✅ compareinstances
+✅ crypt.decrypt
+✅ crypt.encrypt
+✅ crypt.generatebytes
+✅ crypt.generatekey
+✅ crypt.hash
+✅ debug.getconstant
+✅ debug.getconstants
+✅ debug.getinfo
+✅ debug.getproto
+✅ debug.getprotos
+✅ debug.getstack
+✅ debug.getupvalue
+✅ debug.getupvalues
+✅ debug.setconstant
+✅ debug.setstack
+✅ debug.setupvalue
+✅ decompile
+✅ delfile
+✅ delfolder
+✅ fireclickdetector
+✅ fireproximityprompt
+✅ firesignal
+✅ firetouchinterest
+✅ getcallbackvalue
+✅ getcallingscript
+✅ getconnections
+✅ getcustomasset
+✅ getgc
+✅ getgenv_access
+✅ gethiddenproperty
+✅ gethui
+✅ getinstances
+✅ getloadedmodules
+✅ getnamecallmethod
+✅ getnilinstances
+✅ getrawmetatable
+✅ getrenderproperty
+✅ getrenv
+✅ getrunningscripts
+✅ getscriptbytecode
+❌ getscriptclosure
+✅ getscripts
+✅ getsenv
+✅ getthreadidentity
+✅ hookfunction
+✅ hookmetamethod
+✅ identifyexecutor
+✅ iscclosure
+✅ isexecutorclosure
+✅ isfile
+✅ isfolder
+✅ islclosure
+✅ isrbxactive
+✅ isreadonly
+✅ isrenderobj
+✅ isscriptable
+✅ listfiles
+✅ loadfile
+✅ loadstring
+✅ lz4compress
+✅ lz4decompress
+✅ makefolder
+✅ newcclosure
+✅ readfile
+✅ request
+✅ restorefunction
+✅ sethiddenproperty
+✅ setrawmetatable
+✅ setreadonly
+✅ setrenderproperty
+✅ setscriptable
+✅ setthreadidentity
+✅ writefile
+
+
+😎 Passed the test with 99% succеss rate (86 ‌out ‌of ‌87)
+❌ Total tests failed: ‌1
+😏 This test was made by senS (fuck all the inco pastes/‌unc fakers)‌
+Finished the test in 16.6 seconds
+
+
+sUNC, VERSION 1.51 }A@�>�>>ynp|{pr�ynzn�n}r�pnnnn
+Contribu‌tors: vvultt, GRH,‌ 0_void, Dottik, Pixeluted, bytevector(🥭), s.irius, citam.
