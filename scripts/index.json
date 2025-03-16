@@ -113,7 +113,8 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
-        "buytext": "$4.99 monthly"
+        "buytext": "$4.99 monthly",
+        "hide": true
     },
     {
         "name": "Synapse Z",
