@@ -425,6 +425,20 @@
         "hide": true
     },
     {
+        "name": "Ember",
+        "pros": ["93% sUNC [94% UNC]", "Level 8"],
+        "neutral": ["Has a key system"],
+        "cons": [],
+        "link": "https://www.getember.net/",
+        "linkprotected": "https://www.getember.net/",
+        "buttonText": "$4.99 Weekly",
+        "types": ["unc", "windows"],
+        "unc": "/assets/unc/ember.json",
+        "lastEditedBy": "setthreadcontext",
+        "lastEditedByImage": "assets/unverified.png",
+        "warning": true
+    },
+    {
         "name": "Ratware",
         "pros": ["150,000+ Users", "100% UNC", "Level 8"],
         "neutral": [],
