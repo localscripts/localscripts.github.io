@@ -19,7 +19,7 @@
     {
         "name": "AWP.gg",
         "pros": ["Emulates Roblox for safety", "Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
-        "neutral": [],
+        "neutral": ["Recently got detected"],
         "cons": [],
         "link": "https://discord.gg/awpgg",
         "linkprotected": "https://link-center.net/1319977/awpgg-level-8-exploit",
