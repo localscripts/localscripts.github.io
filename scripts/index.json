@@ -465,7 +465,7 @@
     {
         "name": "Swift",
         "pros": ["Has a decompiler", "100% sUNC [100% UNC]", "Level 8"],
-        "neutral": ["Owner skidding"],
+        "neutral": [],
         "link": "https://getswift.gg",
         "linkprotected": "https://link-target.net/1319977/swift",
         "cons": [],
