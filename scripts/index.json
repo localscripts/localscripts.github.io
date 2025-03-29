@@ -422,6 +422,18 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
+    {
+        "name": "skibidisploit",
+        "pros": ["8,201,411,203+ Users", "100% sUNC", "Level 8"],
+        "neutral": [],
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "link": "https://wallpapers.com/images/hd/patrick-bateman-coin-toss-il8x0iat32b7qgr4.jpg",
+        "buttonText": "FREE",
+        "types": ["windows", "android", "ios", "macos", "unc"],
+        "lastEditedBy": "Requested",
+        "lastEditedByImage": "assets/unverified.png",
+        "warning": true
+    },
         {
         "name": "Argon",
         "pros": ["Has a decompiler", "100% sUNC", "Level 8"],
