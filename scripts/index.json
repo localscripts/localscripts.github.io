@@ -54,7 +54,7 @@
     },
     {
         "name": "Wave",
-        "pros": ["Has a decompiler", "87 sUNC [100% UNC]", "Level 8"],
+        "pros": ["Has a decompiler", "87% sUNC [100% UNC]", "Level 8"],
         "neutral": [],
         "link": "https://getwave.gg",
         "linkprotected": "https://link-hub.net/1319977/wave-level-8-exploit",
