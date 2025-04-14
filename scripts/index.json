@@ -422,7 +422,7 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
     },
-        {
+    {
         "name": "Argon",
         "pros": ["Has a decompiler", "100% sUNC", "Level 8"],
         "neutral": [],
@@ -435,6 +435,19 @@
         "lastEditedByImage": "assets/unverified.png",
         "warning": true,
         "hide": true
+    },
+    {
+        "name": "Nebula",
+        "pros": ["100% UNC~", "Level 8"],
+        "neutral": ["New Exploit", "Owned by AhmadV99 (Speed hub x Owner"],
+        "cons": [],
+        "link": "https://nebula-rblx.vercel.app/",
+        "buttonText": "Website",
+        "types": ["android","key"],
+        "lastEditedBy": "nitwitmc",
+        "lastEditedByImage": "assets/unverified.png",
+        "expires": "2025-01-19T23:59:59Z"
+        "warning": = true
     },
     {
         "name": "Mint",
