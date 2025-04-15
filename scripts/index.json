@@ -453,6 +453,23 @@
         "warning": true
     },
     {
+        "name": "Potassium",
+        "pros": ["99% sUNC [99% UNC]", "Level 8"],
+        "neutral": ["New exploit"],
+        "link": "https://discord.gg/uw9SnJ56eu",
+        "linkprotected": "https://discord.gg/uw9SnJ56eu",
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "buttonText": "Website",
+        "types": ["unc", "windows"],
+        "unc": "https://streamable.com/wwiktb",
+        "lastEditedBy": "Meowijuana.lol (_euphoria64)",
+        "lastEditedByImage": "assets/unverified.png",
+        "buylink": "https://potassium.sellhub.cx/",
+        "buytext": "$20+ Lifetime",
+        "glow": "#0388fc",
+        "glowTextHoverColor": "#FFFFFF"
+    },
+    {
         "name": "Ratware",
         "pros": ["150,000+ Users", "100% UNC", "Level 8"],
         "neutral": [],
