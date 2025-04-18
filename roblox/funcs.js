@@ -137,7 +137,7 @@ const expData = [
     hasKeySystem: true,
     free: false,
     warning: true,
-    warningInfo: "Has Argon developers behind the scenes, future of Cryptic is unpredictable.",
+    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Cryptic's website anyway?",
   },
   {
     id: "codex",
