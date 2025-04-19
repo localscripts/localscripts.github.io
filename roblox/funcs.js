@@ -180,7 +180,7 @@ const expData = [
   },
   {
     id: "solara",
-    name: "Solara v3",
+    name: "Solara",
     desc: "A free exploit with decent performance.",
     lvl: 3,
     price: "FREE",
@@ -307,7 +307,7 @@ const expData = [
   },
   {
     id: "dx9ware",
-    name: "DX9WARE V2",
+    name: "DX9WARE",
     desc: "An external exploit focused on safety.",
     lvl: 6,
     price: "$3.25",
