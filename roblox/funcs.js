@@ -110,7 +110,7 @@ const expData = [
     hasKeySystem: false,
     free: false,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
+    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for MacSploit so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
   },
   {
     id: "cryptic",
@@ -260,6 +260,27 @@ const expData = [
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
     hasKeySystem: true,
+    free: true,
+  },
+  {
+    id: "hydrogen",
+    name: "Hydrogen",
+    desc: "A free macOS Exploit",
+    lvl: 8,
+    price: "FREE",
+    plat: ["macos"],
+    pros: ["Has a decompiler", "70% sUNC", "Level 8"],
+    neutral: [],
+    cons: [],
+    verified: true,
+    editor: "voxlis.NET",
+    txtColor: "text-blue-500",
+    accentColor: "from-blue-600 to-blue-700",
+    href: "https://link-center.net/1319977",
+    priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
+    hide: false,
+    hasKeySystem: false,
     free: true,
   },
   {
@@ -566,7 +587,7 @@ const st = {
   keyOnly: false,
   noKeyOnly: false,
   srtBy: "recommended",
-  fltrd: [...expData],
+  fltrd: expData.filter((exp) => exp.hide !== true),
 }
 
 const els = {
@@ -1260,6 +1281,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     isSlowDevice() ? 100 : 50,
   )
+
+  st.fltrd = expData.filter((exp) => exp.hide !== true)
+
   if (els.lvlVal) els.lvlVal.textContent = "ALL"
   if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
   updCnts()
