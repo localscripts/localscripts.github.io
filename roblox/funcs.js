@@ -195,7 +195,7 @@ const expData = [
     href: "https://link-target.net/1319977/visual",
     priceHref: "https://link-target.net/1319977/visual",
     info: "## Exploit Performance  \n- [Visual](/) is a new Exploit, this cannot be commencted.\n\n## Background Information  \n- [Visual](/) is a new exploit. It can't be commented on much—aside from the fact that Peyton owns Swift and MacSploit, but that's a different story, which you can find in Swift's and MacSploit's cards.\n\n## Developer Information  \n- [Peyton](/), the project’s creator, is an experienced and respected developer in the exploit community. His track record includes continued leadership on [Swift](/), while now also overseeing Visual’s direction. [Blinx](/), the UI designer behind both the original Swift interface and Visual’s current look, brings a clean and consistent visual identity across projects. [Reveny](/) and [Viz](/), both software engineering majors and longtime collaborators of Peyton, contribute to the development of Visual. Though not publicly known in the community, their technical expertise ensures the project is both scalable and dependable.\n\n> Sources: Reddit.com/r/robloxhackers, Swift Discord, Visual Discord",    hide: false,
-    hasKeySystem: false,
+    hasKeySystem: true,
     free: true,
   },
   {
