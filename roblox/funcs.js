@@ -892,7 +892,7 @@ function shwNtf(msg, type = "error") {
 
 async function ftchUncDt(id, name) {
   try {
-    const response = await fetch(`https://beta.voxlis.net/assets/unc/${id}.json`)
+    const response = await fetch(`https://voxlis.net/assets/unc/${id}.json`)
     if (response.status === 404) {
       shwNtf(`UNC/sUNC test for ${name} is unknown`, "error")
       throw new Error("UNC data not found")
