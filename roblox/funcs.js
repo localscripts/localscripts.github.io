@@ -3194,50 +3194,2215 @@ document.addEventListener("DOMContentLoaded", () => {
           if (d !== dropdown && d.classList.contains("active")) {
             d.classList.remove("active")
           }
+        })const AppState = {
+  view: "grid",
+  query: "",
+  platformFilters: [],
+  levelFilters: [0, 0],
+  priceFilter: "all",
+  verifiedOnly: false,
+  premiumOnly: false,
+  externalOnly: false,
+  executorOnly: false,
+  keySystemOnly: false,
+  noKeySystemOnly: false,
+  sortBy: "recommended",
+  filteredData: [],
+
+  
+  init() {
+    this.filteredData = expData.filter((exp) => exp.hide !== true)
+    return this
+  },
+}
+
+
+const DOM = {
+  elements: {},
+
+  
+  init() {
+    const selectors = {
+      header: "#hdr",
+      hero: "#heroSec",
+      menuToggle: "#mobMenuTgl",
+      menu: "#mobMenu",
+      search: "#srchInp",
+      mobileSearch: "#mobSrchInp",
+      clearButton: "#clrSrch",
+      mobileClearButton: "#mobClrSrch",
+      filterButton: "#fltrBtn",
+      mobileFilterButton: "#mobFltrBtn",
+      drawer: "#fltrDrwr",
+      applyButton: "#applyFltrs",
+      levelSlider: "#lvlSldr",
+      mobileLevelSlider: "#mobLvlSldr",
+      levelValue: "#lvlMaxVal",
+      mobileLevelValue: "#mobLvlMaxVal",
+      levelFill: "#lvlTrkFill",
+      mobileLevelFill: "#mobLvlTrkFill",
+      verifiedSwitch: "#vrfSwch",
+      mobileVerifiedSwitch: "#mobVrfSwch",
+      premiumSwitch: "#premSwch",
+      mobilePremiumSwitch: "#mobPremSwch",
+      externalSwitch: "#extSwch",
+      mobileExternalSwitch: "#mobExtSwch",
+      executorSwitch: "#execSwch",
+      mobileExecutorSwitch: "#mobExecSwch",
+      keySwitch: "#keySwch",
+      mobileKeySwitch: "#mobKeySwch",
+      noKeySwitch: "#noKeySwch",
+      mobileNoKeySwitch: "#mobNoKeySwch",
+      sortSelect: "#srtSel",
+      mobileSortSelect: "#mobSortSel",
+      resetButton: "#rstFltrs",
+      mobileResetButton: "#mobRstFltrs",
+      resetAllButton: "#rstAllFltrs",
+      grid: "#expsGrid",
+      list: "#expsList",
+      noResults: "#noRes",
+      filteredCount: "#fltrdCnt",
+      totalCount: "#ttlCnt",
+      tabButtons: ".tab-trgr",
+      tabContent: ".tab-cntnt",
+      canvas: "#strCnv",
+      loadingScreen: "#loadingScreen",
+      loadingBar: "#loadingBar",
+      logoTextGradient: ".logo-txt-grd",
+      logoTextLight: ".logo-txt-lt",
+      themeDropdown: "#themeDropdown",
+      themeDropdownSelected: "#themeDropdownSelected",
+      themeDropdownOptions: "#themeDropdownOptions",
+    }
+
+    
+    for (const [key, selector] of Object.entries(selectors)) {
+      if (selector.startsWith(".")) {
+        this.elements[key] = document.querySelectorAll(selector)
+      } else {
+        this.elements[key] = document.getElementById(selector.substring(1))
+      }
+    }
+
+    return this
+  },
+
+  
+  get(key) {
+    return this.elements[key]
+  },
+}
+
+
+const UIManager = {
+  
+  init() {
+    this.setupEventListeners()
+    this.updateCounts()
+    this.renderExploits()
+    this.createModals()
+    this.setupDropdowns()
+    this.initTextSwitching()
+    this.updateScrollbarStyles()
+    this.handleWindowResize()
+
+    
+    const levelVal = DOM.get("levelValue")
+    const mobileLevelVal = DOM.get("mobileLevelValue")
+    if (levelVal) levelVal.textContent = "ALL"
+    if (mobileLevelVal) mobileLevelVal.textContent = "ALL"
+
+    return this
+  },
+
+  
+  setupEventListeners() {
+    
+    window.addEventListener("scroll", () => {
+      const heroHeight = DOM.get("hero") ? DOM.get("hero").offsetHeight : 0
+      if (window.scrollY > heroHeight / 2) {
+        DOM.get("header").classList.add("scrolled")
+      } else {
+        DOM.get("header").classList.remove("scrolled")
+      }
+    })
+
+    
+    const menuToggle = DOM.get("menuToggle")
+    const menu = DOM.get("menu")
+    if (menuToggle && menu) {
+      menuToggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden")
+        document.body.classList.toggle("menu-open")
+        menuToggle.innerHTML = menu.classList.contains("hidden")
+          ? '<i class="fas fa-bars"></i>'
+          : '<i class="fas fa-times"></i>'
+      })
+    }
+
+    
+    this.setupSearchListeners()
+
+    
+    this.setupFilterDrawer()
+
+    
+    this.setupLevelSliders()
+
+    
+    this.setupPlatformFilters()
+
+    
+    this.setupPriceFilters()
+
+    
+    this.setupToggleSwitches()
+
+    
+    this.setupSortSelects()
+
+    
+    this.setupResetButtons()
+
+    
+    this.setupTabButtons()
+
+    
+    window.addEventListener("resize", this.handleWindowResize.bind(this))
+
+    return this
+  },
+
+  
+  setupSearchListeners() {
+    const search = DOM.get("search")
+    const mobileSearch = DOM.get("mobileSearch")
+    const clearButton = DOM.get("clearButton")
+    const mobileClearButton = DOM.get("mobileClearButton")
+
+    if (search) {
+      search.addEventListener("input", (e) => {
+        AppState.query = e.target.value
+        if (mobileSearch) mobileSearch.value = AppState.query
+        if (clearButton) clearButton.classList.toggle("hidden", !AppState.query)
+        if (mobileClearButton) mobileClearButton.classList.toggle("hidden", !AppState.query)
+        this.filterExploits()
+      })
+    }
+
+    if (mobileSearch) {
+      mobileSearch.addEventListener("input", (e) => {
+        AppState.query = e.target.value
+        if (search) search.value = AppState.query
+        if (clearButton) clearButton.classList.toggle("hidden", !AppState.query)
+        if (mobileClearButton) mobileClearButton.classList.toggle("hidden", !AppState.query)
+        this.filterExploits()
+      })
+    }
+
+    if (clearButton) {
+      clearButton.addEventListener("click", () => {
+        AppState.query = ""
+        if (search) search.value = ""
+        if (mobileSearch) mobileSearch.value = ""
+        clearButton.classList.add("hidden")
+        if (mobileClearButton) mobileClearButton.classList.add("hidden")
+        this.filterExploits()
+      })
+    }
+
+    if (mobileClearButton) {
+      mobileClearButton.addEventListener("click", () => {
+        AppState.query = ""
+        if (search) search.value = ""
+        if (mobileSearch) mobileSearch.value = ""
+        if (clearButton) clearButton.classList.add("hidden")
+        mobileClearButton.classList.add("hidden")
+        this.filterExploits()
+      })
+    }
+  },
+
+  
+  setupFilterDrawer() {
+    const filterButton = DOM.get("filterButton")
+    const mobileFilterButton = DOM.get("mobileFilterButton")
+    const drawer = DOM.get("drawer")
+    const applyButton = DOM.get("applyButton")
+
+    if (filterButton && drawer) {
+      filterButton.addEventListener("click", () => {
+        drawer.classList.add("open")
+        document.body.style.overflow = "hidden"
+      })
+    }
+
+    if (mobileFilterButton && drawer) {
+      mobileFilterButton.addEventListener("click", () => {
+        drawer.classList.add("open")
+        document.body.style.overflow = "hidden"
+        const menu = DOM.get("menu")
+        const menuToggle = DOM.get("menuToggle")
+        if (menu) menu.classList.add("hidden")
+        if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>'
+      })
+    }
+
+    if (drawer) {
+      const overlay = drawer.querySelector(".fltr-drwr-ovl")
+      if (overlay) {
+        overlay.addEventListener("click", () => {
+          drawer.classList.remove("open")
+          document.body.style.overflow = ""
         })
-        dropdown.classList.toggle("active")
-        if (dropdown.classList.contains("active")) {
-          pageOverlay.classList.add("active")
+      }
+    }
+
+    if (applyButton && drawer) {
+      applyButton.addEventListener("click", () => {
+        drawer.classList.remove("open")
+        document.body.style.overflow = ""
+      })
+    }
+  },
+
+  
+  setupLevelSliders() {
+    const levelSlider = DOM.get("levelSlider")
+    const mobileLevelSlider = DOM.get("mobileLevelSlider")
+
+    const updateLevelSlider = (slider, value, isMobile) => {
+      const levelVal = isMobile ? DOM.get("mobileLevelValue") : DOM.get("levelValue")
+      const otherSlider = isMobile ? DOM.get("levelSlider") : DOM.get("mobileLevelSlider")
+      const otherLevelVal = isMobile ? DOM.get("levelValue") : DOM.get("mobileLevelValue")
+      const levelFill = isMobile ? DOM.get("mobileLevelFill") : DOM.get("levelFill")
+
+      AppState.levelFilters = [0, value]
+
+      if (levelVal) levelVal.textContent = value === 0 ? "ALL" : value
+      if (otherSlider) otherSlider.value = value
+      if (otherLevelVal) otherLevelVal.textContent = value === 0 ? "ALL" : value
+
+      if (levelFill) {
+        const percent = (value / slider.max) * 100
+        levelFill.style.width = `${percent}%`
+      }
+
+      this.filterExploits()
+    }
+
+    if (levelSlider) {
+      levelSlider.addEventListener("input", (e) => {
+        updateLevelSlider(e.target, Number.parseInt(e.target.value), false)
+      })
+    }
+
+    if (mobileLevelSlider) {
+      mobileLevelSlider.addEventListener("input", (e) => {
+        updateLevelSlider(e.target, Number.parseInt(e.target.value), true)
+      })
+    }
+  },
+
+  
+  setupPlatformFilters() {
+    document.querySelectorAll(".cstm-chkbx input[data-pltf], .mob-pltf-chkbx input[data-pltf]").forEach((checkbox) => {
+      checkbox.addEventListener("change", () => {
+        const platform = checkbox.getAttribute("data-pltf")
+
+        if (checkbox.checked) {
+          if (!AppState.platformFilters.includes(platform)) {
+            AppState.platformFilters.push(platform)
+          }
         } else {
-          pageOverlay.classList.remove("active")
+          AppState.platformFilters = AppState.platformFilters.filter((p) => p !== platform)
+        }
+
+        
+        document.querySelectorAll(`[data-pltf="${platform}"]`).forEach((cb) => {
+          cb.checked = checkbox.checked
+        })
+
+        this.filterExploits()
+      })
+    })
+  },
+
+  
+  setupPriceFilters() {
+    document.querySelectorAll(".prc-btn, .mob-prc-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const price = button.getAttribute("data-prc")
+        AppState.priceFilter = price
+
+        
+        document.querySelectorAll(".prc-btn, .mob-prc-btn").forEach((btn) => {
+          btn.classList.remove("actv")
+          if (btn.getAttribute("data-prc") === price) {
+            btn.classList.add("actv")
+          }
+        })
+
+        this.filterExploits()
+      })
+    })
+  },
+
+  
+  setupToggleSwitches() {
+    const setupSwitchPair = (mainSwitch, mobileSwitch, stateProperty) => {
+      if (mainSwitch) {
+        mainSwitch.addEventListener("change", () => {
+          AppState[stateProperty] = mainSwitch.checked
+          if (mobileSwitch) mobileSwitch.checked = mainSwitch.checked
+
+          
+          if (stateProperty === "keySystemOnly" && mainSwitch.checked) {
+            const noKeySwitch = DOM.get("noKeySwitch")
+            if (noKeySwitch && noKeySwitch.checked) {
+              noKeySwitch.checked = false
+              AppState.noKeySystemOnly = false
+              const mobileNoKeySwitch = DOM.get("mobileNoKeySwitch")
+              if (mobileNoKeySwitch) mobileNoKeySwitch.checked = false
+            }
+          } else if (stateProperty === "noKeySystemOnly" && mainSwitch.checked) {
+            const keySwitch = DOM.get("keySwitch")
+            if (keySwitch && keySwitch.checked) {
+              keySwitch.checked = false
+              AppState.keySystemOnly = false
+              const mobileKeySwitch = DOM.get("mobileKeySwitch")
+              if (mobileKeySwitch) mobileKeySwitch.checked = false
+            }
+          }
+
+          this.filterExploits()
+        })
+      }
+
+      if (mobileSwitch) {
+        mobileSwitch.addEventListener("change", () => {
+          AppState[stateProperty] = mobileSwitch.checked
+          if (mainSwitch) mainSwitch.checked = mobileSwitch.checked
+
+          
+          if (stateProperty === "keySystemOnly" && mobileSwitch.checked) {
+            const mobileNoKeySwitch = DOM.get("mobileNoKeySwitch")
+            if (mobileNoKeySwitch && mobileNoKeySwitch.checked) {
+              mobileNoKeySwitch.checked = false
+              AppState.noKeySystemOnly = false
+              const noKeySwitch = DOM.get("noKeySwitch")
+              if (noKeySwitch) noKeySwitch.checked = false
+            }
+          } else if (stateProperty === "noKeySystemOnly" && mobileSwitch.checked) {
+            const mobileKeySwitch = DOM.get("mobileKeySwitch")
+            if (mobileKeySwitch && mobileKeySwitch.checked) {
+              mobileKeySwitch.checked = false
+              AppState.keySystemOnly = false
+              const keySwitch = DOM.get("keySwitch")
+              if (keySwitch) keySwitch.checked = false
+            }
+          }
+
+          this.filterExploits()
+        })
+      }
+    }
+
+    
+    setupSwitchPair(DOM.get("verifiedSwitch"), DOM.get("mobileVerifiedSwitch"), "verifiedOnly")
+    setupSwitchPair(DOM.get("premiumSwitch"), DOM.get("mobilePremiumSwitch"), "premiumOnly")
+    setupSwitchPair(DOM.get("externalSwitch"), DOM.get("mobileExternalSwitch"), "externalOnly")
+    setupSwitchPair(DOM.get("executorSwitch"), DOM.get("mobileExecutorSwitch"), "executorOnly")
+    setupSwitchPair(DOM.get("keySwitch"), DOM.get("mobileKeySwitch"), "keySystemOnly")
+    setupSwitchPair(DOM.get("noKeySwitch"), DOM.get("mobileNoKeySwitch"), "noKeySystemOnly")
+  },
+
+  
+  setupSortSelects() {
+    const sortSelect = DOM.get("sortSelect")
+    const mobileSortSelect = DOM.get("mobileSortSelect")
+
+    if (sortSelect) {
+      sortSelect.addEventListener("change", () => {
+        AppState.sortBy = sortSelect.value
+        if (mobileSortSelect) mobileSortSelect.value = AppState.sortBy
+        this.filterExploits()
+      })
+    }
+
+    if (mobileSortSelect) {
+      mobileSortSelect.addEventListener("change", () => {
+        AppState.sortBy = mobileSortSelect.value
+        if (sortSelect) sortSelect.value = AppState.sortBy
+        this.filterExploits()
+      })
+    }
+  },
+
+  
+  setupResetButtons() {
+    const resetFilters = () => {
+      AppState.platformFilters = []
+      AppState.levelFilters = [0, 0]
+      AppState.priceFilter = "all"
+      AppState.verifiedOnly = false
+      AppState.premiumOnly = false
+      AppState.externalOnly = false
+      AppState.executorOnly = false
+      AppState.keySystemOnly = false
+      AppState.noKeySystemOnly = false
+
+      
+      document.querySelectorAll(".cstm-chkbx input, .mob-pltf-chkbx input").forEach((cb) => {
+        cb.checked = false
+      })
+
+      
+      document.querySelectorAll(".prc-btn, .mob-prc-btn").forEach((btn) => {
+        btn.classList.remove("actv")
+        if (btn.getAttribute("data-prc") === "all") {
+          btn.classList.add("actv")
         }
       })
 
-      const optionItems = options.querySelectorAll(".custom-dropdown-option")
-      optionItems.forEach((option) => {
-        option.addEventListener("click", function () {
-          const value = this.getAttribute("data-value")
-          const text = this.textContent.trim()
-          const span = newSelected.querySelector("span")
-          if (span) span.textContent = text
-          optionItems.forEach((opt) => opt.classList.remove("selected"))
-          this.classList.add("selected")
-          dropdown.classList.remove("active")
-          pageOverlay.classList.remove("active")
-          if (dropdown.closest(".srt-fltr-cntr") || dropdown.closest(".mob-srt-fltr-cntr")) {
-            if (window.st) {
-              window.st.srtBy = value
-              if (typeof window.fltrExps === "function") {
-                window.fltrExps()
-              }
-            }
+      
+      const levelSlider = DOM.get("levelSlider")
+      const mobileLevelSlider = DOM.get("mobileLevelSlider")
+      const levelVal = DOM.get("levelValue")
+      const mobileLevelVal = DOM.get("mobileLevelValue")
+
+      if (levelSlider) levelSlider.value = 0
+      if (mobileLevelSlider) mobileLevelSlider.value = 0
+      if (levelVal) levelVal.textContent = "ALL"
+      if (mobileLevelVal) mobileLevelVal.textContent = "ALL"
+
+      
+      const levelFill = DOM.get("levelFill")
+      const mobileLevelFill = DOM.get("mobileLevelFill")
+      if (levelFill) levelFill.style.width = "0%"
+      if (mobileLevelFill) mobileLevelFill.style.width = "0%"
+
+      
+      const switches = [
+        "verifiedSwitch",
+        "mobileVerifiedSwitch",
+        "premiumSwitch",
+        "mobilePremiumSwitch",
+        "externalSwitch",
+        "mobileExternalSwitch",
+        "executorSwitch",
+        "mobileExecutorSwitch",
+        "keySwitch",
+        "mobileKeySwitch",
+        "noKeySwitch",
+        "mobileNoKeySwitch",
+      ]
+
+      switches.forEach((switchKey) => {
+        const switchElement = DOM.get(switchKey)
+        if (switchElement) switchElement.checked = false
+      })
+
+      this.filterExploits()
+    }
+
+    const resetButtons = [DOM.get("resetButton"), DOM.get("mobileResetButton"), DOM.get("resetAllButton")]
+
+    resetButtons.forEach((button) => {
+      if (button) {
+        button.addEventListener("click", resetFilters)
+      }
+    })
+  },
+
+  
+  setupTabButtons() {
+    const tabButtons = DOM.get("tabButtons")
+    const tabContent = DOM.get("tabContent")
+
+    if (tabButtons && tabButtons.length) {
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tab = button.getAttribute("data-tab")
+          AppState.view = tab
+
+          
+          tabButtons.forEach((btn) => btn.classList.remove("actv"))
+          button.classList.add("actv")
+
+          
+          if (tabContent && tabContent.length) {
+            tabContent.forEach((content) => content.classList.remove("actv"))
+            const activeContent = document.getElementById(`${tab}Tab`)
+            if (activeContent) activeContent.classList.add("actv")
           }
         })
       })
     }
-  })
-  document.addEventListener("click", (e) => {
+  },
+
+  
+  filterExploits() {
+    AppState.filteredData = expData
+      .filter((exp) => {
+        
+        if (exp.hide === true) return false
+
+        
+        if (AppState.query) {
+          const query = AppState.query.toLowerCase()
+          const nameMatch = exp.name.toLowerCase().includes(query)
+          const descMatch = exp.desc.toLowerCase().includes(query)
+          const platformMatch = exp.plat && exp.plat.some((platform) => platform.toLowerCase().includes(query))
+          const uncMatch =
+            exp.pros && exp.pros.some((pro) => pro.toLowerCase().includes("unc") && pro.toLowerCase().includes(query))
+          const uncNeutralMatch =
+            exp.neutral &&
+            exp.neutral.some(
+              (neutral) => neutral.toLowerCase().includes("unc") && neutral.toLowerCase().includes(query),
+            )
+
+          if (!(nameMatch || descMatch || platformMatch || uncMatch || uncNeutralMatch)) {
+            return false
+          }
+        }
+
+        
+        if (AppState.platformFilters.length > 0) {
+          if (!AppState.platformFilters.some((platform) => exp.plat.includes(platform))) {
+            return false
+          }
+        }
+
+        
+        if (AppState.levelFilters[1] !== 0 && exp.lvl !== AppState.levelFilters[1]) {
+          return false
+        }
+
+        
+        if (AppState.priceFilter !== "all") {
+          if (AppState.priceFilter === "free" && exp.price !== "FREE" && !exp.free) {
+            return false
+          }
+          if (AppState.priceFilter === "paid" && (exp.price === "FREE" || exp.free)) {
+            return false
+          }
+        }
+
+        
+        if (AppState.verifiedOnly && !exp.verified) {
+          return false
+        }
+
+        
+        if (AppState.premiumOnly && !exp.premium) {
+          return false
+        }
+
+        
+        if (AppState.externalOnly) {
+          const isExternal =
+            (exp.pros && exp.pros.some((pro) => pro.toLowerCase().includes("external"))) ||
+            (exp.neutral && exp.neutral.some((neutral) => neutral.toLowerCase().includes("external")))
+
+          if (!isExternal) {
+            return false
+          }
+        }
+
+        
+        if (AppState.executorOnly) {
+          const isExecutor =
+            !(exp.pros && exp.pros.some((pro) => pro.toLowerCase().includes("external"))) &&
+            !(exp.neutral && exp.neutral.some((neutral) => neutral.toLowerCase().includes("external")))
+
+          if (!isExecutor) {
+            return false
+          }
+        }
+
+        
+        if (AppState.keySystemOnly && !exp.hasKeySystem) {
+          return false
+        }
+
+        
+        if (AppState.noKeySystemOnly && exp.hasKeySystem) {
+          return false
+        }
+
+        return true
+      })
+      .sort((a, b) => {
+        
+        switch (AppState.sortBy) {
+          case "price-asc":
+            return this.comparePrices(a, b)
+          case "price-desc":
+            return this.comparePrices(b, a)
+          case "level-desc":
+            return b.lvl - a.lvl
+          case "name-asc":
+            return a.name.localeCompare(b.name)
+          default: 
+            if (a.verified && !b.verified) return -1
+            if (!a.verified && b.verified) return 1
+            if (a.premium && !b.premium) return -1
+            if (!a.premium && b.premium) return 1
+            return 0
+        }
+      })
+
+    this.renderExploits()
+    this.updateCounts()
+  },
+
+  
+  comparePrices(a, b) {
+    const getPriceValue = (price) => {
+      if (Array.isArray(price)) {
+        return Number.parseFloat(price[0].replace(/[^\d.]/g, "")) || 0
+      }
+      return price === "FREE" ? 0 : Number.parseFloat(price.replace(/[^\d.]/g, "")) || 0
+    }
+
+    return getPriceValue(a.price) - getPriceValue(b.price)
+  },
+
+  
+  renderExploits() {
+    const grid = DOM.get("grid")
+    const list = DOM.get("list")
+    const noResults = DOM.get("noResults")
+
+    if (!grid || !list) return
+
+    
+    grid.innerHTML = ""
+    list.innerHTML = ""
+
+    
+    if (AppState.filteredData.length === 0) {
+      if (noResults) noResults.classList.remove("hidden")
+    } else {
+      if (noResults) noResults.classList.add("hidden")
+    }
+
+    
+    AppState.filteredData.forEach((exploit) => {
+      const card = this.createCard(exploit)
+      grid.appendChild(card)
+    })
+
+    
+    AppState.filteredData.forEach((exploit) => {
+      const listItem = this.createListItem(exploit)
+      list.appendChild(listItem)
+    })
+
+    
+    setTimeout(() => this.setupCardButtons(), 50)
+  },
+
+  
+  createCard(exploit) {
+    const card = document.createElement("div")
+    card.className = "exp-crd"
+    if (exploit.premium) card.classList.add("prem")
+
+    
+    card.setAttribute("data-id", exploit.id)
+    card.setAttribute("data-name", exploit.name)
+
+    const accentColor = exploit.premium ? "prem" : exploit.accentColor
+
+    card.innerHTML = `
+      <div class="crd-acnt ${accentColor}"></div>
+      <div class="crd-hdr">
+        <div class="crd-hdr-cntnt">
+          <div class="crd-ttl-cntr">
+            <h3 class="crd-ttl">
+              ${exploit.name}
+              ${
+                exploit.verified
+                  ? `<span class="vrf-bdg">
+                  <i class="fas fa-check"></i>
+                  Verified
+                </span>`
+                  : ""
+              }
+              ${
+                exploit.premium
+                  ? `<span class="prem-bdg">
+                  <i class="fas fa-crown"></i>
+                  Premium
+                </span>`
+                  : ""
+              }
+              ${
+                exploit.warning
+                  ? `<span class="warn-bdg">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  Warning
+                </span>`
+                  : ""
+              }
+            </h3>
+            <p class="crd-desc">${exploit.desc}</p>
+          </div>
+          <div class="pltf-bdgs">
+            ${this.renderPlatformBadges(exploit)}
+          </div>
+        </div>
+      </div>
+      <div class="crd-bdy">
+        <div class="crd-meta">
+          <div class="lvl-bdg ${exploit.txtColor}">Level ${exploit.lvl}</div>
+          <div class="meta-sep"></div>
+          <div class="edr-info">Last edited by ${exploit.editor}</div>
+        </div>
+        <div class="crd-cntnt cstm-scrlbr">
+          ${this.renderFeatureSection(exploit.pros, "pros", "+")}
+          ${this.renderFeatureSection(exploit.neutral, "ntrl", "•")}
+          ${this.renderFeatureSection(exploit.cons, "cons", "-")}
+        </div>
+      </div>
+      <div class="crd-ftr">
+        ${this.renderCardFooter(exploit)}
+      </div>
+    `
+
+    card.setAttribute("data-id", exploit.id)
+    return card
+  },
+
+  
+  createListItem(exploit) {
+    const item = document.createElement("div")
+    item.className = "exp-lst-itm"
+    if (exploit.premium) item.classList.add("prem")
+
+    
+    item.setAttribute("data-id", exploit.id)
+    item.setAttribute("data-name", exploit.name)
+
+    const accentColor = exploit.premium ? "prem" : exploit.accentColor
+    const uncScore = this.getUncScore(exploit)
+
+    item.innerHTML = `
+      <div class="lst-itm-acnt ${accentColor}"></div>
+      <div class="lst-itm-cntnt">
+        <div class="lst-itm-hdr">
+          <div class="lst-itm-main-info">
+            <h3 class="lst-itm-ttl">${exploit.name}</h3>
+            <div class="lst-itm-badges">
+              ${
+                exploit.verified
+                  ? `<span class="vrf-bdg">
+                  <i class="fas fa-check"></i>
+                  Verified
+                </span>`
+                  : ""
+              }
+              ${
+                exploit.premium
+                  ? `<span class="prem-bdg">
+                  <i class="fas fa-crown"></i>
+                  Premium
+                </span>`
+                  : ""
+              }
+              ${
+                exploit.warning
+                  ? `<span class="warn-bdg">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  Warning
+                </span>`
+                  : ""
+              }
+            </div>
+          </div>
+          <div class="lst-itm-meta">
+            <div class="lst-itm-lvl ${exploit.txtColor}">Level ${exploit.lvl}</div>
+            <div class="lst-itm-unc-score">UNC: <span>${uncScore}</span></div>
+          </div>
+        </div>
+        
+        <div class="lst-itm-details">
+          <div class="lst-itm-desc-container">
+            <p class="lst-itm-desc">${exploit.desc}</p>
+            <div class="lst-itm-pltfs">
+              ${this.renderListPlatforms(exploit)}
+            </div>
+          </div>
+          
+          <div class="lst-itm-feats">
+            ${this.renderListFeatureSection(exploit.pros, "pros", "+", 3)}
+            ${this.renderListFeatureSection(exploit.neutral, "ntrl", "•", 2)}
+            ${this.renderListFeatureSection(exploit.cons, "cons", "-", 2)}
+          </div>
+        </div>
+        
+        <div class="lst-itm-footer">
+          <div class="lst-itm-edr">Edited by ${exploit.editor}</div>
+        </div>
+      </div>
+      <div class="lst-itm-acts">
+        <div class="lst-itm-price ${exploit.price === "FREE" ? "free" : ""}">
+          <i class="fas fa-tag"></i>
+          <span class="lst-itm-price-value">${exploit.price}</span>
+          ${exploit.period ? `<span class="lst-itm-price-period">${exploit.period}</span>` : ""}
+        </div>
+        <div class="lst-itm-btns">
+          <button class="lst-itm-btn web-btn">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Website</span>
+          </button>
+          <button class="lst-itm-btn unc-btn">
+            <i class="fas fa-code"></i>
+            <span>UNC</span>
+          </button>
+          <button class="lst-itm-btn info-btn">
+            <div class="text-container">
+              <span class="text-switch visible" data-text="info">INFO</span>
+              <span class="text-switch hidden" data-text="more">MORE</span>
+            </div>
+            <i class="fas fa-info-circle"></i>
+          </button>
+        </div>
+      </div>
+    `
+
+    return item
+  },
+
+  
+  renderPlatformBadges(exploit) {
+    let badges = ""
+
+    if (exploit.plat.includes("windows")) {
+      badges += `
+        <div class="pltf-bdg" title="Windows">
+          <i class="fab fa-windows"></i>
+        </div>
+      `
+    }
+
+    if (exploit.plat.includes("macos")) {
+      badges += `
+        <div class="pltf-bdg" title="macOS">
+          <i class="fab fa-apple"></i>
+        </div>
+      `
+    }
+
+    if (exploit.plat.includes("android")) {
+      badges += `
+        <div class="pltf-bdg" title="Android">
+          <i class="fab fa-android"></i>
+        </div>
+      `
+    }
+
+    if (exploit.plat.includes("ios")) {
+      badges += `
+        <div class="pltf-bdg" title="iOS">
+          <i class="fab fa-apple"></i>
+        </div>
+      `
+    }
+
+    if (exploit.hasKeySystem) {
+      badges += `
+        <div class="pltf-bdg key-system" title="Key System">
+          <i class="fas fa-key"></i>
+        </div>
+      `
+    }
+
+    return badges
+  },
+
+  renderListPlatforms(exploit) {
+    let platforms = ""
+
+    exploit.plat.forEach((platform) => {
+      platforms += `
+        <div class="lst-itm-pltf" title="${platform.charAt(0).toUpperCase() + platform.slice(1)}">
+          <i class="fab fa-${platform === "ios" ? "apple" : platform}"></i>
+          <span>${platform.charAt(0).toUpperCase() + platform.slice(1)}</span>
+        </div>
+      `
+    })
+
+    if (exploit.hasKeySystem) {
+      platforms += `
+        <div class="lst-itm-pltf key-system" title="Key System">
+          <i class="fas fa-key"></i>
+          <span>Key System</span>
+        </div>
+      `
+    }
+
+    return platforms
+  },
+
+  renderFeatureSection(features, className, icon) {
+    if (!features || features.length === 0) return ""
+
+    return `
+      <div class="feat-sec ${className}">
+        <h4 class="feat-hdng">
+          <span class="feat-ico">${icon}</span>
+          ${className === "pros" ? "Pros" : className === "ntrl" ? "Neutral" : "Cons"}
+        </h4>
+        <ul class="feat-lst">
+          ${features.map((feature) => `<li class="feat-itm">${feature}</li>`).join("")}
+        </ul>
+      </div>
+    `
+  },
+
+  renderListFeatureSection(features, className, icon, limit) {
+    if (!features || features.length === 0) return ""
+
+    return `
+      <div class="lst-itm-feat-sec ${className}">
+        <h4 class="feat-hdng">
+          <span class="feat-ico">${icon}</span>
+          ${className === "pros" ? "Pros" : className === "ntrl" ? "Neutral" : "Cons"}
+        </h4>
+        <ul class="lst-itm-feat-lst">
+          ${features
+            .slice(0, limit)
+            .map((feature) => `<li class="lst-itm-feat-itm">${feature}</li>`)
+            .join("")}
+          ${features.length > limit ? `<li class="lst-itm-feat-more">+${features.length - limit} more</li>` : ""}
+        </ul>
+      </div>
+    `
+  },
+
+  renderCardFooter(exploit) {
+    if (exploit.price === "FREE") {
+      return `
+        <div class="btn-grid free-program-grid">
+          <button class="crd-btn unc-btn expanded">
+            UNC <i class="fas fa-code"></i>
+          </button>
+          <button class="crd-btn info-btn expanded">
+            <div class="text-container">
+              <span class="text-switch visible" data-text="info">INFO</span>
+              <span class="text-switch hidden" data-text="more">MORE</span>
+            </div>
+            <i class="fas fa-info-circle"></i>
+          </button>
+        </div>
+        <button class="crd-btn web-btn full-width">
+          Website <i class="fas fa-external-link-alt"></i>
+        </button>
+      `
+    } else {
+      return `
+        <div class="btn-grid">
+          <button class="crd-btn web-btn">
+            Website <i class="fas fa-external-link-alt"></i>
+          </button>
+          <button class="crd-btn unc-btn">
+            UNC <i class="fas fa-code"></i>
+          </button>
+          <button class="crd-btn info-btn">
+            <div class="text-container">
+              <span class="text-switch visible" data-text="info">INFO</span>
+              <span class="text-switch hidden" data-text="more">MORE</span>
+            </div>
+            <i class="fas fa-info-circle"></i>
+          </button>
+        </div>
+        <button class="crd-btn prc-btn-new ${exploit.price === "FREE" ? "free" : ""}">
+          <div class="default-text">
+            <i class="fas fa-tag"></i> ${exploit.price === "FREE" ? "FREE" : "BUY"}
+          </div>
+          <div class="price-text">
+            <i class="fas fa-tag"></i> ${exploit.price} ${exploit.period ? `<span class="prc-prd">${exploit.period}</span>` : ""}
+          </div>
+        </button>
+      `
+    }
+  },
+
+  
+  getUncScore(exploit) {
+    let uncScore = "Unknown"
+
+    
+    for (const pro of exploit.pros || []) {
+      if (pro.includes("UNC") || pro.includes("sUNC")) {
+        const match = pro.match(/\d+%/)
+        if (match) {
+          uncScore = match[0]
+          break
+        }
+      }
+    }
+
+    
+    if (uncScore === "Unknown") {
+      for (const neutral of exploit.neutral || []) {
+        if (neutral.includes("UNC") || neutral.includes("sUNC")) {
+          const match = neutral.match(/\d+%/)
+          if (match) {
+            uncScore = match[0]
+            break
+          }
+        }
+      }
+    }
+
+    return uncScore
+  },
+
+  findExploitByCardElement(element) {
+    if (!element) return null
+
+    
+    const dataName = element.getAttribute("data-name")
+    if (dataName) {
+      return expData.find((exp) => exp.name === dataName)
+    }
+
+    
+    const nameElement = element.querySelector(".crd-ttl") || element.querySelector(".lst-itm-ttl")
+    if (nameElement) {
+      const fullText = nameElement.textContent.trim()
+      
+      const cleanName = fullText.replace(/Verified|Premium|Warning/g, "").trim()
+
+      
+      let exploit = expData.find((exp) => exp.name === cleanName)
+
+      
+      if (!exploit) {
+        exploit = expData.find((exp) => cleanName.startsWith(exp.name))
+      }
+
+      return exploit
+    }
+
+    return null
+  },
+
+  
+  setupCardButtons() {
+    
+    setTimeout(() => {
+      
+      document.querySelectorAll(".unc-btn").forEach((button) => {
+        button.onclick = (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+
+          const card = button.closest(".exp-crd") || button.closest(".exp-lst-itm")
+          const exploit = this.findExploitByCardElement(card)
+
+          if (exploit) {
+            ModalManager.openUncModal(exploit)
+          }
+        }
+      })
+
+      
+      document.querySelectorAll(".info-btn").forEach((button) => {
+        button.onclick = (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+
+          const card = button.closest(".exp-crd") || button.closest(".exp-lst-itm")
+          const exploit = this.findExploitByCardElement(card)
+
+          if (exploit) {
+            ModalManager.openInfoModal(exploit)
+          }
+        }
+      })
+
+      
+      document.querySelectorAll(".web-btn").forEach((button) => {
+        button.onclick = (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+
+          const card = button.closest(".exp-crd") || button.closest(".exp-lst-itm")
+          const exploit = this.findExploitByCardElement(card)
+
+          if (exploit) {
+            if (exploit.warning === true) {
+              ModalManager.showWarningModal(exploit)
+            } else if (exploit.href) {
+              window.open(exploit.href, "_blank")
+            }
+          }
+        }
+      })
+
+      
+      document.querySelectorAll(".prc-btn-new").forEach((button) => {
+        button.onclick = (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+
+          const card = button.closest(".exp-crd") || button.closest(".exp-lst-itm")
+          const exploit = this.findExploitByCardElement(card)
+
+          if (exploit && exploit.priceHref) {
+            window.open(exploit.priceHref, "_blank")
+          }
+        }
+      })
+    }, 100) 
+  },
+
+  
+  updateCounts() {
+    const filteredCount = DOM.get("filteredCount")
+    const totalCount = DOM.get("totalCount")
+
+    if (filteredCount) {
+      this.animateCounter(filteredCount, Number.parseInt(filteredCount.textContent) || 0, AppState.filteredData.length)
+    }
+
+    if (totalCount) {
+      this.animateCounter(totalCount, Number.parseInt(totalCount.textContent) || 0, expData.length)
+    }
+  },
+
+  
+  animateCounter(element, start, end) {
+    if (!element || start === end) return
+
+    if (element._countAnimation) {
+      cancelAnimationFrame(element._countAnimation)
+    }
+
+    const duration = 800
+    const startTime = performance.now()
+
+    const updateCount = (timestamp) => {
+      const elapsed = timestamp - startTime
+      const progress = Math.min(elapsed / duration, 1)
+
+      
+      const easeOutQuart = (x) => 1 - Math.pow(1 - x, 4)
+      const easedProgress = easeOutQuart(progress)
+
+      const currentCount = Math.floor(start + (end - start) * easedProgress)
+
+      element.textContent = currentCount
+
+      if (progress < 1) {
+        element._countAnimation = requestAnimationFrame(updateCount)
+      } else {
+        element.textContent = end
+        element._countAnimation = null
+      }
+    }
+
+    element._countAnimation = requestAnimationFrame(updateCount)
+  },
+
+  
+  initTextSwitching() {
+    const containers = document.querySelectorAll(
+      ".info-btn .text-container, .price-info-btn .text-container, .more-info-btn .text-container",
+    )
+
+    containers.forEach((container) => {
+      const texts = container.querySelectorAll(".text-switch")
+
+      texts.forEach((text) => {
+        text.style.opacity = text.classList.contains("visible") ? "1" : "0"
+        text.style.transition = "opacity 0.5s ease-in-out"
+        text.style.position = "absolute"
+        text.style.width = "100%"
+        text.style.height = "100%"
+        text.style.display = "flex"
+        text.style.alignItems = "center"
+        text.style.justifyContent = "center"
+      })
+
+      container.style.position = "relative"
+      container.style.display = "inline-flex"
+      container.style.alignItems = "center"
+      container.style.justifyContent = "center"
+    })
+
+    
+    setInterval(() => {
+      containers.forEach((container) => {
+        const visibleText = container.querySelector(".text-switch.visible")
+        const hiddenText = container.querySelector(".text-switch.hidden")
+
+        if (visibleText && hiddenText) {
+          visibleText.style.opacity = "0"
+
+          setTimeout(() => {
+            visibleText.classList.remove("visible")
+            visibleText.classList.add("hidden")
+
+            hiddenText.classList.remove("hidden")
+            hiddenText.classList.add("visible")
+
+            hiddenText.style.opacity = "0"
+            void hiddenText.offsetWidth 
+
+            setTimeout(() => {
+              hiddenText.style.opacity = "1"
+            }, 50)
+          }, 500)
+        }
+      })
+    }, 3000)
+  },
+
+  
+  updateScrollbarStyles() {
+    const scrollableElements = [
+      ".crd-cntnt",
+      ".unc-modal-code",
+      ".unc-modal-content",
+      ".info-modal-content",
+      ".info-modal-markdown",
+      ".fltr-drwr-bdy",
+    ]
+
+    scrollableElements.forEach((selector) => {
+      const elements = document.querySelectorAll(selector)
+
+      elements.forEach((el) => {
+        el.style.overflow = "hidden"
+        void el.offsetHeight 
+        el.style.overflow = ""
+      })
+    })
+  },
+
+  
+  handleWindowResize() {
+    const grid = DOM.get("grid")
+    const menu = DOM.get("menu")
+    const menuToggle = DOM.get("menuToggle")
+
+    const windowWidth = window.innerWidth
+
+    if (grid) {
+      if (windowWidth < 640) {
+        grid.style.gridTemplateColumns = "1fr"
+      } else if (windowWidth < 1024) {
+        grid.style.gridTemplateColumns = "repeat(auto-fill, minmax(280px, 1fr))"
+      } else {
+        grid.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))"
+      }
+    }
+
+    if (windowWidth > 768 && menu && !menu.classList.contains("hidden")) {
+      menu.classList.add("hidden")
+      document.body.classList.remove("menu-open")
+      if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>'
+    }
+
+    this.adjustSearchBar()
+  },
+
+  
+  adjustSearchBar() {
+    const searchContainer = document.querySelector(".hdr-ctr")
+    const headerContainer = document.querySelector(".hdr-cntr")
+    const filterButton = DOM.get("filterButton")
+    const logoSection = document.querySelector(".hdr-lft")
+    const searchInput = document.querySelector(".srch-inp")
+    const searchIcon = document.querySelector(".srch-ico")
+
+    if (!searchContainer || !headerContainer || !filterButton || !logoSection || !searchInput || !searchIcon) return
+
+    const windowWidth = window.innerWidth
+
+    if (windowWidth <= 768) {
+      searchContainer.style.display = "none"
+      return
+    }
+
+    searchContainer.style.display = "block"
+    searchContainer.style.position = "absolute"
+    searchContainer.style.left = "50%"
+    searchContainer.style.transform = "translateX(-50%)"
+    searchContainer.style.maxWidth = "400px"
+    searchContainer.style.width = "auto"
+    searchContainer.style.zIndex = "5"
+  },
+
+  
+  createModals() {
+    ModalManager.createUncModal()
+    ModalManager.createInfoModal()
+    ModalManager.createWarningModal()
+  },
+
+  
+  setupDropdowns() {
+    const pageOverlay = document.getElementById("pageOverlay") || document.createElement("div")
+
+    if (!document.getElementById("pageOverlay")) {
+      pageOverlay.id = "pageOverlay"
+      pageOverlay.className = "page-overlay"
+      document.body.appendChild(pageOverlay)
+    }
+
+    const dropdowns = document.querySelectorAll(".custom-dropdown")
+
     dropdowns.forEach((dropdown) => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove("active")
+      const selected = dropdown.querySelector(".custom-dropdown-selected")
+      const options = dropdown.querySelector(".custom-dropdown-options")
+      const optionItems = dropdown.querySelectorAll(".custom-dropdown-option")
+
+      if (selected) {
+        selected.addEventListener("click", (e) => {
+          e.stopPropagation()
+
+          dropdowns.forEach((d) => {
+            if (d !== dropdown && d.classList.contains("active")) {
+              d.classList.remove("active")
+            }
+          })
+
+          dropdown.classList.toggle("active")
+
+          if (dropdown.classList.contains("active")) {
+            pageOverlay.classList.add("active")
+          } else {
+            pageOverlay.classList.remove("active")
+          }
+        })
+      }
+
+      if (optionItems) {
+        optionItems.forEach((option) => {
+          option.addEventListener("click", () => {
+            const value = option.getAttribute("data-value")
+            const text = option.textContent
+
+            if (selected && selected.querySelector("span")) {
+              selected.querySelector("span").textContent = text
+            }
+
+            optionItems.forEach((opt) => opt.classList.remove("selected"))
+            option.classList.add("selected")
+
+            dropdown.classList.remove("active")
+            pageOverlay.classList.remove("active")
+
+            if (dropdown.closest(".srt-fltr-cntr") || dropdown.closest(".mob-srt-fltr-cntr")) {
+              AppState.sortBy = value
+              this.filterExploits()
+            }
+          })
+        })
       }
     })
-    pageOverlay.classList.remove("active")
-  })
-  pageOverlay.addEventListener("click", function () {
-    dropdowns.forEach((dropdown) => {
-      dropdown.classList.remove("active")
+
+    pageOverlay.addEventListener("click", () => {
+      dropdowns.forEach((dropdown) => {
+        dropdown.classList.remove("active")
+      })
+
+      pageOverlay.classList.remove("active")
     })
-    this.classList.remove("active")
-  })
+  },
+}
+
+
+const ModalManager = {
+  
+  createUncModal() {
+    const modalContainer = document.createElement("div")
+    modalContainer.className = "unc-modal-container"
+    modalContainer.id = "uncModalContainer"
+    modalContainer.style.display = "none"
+
+    modalContainer.innerHTML = `
+      <div class="unc-modal-overlay" id="uncModalOverlay"></div>
+      <div class="unc-modal">
+        <div class="unc-modal-header">
+          <h2 class="unc-modal-title" id="uncModalTitle">UNC Code</h2>
+        </div>
+        <div class="unc-modal-content">
+          <div class="unc-modal-info">
+            <div class="unc-modal-exploit-info" id="uncModalExploitInfo">
+              <div class="unc-modal-exploit-name" id="uncModalExploitName"></div>
+              <div class="unc-modal-exploit-desc" id="uncModalExploitDesc"></div>
+            </div>
+          </div>
+          <div class="unc-modal-code-container">
+            <div class="unc-modal-code-header">
+              <div class="unc-modal-code-title">UNC Code</div>
+              <button class="unc-modal-copy-btn" id="uncModalCopyBtn">
+                <i class="fas fa-copy"></i> Copy
+              </button>
+            </div>
+            <pre class="unc-modal-code" id="uncModalCode"></pre>
+          </div>
+          <div class="unc-modal-loading" id="uncModalLoading">
+            <div class="unc-modal-spinner"></div>
+            <div class="unc-modal-loading-text">Loading UNC data...</div>
+          </div>
+          <div class="unc-modal-error" id="uncModalError">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div class="unc-modal-error-text" id="uncModalErrorText">Failed to load UNC data</div>
+          </div>
+        </div>
+        <div class="unc-modal-footer">
+          <button class="unc-modal-btn unc-modal-btn-primary" id="uncModalCloseBtn">
+            <i class="fas fa-times"></i> Close
+          </button>
+        </div>
+      </div>
+    `
+
+    document.body.appendChild(modalContainer)
+
+    document.getElementById("uncModalOverlay").addEventListener("click", this.closeUncModal)
+    document.getElementById("uncModalCloseBtn").addEventListener("click", this.closeUncModal)
+
+    document.getElementById("uncModalCopyBtn").addEventListener("click", () => {
+      const codeElement = document.getElementById("uncModalCode")
+
+      if (codeElement) {
+        navigator.clipboard.writeText(codeElement.textContent || "")
+
+        const copyBtn = document.getElementById("uncModalCopyBtn")
+        const originalText = copyBtn.innerHTML
+
+        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!'
+
+        setTimeout(() => {
+          copyBtn.innerHTML = originalText
+        }, 2000)
+      }
+    })
+  },
+
+  
+  createInfoModal() {
+    const modalContainer = document.getElementById("infoModalContainer")
+
+    if (modalContainer) {
+      document.getElementById("infoModalOverlay").addEventListener("click", this.closeInfoModal)
+      document.getElementById("infoModalCloseBtn").addEventListener("click", this.closeInfoModal)
+
+      const footerCloseBtn = document.getElementById("infoModalFooterCloseBtn")
+
+      if (footerCloseBtn) {
+        footerCloseBtn.addEventListener("click", this.closeInfoModal)
+      }
+    }
+  },
+
+  
+  createWarningModal() {
+    const modalContainer = document.createElement("div")
+    modalContainer.id = "warningModal"
+    modalContainer.className = "warning-modal-container"
+    modalContainer.style.display = "none"
+
+    modalContainer.innerHTML = `
+      <div class="warning-modal-overlay"></div>
+      <div class="warning-modal">
+        <div class="warning-modal-header">
+          <h2 class="warning-modal-title">Warning</h2>
+        </div>
+        <div class="warning-modal-content">
+          <div class="warning-modal-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <p id="warningModalText" class="warning-modal-text">Are you sure you want to visit this website?</p>
+        </div>
+        <div class="warning-modal-footer">
+          <button id="warningModalCancel" class="warning-modal-btn warning-modal-btn-cancel">Cancel</button>
+          <button id="warningModalOkay" class="warning-modal-btn warning-modal-btn-okay">Okay</button>
+        </div>
+      </div>
+    `
+
+    document.body.appendChild(modalContainer)
+  },
+
+  
+  openUncModal(exploit) {
+    const modalContainer = document.getElementById("uncModalContainer")
+
+    if (!modalContainer) {
+      this.createUncModal()
+    }
+
+    const modalContainer2 = document.getElementById("uncModalContainer")
+    const modalTitle = document.getElementById("uncModalTitle")
+    const modalExploitName = document.getElementById("uncModalExploitName")
+    const modalExploitDesc = document.getElementById("uncModalExploitDesc")
+    const modalCode = document.getElementById("uncModalCode")
+    const modalLoading = document.getElementById("uncModalLoading")
+    const modalError = document.getElementById("uncModalError")
+
+    modalContainer2.style.display = "flex"
+    modalTitle.textContent = `${exploit.name} UNC Code`
+    modalExploitName.textContent = exploit.name
+    modalExploitDesc.textContent = exploit.desc
+
+    modalLoading.style.display = "flex"
+    modalCode.style.display = "none"
+    modalError.style.display = "none"
+
+    this.fetchUncData(exploit.id, exploit.name)
+      .then((data) => {
+        modalLoading.style.display = "none"
+        modalCode.style.display = "block"
+        modalCode.textContent = data.code || "-- No UNC code available"
+
+        if (window.hljs) {
+          window.hljs.highlightElement(modalCode)
+        }
+      })
+      .catch((error) => {
+        modalLoading.style.display = "none"
+        modalError.style.display = "flex"
+        document.getElementById("uncModalErrorText").textContent =
+          `Failed to load UNC data: ${error.message || "Unknown error"}`
+      })
+
+    setTimeout(() => {
+      document.querySelector(".unc-modal").classList.add("show")
+    }, 10)
+
+    document.body.style.overflow = "hidden"
+  },
+
+  
+  closeUncModal() {
+    const modal = document.querySelector(".unc-modal")
+
+    if (modal) {
+      modal.classList.remove("show")
+
+      setTimeout(() => {
+        const container = document.getElementById("uncModalContainer")
+
+        if (container) {
+          container.style.display = "none"
+        }
+
+        document.body.style.overflow = ""
+      }, 300)
+    }
+  },
+
+  
+  openInfoModal(exploit) {
+    const modalContainer = document.getElementById("infoModalContainer")
+    const modalTitle = document.getElementById("infoModalTitle")
+    const modalExploitName = document.getElementById("infoModalExploitName")
+    const modalExploitDesc = document.getElementById("infoModalExploitDesc")
+    const modalMarkdown = document.getElementById("infoModalMarkdown")
+
+    modalContainer.style.display = "flex"
+    modalTitle.textContent = `${exploit.name} Information`
+    modalExploitName.textContent = exploit.name
+    modalExploitDesc.textContent = exploit.desc
+
+    if (exploit.info) {
+      const marked = window.marked
+      modalMarkdown.innerHTML = marked.parse(exploit.info)
+
+      if (window.hljs) {
+        document.querySelectorAll("#infoModalMarkdown pre code").forEach((block) => {
+          window.hljs.highlightElement(block)
+        })
+      }
+    } else {
+      modalMarkdown.innerHTML = "<p>No additional information available for this exploit.</p>"
+    }
+
+    setTimeout(() => {
+      document.querySelector(".info-modal").classList.add("show")
+    }, 10)
+
+    document.body.style.overflow = "hidden"
+  },
+
+  
+  closeInfoModal() {
+    const modal = document.querySelector(".info-modal")
+
+    if (modal) {
+      modal.classList.remove("show")
+
+      setTimeout(() => {
+        const container = document.getElementById("infoModalContainer")
+
+        if (container) {
+          container.style.display = "none"
+        }
+
+        document.body.style.overflow = ""
+      }, 300)
+    }
+  },
+
+  
+  showWarningModal(exploit) {
+    const warningModal = document.getElementById("warningModal")
+    const warningText = document.getElementById("warningModalText")
+    const cancelBtn = document.getElementById("warningModalCancel")
+    const okayBtn = document.getElementById("warningModalOkay")
+    const targetUrl = exploit.href
+
+    warningText.textContent = exploit.warningInfo || "Are you sure you want to visit this website?"
+    warningModal.style.display = "flex"
+    document.body.style.overflow = "hidden"
+
+    void warningModal.offsetWidth 
+    warningModal.classList.add("active")
+
+    const cleanup = () => {
+      warningModal.classList.remove("active")
+
+      setTimeout(() => {
+        warningModal.style.display = "none"
+        document.body.style.overflow = ""
+      }, 300)
+    }
+
+    cancelBtn.onclick = () => {
+      cleanup()
+    }
+
+    okayBtn.onclick = () => {
+      cleanup()
+
+      if (targetUrl) {
+        window.open(targetUrl, "_blank")
+      }
+    }
+  },
+
+  
+  async fetchUncData(id, name) {
+    try {
+      const response = await fetch(`https://beta.voxlis.net/assets/unc/${id}.json`)
+
+      if (response.status === 404) {
+        this.showNotification(`UNC/sUNC test for ${name} is unknown`, "error")
+        throw new Error("UNC data not found")
+      }
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const rawText = await response.text()
+      return { code: rawText }
+    } catch (error) {
+      console.error("Error fetching UNC data:", error)
+      throw error
+    }
+  },
+
+  
+  showNotification(message, type = "error") {
+    let container = document.getElementById("custom-notifications")
+
+    if (!container) {
+      container = document.createElement("div")
+      container.id = "custom-notifications"
+      container.style.position = "fixed"
+      container.style.top = "20px"
+      container.style.right = "20px"
+      container.style.zIndex = "9999"
+      container.style.display = "flex"
+      container.style.flexDirection = "column"
+      container.style.gap = "10px"
+      document.body.appendChild(container)
+    }
+
+    const notification = document.createElement("div")
+    notification.className = `custom-notification ${type}`
+    notification.style.position = "relative"
+    notification.style.minWidth = "320px"
+    notification.style.maxWidth = "450px"
+    notification.style.overflow = "hidden"
+    notification.style.borderRadius = "12px"
+
+    notification.style.boxShadow = "0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 5px 10px -5px rgba(0, 0, 0, 0.2)"
+    notification.style.transform = "translateX(120%)"
+    notification.style.transition = "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease"
+    notification.style.margin = "0 0 10px 0"
+    notification.style.opacity = "1"
+
+    const bgColor = type === "error" ? "rgba(239, 68, 68, 0.85)" : "rgba(59, 130, 246, 0.85)"
+    notification.style.background = bgColor
+    notification.style.backdropFilter = "blur(10px)"
+    notification.style.border =
+      type === "error" ? "1px solid rgba(248, 113, 113, 0.4)" : "1px solid rgba(96, 165, 250, 0.4)"
+
+    const content = document.createElement("div")
+    content.style.padding = "16px 20px"
+    content.style.display = "flex"
+    content.style.alignItems = "flex-start"
+    content.style.gap = "15px"
+    content.style.position = "relative"
+    content.style.zIndex = "1"
+
+    const decorativeLine = document.createElement("div")
+    decorativeLine.style.position = "absolute"
+    decorativeLine.style.top = "0"
+    decorativeLine.style.left = "0"
+    decorativeLine.style.width = "4px"
+    decorativeLine.style.height = "100%"
+    decorativeLine.style.background = "rgba(255, 255, 255, 0.9)"
+    decorativeLine.style.borderRadius = "2px"
+    content.appendChild(decorativeLine)
+
+    const iconContainer = document.createElement("div")
+    iconContainer.style.display = "flex"
+    iconContainer.style.alignItems = "center"
+    iconContainer.style.justifyContent = "center"
+    iconContainer.style.width = "32px"
+    iconContainer.style.height = "32px"
+    iconContainer.style.borderRadius = "50%"
+    iconContainer.style.background = "rgba(255, 255, 255, 0.25)"
+    iconContainer.style.flexShrink = "0"
+
+    const icon = document.createElement("i")
+    icon.className = type === "error" ? "fas fa-exclamation-circle" : "fas fa-info-circle"
+    icon.style.color = "white"
+    icon.style.fontSize = "16px"
+    iconContainer.appendChild(icon)
+
+    const messageContainer = document.createElement("div")
+    messageContainer.style.flex = "1"
+
+    const title = document.createElement("div")
+    title.textContent = type === "error" ? "UNC Test Unavailable" : "Information"
+    title.style.fontWeight = "600"
+    title.style.fontSize = "14px"
+    title.style.color = "white"
+    title.style.marginBottom = "4px"
+    title.style.letterSpacing = "0.3px"
+
+    const messageText = document.createElement("div")
+    messageText.textContent = message
+    messageText.style.fontSize = "13px"
+    messageText.style.color = "rgba(255, 255, 255, 0.9)"
+    messageText.style.lineHeight = "1.4"
+
+    messageContainer.appendChild(title)
+    messageContainer.appendChild(messageText)
+
+    const closeBtn = document.createElement("button")
+    closeBtn.innerHTML = '<i class="fas fa-times"></i>'
+    closeBtn.style.background = "none"
+    closeBtn.style.border = "none"
+    closeBtn.style.color = "white"
+    closeBtn.style.opacity = "0.7"
+    closeBtn.style.cursor = "pointer"
+    closeBtn.style.fontSize = "14px"
+    closeBtn.style.padding = "4px"
+    closeBtn.style.marginLeft = "8px"
+    closeBtn.style.transition = "all 0.2s"
+    closeBtn.style.display = "flex"
+    closeBtn.style.alignItems = "center"
+    closeBtn.style.justifyContent = "center"
+    closeBtn.style.width = "24px"
+    closeBtn.style.height = "24px"
+    closeBtn.style.borderRadius = "50%"
+
+    closeBtn.addEventListener("mouseover", () => {
+      closeBtn.style.opacity = "1"
+      closeBtn.style.background = "rgba(255, 255, 255, 0.2)"
+    })
+
+    closeBtn.addEventListener("mouseout", () => {
+      closeBtn.style.opacity = "0.7"
+      closeBtn.style.background = "none"
+    })
+
+    closeBtn.addEventListener("click", () => {
+      notification.style.transform = "translateX(120%)"
+      notification.style.opacity = "0"
+
+      setTimeout(() => {
+        notification.remove()
+      }, 500)
+    })
+
+    content.appendChild(iconContainer)
+    content.appendChild(messageContainer)
+    content.appendChild(closeBtn)
+    notification.appendChild(content)
+
+    const progressBarContainer = document.createElement("div")
+    progressBarContainer.style.position = "absolute"
+    progressBarContainer.style.bottom = "0"
+    progressBarContainer.style.left = "0"
+    progressBarContainer.style.width = "100%"
+    progressBarContainer.style.height = "3px"
+    progressBarContainer.style.background = "rgba(0, 0, 0, 0.1)"
+
+    const progressBar = document.createElement("div")
+    progressBar.style.height = "100%"
+    progressBar.style.width = "100%"
+    progressBar.style.background = "rgba(255, 255, 255, 0.7)"
+    progressBar.style.transition = "width 5s cubic-bezier(0.1, 0.5, 0.2, 1)"
+
+    progressBarContainer.appendChild(progressBar)
+    notification.appendChild(progressBarContainer)
+
+    container.appendChild(notification)
+
+    setTimeout(() => {
+      notification.style.transform = "translateX(0)"
+    }, 10)
+
+    setTimeout(() => {
+      progressBar.style.width = "0"
+    }, 100)
+
+    setTimeout(() => {
+      notification.style.transform = "translateX(120%)"
+      notification.style.opacity = "0"
+
+      setTimeout(() => {
+        notification.remove()
+      }, 500)
+    }, 5000)
+  },
+}
+
+
+const ThemeManager = {
+  
+  init() {
+    const savedTheme = localStorage.getItem("voxlis-theme") || "classic"
+    document.documentElement.setAttribute("data-theme", savedTheme)
+
+    this.setupThemeDropdown()
+    this.updateThemeElements()
+
+    return this
+  },
+
+  
+  setupThemeDropdown() {
+    const themeDropdown = DOM.get("themeDropdown")
+    const themeDropdownSelected = DOM.get("themeDropdownSelected")
+    const themeDropdownOptions = DOM.get("themeDropdownOptions")
+
+    if (themeDropdown && themeDropdownSelected && themeDropdownOptions) {
+      
+      this.updateSelectedTheme(document.documentElement.getAttribute("data-theme") || "classic")
+
+      
+      themeDropdownSelected.addEventListener("click", () => {
+        themeDropdown.classList.toggle("active")
+      })
+
+      
+      document.addEventListener("click", (e) => {
+        if (!themeDropdown.contains(e.target)) {
+          themeDropdown.classList.remove("active")
+        }
+      })
+
+      
+      const themeOptions = themeDropdownOptions.querySelectorAll(".theme-dropdown-option")
+
+      themeOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          const theme = option.getAttribute("data-theme")
+          document.documentElement.setAttribute("data-theme", theme)
+          this.updateSelectedTheme(theme)
+          localStorage.setItem("voxlis-theme", theme)
+          themeDropdown.classList.remove("active")
+          this.createThemeChangeEffect(theme)
+          setTimeout(this.updateThemeElements, 100)
+        })
+      })
+    }
+  },
+
+  
+  updateSelectedTheme(theme) {
+    const themeDropdownSelected = DOM.get("themeDropdownSelected")
+    const themeDropdownOptions = DOM.get("themeDropdownOptions")
+
+    if (themeDropdownSelected && themeDropdownOptions) {
+      const themeName = theme.charAt(0).toUpperCase() + theme.slice(1)
+
+      themeDropdownSelected.innerHTML = `
+        <div class="theme-color-indicator ${theme}"></div>
+        <span>${themeName} Theme</span>
+        <i class="fas fa-chevron-down"></i>
+      `
+
+      const options = themeDropdownOptions.querySelectorAll(".theme-dropdown-option")
+
+      options.forEach((option) => {
+        option.classList.remove("selected")
+
+        if (option.getAttribute("data-theme") === theme) {
+          option.classList.add("selected")
+        }
+      })
+    }
+  },
+
+  
+  createThemeChangeEffect(theme) {
+    const themeColor = getComputedStyle(document.documentElement).getPropertyValue("--theme-color").trim()
+
+    const ripple = document.createElement("div")
+    ripple.style.position = "fixed"
+    ripple.style.top = "50%"
+    ripple.style.left = "50%"
+    ripple.style.transform = "translate(-50%, -50%)"
+    ripple.style.width = "10px"
+    ripple.style.height = "10px"
+    ripple.style.borderRadius = "50%"
+    ripple.style.backgroundColor = themeColor
+    ripple.style.opacity = "0.3"
+    ripple.style.transition = "all 0.6s cubic-bezier(0.19, 1, 0.22, 1)"
+    ripple.style.zIndex = "9999"
+
+    document.body.appendChild(ripple)
+
+    setTimeout(() => {
+      ripple.style.width = "300vw"
+      ripple.style.height = "300vh"
+      ripple.style.opacity = "0"
+    }, 10)
+
+    setTimeout(() => {
+      ripple.remove()
+    }, 800)
+  },
+
+  
+  updateThemeElements() {
+    
+    const theme = document.documentElement.getAttribute("data-theme") || "classic"
+    let bgColor, textColor, borderColor
+
+    switch (theme) {
+      case "red":
+        bgColor = "#371616"
+        textColor = "#f87171"
+        borderColor = "#f8717166"
+        break
+      case "blue":
+        bgColor = "#1e3a8a"
+        textColor = "#60a5fa"
+        borderColor = "#60a5fa66"
+        break
+      case "green":
+        bgColor = "#1a2e21"
+        textColor = "#86efac"
+        borderColor = "#86efac66"
+        break
+      case "yellow":
+        bgColor = "#332618"
+        textColor = "#fde047"
+        borderColor = "#fde04766"
+        break
+      case "purple":
+        bgColor = "#28183c"
+        textColor = "#c084fc"
+        borderColor = "#c084fc66"
+        break
+      case "classic":
+      default:
+        bgColor = "#000000"
+        textColor = "#ef4444"
+        borderColor = "#f8717166"
+    }
+
+    const uncModal = document.querySelector(".unc-modal")
+
+    if (uncModal) {
+      uncModal.style.backgroundColor = bgColor
+      uncModal.style.color = textColor
+      uncModal.style.border = `1px solid ${borderColor}`
+
+      const modalHeader = uncModal.querySelector(".unc-modal-header")
+      if (modalHeader) {
+        modalHeader.style.borderBottom = `1px solid ${borderColor}`
+      }
+
+      const modalFooter = uncModal.querySelector(".unc-modal-footer")
+      if (modalFooter) {
+        modalFooter.style.borderTop = `1px solid ${borderColor}`
+      }
+    }
+
+    
+    const infoModal = document.querySelector(".info-modal")
+
+    if (infoModal) {
+      const header = infoModal.querySelector(".info-modal-header")
+      if (header) {
+        header.style.background = ""
+        header.style.borderBottom = ""
+      }
+
+      const exploitName = infoModal.querySelector(".info-modal-exploit-name")
+      if (exploitName) {
+        exploitName.style.background = ""
+      }
+
+      const closeBtn = infoModal.querySelector(".info-modal-close-btn")
+      if (closeBtn) {
+        closeBtn.style.backgroundColor = ""
+      }
+
+      const links = infoModal.querySelectorAll(".info-modal-markdown a")
+      links.forEach((link) => {
+        link.style.color = ""
+      })
+
+      const blockquote = infoModal.querySelectorAll(".info-modal-markdown blockquote")
+      blockquote.forEach((bq) => {
+        bq.style.backgroundColor = ""
+        bq.style.borderColor = ""
+        bq.style.color = ""
+      })
+
+      const codeBlocks = infoModal.querySelectorAll(".info-modal-markdown pre code")
+      codeBlocks.forEach((codeBlock) => {
+        codeBlock.style.background = ""
+        codeBlock.style.color = ""
+      })
+    }
+
+    
+    const webButtons = document.querySelectorAll(".web-btn")
+    webButtons.forEach((btn) => {
+      btn.style.backgroundColor = ""
+      btn.style.borderColor = ""
+      btn.style.color = ""
+    })
+
+    const heroElements = document.querySelectorAll(
+      ".hero-acnt-bar, .hero-ttl strong, .hero-ttl b, .hero-ttl em, .yt-tutorial-btn",
+    )
+
+    heroElements.forEach((el) => {
+      el.style.background = ""
+      el.style.color = ""
+    })
+
+    const checkboxes = document.querySelectorAll(
+      ".cstm-chkbx.ext input:checked ~ .chkmrk, .cstm-chkbx.exec input:checked ~ .chkmrk",
+    )
+
+    checkboxes.forEach((cb) => {
+      cb.style.backgroundColor = ""
+      cb.style.borderColor = ""
+    })
+  },
+}
+
+
+const LoadingManager = {
+  
+  init() {
+    const loadingBar = DOM.get("loadingBar")
+    let progress = 0
+    const startTime = performance.now()
+    const isSlowDevice = () => performance.now() - startTime > 300
+
+    const loadingInterval = setInterval(
+      () => {
+        if (progress < 100) {
+          const increment = isSlowDevice() ? 5 : 10
+          progress += increment
+
+          if (progress > 100) progress = 100
+
+          requestAnimationFrame(() => {
+            if (loadingBar) loadingBar.style.width = `${progress}%`
+          })
+
+          const loadingText = document.querySelector(".loading-text")
+
+          if (loadingText) {
+            if (progress < 30) {
+              loadingText.textContent = "Loading resources..."
+            } else if (progress < 60) {
+              loadingText.textContent = "Preparing exploits..."
+            } else if (progress < 90) {
+              loadingText.textContent = "Almost ready..."
+            } else {
+              loadingText.textContent = "Welcome to voxlis.NET"
+            }
+          }
+        } else {
+          clearInterval(loadingInterval)
+
+          setTimeout(
+            () => {
+              const loadingScreen = DOM.get("loadingScreen")
+
+              if (loadingScreen) {
+                loadingScreen.style.transition = "opacity 0.8s ease, visibility 0.8s ease"
+                loadingScreen.style.opacity = "0"
+                loadingScreen.style.visibility = "hidden"
+
+                setTimeout(() => {
+                  loadingScreen.remove()
+                }, 800)
+              }
+            },
+            isSlowDevice() ? 500 : 200,
+          )
+        }
+      },
+      isSlowDevice() ? 100 : 50,
+    )
+
+    return this
+  },
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  
+  DOM.init()
+  AppState.init()
+  ThemeManager.init()
+  UIManager.init()
+  LoadingManager.init()
+
+  
+  setTimeout(() => {
+    UIManager.setupCardButtons()
+  }, 500)
 })
+
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {
+    AppState,
+    UIManager,
+    ModalManager,
+    ThemeManager,
+    LoadingManager,
+  }
+}
+
+console.log("Optimized voxlis.NET catalog loaded successfully!")
