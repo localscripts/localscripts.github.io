@@ -2296,7 +2296,7 @@ const ModalManager = {
   
   async fetchUncData(id, name) {
     try {
-      const response = await fetch(`https://beta.voxlis.net/assets/unc/${id}.json`)
+      const response = await fetch(`https://voxlis.net/assets/unc/${id}.json`)
 
       if (response.status === 404) {
         this.showNotification(`UNC/sUNC test for ${name} is unknown`, "error")
