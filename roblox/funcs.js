@@ -334,7 +334,7 @@ const expData = [
     period: "per week",
     plat: ["windows"],
     pros: ["External - More safety, less features", "Safest option for main"],
-    neutral: ["Doesn't have Lifetime subscription", "Early Beta - expect bugs and instability"],
+    neutral: ["Early Beta - expect bugs and instability"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
