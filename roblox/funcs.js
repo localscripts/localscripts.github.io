@@ -296,7 +296,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
-    href: "https://direct-link.net/1319977/hydrogen",
+    href: "https://link-center.net/1319977",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -334,7 +334,7 @@ const expData = [
     period: "per week",
     plat: ["windows"],
     pros: ["External - More safety, less features", "Safest option for main"],
-    neutral: ["Early Beta - expect bugs and instability"],
+    neutral: ["Doesn't have Lifetime subscription", "Early Beta - expect bugs and instability"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
@@ -2296,7 +2296,7 @@ const ModalManager = {
   
   async fetchUncData(id, name) {
     try {
-      const response = await fetch(`https://voxlis.net/assets/unc/${id}.json`)
+      const response = await fetch(`https://beta.voxlis.net/assets/unc/${id}.json`)
 
       if (response.status === 404) {
         this.showNotification(`UNC/sUNC test for ${name} is unknown`, "error")
@@ -2806,4 +2806,98 @@ if (typeof module !== "undefined" && module.exports) {
   }
 }
 
-console.log("Optimized voxlis.NET catalog loaded successfully!")
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("heartRainCanvas");
+  const loader = document.getElementById("loader");
+
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  const heartImageSrc = "heart.svg";
+  const numHearts = 25;
+  const hearts = [];
+  let heartImage = new Image();
+
+  const resizeCanvas = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  };
+
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  heartImage.src = heartImageSrc;
+
+  heartImage.onload = () => {
+    if (loader) loader.style.display = "none";
+    for (let i = 0; i < numHearts; i++) {
+      hearts.push(createHeart());
+    }
+    animate();
+  };
+
+  heartImage.onerror = () => {
+    console.error(`Failed to load heart image: ${heartImageSrc}`);
+    if (loader) loader.textContent = "Failed to load animation assets.";
+  };
+
+  function createHeart() {
+    return {
+      img: heartImage,
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      dx: Math.random() * 0.4 - 0.2,
+      dy: Math.random() * 0.3 + 0.2,
+      size: Math.random() * 15 + 15,
+      rotation: Math.random() * 0.2 - 0.1,
+      rotationSpeed: Math.random() * 0.005 - 0.0025,
+      opacity: Math.random() * 0.3 + 0.7,
+    };
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const heart of hearts) {
+      heart.x += heart.dx;
+      heart.y += heart.dy;
+      heart.rotation += heart.rotationSpeed;
+
+      if (heart.y > canvas.height + heart.size) {
+        heart.y = -heart.size;
+        heart.x = Math.random() * canvas.width;
+        heart.dy = Math.random() * 0.3 + 0.2;
+      }
+
+      if (heart.x < -heart.size) heart.x = canvas.width + heart.size;
+      if (heart.x > canvas.width + heart.size) heart.x = -heart.size;
+
+      ctx.save();
+      ctx.translate(heart.x, heart.y);
+      ctx.rotate(heart.rotation);
+      ctx.globalAlpha = heart.opacity;
+      ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size);
+      ctx.restore();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  canvas.addEventListener("click", (e) => {
+    const clickHeartsCount = Math.floor(Math.random() * 3) + 3;
+    for (let i = 0; i < clickHeartsCount; i++) {
+      hearts.push({
+        img: heartImage,
+        x: e.clientX + (Math.random() * 40 - 20),
+        y: e.clientY + (Math.random() * 40 - 20),
+        dx: Math.random() * 1 - 0.5,
+        dy: Math.random() * 0.5 - 1,
+        size: Math.random() * 40 + 60,
+        rotation: Math.random() * 0.2 - 0.1,
+        rotationSpeed: Math.random() * 0.01 - 0.005,
+        opacity: Math.random() * 0.3 + 0.7,
+      });
+    }
+  });
+});
+
