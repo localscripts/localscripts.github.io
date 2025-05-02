@@ -97,7 +97,7 @@ const expData = [
     price: "$9.99",
     period: "lifetime",
     plat: ["macos"],
-    pros: ["Has a Trial version", "Has a decompiler", "100% sUNC", "Level 8"],
+    pros: ["Has a Trial version", "Has a decompiler", "86% sUNC", "Level 8"],
     neutral: [],
     cons: [],
     verified: true,
