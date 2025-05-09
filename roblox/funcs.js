@@ -634,6 +634,7 @@ const DOM = {
       mobileFilterButton: "#mobFltrBtn",
       drawer: "#fltrDrwr",
       applyButton: "#applyFltrs",
+      closeButton: "#fasfa-times",
       levelSlider: "#lvlSldr",
       mobileLevelSlider: "#mobLvlSldr",
       levelValue: "#lvlMaxVal",
@@ -828,6 +829,7 @@ const UIManager = {
     const mobileFilterButton = DOM.get("mobileFilterButton")
     const drawer = DOM.get("drawer")
     const applyButton = DOM.get("applyButton")
+    const closeButton = DOM.get("closeButton")
 
     if (filterButton && drawer) {
       filterButton.addEventListener("click", () => {
@@ -859,6 +861,13 @@ const UIManager = {
 
     if (applyButton && drawer) {
       applyButton.addEventListener("click", () => {
+        drawer.classList.remove("open")
+        document.body.style.overflow = ""
+      })
+    }
+
+    if (closeButton && drawer) {
+      closeButton.addEventListener("click", () => {
         drawer.classList.remove("open")
         document.body.style.overflow = ""
       })
