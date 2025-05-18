@@ -233,7 +233,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
-    href: "https://xeno.now",
+    href: "https://www.xeno.onl/",
     priceHref: "https://linkvertise.com/1319977/xeno",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
