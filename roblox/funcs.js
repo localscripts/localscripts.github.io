@@ -1753,7 +1753,7 @@ class UIManager {
         <div class="lst-itm-btns">
           <button class="lst-itm-btn web-btn">
             <i class="fas fa-external-link-alt"></i>
-            <span>Website</span>
+            <span>${exploit.websitetofree ? "Free" : "Website"}</span>
           </button>
           <button class="lst-itm-btn unc-btn">
             <i class="fas fa-code"></i>
@@ -1875,14 +1875,14 @@ class UIManager {
           </button>
         </div>
         <button class="crd-btn web-btn full-width">
-          Website <i class="fas fa-external-link-alt"></i>
+          ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
         </button>
       `
     } else {
       return `
         <div class="btn-grid">
           <button class="crd-btn web-btn">
-            Website <i class="fas fa-external-link-alt"></i>
+            ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
           </button>
           <button class="crd-btn unc-btn">
             UNC <i class="fas fa-code"></i>
@@ -1948,7 +1948,11 @@ class UIManager {
             const exploit = this.findExploitByCardElement(card)
 
             if (exploit) {
-              ModalManager.openUncModal(exploit)
+              if (exploit.uncbuttonlink && exploit.uncbuttonlink.length > 0) {
+                window.open(exploit.uncbuttonlink, "_blank")
+              } else {
+                ModalManager.openUncModal(exploit)
+              }
             }
           }
         }
