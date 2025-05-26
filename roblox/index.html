@@ -19,464 +19,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="text-rendering" content="optimizeLegibility">
   <title>voxlis.NET | Roblox</title>
-  <link rel="shortcut icon" href="/assets/voxlis.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="voxlis.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Orbitron:wght@700&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
   <link rel="stylesheet" href="design.css">
-  <style>
-    .ld-scrn {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #000;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      overflow: hidden;
-    }
-    .ld-scrn.hdn {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .ld-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, #1a0a0a 0%, #000 70%);
-      z-index: -2;
-    }
-    @keyframes gridMove {
-      0% {
-        background-position: 0 0;
-        opacity: 0.3;
-      }
-      50% {
-        opacity: 0.7;
-      }
-      100% {
-        background-position: 20px 20px;
-        opacity: 0.3;
-      }
-    }
-    .ld-cntr {
-      position: relative;
-      width: 90%;
-      max-width: 600px;
-      background: rgba(20, 20, 20, 0.8);
-      border-radius: 16px;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 30px;
-      box-shadow: 0 0 40px rgba(239, 68, 68, 0.2);
-      backdrop-filter: blur(10px);
-      z-index: 1;
-      overflow: hidden;
-    }
-    .ld-cntr::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, #ef4444, #dc2626);
-    }
-    .ld-cntr::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      animation: shine 1.5s infinite;
-    }
-    .ld-hdr {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 25px;
-    }
-    .ld-logo {
-      display: flex;
-      align-items: center;
-    }
-    .ld-logo-img {
-      height: 50px;
-    }
-    .ld-prog-cntr {
-      position: relative;
-      width: 100%;
-      height: 8px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 15px;
-    }
-    .ld-prog-bar {
-      position: absolute;
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #ef4444, #dc2626);
-      border-radius: 4px;
-      transition: width 0.1s ease;
-    }
-    .ld-prog-bar::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      animation: shimmer 1s infinite;
-    }
-    @keyframes shimmer {
-      0% {
-        transform: translateX(-100%);
-      }
-      100% {
-        transform: translateX(100%);
-      }
-    }
-    .ld-info {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 25px;
-    }
-    .ld-prcnt {
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-      font-family: 'Manrope', sans-serif;
-    }
-    .ld-status {
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.7);
-      font-family: 'Manrope', sans-serif;
-    }
-    .ld-tip-cntr {
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 25px;
-      border-left: 3px solid #ef4444;
-    }
-    .ld-tip-hdr {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .ld-tip-ico {
-      color: #ef4444;
-      font-size: 18px;
-      margin-right: 10px;
-    }
-    .ld-tip-ttl {
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-      font-family: 'Manrope', sans-serif;
-    }
-    .ld-tip-txt {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.5;
-      font-family: 'Manrope', sans-serif;
-    }
-    .ld-prtcls {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1;
-    }
-    .ld-prtcl {
-      position: absolute;
-      background-color: rgba(239, 68, 68, 0.5);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .ld-task-lst {
-      margin-bottom: 25px;
-    }
-    .ld-task {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      font-family: 'Manrope', sans-serif;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    .ld-task-ico {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.5);
-    }
-    .ld-task.cmplt .ld-task-ico {
-      background: rgba(34, 197, 94, 0.2);
-      border-color: rgba(34, 197, 94, 0.5);
-      color: #22c55e;
-    }
-    .ld-task.actv .ld-task-ico {
-      background: rgba(239, 68, 68, 0.2);
-      border-color: rgba(239, 68, 68, 0.5);
-      color: #ef4444;
-      animation: pulse 0.8s infinite;
-    }
-    .ld-task.cmplt {
-      color: rgba(255, 255, 255, 0.5);
-    }
-    .ld-task.actv {
-      color: #fff;
-    }
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.1);
-        opacity: 0.8;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-    .ld-glitch {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(239, 68, 68, 0.1);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 10;
-    }
-    .ld-glitch-anim {
-      animation: glitch 0.15s infinite;
-    }
-    @keyframes glitch {
-      0% {
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.1;
-        transform: translate(-5px, 0);
-      }
-      20% {
-        opacity: 0;
-      }
-      30% {
-        opacity: 0.1;
-        transform: translate(5px, 0);
-      }
-      40% {
-        opacity: 0;
-      }
-      50% {
-        opacity: 0.1;
-        transform: translate(-2px, 0);
-      }
-      60% {
-        opacity: 0;
-      }
-      70% {
-        opacity: 0.1;
-        transform: translate(2px, 0);
-      }
-      80% {
-        opacity: 0;
-      }
-      90% {
-        opacity: 0.1;
-        transform: translate(-1px, 0);
-      }
-      100% {
-        opacity: 0;
-      }
-    }
-    .ld-special-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      z-index: -2;
-    }
-    .ld-txt-cntr {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 10;
-    }
-    .ld-txt {
-      color: #fff;
-      font-family: 'Manrope', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      margin-bottom: 15px;
-    }
-    .ld-txt span {
-      color: #ef4444;
-    }
-    .ld-congrats {
-      color: #ffcc00;
-      font-family: 'Manrope', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      text-align: center;
-      text-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
-      background: rgba(0, 0, 0, 0.6);
-      padding: 10px 15px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 204, 0, 0.3);
-      animation: pulse 2s infinite;
-    }
-    .ld-rats {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-    .ld-rat {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background-image: url('bigrat.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      z-index: 1;
-      animation: float 5s infinite linear;
-    }
-    .ld-special-prog {
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 2px;
-      overflow: hidden;
-      z-index: 10;
-    }
-    .ld-special-prog-bar {
-      height: 100%;
-      width: 0%;
-      background: #ef4444;
-      border-radius: 2px;
-      transition: width 0.1s ease;
-    }
-    .emoji {
-      display: inline-block;
-      font-size: 20px;
-      margin-left: 5px;
-      transform: translateY(2px);
-    }
-    #ldNormalScrn, #ldSpecialScrn {
-      display: none;
-    }
-  </style>
 </head>
 <body>
   <canvas id="heartRainCanvas" class="heart-rain-canvas"></canvas> 
   <div id="pageOverlay" class="page-overlay"></div>
   <canvas id="strCnv" class="str-cnv"></canvas>
-  
-  <div id="ldNormalScrn" class="ld-scrn">
-    <div class="ld-bg"></div>
-    <div class="ld-grid"></div>
-    <div class="ld-cube-cntr" id="ldNormalCubeCntr"></div>
-    <div class="ld-prtcls" id="ldNormalPrtcls"></div>
-    <div class="ld-cntr">
-      <div class="ld-glitch" id="ldNormalGlitch"></div>
-      <div class="ld-hdr">
-        <div class="ld-logo">
-          <img src="header.png" alt="voxlis.NET" class="ld-logo-img">
-        </div>
-      </div>
-      <div class="ld-task-lst">
-        <div class="ld-task cmplt" id="ldNormalTask1">
-          <div class="ld-task-ico"><i class="fas fa-check"></i></div>
-          <div class="ld-task-txt">Initializing core systems</div>
-        </div>
-        <div class="ld-task actv" id="ldNormalTask2">
-          <div class="ld-task-ico"><i class="fas fa-sync-alt fa-spin"></i></div>
-          <div class="ld-task-txt">Loading exploit database</div>
-        </div>
-        <div class="ld-task" id="ldNormalTask3">
-          <div class="ld-task-ico"><i class="fas fa-circle"></i></div>
-          <div class="ld-task-txt">Preparing UI components</div>
-        </div>
-        <div class="ld-task" id="ldNormalTask4">
-          <div class="ld-task-ico"><i class="fas fa-circle"></i></div>
-          <div class="ld-task-txt">Finalizing setup</div>
-        </div>
-      </div>
-      <div class="ld-prog-cntr">
-        <div class="ld-prog-bar" id="ldNormalProgBar"></div>
-      </div>
-      <div class="ld-info">
-        <div class="ld-prcnt" id="ldNormalPrcnt">0%</div>
-        <div class="ld-status" id="ldNormalStatus">Initializing...</div>
-      </div>
-      <div class="ld-tip-cntr">
-        <div class="ld-tip-hdr">
-          <div class="ld-tip-ico"><i class="fas fa-lightbulb"></i></div>
-          <div class="ld-tip-ttl">TIP</div>
-        </div>
-        <div class="ld-tip-txt" id="ldNormalTip">Loading tip...</div>
-      </div>
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-logo">
+      <img src="header.png" alt="voxlis.NET" class="loading-logo-img">
     </div>
+    <div class="loading-bar-container">
+      <div class="loading-bar" id="loadingBar"></div>
+    </div>
+    <div class="loading-text">Loading resources...</div>
   </div>
-  
-  <div id="ldSpecialScrn" class="ld-scrn">
-    <div class="ld-special-bg"></div>
-    <div class="ld-rats" id="ldSpecialRats"></div>
-    <div class="ld-txt-cntr">
-      <div class="ld-txt">loading <span>voxlis.net</span></div>
-      <div class="ld-congrats">congratiounaltions u just got the 1 in 1000 chance loading screen <span class="emoji">🤑</span></div>
-    </div>
-    <div class="ld-special-prog">
-      <div class="ld-special-prog-bar" id="ldSpecialProgBar"></div>
-    </div>
-  </div>
-  
   <div class="bg-els">
     <div class="grd-ovl"></div>
     <div class="top-acnt"></div>
@@ -676,16 +239,18 @@
           </div>
           <div class="ad-bdy">
             <div class="promo-image">
-              <a href="https://voxlis.net/roblox/">
-                <img src="/assets/Side_Banner_1.png" alt="Advertisement">
+              <a href="https://bloxdom.com/r/FREE100">
+                <img src="Affiliate_Banner.png" alt="Advertisement">
               </a>
             </div>    
             <div class="ad-cntnt">
-              <div class="ad-ttl"></div>
+              <div class="ad-ttl">BloxDom</div>
               <p class="ad-desc">
-
+                Adults only (18+). Please gamble responsibly. bloxdom.com
               </p>
-             
+              <a href="https://bloxdom.com/r/FREE100" class="ad-cta" target="_blank" rel="noopener noreferrer">
+                Claim Now
+              </a>              
             </div>
           </div>
         </div>
@@ -717,7 +282,7 @@
           <div class="banner-card">
             <div class="banner-content">
               <a href="https://bloxdom.com/r/FREE100" target="_blank">
-                <img src="/assets/Top_Banner.png" alt="Banner Image" class="banner-image" />
+                <img src="Top_Banner.png" alt="Banner Image" class="banner-image" />
               </a>
             </div>
           </div>
@@ -759,16 +324,18 @@
           </div>
           <div class="promo-body">
             <div class="promo-image">
-              <a href="https://voxlis.net/roblox/">
-                <img src="/assets/Side_Banner_1.png" alt="Advertisement">
+              <a href="https://bloxdom.com/r/FREE100">
+                <img src="Side_Banner_1.png" alt="Advertisement">
               </a>
             </div>            
             <div class="promo-content">
-              <div class="promo-title"></div>
+              <div class="promo-title">BloxDom</div>
               <p class="promo-description">
-                
+                Adults only (18+). Please gamble responsibly. bloxdom.com
               </p>
-      
+              <a href="https://bloxdom.com/r/FREE100" class="promo-button" target="_blank" rel="noopener noreferrer">
+                Claim Now
+              </a>        
             </div>
           </div>
         </div>
@@ -1018,215 +585,5 @@
   </div>
 </div>
   <script src="funcs.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const showSpecialScreen = Math.random() < 0.001;
-      
-      const ldNormalScrn = document.getElementById('ldNormalScrn');
-      const ldSpecialScrn = document.getElementById('ldSpecialScrn');
-      
-      if (showSpecialScreen) {
-        ldSpecialScrn.style.display = 'flex';
-        initializeSpecialLoadingScreen();
-      } else {
-        ldNormalScrn.style.display = 'flex';
-        initializeNormalLoadingScreen();
-      }
-      
-      function initializeNormalLoadingScreen() {
-        const ldNormalProgBar = document.getElementById('ldNormalProgBar');
-        const ldNormalPrcnt = document.getElementById('ldNormalPrcnt');
-        const ldNormalStatus = document.getElementById('ldNormalStatus');
-        const ldNormalPrtcls = document.getElementById('ldNormalPrtcls');
-        const ldNormalTip = document.getElementById('ldNormalTip');
-        const ldNormalGlitch = document.getElementById('ldNormalGlitch');
-        const ldNormalCubeCntr = document.getElementById('ldNormalCubeCntr');
-        
-        const tasks = [
-          document.getElementById('ldNormalTask1'),
-          document.getElementById('ldNormalTask2'),
-          document.getElementById('ldNormalTask3'),
-          document.getElementById('ldNormalTask4')
-        ];
-        
-        const tips = [
-          "Level 8 exploits offer the highest execution power and compatibility with scripts.",
-          "Always check the 'Verified' badge to ensure an exploit has been tested by voxlis.NET staff.",
-          "External exploits are generally safer for your main account but offer fewer features.",
-          "Premium exploits often have better uptime and faster updates after Roblox patches.",
-          "The UNC percentage indicates how many universal scripts an exploit can run successfully.",
-          "Some exploits require a key system for activation, which may need to be renewed periodically.",
-          "Always use a VPN when using exploits to add an extra layer of security.",
-          "Mobile exploits typically have more limitations than their PC counterparts.",
-          "External executors are less likely to get your account banned than injected ones.",
-          "Free exploits often have key systems or ads to support their development.",
-          "Always read the 'More Info' section before downloading any exploit.",
-          "The filter system can help you find exploits that match your specific requirements.",
-          "Some exploits work better for specific games or script types.",
-          "Join the Discord servers of your favorite exploits to stay updated on patches.",
-          "Exploits with decompilers let you view and learn from other scripts.",
-          "Use the search function to quickly find specific exploits by name or feature."
-        ];
-        
-        const statuses = [
-          "Initializing core systems...",
-          "Loading exploit database...",
-          "Preparing UI components...",
-          "Finalizing setup..."
-        ];
-        
-        for(let i = 0; i < 15; i++) {
-          const particle = document.createElement('div');
-          particle.className = 'ld-prtcl';
-          particle.style.left = Math.random() * 100 + '%';
-          particle.style.top = Math.random() * 100 + '%';
-          particle.style.width = (Math.random() * 4 + 1) + 'px';
-          particle.style.height = (Math.random() * 4 + 1) + 'px';
-          particle.style.opacity = String(Math.random() * 0.5 + 0.3);
-          particle.style.animation = 'float ' + (Math.random() * 10 + 5) + 's infinite linear';
-          ldNormalPrtcls.appendChild(particle);
-        }
-        
-        for(let i = 0; i < 3; i++) {
-          const cube = document.createElement('div');
-          cube.className = 'ld-cube';
-          cube.style.left = Math.random() * 80 + 10 + '%';
-          cube.style.top = Math.random() * 80 + 10 + '%';
-          cube.style.animationDelay = (Math.random() * 3) + 's';
-          
-          for(let j = 0; j < 6; j++) {
-            const face = document.createElement('div');
-            face.className = 'ld-cube-face';
-            cube.appendChild(face);
-          }
-          
-          ldNormalCubeCntr.appendChild(cube);
-        }
-        
-        ldNormalTip.textContent = tips[Math.floor(Math.random() * tips.length)];
-        
-        let tipInterval = setInterval(() => {
-          ldNormalTip.style.opacity = '0';
-          setTimeout(() => {
-            ldNormalTip.textContent = tips[Math.floor(Math.random() * tips.length)];
-            ldNormalTip.style.opacity = '1';
-          }, 300);
-        }, 4000);
-        
-        let progress = 0;
-        let currentTask = 0;
-        
-        const totalDuration = 1500;
-        const interval = 20;
-        const steps = totalDuration / interval;
-        const increment = 100 / steps;
-        
-        const loadingInterval = setInterval(() => {
-          progress += increment;
-          if (progress >= 100) progress = 100;
-          
-          ldNormalProgBar.style.width = progress + '%';
-          ldNormalPrcnt.textContent = Math.round(progress) + '%';
-          
-          const statusIndex = Math.floor((progress / 100) * statuses.length);
-          ldNormalStatus.textContent = statuses[Math.min(statusIndex, statuses.length - 1)];
-          
-          if (progress >= 25 && currentTask === 0) {
-            tasks[0].classList.remove('actv');
-            tasks[0].classList.add('cmplt');
-            tasks[1].classList.add('actv');
-            currentTask = 1;
-            
-            setTimeout(() => {
-              ldNormalGlitch.classList.add('ld-glitch-anim');
-              setTimeout(() => {
-                ldNormalGlitch.classList.remove('ld-glitch-anim');
-              }, 150);
-            }, 100);
-          }
-          
-          if (progress >= 50 && currentTask === 1) {
-            tasks[1].classList.remove('actv');
-            tasks[1].classList.add('cmplt');
-            tasks[2].classList.add('actv');
-            currentTask = 2;
-            
-            setTimeout(() => {
-              ldNormalGlitch.classList.add('ld-glitch-anim');
-              setTimeout(() => {
-                ldNormalGlitch.classList.remove('ld-glitch-anim');
-              }, 150);
-            }, 100);
-          }
-          
-          if (progress >= 75 && currentTask === 2) {
-            tasks[2].classList.remove('actv');
-            tasks[2].classList.add('cmplt');
-            tasks[3].classList.add('actv');
-            currentTask = 3;
-            
-            setTimeout(() => {
-              ldNormalGlitch.classList.add('ld-glitch-anim');
-              setTimeout(() => {
-                ldNormalGlitch.classList.remove('ld-glitch-anim');
-              }, 150);
-            }, 100);
-          }
-          
-          if (progress >= 100) {
-            clearInterval(loadingInterval);
-            clearInterval(tipInterval);
-            
-            tasks[3].classList.remove('actv');
-            tasks[3].classList.add('cmplt');
-            
-            ldNormalScrn.classList.add('hdn');
-            setTimeout(() => {
-              ldNormalScrn.remove();
-            }, 300);
-          }
-        }, interval);
-      }
-      
-      function initializeSpecialLoadingScreen() {
-        const ldSpecialProgBar = document.getElementById('ldSpecialProgBar');
-        const ldSpecialRats = document.getElementById('ldSpecialRats');
-        
-        for(let i = 0; i < 12; i++) {
-          const rat = document.createElement('div');
-          rat.className = 'ld-rat';
-          rat.style.left = Math.random() * 90 + '%';
-          rat.style.top = Math.random() * 90 + '%';
-          rat.style.width = (Math.random() * 50 + 50) + 'px';
-          rat.style.height = (Math.random() * 50 + 50) + 'px';
-          rat.style.animationDuration = (Math.random() * 5 + 3) + 's';
-          rat.style.animationDelay = (Math.random() * 1) + 's';
-          ldSpecialRats.appendChild(rat);
-        }
-        
-        let progress = 0;
-        const totalDuration = 1500;
-        const interval = 20;
-        const steps = totalDuration / interval;
-        const increment = 100 / steps;
-        
-        const loadingInterval = setInterval(() => {
-          progress += increment;
-          if (progress >= 100) progress = 100;
-          
-          ldSpecialProgBar.style.width = progress + '%';
-          
-          if (progress >= 100) {
-            clearInterval(loadingInterval);
-            
-            ldSpecialScrn.classList.add('hdn');
-            setTimeout(() => {
-              ldSpecialScrn.remove();
-            }, 300);
-          }
-        }, interval);
-      }
-    });
-  </script>
 </body>
 </html>
