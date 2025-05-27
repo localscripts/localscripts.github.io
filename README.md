@@ -3,7 +3,7 @@
 2. Add a new exploit by pressing "+" at the bottom right.
 3. Fill out the information like Nihon's or AWP.gg's "MORE INFO"
 4. Go to "Output" tab, copy the output.
-5. Go to [/roblox/funcs.js](https://github.com/localscripts/beta.voxlis.net/blob/main/roblox/funcs.js) and open a pull request from there.
+5. Go to [/roblox/funcs.js](https://github.com/localscripts/voxlis.net/blob/main/roblox/funcs.js) and open a pull request from there.
 
 # Domains 
 
