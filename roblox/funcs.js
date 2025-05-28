@@ -470,7 +470,7 @@ const expData = [
       editor: "voxlis.NET",
       txtColor: "text-yellow-500",
       accentColor: "from-yellow-600 to-yellow-700",
-      info: "im just gonna say that their 'Lifetime' is gonna be like 2 months. Bad people involved like lzxp",
+      info: "",
       premium: false,
       href: "https://sirhurt.net",
       priceHref: "https://sirhurt.net",
