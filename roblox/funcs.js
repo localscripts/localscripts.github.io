@@ -80,7 +80,7 @@ const expData = [
     plat: ["windows", "windows"],
     pros: ["Emulates Hyperion for safety", "Has a decompiler", "100% sUNC", "Level 8"],
     neutral: [],
-    cons: [],
+    cons: ['INSANE DOWNTIME'],
     verified: true,
     editor: "voxlis.NET",
     txtColor: "text-red-500",
