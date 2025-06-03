@@ -67,6 +67,7 @@ const expData = [
       href: "https://discord.gg/matchalol",
       priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#Matcha",
       hide: false,
+      external: true
     },
   {
     id: "swift",
@@ -110,6 +111,7 @@ const expData = [
     info: "## Exploit Performance  \n- [Ronin]() is an external released on March 2nd, 2025. Recently out of beta, it performs on par with other fully released competitors. Since launch, [Ronin]() has delivered stable and reliable results, with minimal complaints from users and resellers.  \n- Despite being new, [Ronin]() has already proven itself in terms of stability, efficiency, and quality. Early feedback highlights its smooth performance and solid design. It is seen as a high-potential option with strong usability and readiness for the market.\n\n## Background Information  \n- [Ronin]() is a usermode product owned by [Reaper](), who also developed [Cryptic]() and [Somber]() (formerly known as [Reaper Hub]()). It officially released on March 2nd, 2025 and is currently out of beta. Development is now led by [@Pixi]() and [@Jumble](), after [Reaper]() stepped away from direct development.  \n- The interface is written in Rust, providing a fast and efficient user experience. [Ronin]() reflects the quality expected from [Reaper]()’s projects.  \n- [Reaper]() is known for maintaining a low profile, avoiding drama, and having a clean reputation in the community. His professionalism and consistent output have earned him wide respect.\n\n## Developer Background Information  \n- [Ronin]() is currently developed by [@Pixi]() and [@Jumble](), under the ownership of [Reaper]().  \n\n> Sources: [reddit.com/r/robloxhackers](), Ronin Discord Server\n",
     hasKeySystem: false,
     free: false,
+    external: true
   },
     {
     id: "cryptic",
@@ -479,6 +481,7 @@ premium: false,
     hide: false,
     hasKeySystem: false,
     free: false,
+    external: true
   },
   {
     id: "celery",
@@ -583,6 +586,7 @@ premium: false,
     hide: false,
     hasKeySystem: false,
     free: true,
+    external: true
   },
 
   {
@@ -653,6 +657,7 @@ premium: false,
     free: true,
     warning: false,
     warningInfo: "-",
+    external: true
   },
   {
     id: "ratware",
