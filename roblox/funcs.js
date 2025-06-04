@@ -47,29 +47,30 @@ const expData = [
     free: false,
     uncbuttonlink: "https://sunc.rubis.app/?scrap=uAgymFmiWxyIX10Z&key=urAxMZ9DKS8p6aw5vbqyUUqRADF374Rl",
     warning: false,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Wave’s website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Wave’s website anyway?",
   },
-{
-      id: "matcha",
-      name: "Matcha",
-      desc: "An external exploit with driver-based execution.",
-      lvl: 8,
-      price: "$9.99",
-      plat: ["windows", "windows"],
-      pros: ["Has a decompiler & code explorer", "Best value external", "Rich in features", "Driver based"],
-      neutral: [],
-      cons: [],
-      verified: true,
-      editor: "voxlis.NET",
-      txtColor: "text-green-500",
-      accentColor: "from-green-600 to-green-700",
-      info: "## Exploit Performance\n\n* [Matcha]() is widely regarded as one of the best external exploits available. It features a clean, user-friendly GUI and a solid feature set. [Matcha]() receives frequent updates and is easy to set up. Performance-wise, it runs well on nearly any machine — even CPUs released as early as 2017 can handle it without issue.\n\n## Background Information\n\n* Before [Matcha]() launched in August 2024, [Vault]() was relatively unknown in the exploiting scene. The project began as a simple external, but development significantly accelerated after [@slamfrags]() was removed from the team about four months ago.\n* Since then, [Matcha]() has seen rapid daily improvements, even with [Vault]() balancing school responsibilities. [Vain]() was appointed to manage the staff team, ensuring better coordination and internal operations.\n* The exploit originally started from a casual DM where [@slamfrags]() asked [Vault]() to build an external for Roblox. [Vault]() agreed, partly due to financial needs at the time. While [@slamfrags]() handled promotion, [Vault]() focused on development. However, over time, [@slamfrags]() became known for mismanaging funds, underpaying or outright ignoring the staff team, and showing unprofessional behavior, which led to staff members resigning.\n* Eventually, staff operations were handed over to [@vain](), who brought structure and fairness to the team. Staff members are now paid and their work is recognized. The current support team is publicly listed on [Matcha's Discord server]().\n\n## Developer Background Information\n\n* [Matcha]() is developed primarily by [Vault](), who writes the core cheat code and its security features.\n* The original management team consisted of [@geekn]() and [@slamfrags](). [@geekn]() left voluntarily, while [@slamfrags]() was removed due to being overpaid for minimal contributions and ongoing internal issues.\n* Following their removal, [Vault]() brought in close friends to help manage and support the project, which contributed to its steady and structured growth.\n\n> Sources: [reddit.com/r/robloxhackers](), Matcha Discord Moderator\n",
-      premium: true,
-      href: "https://discord.gg/matchalol",
-      priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#Matcha",
-      hide: false,
-      external: true
-    },
+  {
+    id: "matcha",
+    name: "Matcha",
+    desc: "An external exploit with driver-based execution.",
+    lvl: 8,
+    price: "$9.99",
+    plat: ["windows", "windows"],
+    pros: ["Has a decompiler & code explorer", "Best value external", "Rich in features", "Driver based"],
+    neutral: [],
+    cons: [],
+    verified: true,
+    editor: "voxlis.NET",
+    txtColor: "text-green-500",
+    accentColor: "from-green-600 to-green-700",
+    info: "## Exploit Performance\n\n* [Matcha]() is widely regarded as one of the best external exploits available. It features a clean, user-friendly GUI and a solid feature set. [Matcha]() receives frequent updates and is easy to set up. Performance-wise, it runs well on nearly any machine — even CPUs released as early as 2017 can handle it without issue.\n\n## Background Information\n\n* Before [Matcha]() launched in August 2024, [Vault]() was relatively unknown in the exploiting scene. The project began as a simple external, but development significantly accelerated after [@slamfrags]() was removed from the team about four months ago.\n* Since then, [Matcha]() has seen rapid daily improvements, even with [Vault]() balancing school responsibilities. [Vain]() was appointed to manage the staff team, ensuring better coordination and internal operations.\n* The exploit originally started from a casual DM where [@slamfrags]() asked [Vault]() to build an external for Roblox. [Vault]() agreed, partly due to financial needs at the time. While [@slamfrags]() handled promotion, [Vault]() focused on development. However, over time, [@slamfrags]() became known for mismanaging funds, underpaying or outright ignoring the staff team, and showing unprofessional behavior, which led to staff members resigning.\n* Eventually, staff operations were handed over to [@vain](), who brought structure and fairness to the team. Staff members are now paid and their work is recognized. The current support team is publicly listed on [Matcha's Discord server]().\n\n## Developer Background Information\n\n* [Matcha]() is developed primarily by [Vault](), who writes the core cheat code and its security features.\n* The original management team consisted of [@geekn]() and [@slamfrags](). [@geekn]() left voluntarily, while [@slamfrags]() was removed due to being overpaid for minimal contributions and ongoing internal issues.\n* Following their removal, [Vault]() brought in close friends to help manage and support the project, which contributed to its steady and structured growth.\n\n> Sources: [reddit.com/r/robloxhackers](), Matcha Discord Moderator\n",
+    premium: true,
+    href: "https://discord.gg/matchalol",
+    priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#Matcha",
+    hide: false,
+    external: true,
+  },
   {
     id: "swift",
     name: "Swift",
@@ -85,7 +86,8 @@ const expData = [
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
     premium: true,
-    info: "## Exploit Performance\n- [Swift](/) performs reasonably well. While it occasionally experiences downtime and injection issues, it remains the best available option for Level 8 execution. Alternatives like [Argon]() and [Atlantis]() exist, but unlike those, [Swift](/) is not scamming or ratting its users.\n\n## Background Information\n- [Swift](/), originally launched as [bunni.lol](/) in May 2024, had a rocky start. It rebranded to [Swift](/) in August 2024, entering Beta and quickly building a positive reputation by offering a premium experience at no cost. In January 2025, [Swift](/) went temporarily offline due to a ROBLOX platform update. It returned in March 2025 with a major overhaul—introducing 98% sUNC compatibility, a built-in decompiler, and various improvements.\n\n\n## Developers Background Information\n\n* [Swift]() was originally owned by [@Peyton](), who joined the community in 2016 and began developing between 2021 and 2022. It was administered by [@Bass](), the owner of [Script-Ware.com]()—a project that launched in late 2020 and shut down following the introduction of Hyperion. The [Zenith]() team provided occasional support (see the Zenith card on voxlis.NET for more information). Swift is now owned by Bass, as [@Peyton]() has since left to work on [Visual]().\n\n\n\n> Sources: [reddit.com/r/robloxhackers](https://reddit.com/r/robloxhackers), bunni.lol Discord Archives, Swift Discord Archives\n", hasKeySystem: true,
+    info: "## Exploit Performance\n- [Swift](/) performs reasonably well. While it occasionally experiences downtime and injection issues, it remains the best available option for Level 8 execution. Alternatives like [Argon]() and [Atlantis]() exist, but unlike those, [Swift](/) is not scamming or ratting its users.\n\n## Background Information\n- [Swift](/), originally launched as [bunni.lol](/) in May 2024, had a rocky start. It rebranded to [Swift](/) in August 2024, entering Beta and quickly building a positive reputation by offering a premium experience at no cost. In January 2025, [Swift](/) went temporarily offline due to a ROBLOX platform update. It returned in March 2025 with a major overhaul—introducing 98% sUNC compatibility, a built-in decompiler, and various improvements.\n\n\n## Developers Background Information\n\n* [Swift]() was originally owned by [@Peyton](), who joined the community in 2016 and began developing between 2021 and 2022. It was administered by [@Bass](), the owner of [Script-Ware.com]()—a project that launched in late 2020 and shut down following the introduction of Hyperion. The [Zenith]() team provided occasional support (see the Zenith card on voxlis.NET for more information). Swift is now owned by Bass, as [@Peyton]() has since left to work on [Visual]().\n\n\n\n> Sources: [reddit.com/r/robloxhackers](https://reddit.com/r/robloxhackers), bunni.lol Discord Archives, Swift Discord Archives\n",
+    hasKeySystem: true,
     free: true,
     href: "http://getswift.gg/",
     priceHref: "http://getswift.gg/",
@@ -112,9 +114,9 @@ const expData = [
     info: "## Exploit Performance  \n- [Ronin]() is an external released on March 2nd, 2025. Recently out of beta, it performs on par with other fully released competitors. Since launch, [Ronin]() has delivered stable and reliable results, with minimal complaints from users and resellers.  \n- Despite being new, [Ronin]() has already proven itself in terms of stability, efficiency, and quality. Early feedback highlights its smooth performance and solid design. It is seen as a high-potential option with strong usability and readiness for the market.\n\n## Background Information  \n- [Ronin]() is a usermode product owned by [Reaper](), who also developed [Cryptic]() and [Somber]() (formerly known as [Reaper Hub]()). It officially released on March 2nd, 2025 and is currently out of beta. Development is now led by [@Pixi]() and [@Jumble](), after [Reaper]() stepped away from direct development.  \n- The interface is written in Rust, providing a fast and efficient user experience. [Ronin]() reflects the quality expected from [Reaper]()’s projects.  \n- [Reaper]() is known for maintaining a low profile, avoiding drama, and having a clean reputation in the community. His professionalism and consistent output have earned him wide respect.\n\n## Developer Background Information  \n- [Ronin]() is currently developed by [@Pixi]() and [@Jumble](), under the ownership of [Reaper]().  \n\n> Sources: [reddit.com/r/robloxhackers](), Ronin Discord Server\n",
     hasKeySystem: false,
     free: false,
-    external: true
+    external: true,
   },
-    {
+  {
     id: "cryptic",
     name: "Cryptic",
     desc: "An exploit for all platforms.",
@@ -146,7 +148,7 @@ const expData = [
     plat: ["windows", "windows"],
     pros: ["Emulates Hyperion for safety", "Has a decompiler", "100% sUNC", "Level 8"],
     neutral: [],
-    cons: ['Almost never updates'],
+    cons: ["Almost never updates"],
     verified: true,
     editor: "voxlis.NET",
     txtColor: "text-red-500",
@@ -154,7 +156,7 @@ const expData = [
     premium: false,
     hasKeySystem: false,
     free: false,
-    info: "## Exploit Performance  \n- Although [AWP.gg](/) is associated with [Krampus](/), it operates reliably. The developers focus on avoiding detection and ban waves by using Hyperion emulation techniques. However, running the official Roblox client can still be inconvenient, as it requires reinstallation, and users may occasionally face bans even when using [AWP.gg](/).\n\n> \n\n## Background Information  \n- There is speculation that [AWP.gg](/) is linked to [Krampus](/), an exploit that abruptly shut down on May 11, 2024, shortly after the release of Hyperion 4.0. The developers abandoned the project without offering any updates or refunds, leaving long-term license holders without support. The shutdown was likely due to the challenges in bypassing the new Hyperion 4.0. Although [Krampus](/) did not distribute malware, they issued a misleading \"official explanation,\" falsely claiming their developers were \"raided\" and even circulating fabricated images as evidence in their Discord server.\n  \n- After months of inactivity, the [Krampus](/) Discord suddenly began promoting a Robux gambling site. It's unclear whether the developers are behind the site or were paid for sponsorship, but it's most likely that the Discord server was simply sold off.\n\n\n## Developers Background Information\n- Currently managed by [@merkuri6479](/), [@jbhglj7uj](/), and [@etheriut](/), but no additional information is known about them.\n\n\n \n\n> Sources: [reddit.com/r/robloxhackers](), WeAreDevs.NET",
+    info: '## Exploit Performance  \n- Although [AWP.gg](/) is associated with [Krampus](/), it operates reliably. The developers focus on avoiding detection and ban waves by using Hyperion emulation techniques. However, running the official Roblox client can still be inconvenient, as it requires reinstallation, and users may occasionally face bans even when using [AWP.gg](/).\n\n> \n\n## Background Information  \n- There is speculation that [AWP.gg](/) is linked to [Krampus](/), an exploit that abruptly shut down on May 11, 2024, shortly after the release of Hyperion 4.0. The developers abandoned the project without offering any updates or refunds, leaving long-term license holders without support. The shutdown was likely due to the challenges in bypassing the new Hyperion 4.0. Although [Krampus](/) did not distribute malware, they issued a misleading "official explanation," falsely claiming their developers were "raided" and even circulating fabricated images as evidence in their Discord server.\n  \n- After months of inactivity, the [Krampus](/) Discord suddenly began promoting a Robux gambling site. It\'s unclear whether the developers are behind the site or were paid for sponsorship, but it\'s most likely that the Discord server was simply sold off.\n\n\n## Developers Background Information\n- Currently managed by [@merkuri6479](/), [@jbhglj7uj](/), and [@etheriut](/), but no additional information is known about them.\n\n\n \n\n> Sources: [reddit.com/r/robloxhackers](), WeAreDevs.NET',
     href: "https://awp.gg",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#AWP",
     uncbuttonlink: "https://sunc.rubis.app/?scrap=HvuHEiAG9iQJ0BTq&key=CwgWgiTmw4bM6OEGKK5quxUWxBJiHWEz",
@@ -182,7 +184,8 @@ const expData = [
     free: false,
     uncbuttonlink: "https://sunc.rubis.app/?scrap=9kH1EN8HIbXl9I2o&key=KrU695V4fbJuWZcwG9jMJen2M22mRbng",
     warning: false,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for MacSploit so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for MacSploit so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
   },
   {
     id: "codex",
@@ -311,7 +314,8 @@ const expData = [
     hasKeySystem: false,
     free: true,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Velocity website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Velocity website anyway?",
   },
   {
     id: "CSVM",
@@ -327,8 +331,8 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
-info: "## Exploit Performance  \n- [LUAU//CVSM]() is a module designed for a game that enables script building in a simulated exploit environment.  \n- It scores [75% UNC]() and [71% sUNC](), reflecting moderate compatibility with most scripts.  \n- Uses [Fiu]() and [LuauCeption]() to interpret scripts in real time.\n\n## Background Information  \n- Developed by [@GelatekForever]() / [@xyzkade](), [@Razonili](), with contributions from [@emperrr]() and [@TimedMarch]().  \n- The only non-native component is the drawing library by [quivings](), which has been properly credited and is planned to be replaced by an in-house version.\n\n## Developer Notes  \n- Some functions are faked or partially simulated. Native-level support exists for things like [hookfunction]() and parts of the [debug]() library via [LBI]().  \n- Features like [cloneref]() return placeholder userdata. Full simulation isn't prioritized unless tied to in-game anticheat mechanisms, as full fidelity would defeat the sandboxed design goals.\n\n> Sources: LUAU//CVSM\n",
-premium: false,
+    info: "## Exploit Performance  \n- [LUAU//CVSM]() is a module designed for a game that enables script building in a simulated exploit environment.  \n- It scores [75% UNC]() and [71% sUNC](), reflecting moderate compatibility with most scripts.  \n- Uses [Fiu]() and [LuauCeption]() to interpret scripts in real time.\n\n## Background Information  \n- Developed by [@GelatekForever]() / [@xyzkade](), [@Razonili](), with contributions from [@emperrr]() and [@TimedMarch]().  \n- The only non-native component is the drawing library by [quivings](), which has been properly credited and is planned to be replaced by an in-house version.\n\n## Developer Notes  \n- Some functions are faked or partially simulated. Native-level support exists for things like [hookfunction]() and parts of the [debug]() library via [LBI]().  \n- Features like [cloneref]() return placeholder userdata. Full simulation isn't prioritized unless tied to in-game anticheat mechanisms, as full fidelity would defeat the sandboxed design goals.\n\n> Sources: LUAU//CVSM\n",
+    premium: false,
     href: "https://www.roblox.com/games/126802082047218/",
     priceHref: "https://yap.com/",
     hide: false,
@@ -394,7 +398,8 @@ premium: false,
     accentColor: "from-red-600 to-red-700",
     href: "https://getvisual.cc",
     priceHref: "https://getvisual.cc",
-    info: "## Exploit Performance  \n- [Visual](/) is a new Exploit, this cannot be commencted.\n\n## Background Information  \n- [Visual](/) is a new exploit. It can't be commented on much—aside from the fact that Peyton owns Swift and MacSploit, but that's a different story, which you can find in Swift's and MacSploit's cards.\n\n## Developer Information  \n- [Peyton](/), the project’s creator, is an experienced and respected developer in the exploit community. His track record includes continued leadership on [Swift](/), while now also overseeing Visual’s direction. [Blinx](/), the UI designer behind both the original Swift interface and Visual’s current look, brings a clean and consistent visual identity across projects. [Reveny](/) and [Viz](/), both software engineering majors and longtime collaborators of Peyton, contribute to the development of Visual. Though not publicly known in the community, their technical expertise ensures the project is both scalable and dependable.\n\n> Sources: Reddit.com/r/robloxhackers, Swift Discord, Visual Discord", hide: false,
+    info: "## Exploit Performance  \n- [Visual](/) is a new Exploit, this cannot be commencted.\n\n## Background Information  \n- [Visual](/) is a new exploit. It can't be commented on much—aside from the fact that Peyton owns Swift and MacSploit, but that's a different story, which you can find in Swift's and MacSploit's cards.\n\n## Developer Information  \n- [Peyton](/), the project’s creator, is an experienced and respected developer in the exploit community. His track record includes continued leadership on [Swift](/), while now also overseeing Visual’s direction. [Blinx](/), the UI designer behind both the original Swift interface and Visual’s current look, brings a clean and consistent visual identity across projects. [Reveny](/) and [Viz](/), both software engineering majors and longtime collaborators of Peyton, contribute to the development of Visual. Though not publicly known in the community, their technical expertise ensures the project is both scalable and dependable.\n\n> Sources: Reddit.com/r/robloxhackers, Swift Discord, Visual Discord",
+    hide: false,
     hasKeySystem: true,
     free: true,
   },
@@ -435,7 +440,8 @@ premium: false,
     accentColor: "from-blue-600 to-blue-700",
     href: "https://hydrogen.lat",
     priceHref: "https://hydrogen.lat",
-    info: "## Exploit Performance\n- Customizable themes (open-source), [Luarmor]() support, and performance comparable to a standard executor.\n\n## Background Information\n- [Hydrogen]() has been a long-standing executor for macOS and Android (now discontinued). Originally developed by [@xgladius](), it was known for being an ultra-fast macOS executor. Later, development was taken over by [@retguard](), who eventually discontinued updates in May 2024 due to personal reasons. As of April 12, 2025, [@xgladius]() has resumed development, with plans to continue its progress for the foreseeable future.\n\n## Developer Background\n- [Hydrogen]() is created by [@xgladius](), a well-known exploit developer and reverse engineer. He is recognized for projects like [luaudec](https://github.com/xgladius/luauDec) and various other contributions to the Exploit Community.\n\n> Sources: Hydrogen Staff Team\n", hide: false,
+    info: "## Exploit Performance\n- Customizable themes (open-source), [Luarmor]() support, and performance comparable to a standard executor.\n\n## Background Information\n- [Hydrogen]() has been a long-standing executor for macOS and Android (now discontinued). Originally developed by [@xgladius](), it was known for being an ultra-fast macOS executor. Later, development was taken over by [@retguard](), who eventually discontinued updates in May 2024 due to personal reasons. As of April 12, 2025, [@xgladius]() has resumed development, with plans to continue its progress for the foreseeable future.\n\n## Developer Background\n- [Hydrogen]() is created by [@xgladius](), a well-known exploit developer and reverse engineer. He is recognized for projects like [luaudec](https://github.com/xgladius/luauDec) and various other contributions to the Exploit Community.\n\n> Sources: Hydrogen Staff Team\n",
+    hide: false,
     hasKeySystem: true,
     free: true,
   },
@@ -482,7 +488,7 @@ premium: false,
     hide: false,
     hasKeySystem: false,
     free: false,
-    external: true
+    external: true,
   },
   {
     id: "celery",
@@ -541,13 +547,14 @@ premium: false,
     editor: "voxlis.NET",
     txtColor: "text-yellow-500",
     accentColor: "from-yellow-600 to-yellow-700",
-    info: "## Exploit Performance  \n- [SirHurt](https://sirhurt.net/) is a Level 8 executor with 93% sUNC compatibility. It performs consistently and supports a wide range of scripts.  \n\n## Background Information  \n- [SirHurt]() was originally launched in December 2015 as a private cheat under the name “AssHurt.” It was later renamed to \"SirHurt\" to make the product more marketable, particularly to younger users and their parents.  \n- Due to the shutdown of [V3rmillion.net](), much of its early history has been lost, though the executor has continued to receive updates and maintain relevance in the community for nearly a decade.  \n- The exploit is maintained by [IcePools](), who leads both development and operations. Past contributors include Woffle and Aero, though their current involvement is unclear.\n\n## Developer Background  \n- [IcePools]() is the main developer and operator of [SirHurt](). While there have been community warnings in the past—mainly regarding personal allegations—no verifiable evidence has been presented.  \n- A counter-CW was posted on [V3rm.net]() which addressed and debunked the original claims using archived material. The community generally considers the matter resolved.\n\n> Submitted by: **@daxhascool** (Public Relations at SirHurt)  \n> Sources: [reddit.com/r/robloxhackers]()\n",
+    info: '## Exploit Performance  \n- [SirHurt](https://sirhurt.net/) is a Level 8 executor with 93% sUNC compatibility. It performs consistently and supports a wide range of scripts.  \n\n## Background Information  \n- [SirHurt]() was originally launched in December 2015 as a private cheat under the name “AssHurt.” It was later renamed to "SirHurt" to make the product more marketable, particularly to younger users and their parents.  \n- Due to the shutdown of [V3rmillion.net](), much of its early history has been lost, though the executor has continued to receive updates and maintain relevance in the community for nearly a decade.  \n- The exploit is maintained by [IcePools](), who leads both development and operations. Past contributors include Woffle and Aero, though their current involvement is unclear.\n\n## Developer Background  \n- [IcePools]() is the main developer and operator of [SirHurt](). While there have been community warnings in the past—mainly regarding personal allegations—no verifiable evidence has been presented.  \n- A counter-CW was posted on [V3rm.net]() which addressed and debunked the original claims using archived material. The community generally considers the matter resolved.\n\n> Submitted by: **@daxhascool** (Public Relations at SirHurt)  \n> Sources: [reddit.com/r/robloxhackers]()\n',
     premium: false,
     href: "https://sirhurt.net",
     priceHref: "https://sirhurt.net",
     hide: false,
     warning: false,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Potassium so you know what you’re getting. Would you like to continue to Potassium's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for Potassium so you know what you’re getting. Would you like to continue to Potassium's website anyway?",
   },
   {
     id: "drift",
@@ -587,7 +594,7 @@ premium: false,
     hide: false,
     hasKeySystem: false,
     free: true,
-    external: true
+    external: true,
   },
 
   {
@@ -609,10 +616,12 @@ premium: false,
     premium: false,
     href: "https://discord.gg/WY4juPkFv4",
     priceHref: "https://robloxcheatz.com/affiliate/voxlisnet",
-    uncbuttonlink: "https://rubis.numelon.com/sunc-result/?scrap=NhyWN1c9glakIDfT&accessKey=fkCC9lKOKZZZSfBRHimUtJFq32PucJNe",
+    uncbuttonlink:
+      "https://rubis.numelon.com/sunc-result/?scrap=NhyWN1c9glakIDfT&accessKey=fkCC9lKOKZZZSfBRHimUtJFq32PucJNe",
     hide: false,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Potassium so you know what you’re getting. Would you like to continue to Potassium's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for Potassium so you know what you’re getting. Would you like to continue to Potassium's website anyway?",
   },
   {
     id: "arceusx",
@@ -635,7 +644,8 @@ premium: false,
     hide: false,
     hasKeySystem: true,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for ArceusX NEO so you know what you’re getting. Would you like to continue to ArceusX NEO's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for ArceusX NEO so you know what you’re getting. Would you like to continue to ArceusX NEO's website anyway?",
   },
   {
     id: "nezur",
@@ -658,7 +668,7 @@ premium: false,
     free: true,
     warning: false,
     warningInfo: "-",
-    external: true
+    external: true,
   },
   {
     id: "ratware",
@@ -682,7 +692,8 @@ premium: false,
     hide: false,
     free: true,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
   },
 ]
 
@@ -1740,39 +1751,39 @@ class UIManager {
     }
 
     card.innerHTML = `
-    <div class="crd-acnt ${accentColor}"></div>
-    <div class="crd-hdr">
-      <div class="crd-hdr-cntnt">
-        <div class="crd-ttl-cntr">
-          <h3 class="crd-ttl">
-            ${exploit.name}
-            ${exploit.verified ? `<span class="vrf-bdg"><i class="fas fa-check"></i>Verified</span>` : ""}
-            ${exploit.premium ? `<span class="prem-bdg"><i class="fas fa-crown"></i>Premium</span>` : ""}
-            ${exploit.warning ? `<span class="warn-bdg"><i class="fas fa-exclamation-triangle"></i>Warning</span>` : ""}
-          </h3>
-          <p class="crd-desc">${exploit.desc}</p>
-        </div>
-        <div class="pltf-bdgs">
-          ${this.renderPlatformBadges(exploit)}
-        </div>
+  <div class="crd-acnt ${accentColor}"></div>
+  <div class="crd-hdr">
+    <div class="crd-hdr-cntnt">
+      <div class="crd-ttl-cntr">
+        <h3 class="crd-ttl">
+          ${exploit.name}
+          ${exploit.verified ? `<span class="vrf-bdg"><i class="fas fa-check"></i>Verified</span>` : ""}
+          ${exploit.premium ? `<span class="prem-bdg"><i class="fas fa-crown"></i>Premium</span>` : ""}
+          ${exploit.warning ? `<span class="warn-bdg"><i class="fas fa-exclamation-triangle"></i>Warning</span>` : ""}
+        </h3>
+        <p class="crd-desc">${exploit.desc}</p>
+      </div>
+      <div class="pltf-bdgs">
+        ${this.renderPlatformBadges(exploit)}
       </div>
     </div>
-    <div class="crd-bdy">
-      <div class="crd-meta">
-        ${levelDisplay}
-        <div class="meta-sep"></div>
-        <div class="edr-info">Last edited by ${exploit.editor}</div>
-      </div>
-      <div class="crd-cntnt cstm-scrlbr">
-        ${this.renderFeatureSection(exploit.pros, "pros", "+")}
-        ${this.renderFeatureSection(exploit.neutral, "ntrl", "•")}
-        ${this.renderFeatureSection(exploit.cons, "cons", "-")}
-      </div>
+  </div>
+  <div class="crd-bdy">
+    <div class="crd-meta">
+      ${levelDisplay}
+      <div class="meta-sep"></div>
+      <div class="edr-info">Last edited by ${exploit.editor}</div>
     </div>
-    <div class="crd-ftr">
-      ${this.renderCardFooter(exploit)}
+    <div class="crd-cntnt cstm-scrlbr">
+      ${this.renderFeatureSection(exploit.pros, "pros", "+")}
+      ${this.renderFeatureSection(exploit.neutral, "ntrl", "•")}
+      ${this.renderFeatureSection(exploit.cons, "cons", "-")}
     </div>
-  `
+  </div>
+  <div class="crd-ftr">
+    ${this.renderCardFooter(exploit)}
+  </div>
+`
 
     return card
   }
@@ -1795,67 +1806,67 @@ class UIManager {
     }
 
     item.innerHTML = `
-    <div class="lst-itm-acnt ${accentColor}"></div>
-    <div class="lst-itm-cntnt">
-      <div class="lst-itm-hdr">
-        <div class="lst-itm-main-info">
-          <h3 class="lst-itm-ttl">${exploit.name}</h3>
-          <div class="lst-itm-badges">
-            ${exploit.verified ? `<span class="vrf-bdg"><i class="fas fa-check"></i>Verified</span>` : ""}
-            ${exploit.premium ? `<span class="prem-bdg"><i class="fas fa-crown"></i>Premium</span>` : ""}
-            ${exploit.warning ? `<span class="warn-bdg"><i class="fas fa-exclamation-triangle"></i>Warning</span>` : ""}
-          </div>
+  <div class="lst-itm-acnt ${accentColor}"></div>
+  <div class="lst-itm-cntnt">
+    <div class="lst-itm-hdr">
+      <div class="lst-itm-main-info">
+        <h3 class="lst-itm-ttl">${exploit.name}</h3>
+        <div class="lst-itm-badges">
+          ${exploit.verified ? `<span class="vrf-bdg"><i class="fas fa-check"></i>Verified</span>` : ""}
+          ${exploit.premium ? `<span class="prem-bdg"><i class="fas fa-crown"></i>Premium</span>` : ""}
+          ${exploit.warning ? `<span class="warn-bdg"><i class="fas fa-exclamation-triangle"></i>Warning</span>` : ""}
         </div>
-        <div class="lst-itm-meta">
-          ${levelDisplay}
-          <div class="lst-itm-unc-score">UNC: <span>${uncScore}</span></div>
+      </div>
+      <div class="lst-itm-meta">
+        ${levelDisplay}
+        <div class="lst-itm-unc-score">UNC: <span>${uncScore}</span></div>
+      </div>
+    </div>
+    
+    <div class="lst-itm-details">
+      <div class="lst-itm-desc-container">
+        <p class="lst-itm-desc">${exploit.desc}</p>
+        <div class="lst-itm-pltfs">
+          ${this.renderListPlatforms(exploit)}
         </div>
       </div>
       
-      <div class="lst-itm-details">
-        <div class="lst-itm-desc-container">
-          <p class="lst-itm-desc">${exploit.desc}</p>
-          <div class="lst-itm-pltfs">
-            ${this.renderListPlatforms(exploit)}
-          </div>
-        </div>
-        
-        <div class="lst-itm-feats">
-          ${this.renderListFeatureSection(exploit.pros, "pros", "+", 3)}
-          ${this.renderListFeatureSection(exploit.neutral, "ntrl", "•", 2)}
-          ${this.renderListFeatureSection(exploit.cons, "cons", "-", 2)}
-        </div>
-      </div>
-      
-      <div class="lst-itm-footer">
-        <div class="lst-itm-edr">Edited by ${exploit.editor}</div>
+      <div class="lst-itm-feats">
+        ${this.renderListFeatureSection(exploit.pros, "pros", "+", 3)}
+        ${this.renderListFeatureSection(exploit.neutral, "ntrl", "•", 2)}
+        ${this.renderListFeatureSection(exploit.cons, "cons", "-", 2)}
       </div>
     </div>
-    <div class="lst-itm-acts">
-      <div class="lst-itm-price ${exploit.price === "FREE" ? "free" : ""}">
-        <i class="fas fa-tag"></i>
-        <span class="lst-itm-price-value">${exploit.price}</span>
-        ${exploit.period ? `<span class="lst-itm-price-period">${exploit.period}</span>` : ""}
-      </div>
-      <div class="lst-itm-btns">
-        <button class="lst-itm-btn web-btn">
-          <i class="fas fa-external-link-alt"></i>
-          <span>${exploit.websitetofree ? "Free" : "Website"}</span>
-        </button>
-        <button class="lst-itm-btn unc-btn">
-          <i class="fas fa-code"></i>
-          <span>UNC</span>
-        </button>
-        <button class="lst-itm-btn info-btn">
-          <div class="text-container">
-            <span class="text-switch visible" data-text="info">INFO</span>
-            <span class="text-switch hidden" data-text="more">MORE</span>
-          </div>
-          <i class="fas fa-info-circle"></i>
-        </button>
-      </div>
+    
+    <div class="lst-itm-footer">
+      <div class="lst-itm-edr">Edited by ${exploit.editor}</div>
     </div>
-  `
+  </div>
+  <div class="lst-itm-acts">
+    <div class="lst-itm-price ${exploit.price === "FREE" ? "free" : ""}">
+      <i class="fas fa-tag"></i>
+      <span class="lst-itm-price-value">${exploit.price}</span>
+      ${exploit.period ? `<span class="lst-itm-price-period">${exploit.period}</span>` : ""}
+    </div>
+    <div class="lst-itm-btns">
+      <button class="lst-itm-btn web-btn">
+        <i class="fas fa-external-link-alt"></i>
+        <span>${exploit.websitetofree ? "Free" : "Website"}</span>
+      </button>
+      <button class="lst-itm-btn unc-btn">
+        <i class="fas fa-code"></i>
+        <span>UNC</span>
+      </button>
+      <button class="lst-itm-btn info-btn">
+        <div class="text-container">
+          <span class="text-switch visible" data-text="info">INFO</span>
+          <span class="text-switch hidden" data-text="more">MORE</span>
+        </div>
+        <i class="fas fa-info-circle"></i>
+      </button>
+    </div>
+  </div>
+`
 
     return item
   }
@@ -1891,20 +1902,20 @@ class UIManager {
 
     exploit.plat.forEach((platform) => {
       platforms += `
-      <div class="lst-itm-pltf" title="${platform.charAt(0).toUpperCase() + platform.slice(1)}">
-        <i class="fab fa-${platform === "ios" ? "apple" : platform}"></i>
-        <span>${platform.charAt(0).toUpperCase() + platform.slice(1)}</span>
-      </div>
-    `
+    <div class="lst-itm-pltf" title="${platform.charAt(0).toUpperCase() + platform.slice(1)}">
+      <i class="fab fa-${platform === "ios" ? "apple" : platform}"></i>
+      <span>${platform.charAt(0).toUpperCase() + platform.slice(1)}</span>
+    </div>
+  `
     })
 
     if (exploit.hasKeySystem) {
       platforms += `
-      <div class="lst-itm-pltf key-system" title="Key System">
-        <i class="fas fa-key"></i>
-        <span>Key System</span>
-      </div>
-    `
+    <div class="lst-itm-pltf key-system" title="Key System">
+      <i class="fas fa-key"></i>
+      <span>Key System</span>
+    </div>
+  `
     }
 
     return platforms
@@ -1914,86 +1925,86 @@ class UIManager {
     if (!features || features.length === 0) return ""
 
     return `
-    <div class="feat-sec ${className}">
-      <h4 class="feat-hdng">
-        <span class="feat-ico">${icon}</span>
-        ${className === "pros" ? "Pros" : className === "ntrl" ? "Neutral" : "Cons"}
-      </h4>
-      <ul class="feat-lst">
-        ${features.map((feature) => `<li class="feat-itm">${feature}</li>`).join("")}
-      </ul>
-    </div>
-  `
+  <div class="feat-sec ${className}">
+    <h4 class="feat-hdng">
+      <span class="feat-ico">${icon}</span>
+      ${className === "pros" ? "Pros" : className === "ntrl" ? "Neutral" : "Cons"}
+    </h4>
+    <ul class="feat-lst">
+      ${features.map((feature) => `<li class="feat-itm">${feature}</li>`).join("")}
+    </ul>
+  </div>
+`
   }
 
   renderListFeatureSection(features, className, icon, limit) {
     if (!features || features.length === 0) return ""
 
     return `
-    <div class="lst-itm-feat-sec ${className}">
-      <h4 class="feat-hdng">
-        <span class="feat-ico">${icon}</span>
-        ${className === "pros" ? "Pros" : className === "ntrl" ? "Neutral" : "Cons"}
-      </h4>
-      <ul class="lst-itm-feat-lst">
-        ${features
-          .slice(0, limit)
-          .map((feature) => `<li class="lst-itm-feat-itm">${feature}</li>`)
-          .join("")}
-        ${features.length > limit ? `<li class="lst-itm-feat-more">+${features.length - limit} more</li>` : ""}
-      </ul>
-    </div>
-  `
+  <div class="lst-itm-feat-sec ${className}">
+    <h4 class="feat-hdng">
+      <span class="feat-ico">${icon}</span>
+      ${className === "pros" ? "Pros" : className === "ntrl" ? "Neutral" : "Cons"}
+    </h4>
+    <ul class="lst-itm-feat-lst">
+      ${features
+        .slice(0, limit)
+        .map((feature) => `<li class="lst-itm-feat-itm">${feature}</li>`)
+        .join("")}
+      ${features.length > limit ? `<li class="lst-itm-feat-more">+${features.length - limit} more</li>` : ""}
+    </ul>
+  </div>
+`
   }
 
   renderCardFooter(exploit) {
     if (exploit.price === "FREE") {
       return `
-      <div class="btn-grid free-program-grid">
-        <button class="crd-btn unc-btn expanded">
-          UNC <i class="fas fa-code"></i>
-        </button>
-        <button class="crd-btn info-btn expanded">
-          <div class="text-container">
-            <span class="text-switch visible" data-text="info">INFO</span>
-            <span class="text-switch hidden" data-text="more">MORE</span>
-          </div>
-          <i class="fas fa-info-circle"></i>
-        </button>
-      </div>
-      <button class="crd-btn web-btn full-width">
-        ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
+    <div class="btn-grid free-program-grid">
+      <button class="crd-btn unc-btn expanded">
+        UNC <i class="fas fa-code"></i>
       </button>
-    `
+      <button class="crd-btn info-btn expanded">
+        <div class="text-container">
+          <span class="text-switch visible" data-text="info">INFO</span>
+          <span class="text-switch hidden" data-text="more">MORE</span>
+        </div>
+        <i class="fas fa-info-circle"></i>
+      </button>
+    </div>
+    <button class="crd-btn web-btn full-width">
+      ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
+    </button>
+  `
     } else {
-      const baseClasses = ["crd-btn", "prc-btn-new"];
-      const finalPriceButtonClasses = baseClasses.join(" ");
+      const baseClasses = ["crd-btn", "prc-btn-new"]
+      const finalPriceButtonClasses = baseClasses.join(" ")
 
       return `
-      <div class="btn-grid">
-        <button class="crd-btn web-btn">
-          ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
-        </button>
-        <button class="crd-btn unc-btn">
-          UNC <i class="fas fa-code"></i>
-        </button>
-        <button class="crd-btn info-btn">
-          <div class="text-container">
-            <span class="text-switch visible" data-text="info">INFO</span>
-            <span class="text-switch hidden" data-text="more">MORE</span>
-          </div>
-          <i class="fas fa-info-circle"></i>
-        </button>
-      </div>
-      <button class="${finalPriceButtonClasses}">
-        <div class="default-text">
-          <i class="fas fa-tag"></i> BUY
-        </div>
-        <div class="price-text">
-          <i class="fas fa-tag"></i> ${exploit.price} ${exploit.period ? `<span class="prc-prd">${exploit.period}</span>` : ""}
-        </div>
+    <div class="btn-grid">
+      <button class="crd-btn web-btn">
+        ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
       </button>
-    `
+      <button class="crd-btn unc-btn">
+        UNC <i class="fas fa-code"></i>
+      </button>
+      <button class="crd-btn info-btn">
+        <div class="text-container">
+          <span class="text-switch visible" data-text="info">INFO</span>
+          <span class="text-switch hidden" data-text="more">MORE</span>
+        </div>
+        <i class="fas fa-info-circle"></i>
+      </button>
+    </div>
+    <button class="${finalPriceButtonClasses}">
+      <div class="default-text">
+        <i class="fas fa-tag"></i> BUY
+      </div>
+      <div class="price-text">
+        <i class="fas fa-tag"></i> ${exploit.price} ${exploit.period ? `<span class="prc-prd">${exploit.period}</span>` : ""}
+      </div>
+    </button>
+  `
     }
   }
 
@@ -2026,37 +2037,49 @@ class UIManager {
   }
 
   syncPriceButtonColors() {
-    document.querySelectorAll(".exp-crd, .exp-lst-itm").forEach(cardElement => {
-      const exploit = this.findExploitByCardElement(cardElement);
-      const priceButton = cardElement.querySelector(".prc-btn-new");
+    document.querySelectorAll(".exp-crd, .exp-lst-itm").forEach((cardElement) => {
+      const exploit = this.findExploitByCardElement(cardElement)
+      const priceButton = cardElement.querySelector(".prc-btn-new")
 
-      if (priceButton) {
-        if (exploit && exploit.pricegray === true) {
-          const webButton = cardElement.querySelector(".web-btn");
+      if (priceButton && exploit) {
+        if (exploit.pricegray === true) {
+          const webButton = cardElement.querySelector(".web-btn")
           if (webButton) {
-            const webButtonComputedStyle = window.getComputedStyle(webButton);
-            const webButtonBgColor = webButtonComputedStyle.backgroundColor;
-            const webButtonTextColor = webButtonComputedStyle.color;
-            const webButtonBorderColor = webButtonComputedStyle.borderColor;
+            const webButtonComputedStyle = window.getComputedStyle(webButton)
+            const webButtonBgColor = webButtonComputedStyle.backgroundColor
+            const webButtonTextColor = webButtonComputedStyle.color
+            const webButtonBorderColor = webButtonComputedStyle.borderColor
 
-            priceButton.style.backgroundColor = webButtonBgColor;
-            priceButton.style.color = webButtonTextColor;
-            priceButton.style.borderColor = webButtonBorderColor;
+            priceButton.style.backgroundColor = webButtonBgColor
+            priceButton.style.color = webButtonTextColor
+            priceButton.style.borderColor = webButtonBorderColor
 
-            priceButton.querySelectorAll('.default-text, .price-text, .prc-prd').forEach(child => {
-                child.style.color = webButtonTextColor;
-            });
+            priceButton.querySelectorAll(".default-text, .price-text").forEach((child) => {
+              child.style.color = webButtonTextColor
+              const iconInChild = child.querySelector(".fas.fa-tag")
+              if (iconInChild) {
+                iconInChild.style.color = "white"
+              }
+            })
+            const prcPrdElement = priceButton.querySelector(".prc-prd")
+            if (prcPrdElement) {
+              prcPrdElement.style.color = webButtonTextColor
+            }
           }
         } else {
-          priceButton.style.backgroundColor = "";
-          priceButton.style.color = "";
-          priceButton.style.borderColor = "";
-          priceButton.querySelectorAll('.default-text, .price-text, .prc-prd').forEach(child => {
-            child.style.color = "";
-          });
+          priceButton.style.backgroundColor = ""
+          priceButton.style.color = ""
+          priceButton.style.borderColor = ""
+          priceButton.querySelectorAll(".default-text, .price-text, .prc-prd").forEach((child) => {
+            child.style.color = ""
+            const iconInChild = child.querySelector(".fas.fa-tag")
+            if (iconInChild) {
+              iconInChild.style.color = ""
+            }
+          })
         }
       }
-    });
+    })
   }
 
   setupCardButtons() {
@@ -2136,17 +2159,17 @@ class UIManager {
           }
         }
       })
-      this.syncPriceButtonColors();
+      this.syncPriceButtonColors()
     }
 
     setupButtonHandlers()
 
     const observer = new MutationObserver((mutations) => {
-      let shouldReSync = false;
+      let shouldReSync = false
       mutations.forEach((mutation) => {
         if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
           for (let i = 0; i < mutation.addedNodes.length; i++) {
-            const node = mutation.addedNodes[i];
+            const node = mutation.addedNodes[i]
             if (
               node.nodeType === 1 &&
               (node.classList.contains("exp-crd") ||
@@ -2154,22 +2177,21 @@ class UIManager {
                 node.querySelector(".exp-crd") ||
                 node.querySelector(".exp-lst-itm"))
             ) {
-              shouldReSync = true;
-              break;
+              shouldReSync = true
+              break
             }
           }
         }
-      });
+      })
 
       if (shouldReSync) {
-        setupButtonHandlers();
+        setupButtonHandlers()
       }
-    });
+    })
 
-    observer.observe(document.body, { childList: true, subtree: true });
-    this.syncPriceButtonColors();
+    observer.observe(document.body, { childList: true, subtree: true })
+    this.syncPriceButtonColors()
   }
-
 
   findExploitByCardElement(element) {
     if (!element) return null
@@ -2463,43 +2485,43 @@ class ModalManager {
     modalContainer.style.display = "none"
 
     modalContainer.innerHTML = `
-    <div class="unc-modal-overlay" id="uncModalOverlay"></div>
-    <div class="unc-modal">
-      <div class="unc-modal-header">
-        <h2 class="unc-modal-title" id="uncModalTitle">UNC Code</h2>
-      </div>
-      <div class="unc-modal-content">
-        <div class="unc-modal-info">
-          <div class="unc-modal-exploit-info" id="uncModalExploitInfo">
-            <div class="unc-modal-exploit-name" id="uncModalExploitName"></div>
-            <div class="unc-modal-exploit-desc" id="uncModalExploitDesc"></div>
-          </div>
-        </div>
-        <div class="unc-modal-code-container">
-          <div class="unc-modal-code-header">
-            <div class="unc-modal-code-title">UNC Code</div>
-            <button class="unc-modal-copy-btn" id="uncModalCopyBtn">
-              <i class="fas fa-copy"></i> Copy
-            </button>
-          </div>
-          <pre class="unc-modal-code" id="uncModalCode"></pre>
-        </div>
-        <div class="unc-modal-loading" id="uncModalLoading">
-          <div class="unc-modal-spinner"></div>
-          <div class="unc-modal-loading-text">Loading UNC data...</div>
-        </div>
-        <div class="unc-modal-error" id="uncModalError">
-          <i class="fas fa-exclamation-triangle"></i>
-          <div class="unc-modal-error-text" id="uncModalErrorText">Failed to load UNC data</div>
+  <div class="unc-modal-overlay" id="uncModalOverlay"></div>
+  <div class="unc-modal">
+    <div class="unc-modal-header">
+      <h2 class="unc-modal-title" id="uncModalTitle">UNC Code</h2>
+    </div>
+    <div class="unc-modal-content">
+      <div class="unc-modal-info">
+        <div class="unc-modal-exploit-info" id="uncModalExploitInfo">
+          <div class="unc-modal-exploit-name" id="uncModalExploitName"></div>
+          <div class="unc-modal-exploit-desc" id="uncModalExploitDesc"></div>
         </div>
       </div>
-      <div class="unc-modal-footer">
-        <button class="unc-modal-btn unc-modal-btn-primary" id="uncModalCloseBtn">
-          <i class="fas fa-times"></i> Close
-        </button>
+      <div class="unc-modal-code-container">
+        <div class="unc-modal-code-header">
+          <div class="unc-modal-code-title">UNC Code</div>
+          <button class="unc-modal-copy-btn" id="uncModalCopyBtn">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
+        <pre class="unc-modal-code" id="uncModalCode"></pre>
+      </div>
+      <div class="unc-modal-loading" id="uncModalLoading">
+        <div class="unc-modal-spinner"></div>
+        <div class="unc-modal-loading-text">Loading UNC data...</div>
+      </div>
+      <div class="unc-modal-error" id="uncModalError">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div class="unc-modal-error-text" id="uncModalErrorText">Failed to load UNC data</div>
       </div>
     </div>
-  `
+    <div class="unc-modal-footer">
+      <button class="unc-modal-btn unc-modal-btn-primary" id="uncModalCloseBtn">
+        <i class="fas fa-times"></i> Close
+      </button>
+    </div>
+  </div>
+`
 
     document.body.appendChild(modalContainer)
 
@@ -2546,23 +2568,23 @@ class ModalManager {
     modalContainer.style.display = "none"
 
     modalContainer.innerHTML = `
-    <div class="warning-modal-overlay"></div>
-    <div class="warning-modal">
-      <div class="warning-modal-header">
-        <h2 class="warning-modal-title">Warning</h2>
-      </div>
-      <div class="warning-modal-content">
-        <div class="warning-modal-icon">
-          <i class="fas fa-exclamation-triangle"></i>
-        </div>
-        <p id="warningModalText" class="warning-modal-text">Are you sure you want to visit this website?</p>
-      </div>
-      <div class="warning-modal-footer">
-        <button id="warningModalCancel" class="warning-modal-btn warning-modal-btn-cancel">Cancel</button>
-        <button id="warningModalOkay" class="warning-modal-btn warning-modal-btn-okay">Okay</button>
-      </div>
+  <div class="warning-modal-overlay"></div>
+  <div class="warning-modal">
+    <div class="warning-modal-header">
+      <h2 class="warning-modal-title">Warning</h2>
     </div>
-  `
+    <div class="warning-modal-content">
+      <div class="warning-modal-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <p id="warningModalText" class="warning-modal-text">Are you sure you want to visit this website?</p>
+    </div>
+    <div class="warning-modal-footer">
+      <button id="warningModalCancel" class="warning-modal-btn warning-modal-btn-cancel">Cancel</button>
+      <button id="warningModalOkay" class="warning-modal-btn warning-modal-btn-okay">Okay</button>
+    </div>
+  </div>
+`
 
     document.body.appendChild(modalContainer)
   }
@@ -2967,10 +2989,10 @@ class ThemeManager {
       const themeName = theme.charAt(0).toUpperCase() + theme.slice(1)
 
       themeDropdownSelected.innerHTML = `
-      <div class="theme-color-indicator ${theme}"></div>
-      <span>${themeName} Theme</span>
-      <i class="fas fa-chevron-down"></i>
-    `
+    <div class="theme-color-indicator ${theme}"></div>
+    <span>${themeName} Theme</span>
+    <i class="fas fa-chevron-down"></i>
+  `
 
       const options = themeDropdownOptions.querySelectorAll(".theme-dropdown-option")
 
