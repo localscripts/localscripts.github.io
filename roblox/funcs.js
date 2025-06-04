@@ -17,6 +17,7 @@ const expData = [
     premium: true,
     hasKeySystem: false,
     free: false,
+    pricegray: false,
     info: "## Exploit Performance  \n- [Zenith](/) functions similarly to the old [Nihon](/) executor, as it shares the same development team but has been rebranded. The main distinction is that [Zenith](/) is actively maintained, whereas [Nihon](/) is still undergoing redevelopment. [Zenith](/) offers a smooth experience and is bundled into a single `.exe` file, unlike many other exploits that come in `.zip` archives with multiple `.dll` files.\n  \n\n## Background Information  \n- Before [Zenith](/), an executor - [Nihon](/) launched in early 2024 and officially released on October 24, 2024, delivering strong performance.  \n- On February 3, 2025, [Nihon](/) team splited. The [Nihon](/) owner commented on the situation:  \n  *\"A former admin and Sero nuked the server and banned users. We're restoring it—Zenith wasn't involved and even returned our vanity. ❤️\"*. No further details were provided, though the situation is likely more complex.  \n\n## Developers Background Information\n- There is little background information available about the owners, [@Immune](/), aside from their primary role in working on the UI for [Nihon](/). The rest of the development team included [@loadnil](/), [@mcgamin1738](/) and [@lendmeyourstrength](), who were primarily responsible for both the back-end and front-end development of Nihon. \n\n- Later, the team was forced to leave [Nihon](/), leading the developers to found [Zenith](/), which has been doing quite well. The current main owners are [@loadnil](/), [@lendmeyourstrength](/), [@mcgamin1738](/), and [@spectraluwu](/).\n\n\n> Sources: [reddit.com/r/robloxhackers](), Zenith & Nihon Developers",
     href: "https://zenith.win",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#Zenith",
@@ -1965,24 +1966,8 @@ class UIManager {
       </button>
     `
     } else {
-      const baseClasses = ["crd-btn", "prc-btn-new"]
-      let colorClasses = []
-
-      if (exploit.pricegray === true) {
-        colorClasses = [
-          "bg-slate-200",
-          "hover:bg-slate-300",
-          "text-slate-800",
-          "border",
-          "border-slate-300",
-          "dark:bg-slate-700",
-          "dark:hover:bg-slate-600",
-          "dark:text-slate-200",
-          "dark:border-slate-600",
-        ]
-      }
-
-      const finalPriceButtonClasses = [...baseClasses, ...colorClasses].join(" ")
+      const baseClasses = ["crd-btn", "prc-btn-new"];
+      const finalPriceButtonClasses = baseClasses.join(" ");
 
       return `
       <div class="btn-grid">
@@ -2038,6 +2023,40 @@ class UIManager {
     }
 
     return uncScore
+  }
+
+  syncPriceButtonColors() {
+    document.querySelectorAll(".exp-crd, .exp-lst-itm").forEach(cardElement => {
+      const exploit = this.findExploitByCardElement(cardElement);
+      const priceButton = cardElement.querySelector(".prc-btn-new");
+
+      if (priceButton) {
+        if (exploit && exploit.pricegray === true) {
+          const webButton = cardElement.querySelector(".web-btn");
+          if (webButton) {
+            const webButtonComputedStyle = window.getComputedStyle(webButton);
+            const webButtonBgColor = webButtonComputedStyle.backgroundColor;
+            const webButtonTextColor = webButtonComputedStyle.color;
+            const webButtonBorderColor = webButtonComputedStyle.borderColor;
+
+            priceButton.style.backgroundColor = webButtonBgColor;
+            priceButton.style.color = webButtonTextColor;
+            priceButton.style.borderColor = webButtonBorderColor;
+
+            priceButton.querySelectorAll('.default-text, .price-text, .prc-prd').forEach(child => {
+                child.style.color = webButtonTextColor;
+            });
+          }
+        } else {
+          priceButton.style.backgroundColor = "";
+          priceButton.style.color = "";
+          priceButton.style.borderColor = "";
+          priceButton.querySelectorAll('.default-text, .price-text, .prc-prd').forEach(child => {
+            child.style.color = "";
+          });
+        }
+      }
+    });
   }
 
   setupCardButtons() {
@@ -2117,17 +2136,17 @@ class UIManager {
           }
         }
       })
+      this.syncPriceButtonColors();
     }
 
     setupButtonHandlers()
 
     const observer = new MutationObserver((mutations) => {
-      let shouldSetupButtons = false
-
+      let shouldReSync = false;
       mutations.forEach((mutation) => {
         if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
           for (let i = 0; i < mutation.addedNodes.length; i++) {
-            const node = mutation.addedNodes[i]
+            const node = mutation.addedNodes[i];
             if (
               node.nodeType === 1 &&
               (node.classList.contains("exp-crd") ||
@@ -2135,20 +2154,22 @@ class UIManager {
                 node.querySelector(".exp-crd") ||
                 node.querySelector(".exp-lst-itm"))
             ) {
-              shouldSetupButtons = true
-              break
+              shouldReSync = true;
+              break;
             }
           }
         }
-      })
+      });
 
-      if (shouldSetupButtons) {
-        setupButtonHandlers()
+      if (shouldReSync) {
+        setupButtonHandlers();
       }
-    })
+    });
 
-    observer.observe(document.body, { childList: true, subtree: true })
+    observer.observe(document.body, { childList: true, subtree: true });
+    this.syncPriceButtonColors();
   }
+
 
   findExploitByCardElement(element) {
     if (!element) return null
