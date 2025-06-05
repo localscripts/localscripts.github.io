@@ -47,7 +47,8 @@ const expData = [
     free: false,
     uncbuttonlink: "https://sunc.rubis.app/?scrap=uAgymFmiWxyIX10Z&key=urAxMZ9DKS8p6aw5vbqyUUqRADF374Rl",
     warning: false,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Wave’s website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Wave’s website anyway?",
   },
   {
     id: "matcha",
@@ -86,7 +87,8 @@ const expData = [
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
     premium: true,
-    info: "## Exploit Performance\n- [Swift](/) performs reasonably well. While it occasionally experiences downtime and injection issues, it remains the best available option for Level 8 execution. Alternatives like [Argon]() and [Atlantis]() exist, but unlike those, [Swift](/) is not scamming or ratting its users.\n\n## Background Information\n- [Swift](/), originally launched as [bunni.lol](/) in May 2024, had a rocky start. It rebranded to [Swift](/) in August 2024, entering Beta and quickly building a positive reputation by offering a premium experience at no cost. In January 2025, [Swift](/) went temporarily offline due to a ROBLOX platform update. It returned in March 2025 with a major overhaul—introducing 98% sUNC compatibility, a built-in decompiler, and various improvements.\n\n\n## Developers Background Information\n\n* [Swift]() was originally owned by [@Peyton](), who joined the community in 2016 and began developing between 2021 and 2022. It was administered by [@Bass](), the owner of [Script-Ware.com]()—a project that launched in late 2020 and shut down following the introduction of Hyperion. The [Zenith]() team provided occasional support (see the Zenith card on voxlis.NET for more information). Swift is now owned by Bass, as [@Peyton]() has since left to work on [Visual]().\n\n\n\n> Sources: [reddit.com/r/robloxhackers](https://reddit.com/r/robloxhackers), bunni.lol Discord Archives, Swift Discord Archives\n", hasKeySystem: true,
+    info: "## Exploit Performance\n- [Swift](/) performs reasonably well. While it occasionally experiences downtime and injection issues, it remains the best available option for Level 8 execution. Alternatives like [Argon]() and [Atlantis]() exist, but unlike those, [Swift](/) is not scamming or ratting its users.\n\n## Background Information\n- [Swift](/), originally launched as [bunni.lol](/) in May 2024, had a rocky start. It rebranded to [Swift](/) in August 2024, entering Beta and quickly building a positive reputation by offering a premium experience at no cost. In January 2025, [Swift](/) went temporarily offline due to a ROBLOX platform update. It returned in March 2025 with a major overhaul—introducing 98% sUNC compatibility, a built-in decompiler, and various improvements.\n\n\n## Developers Background Information\n\n* [Swift]() was originally owned by [@Peyton](), who joined the community in 2016 and began developing between 2021 and 2022. It was administered by [@Bass](), the owner of [Script-Ware.com]()—a project that launched in late 2020 and shut down following the introduction of Hyperion. The [Zenith]() team provided occasional support (see the Zenith card on voxlis.NET for more information). Swift is now owned by Bass, as [@Peyton]() has since left to work on [Visual]().\n\n\n\n> Sources: [reddit.com/r/robloxhackers](https://reddit.com/r/robloxhackers), bunni.lol Discord Archives, Swift Discord Archives\n",
+    hasKeySystem: true,
     free: true,
     href: "http://getswift.gg/",
     priceHref: "http://getswift.gg/",
@@ -147,7 +149,7 @@ const expData = [
     plat: ["windows", "windows"],
     pros: ["Emulates Hyperion for safety", "Has a decompiler", "100% sUNC", "Level 8"],
     neutral: [],
-    cons: ['Almost never updates'],
+    cons: ["Almost never updates"],
     verified: true,
     editor: "voxlis.NET",
     txtColor: "text-red-500",
@@ -155,7 +157,7 @@ const expData = [
     premium: false,
     hasKeySystem: false,
     free: false,
-    info: "## Exploit Performance  \n- Although [AWP.gg](/) is associated with [Krampus](/), it operates reliably. The developers focus on avoiding detection and ban waves by using Hyperion emulation techniques. However, running the official Roblox client can still be inconvenient, as it requires reinstallation, and users may occasionally face bans even when using [AWP.gg](/).\n\n> \n\n## Background Information  \n- There is speculation that [AWP.gg](/) is linked to [Krampus](/), an exploit that abruptly shut down on May 11, 2024, shortly after the release of Hyperion 4.0. The developers abandoned the project without offering any updates or refunds, leaving long-term license holders without support. The shutdown was likely due to the challenges in bypassing the new Hyperion 4.0. Although [Krampus](/) did not distribute malware, they issued a misleading \"official explanation,\" falsely claiming their developers were \"raided\" and even circulating fabricated images as evidence in their Discord server.\n  \n- After months of inactivity, the [Krampus](/) Discord suddenly began promoting a Robux gambling site. It's unclear whether the developers are behind the site or were paid for sponsorship, but it's most likely that the Discord server was simply sold off.\n\n\n## Developers Background Information\n- Currently managed by [@merkuri6479](/), [@jbhglj7uj](/), and [@etheriut](/), but no additional information is known about them.\n\n\n \n\n> Sources: [reddit.com/r/robloxhackers](), WeAreDevs.NET",
+    info: '## Exploit Performance  \n- Although [AWP.gg](/) is associated with [Krampus](/), it operates reliably. The developers focus on avoiding detection and ban waves by using Hyperion emulation techniques. However, running the official Roblox client can still be inconvenient, as it requires reinstallation, and users may occasionally face bans even when using [AWP.gg](/).\n\n> \n\n## Background Information  \n- There is speculation that [AWP.gg](/) is linked to [Krampus](/), an exploit that abruptly shut down on May 11, 2024, shortly after the release of Hyperion 4.0. The developers abandoned the project without offering any updates or refunds, leaving long-term license holders without support. The shutdown was likely due to the challenges in bypassing the new Hyperion 4.0. Although [Krampus](/) did not distribute malware, they issued a misleading "official explanation," falsely claiming their developers were "raided" and even circulating fabricated images as evidence in their Discord server.\n  \n- After months of inactivity, the [Krampus](/) Discord suddenly began promoting a Robux gambling site. It\'s unclear whether the developers are behind the site or were paid for sponsorship, but it\'s most likely that the Discord server was simply sold off.\n\n\n## Developers Background Information\n- Currently managed by [@merkuri6479](/), [@jbhglj7uj](/), and [@etheriut](/), but no additional information is known about them.\n\n\n \n\n> Sources: [reddit.com/r/robloxhackers](), WeAreDevs.NET',
     href: "https://awp.gg",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#AWP",
     uncbuttonlink: "https://sunc.rubis.app/?scrap=HvuHEiAG9iQJ0BTq&key=CwgWgiTmw4bM6OEGKK5quxUWxBJiHWEz",
@@ -183,7 +185,8 @@ const expData = [
     free: false,
     uncbuttonlink: "https://sunc.rubis.app/?scrap=9kH1EN8HIbXl9I2o&key=KrU695V4fbJuWZcwG9jMJen2M22mRbng",
     warning: false,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for MacSploit so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for MacSploit so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
   },
   {
     id: "codex",
@@ -207,7 +210,7 @@ const expData = [
     hasKeySystem: true,
     free: false,
   },
-    {
+  {
     id: "bunni",
     name: "Bunni",
     desc: "The free Level 8 exploit to use.",
@@ -223,7 +226,8 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://getvisual.cc",
     priceHref: "https://getvisual.cc",
-    info: "## Exploit Performance  \n- [Visual](/) is a new Exploit, this cannot be commencted.\n\n## Background Information  \n- [Visual](/) is a new exploit. It can't be commented on much—aside from the fact that Peyton owns Swift and MacSploit, but that's a different story, which you can find in Swift's and MacSploit's cards.\n\n## Developer Information  \n- [Peyton](/), the project’s creator, is an experienced and respected developer in the exploit community. His track record includes continued leadership on [Swift](/), while now also overseeing Visual’s direction. [Blinx](/), the UI designer behind both the original Swift interface and Visual’s current look, brings a clean and consistent visual identity across projects. [Reveny](/) and [Viz](/), both software engineering majors and longtime collaborators of Peyton, contribute to the development of Visual. Though not publicly known in the community, their technical expertise ensures the project is both scalable and dependable.\n\n> Sources: Reddit.com/r/robloxhackers, Swift Discord, Visual Discord", hide: false,
+    info: "## Exploit Performance  \n- [Visual](/) is a new Exploit, this cannot be commencted.\n\n## Background Information  \n- [Visual](/) is a new exploit. It can't be commented on much—aside from the fact that Peyton owns Swift and MacSploit, but that's a different story, which you can find in Swift's and MacSploit's cards.\n\n## Developer Information  \n- [Peyton](/), the project’s creator, is an experienced and respected developer in the exploit community. His track record includes continued leadership on [Swift](/), while now also overseeing Visual’s direction. [Blinx](/), the UI designer behind both the original Swift interface and Visual’s current look, brings a clean and consistent visual identity across projects. [Reveny](/) and [Viz](/), both software engineering majors and longtime collaborators of Peyton, contribute to the development of Visual. Though not publicly known in the community, their technical expertise ensures the project is both scalable and dependable.\n\n> Sources: Reddit.com/r/robloxhackers, Swift Discord, Visual Discord",
+    hide: false,
     hasKeySystem: false,
     free: true,
   },
@@ -297,8 +301,8 @@ const expData = [
     lvl: 3,
     price: "FREE",
     plat: ["windows"],
-    pros: ["Has a decompiler", "41% sUNC"],
-    neutral: ["Level 3"],
+    pros: ["Has a decompiler", "40% sUNC~"],
+    neutral: ["Level 3", "Xeno - rebranded"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
@@ -332,7 +336,8 @@ const expData = [
     hasKeySystem: false,
     free: true,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Velocity website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Velocity website anyway?",
   },
   {
     id: "CSVM",
@@ -436,7 +441,8 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://hydrogen.lat",
     priceHref: "https://hydrogen.lat",
-    info: "## Exploit Performance\n- Customizable themes (open-source), [Luarmor]() support, and performance comparable to a standard executor.\n\n## Background Information\n- [Hydrogen]() has been a long-standing executor for macOS and Android (now discontinued). Originally developed by [@xgladius](), it was known for being an ultra-fast macOS executor. Later, development was taken over by [@retguard](), who eventually discontinued updates in May 2024 due to personal reasons. As of April 12, 2025, [@xgladius]() has resumed development, with plans to continue its progress for the foreseeable future.\n\n## Developer Background\n- [Hydrogen]() is created by [@xgladius](), a well-known exploit developer and reverse engineer. He is recognized for projects like [luaudec](https://github.com/xgladius/luauDec) and various other contributions to the Exploit Community.\n\n> Sources: Hydrogen Staff Team\n", hide: false,
+    info: "## Exploit Performance\n- Customizable themes (open-source), [Luarmor]() support, and performance comparable to a standard executor.\n\n## Background Information\n- [Hydrogen]() has been a long-standing executor for macOS and Android (now discontinued). Originally developed by [@xgladius](), it was known for being an ultra-fast macOS executor. Later, development was taken over by [@retguard](), who eventually discontinued updates in May 2024 due to personal reasons. As of April 12, 2025, [@xgladius]() has resumed development, with plans to continue its progress for the foreseeable future.\n\n## Developer Background\n- [Hydrogen]() is created by [@xgladius](), a well-known exploit developer and reverse engineer. He is recognized for projects like [luaudec](https://github.com/xgladius/luauDec) and various other contributions to the Exploit Community.\n\n> Sources: Hydrogen Staff Team\n",
+    hide: false,
     hasKeySystem: true,
     free: true,
     pricegray: true,
@@ -546,13 +552,14 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-yellow-500",
     accentColor: "from-yellow-600 to-yellow-700",
-    info: "## Exploit Performance  \n- [SirHurt](https://sirhurt.net/) is a Level 8 executor with 93% sUNC compatibility. It performs consistently and supports a wide range of scripts.  \n\n## Background Information  \n- [SirHurt]() was originally launched in December 2015 as a private cheat under the name “AssHurt.” It was later renamed to \"SirHurt\" to make the product more marketable, particularly to younger users and their parents.  \n- Due to the shutdown of [V3rmillion.net](), much of its early history has been lost, though the executor has continued to receive updates and maintain relevance in the community for nearly a decade.  \n- The exploit is maintained by [IcePools](), who leads both development and operations. Past contributors include Woffle and Aero, though their current involvement is unclear.\n\n## Developer Background  \n- [IcePools]() is the main developer and operator of [SirHurt](). While there have been community warnings in the past—mainly regarding personal allegations—no verifiable evidence has been presented.  \n- A counter-CW was posted on [V3rm.net]() which addressed and debunked the original claims using archived material. The community generally considers the matter resolved.\n\n> Submitted by: **@daxhascool** (Public Relations at SirHurt)  \n> Sources: [reddit.com/r/robloxhackers]()\n",
+    info: '## Exploit Performance  \n- [SirHurt](https://sirhurt.net/) is a Level 8 executor with 93% sUNC compatibility. It performs consistently and supports a wide range of scripts.  \n\n## Background Information  \n- [SirHurt]() was originally launched in December 2015 as a private cheat under the name “AssHurt.” It was later renamed to "SirHurt" to make the product more marketable, particularly to younger users and their parents.  \n- Due to the shutdown of [V3rmillion.net](), much of its early history has been lost, though the executor has continued to receive updates and maintain relevance in the community for nearly a decade.  \n- The exploit is maintained by [IcePools](), who leads both development and operations. Past contributors include Woffle and Aero, though their current involvement is unclear.\n\n## Developer Background  \n- [IcePools]() is the main developer and operator of [SirHurt](). While there have been community warnings in the past—mainly regarding personal allegations—no verifiable evidence has been presented.  \n- A counter-CW was posted on [V3rm.net]() which addressed and debunked the original claims using archived material. The community generally considers the matter resolved.\n\n> Submitted by: **@daxhascool** (Public Relations at SirHurt)  \n> Sources: [reddit.com/r/robloxhackers]()\n',
     premium: false,
     href: "https://sirhurt.net",
     priceHref: "https://sirhurt.net",
     hide: false,
     warning: false,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Potassium so you know what you’re getting. Would you like to continue to Potassium's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for Potassium so you know what you’re getting. Would you like to continue to Potassium's website anyway?",
     pricegray: true,
   },
   {
@@ -614,10 +621,12 @@ const expData = [
     premium: false,
     href: "https://discord.gg/WY4juPkFv4",
     priceHref: "https://robloxcheatz.com/affiliate/voxlisnet",
-    uncbuttonlink: "https://rubis.numelon.com/sunc-result/?scrap=NhyWN1c9glakIDfT&accessKey=fkCC9lKOKZZZSfBRHimUtJFq32PucJNe",
+    uncbuttonlink:
+      "https://rubis.numelon.com/sunc-result/?scrap=NhyWN1c9glakIDfT&accessKey=fkCC9lKOKZZZSfBRHimUtJFq32PucJNe",
     hide: false,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Potassium so you know what you’re getting. Would you like to continue to Potassium's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for Potassium so you know what you’re getting. Would you like to continue to Potassium's website anyway?",
     pricegray: true,
   },
   {
@@ -641,7 +650,8 @@ const expData = [
     hide: false,
     hasKeySystem: true,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for ArceusX NEO so you know what you’re getting. Would you like to continue to ArceusX NEO's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for ArceusX NEO so you know what you’re getting. Would you like to continue to ArceusX NEO's website anyway?",
   },
   {
     id: "nezur",
@@ -666,7 +676,7 @@ const expData = [
     warningInfo: "-",
     external: true,
   },
- {
+  {
     id: "Plutora",
     name: "Plutora",
     desc: "An exploit based of WRD Api.",
@@ -688,9 +698,10 @@ const expData = [
     hide: true,
     free: true,
     warning: false,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
   },
-      {
+  {
     id: "ratware",
     name: "Ratware",
     desc: "A popular exploit with many users.",
@@ -712,7 +723,8 @@ const expData = [
     hide: false,
     free: true,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
   },
 ]
 
@@ -865,170 +877,193 @@ class LazyLoader {
   }
 }
 
-class WindowedRenderer {
+class PaginationManager {
   constructor(containerSelector, itemCreator, dataSource, options = {}) {
     this.container = document.querySelector(containerSelector)
     this.itemCreator = itemCreator
     this.dataSource = dataSource
     this.options = {
-      windowSize: options.windowSize || 30,
-      bufferSize: options.bufferSize || 10,
-      batchSize: options.batchSize || 5,
-      renderDelay: options.renderDelay || 10,
+      itemsPerPage: options.itemsPerPage || 9,
       ...options,
     }
 
-    this.visibleItems = new Map()
-    this.visibleIndexes = new Set()
-    this.lastScrollTop = 0
-    this.isRendering = false
-    this.renderQueue = []
+    this.currentPage = 1
+    this.totalPages = 1
+    this.renderedItems = new Map()
     this.initialized = false
-    this.scrollDirection = "down"
-    this.lastRenderTime = 0
-    this.renderThrottle = 100
+
+    this.paginationContainer = document.getElementById('paginationContainer')
+    this.prevBtn = document.getElementById('prevPageBtn')
+    this.nextBtn = document.getElementById('nextPageBtn')
+    this.pageNumbers = document.getElementById('pageNumbers')
+    this.paginationInfo = document.getElementById('paginationInfo')
+    this.pageInfo = document.getElementById('pageInfo')
   }
 
   init() {
     if (!this.container) return this
 
-    this.container.style.position = "relative"
-    this.container.style.minHeight = "500px"
-
-    window.addEventListener("scroll", this.onScroll.bind(this), { passive: true })
-    window.addEventListener("resize", this.onResize.bind(this), { passive: true })
-
-    if (this.options.performanceMonitor && this.options.performanceMonitor.isLowEndDevice) {
-      this.renderThrottle = 200
-      this.options.batchSize = Math.max(2, this.options.batchSize / 2)
-      this.options.windowSize = Math.max(10, this.options.windowSize / 2)
-    }
-
+    this.setupPaginationControls()
     this.render()
     this.initialized = true
 
     return this
   }
 
-  onScroll() {
-    const scrollTop = window.scrollY
-    this.scrollDirection = scrollTop > this.lastScrollTop ? "down" : "up"
-    this.lastScrollTop = scrollTop
-
-    const now = performance.now()
-    if (now - this.lastRenderTime < this.renderThrottle) return
-
-    this.lastRenderTime = now
-    this.render()
-  }
-
-  onResize() {
-    this.render(true)
-  }
-
-  getVisibleRange() {
-    const containerRect = this.container.getBoundingClientRect()
-    const windowHeight = window.innerHeight
-
-    const visibleTop = Math.max(0, -containerRect.top)
-    const visibleBottom = Math.min(containerRect.height, windowHeight - containerRect.top)
-
-    const bufferTop = Math.max(0, visibleTop - this.options.bufferSize * 100)
-    const bufferBottom = Math.min(containerRect.height, visibleBottom + this.options.bufferSize * 100)
-
-    return { top: bufferTop, bottom: bufferBottom, visible: visibleBottom > 0 && visibleTop < containerRect.height }
-  }
-
-  render(forceRender = false) {
-    if (!this.initialized || this.isRendering) return
-
-    const { top, bottom, visible } = this.getVisibleRange()
-
-    if (!visible && !forceRender) return
-
-    this.isRendering = true
-
-    const startIndex = 0
-    const endIndex = Math.min(this.dataSource.length, this.options.windowSize)
-
-    const visibleIndexes = new Set()
-    for (let i = startIndex; i < endIndex; i++) {
-      visibleIndexes.add(i)
+  setupPaginationControls() {
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => {
+        if (this.currentPage > 1) {
+          this.goToPage(this.currentPage - 1)
+        }
+      })
     }
 
-    const toRemove = []
-    this.visibleItems.forEach((item, index) => {
-      if (!visibleIndexes.has(index)) {
-        toRemove.push(index)
-      }
-    })
-
-    toRemove.forEach((index) => {
-      const item = this.visibleItems.get(index)
-      if (item && item.element) {
-        item.element.remove()
-      }
-      this.visibleItems.delete(index)
-    })
-
-    const toAdd = []
-    visibleIndexes.forEach((index) => {
-      if (!this.visibleItems.has(index)) {
-        toAdd.push(index)
-      }
-    })
-
-    if (toAdd.length === 0) {
-      this.isRendering = false
-      return
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => {
+        if (this.currentPage < this.totalPages) {
+          this.goToPage(this.currentPage + 1)
+        }
+      })
     }
-
-    const renderBatch = (startIdx, endIdx) => {
-      const fragment = document.createDocumentFragment()
-
-      for (let i = startIdx; i < endIdx; i++) {
-        const index = toAdd[i]
-        if (index === undefined) continue
-
-        const data = this.dataSource[index]
-        if (!data) continue
-
-        const element = this.itemCreator(data, index)
-        if (!element) continue
-
-        fragment.appendChild(element)
-        this.visibleItems.set(index, { index, element, data })
-      }
-
-      this.container.appendChild(fragment)
-
-      if (endIdx < toAdd.length) {
-        setTimeout(() => {
-          renderBatch(endIdx, Math.min(endIdx + this.options.batchSize, toAdd.length))
-        }, this.options.renderDelay)
-      } else {
-        this.isRendering = false
-      }
-    }
-
-    renderBatch(0, Math.min(this.options.batchSize, toAdd.length))
   }
 
   updateData(newData) {
     this.dataSource = newData
+    this.currentPage = 1
     this.clear()
-    this.render(true)
+    this.render()
   }
 
-  clear() {
-    this.visibleItems.forEach((item) => {
-      if (item && item.element) {
-        item.element.remove()
+  calculateTotalPages() {
+    return Math.ceil(this.dataSource.length / this.options.itemsPerPage)
+  }
+
+  getCurrentPageData() {
+    const startIndex = (this.currentPage - 1) * this.options.itemsPerPage
+    const endIndex = startIndex + this.options.itemsPerPage
+    return this.dataSource.slice(startIndex, endIndex)
+  }
+
+  goToPage(pageNumber) {
+    if (pageNumber < 1 || pageNumber > this.totalPages) return
+
+    this.currentPage = pageNumber
+    this.clear()
+    this.render()
+  }
+
+  render() {
+    this.totalPages = this.calculateTotalPages()
+    
+    if (this.totalPages === 0) {
+      this.hidePagination()
+      return
+    }
+
+    this.showPagination()
+    
+    const currentPageData = this.getCurrentPageData()
+    const fragment = document.createDocumentFragment()
+
+    this.container.innerHTML = ''
+
+    currentPageData.forEach((data, index) => {
+      const element = this.itemCreator(data, index)
+      if (element) {
+        fragment.appendChild(element)
       }
     })
 
-    this.visibleItems.clear()
-    this.visibleIndexes.clear()
+    this.container.appendChild(fragment)
+    this.updatePaginationControls()
+    this.updatePageInfo()
+  }
+
+  updatePaginationControls() {
+    if (this.prevBtn) {
+      this.prevBtn.disabled = this.currentPage === 1
+    }
+
+    if (this.nextBtn) {
+      this.nextBtn.disabled = this.currentPage === this.totalPages
+    }
+
+    if (this.pageNumbers) {
+      this.pageNumbers.innerHTML = ''
+      
+      const maxVisiblePages = 5
+      let startPage = Math.max(1, this.currentPage - Math.floor(maxVisiblePages / 2))
+      const endPage = Math.min(this.totalPages, startPage + maxVisiblePages - 1)
+      
+      if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1)
+      }
+
+      if (startPage > 1) {
+        this.addPageButton(1)
+        if (startPage > 2) {
+          this.addEllipsis()
+        }
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        this.addPageButton(i)
+      }
+
+      if (endPage < this.totalPages) {
+        if (endPage < this.totalPages - 1) {
+          this.addEllipsis()
+        }
+        this.addPageButton(this.totalPages)
+      }
+    }
+
+    if (this.paginationInfo) {
+      this.paginationInfo.textContent = `Page ${this.currentPage} of ${this.totalPages}`
+    }
+  }
+
+  addPageButton(pageNumber) {
+    const button = document.createElement('button')
+    button.className = `page-number ${pageNumber === this.currentPage ? 'active' : ''}`
+    button.textContent = pageNumber
+    button.addEventListener('click', () => this.goToPage(pageNumber))
+    this.pageNumbers.appendChild(button)
+  }
+
+  addEllipsis() {
+    const ellipsis = document.createElement('span')
+    ellipsis.className = 'page-ellipsis'
+    ellipsis.textContent = '...'
+    this.pageNumbers.appendChild(ellipsis)
+  }
+
+  updatePageInfo() {
+    if (this.pageInfo) {
+      const startItem = (this.currentPage - 1) * this.options.itemsPerPage + 1
+      const endItem = Math.min(this.currentPage * this.options.itemsPerPage, this.dataSource.length)
+      this.pageInfo.textContent = ` (${startItem}-${endItem})`
+    }
+  }
+
+  showPagination() {
+    if (this.paginationContainer && this.totalPages > 1) {
+      this.paginationContainer.style.display = 'block'
+    }
+  }
+
+  hidePagination() {
+    if (this.paginationContainer) {
+      this.paginationContainer.style.display = 'none'
+    }
+  }
+
+  clear() {
+    this.renderedItems.clear()
+    if (this.container) {
+      this.container.innerHTML = ''
+    }
   }
 }
 
@@ -1049,8 +1084,7 @@ class AppState {
     this.filteredData = []
     this.performanceMonitor = new PerformanceMonitor().start()
     this.lazyLoader = new LazyLoader().init()
-    this.windowedGridRenderer = null
-    this.windowedListRenderer = null
+    this.paginationManager = null
     this.isLoading = false
   }
 
@@ -1181,19 +1215,13 @@ class UIManager {
     this.appState = appState
     this.elements = {}
     this.debounceTimers = {}
-    this.windowOptions = {
-      windowSize: 30,
-      bufferSize: 10,
-      batchSize: 5,
-      renderDelay: 10,
-    }
   }
 
   init() {
     this.initElements()
     this.setupEventListeners()
     this.updateCounts()
-    this.initWindowedRenderers()
+    this.initPaginationManager()
     this.createModals()
     this.setupDropdowns()
     this.initTextSwitching()
@@ -1693,38 +1721,16 @@ class UIManager {
     }
   }
 
-  initWindowedRenderers() {
+  initPaginationManager() {
     const grid = this.getElement("grid")
-    const list = this.getElement("list")
-
-    const windowSize = this.appState.performanceMonitor.isLowEndDevice
-      ? 15
-      : this.appState.performanceMonitor.deviceTier === "medium"
-        ? 25
-        : 30
 
     if (grid) {
-      this.appState.windowedGridRenderer = new WindowedRenderer(
+      this.appState.paginationManager = new PaginationManager(
         "#expsGrid",
         this.createCard.bind(this),
         this.appState.filteredData,
         {
-          ...this.windowOptions,
-          windowSize: windowSize,
-          performanceMonitor: this.appState.performanceMonitor,
-        },
-      ).init()
-    }
-
-    if (list) {
-      this.appState.windowedListRenderer = new WindowedRenderer(
-        "#expsList",
-        this.createListItem.bind(this),
-        this.appState.filteredData,
-        {
-          ...this.windowOptions,
-          windowSize: Math.max(10, windowSize - 5),
-          performanceMonitor: this.appState.performanceMonitor,
+          itemsPerPage: 9,
         },
       ).init()
     }
@@ -1740,12 +1746,8 @@ class UIManager {
       if (noResults) noResults.classList.add("hidden")
     }
 
-    if (this.appState.windowedGridRenderer && this.appState.view === "grid") {
-      this.appState.windowedGridRenderer.updateData(filteredData)
-    }
-
-    if (this.appState.windowedListRenderer && this.appState.view === "list") {
-      this.appState.windowedListRenderer.updateData(filteredData)
+    if (this.appState.paginationManager && this.appState.view === "grid") {
+      this.appState.paginationManager.updateData(filteredData)
     }
 
     this.updateCounts()
@@ -1807,89 +1809,6 @@ class UIManager {
     return card
   }
 
-  createListItem(exploit) {
-    const item = document.createElement("div")
-    item.className = "exp-lst-itm"
-    if (exploit.premium) item.classList.add("prem")
-
-    item.setAttribute("data-id", exploit.id)
-    item.setAttribute("data-name", exploit.name)
-
-    const accentColor = exploit.premium ? "prem" : exploit.accentColor
-    const uncScore = this.getUncScore(exploit)
-    let levelDisplay = ""
-    if (exploit.external === true) {
-      levelDisplay = `<div class="lst-itm-lvl ${exploit.txtColor}">External</div>`
-    } else if (typeof exploit.lvl !== "undefined") {
-      levelDisplay = `<div class="lst-itm-lvl ${exploit.txtColor}">Level ${exploit.lvl}</div>`
-    }
-
-    item.innerHTML = `
-  <div class="lst-itm-acnt ${accentColor}"></div>
-  <div class="lst-itm-cntnt">
-    <div class="lst-itm-hdr">
-      <div class="lst-itm-main-info">
-        <h3 class="lst-itm-ttl">${exploit.name}</h3>
-        <div class="lst-itm-badges">
-          ${exploit.verified ? `<span class="vrf-bdg"><i class="fas fa-check"></i>Verified</span>` : ""}
-          ${exploit.premium ? `<span class="prem-bdg"><i class="fas fa-crown"></i>Premium</span>` : ""}
-          ${exploit.warning ? `<span class="warn-bdg"><i class="fas fa-exclamation-triangle"></i>Warning</span>` : ""}
-        </div>
-      </div>
-      <div class="lst-itm-meta">
-        ${levelDisplay}
-        <div class="lst-itm-unc-score">UNC: <span>${uncScore}</span></div>
-      </div>
-    </div>
-    
-    <div class="lst-itm-details">
-      <div class="lst-itm-desc-container">
-        <p class="lst-itm-desc">${exploit.desc}</p>
-        <div class="lst-itm-pltfs">
-          ${this.renderListPlatforms(exploit)}
-        </div>
-      </div>
-      
-      <div class="lst-itm-feats">
-        ${this.renderListFeatureSection(exploit.pros, "pros", "+", 3)}
-        ${this.renderListFeatureSection(exploit.neutral, "ntrl", "•", 2)}
-        ${this.renderListFeatureSection(exploit.cons, "cons", "-", 2)}
-      </div>
-    </div>
-    
-    <div class="lst-itm-footer">
-      <div class="lst-itm-edr">Edited by ${exploit.editor}</div>
-    </div>
-  </div>
-  <div class="lst-itm-acts">
-    <div class="lst-itm-price ${exploit.price === "FREE" ? "free" : ""}">
-      <i class="fas fa-tag"></i>
-      <span class="lst-itm-price-value">${exploit.price}</span>
-      ${exploit.period ? `<span class="lst-itm-price-period">${exploit.period}</span>` : ""}
-    </div>
-    <div class="lst-itm-btns">
-      <button class="lst-itm-btn web-btn">
-        <i class="fas fa-external-link-alt"></i>
-        <span>${exploit.websitetofree ? "Free" : "Website"}</span>
-      </button>
-      <button class="lst-itm-btn unc-btn">
-        <i class="fas fa-code"></i>
-        <span>UNC</span>
-      </button>
-      <button class="lst-itm-btn info-btn">
-        <div class="text-container">
-          <span class="text-switch visible" data-text="info">INFO</span>
-          <span class="text-switch hidden" data-text="more">MORE</span>
-        </div>
-        <i class="fas fa-info-circle"></i>
-      </button>
-    </div>
-  </div>
-`
-
-    return item
-  }
-
   renderPlatformBadges(exploit) {
     let badges = ""
 
@@ -1916,30 +1835,6 @@ class UIManager {
     return badges
   }
 
-  renderListPlatforms(exploit) {
-    let platforms = ""
-
-    exploit.plat.forEach((platform) => {
-      platforms += `
-    <div class="lst-itm-pltf" title="${platform.charAt(0).toUpperCase() + platform.slice(1)}">
-      <i class="fab fa-${platform === "ios" ? "apple" : platform}"></i>
-      <span>${platform.charAt(0).toUpperCase() + platform.slice(1)}</span>
-    </div>
-  `
-    })
-
-    if (exploit.hasKeySystem) {
-      platforms += `
-    <div class="lst-itm-pltf key-system" title="Key System">
-      <i class="fas fa-key"></i>
-      <span>Key System</span>
-    </div>
-  `
-    }
-
-    return platforms
-  }
-
   renderFeatureSection(features, className, icon) {
     if (!features || features.length === 0) return ""
 
@@ -1951,26 +1846,6 @@ class UIManager {
     </h4>
     <ul class="feat-lst">
       ${features.map((feature) => `<li class="feat-itm">${feature}</li>`).join("")}
-    </ul>
-  </div>
-`
-  }
-
-  renderListFeatureSection(features, className, icon, limit) {
-    if (!features || features.length === 0) return ""
-
-    return `
-  <div class="lst-itm-feat-sec ${className}">
-    <h4 class="feat-hdng">
-      <span class="feat-ico">${icon}</span>
-      ${className === "pros" ? "Pros" : className === "ntrl" ? "Neutral" : "Cons"}
-    </h4>
-    <ul class="lst-itm-feat-lst">
-      ${features
-        .slice(0, limit)
-        .map((feature) => `<li class="lst-itm-feat-itm">${feature}</li>`)
-        .join("")}
-      ${features.length > limit ? `<li class="lst-itm-feat-more">+${features.length - limit} more</li>` : ""}
     </ul>
   </div>
 `
@@ -2025,34 +1900,6 @@ class UIManager {
     </button>
   `
     }
-  }
-
-  getUncScore(exploit) {
-    let uncScore = "Unknown"
-
-    for (const pro of exploit.pros || []) {
-      if (pro.includes("UNC") || pro.includes("sUNC")) {
-        const match = pro.match(/\d+%/)
-        if (match) {
-          uncScore = match[0]
-          break
-        }
-      }
-    }
-
-    if (uncScore === "Unknown") {
-      for (const neutral of exploit.neutral || []) {
-        if (neutral.includes("UNC") || neutral.includes("sUNC")) {
-          const match = neutral.match(/\d+%/)
-          if (match) {
-            uncScore = match[0]
-            break
-          }
-        }
-      }
-    }
-
-    return uncScore
   }
 
   syncPriceButtonColors() {
@@ -2209,6 +2056,7 @@ class UIManager {
     })
 
     observer.observe(document.body, { childList: true, subtree: true })
+
     this.syncPriceButtonColors()
   }
 
@@ -2384,12 +2232,8 @@ class UIManager {
 
     this.adjustSearchBar()
 
-    if (this.appState.windowedGridRenderer) {
-      this.appState.windowedGridRenderer.render(true)
-    }
-
-    if (this.appState.windowedListRenderer) {
-      this.appState.windowedListRenderer.render(true)
+    if (this.appState.paginationManager) {
+      this.appState.paginationManager.render()
     }
   }
 
