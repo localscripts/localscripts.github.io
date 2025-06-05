@@ -288,6 +288,7 @@
         <div class="sts-row">
           <div class="sts-txt">
             Showing <span id="fltrdCnt" class="fltrd-cnt">0</span> of <span id="ttlCnt" class="ttl-cnt">0</span> exploits
+            <span id="pageInfo" class="page-info"></span>
           </div>
           <div class="view-tabs" style="display:none;">
             <div class="tabs-lst">
@@ -298,6 +299,22 @@
         <div class="tabs-cntnt">
           <div id="gridTab" class="tab-cntnt actv">
             <div id="expsGrid" class="crds-grid"></div>
+            <div id="paginationContainer" class="pagination-container">
+              <div class="pagination-controls">
+                <button id="prevPageBtn" class="pagination-btn prev-btn" disabled>
+                  <i class="fas fa-chevron-left"></i>
+                  Previous
+                </button>
+                <div id="pageNumbers" class="page-numbers"></div>
+                <button id="nextPageBtn" class="pagination-btn next-btn">
+                  Next
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              <div class="pagination-info">
+                <span id="paginationInfo">Page 1 of 1</span>
+              </div>
+            </div>
           </div>
           <div id="listTab" class="tab-cntnt" style="display:none;">
             <div id="expsList" class="lst-cntr"></div>
