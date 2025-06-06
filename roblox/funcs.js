@@ -717,7 +717,7 @@ const expData = [
     hasKeySystem: false,
     href: "https://wearedevs.net/d/Plutora",
     priceHref: "",
-    hide: true,
+    hide: false,
     free: true,
     warning: false,
     warningInfo:
