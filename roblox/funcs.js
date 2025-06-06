@@ -302,7 +302,7 @@ const expData = [
     price: "FREE",
     plat: ["windows"],
     pros: ["Has a decompiler", "40% sUNC~"],
-    neutral: ["Level 3", "Xeno - rebranded"],
+    neutral: ["Level 3"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
