@@ -914,12 +914,12 @@ class PaginationManager {
     this.renderedItems = new Map()
     this.initialized = false
 
-    this.paginationContainer = document.getElementById('paginationContainer')
-    this.prevBtn = document.getElementById('prevPageBtn')
-    this.nextBtn = document.getElementById('nextPageBtn')
-    this.pageNumbers = document.getElementById('pageNumbers')
-    this.paginationInfo = document.getElementById('paginationInfo')
-    this.pageInfo = document.getElementById('pageInfo')
+    this.paginationContainer = document.getElementById("paginationContainer")
+    this.prevBtn = document.getElementById("prevPageBtn")
+    this.nextBtn = document.getElementById("nextPageBtn")
+    this.pageNumbers = document.getElementById("pageNumbers")
+    this.paginationInfo = document.getElementById("paginationInfo")
+    this.pageInfo = document.getElementById("pageInfo")
   }
 
   init() {
@@ -934,7 +934,7 @@ class PaginationManager {
 
   setupPaginationControls() {
     if (this.prevBtn) {
-      this.prevBtn.addEventListener('click', () => {
+      this.prevBtn.addEventListener("click", () => {
         if (this.currentPage > 1) {
           this.goToPage(this.currentPage - 1)
         }
@@ -942,7 +942,7 @@ class PaginationManager {
     }
 
     if (this.nextBtn) {
-      this.nextBtn.addEventListener('click', () => {
+      this.nextBtn.addEventListener("click", () => {
         if (this.currentPage < this.totalPages) {
           this.goToPage(this.currentPage + 1)
         }
@@ -977,18 +977,18 @@ class PaginationManager {
 
   render() {
     this.totalPages = this.calculateTotalPages()
-    
+
     if (this.totalPages === 0) {
       this.hidePagination()
       return
     }
 
     this.showPagination()
-    
+
     const currentPageData = this.getCurrentPageData()
     const fragment = document.createDocumentFragment()
 
-    this.container.innerHTML = ''
+    this.container.innerHTML = ""
 
     currentPageData.forEach((data, index) => {
       const element = this.itemCreator(data, index)
@@ -1012,12 +1012,12 @@ class PaginationManager {
     }
 
     if (this.pageNumbers) {
-      this.pageNumbers.innerHTML = ''
-      
+      this.pageNumbers.innerHTML = ""
+
       const maxVisiblePages = 5
       let startPage = Math.max(1, this.currentPage - Math.floor(maxVisiblePages / 2))
       const endPage = Math.min(this.totalPages, startPage + maxVisiblePages - 1)
-      
+
       if (endPage - startPage + 1 < maxVisiblePages) {
         startPage = Math.max(1, endPage - maxVisiblePages + 1)
       }
@@ -1047,17 +1047,17 @@ class PaginationManager {
   }
 
   addPageButton(pageNumber) {
-    const button = document.createElement('button')
-    button.className = `page-number ${pageNumber === this.currentPage ? 'active' : ''}`
+    const button = document.createElement("button")
+    button.className = `page-number ${pageNumber === this.currentPage ? "active" : ""}`
     button.textContent = pageNumber
-    button.addEventListener('click', () => this.goToPage(pageNumber))
+    button.addEventListener("click", () => this.goToPage(pageNumber))
     this.pageNumbers.appendChild(button)
   }
 
   addEllipsis() {
-    const ellipsis = document.createElement('span')
-    ellipsis.className = 'page-ellipsis'
-    ellipsis.textContent = '...'
+    const ellipsis = document.createElement("span")
+    ellipsis.className = "page-ellipsis"
+    ellipsis.textContent = "..."
     this.pageNumbers.appendChild(ellipsis)
   }
 
@@ -1071,20 +1071,20 @@ class PaginationManager {
 
   showPagination() {
     if (this.paginationContainer && this.totalPages > 1) {
-      this.paginationContainer.style.display = 'block'
+      this.paginationContainer.style.display = "block"
     }
   }
 
   hidePagination() {
     if (this.paginationContainer) {
-      this.paginationContainer.style.display = 'none'
+      this.paginationContainer.style.display = "none"
     }
   }
 
   clear() {
     this.renderedItems.clear()
     if (this.container) {
-      this.container.innerHTML = ''
+      this.container.innerHTML = ""
     }
   }
 }
@@ -1875,52 +1875,94 @@ class UIManager {
 
   renderCardFooter(exploit) {
     if (exploit.price === "FREE") {
-      return `
-    <div class="btn-grid free-program-grid">
-      <button class="crd-btn unc-btn expanded">
-        UNC <i class="fas fa-code"></i>
-      </button>
-      <button class="crd-btn info-btn expanded">
-        <div class="text-container">
-          <span class="text-switch visible" data-text="info">INFO</span>
-          <span class="text-switch hidden" data-text="more">MORE</span>
-        </div>
-        <i class="fas fa-info-circle"></i>
-      </button>
-    </div>
-    <button class="crd-btn web-btn full-width">
-      ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
-    </button>
-  `
+      if (exploit.hideunc === true) {
+        return `
+          <div class="btn-grid free-program-grid">
+            <button class="crd-btn info-btn full-width">
+              <div class="text-container">
+                <span class="text-switch visible" data-text="info">INFO</span>
+                <span class="text-switch hidden" data-text="more">MORE</span>
+              </div>
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </div>
+          <button class="crd-btn web-btn full-width">
+            ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
+          </button>
+        `
+      } else {
+        return `
+          <div class="btn-grid free-program-grid">
+            <button class="crd-btn unc-btn expanded">
+              UNC <i class="fas fa-code"></i>
+            </button>
+            <button class="crd-btn info-btn expanded">
+              <div class="text-container">
+                <span class="text-switch visible" data-text="info">INFO</span>
+                <span class="text-switch hidden" data-text="more">MORE</span>
+              </div>
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </div>
+          <button class="crd-btn web-btn full-width">
+            ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
+          </button>
+        `
+      }
     } else {
       const baseClasses = ["crd-btn", "prc-btn-new"]
       const finalPriceButtonClasses = baseClasses.join(" ")
 
-      return `
-    <div class="btn-grid">
-      <button class="crd-btn web-btn">
-        ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
-      </button>
-      <button class="crd-btn unc-btn">
-        UNC <i class="fas fa-code"></i>
-      </button>
-      <button class="crd-btn info-btn">
-        <div class="text-container">
-          <span class="text-switch visible" data-text="info">INFO</span>
-          <span class="text-switch hidden" data-text="more">MORE</span>
-        </div>
-        <i class="fas fa-info-circle"></i>
-      </button>
-    </div>
-    <button class="${finalPriceButtonClasses}">
-      <div class="default-text">
-        <i class="fas fa-tag"></i> BUY
-      </div>
-      <div class="price-text">
-        <i class="fas fa-tag"></i> ${exploit.price} ${exploit.period ? `<span class="prc-prd">${exploit.period}</span>` : ""}
-      </div>
-    </button>
-  `
+      if (exploit.hideunc === true) {
+        return `
+          <div class="btn-grid">
+            <button class="crd-btn web-btn expanded">
+              ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
+            </button>
+            <button class="crd-btn info-btn expanded">
+              <div class="text-container">
+                <span class="text-switch visible" data-text="info">INFO</span>
+                <span class="text-switch hidden" data-text="more">MORE</span>
+              </div>
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </div>
+          <button class="${finalPriceButtonClasses}">
+            <div class="default-text">
+              <i class="fas fa-tag"></i> BUY
+            </div>
+            <div class="price-text">
+              <i class="fas fa-tag"></i> ${exploit.price} ${exploit.period ? `<span class="prc-prd">${exploit.period}</span>` : ""}
+            </div>
+          </button>
+        `
+      } else {
+        return `
+          <div class="btn-grid">
+            <button class="crd-btn web-btn expanded">
+              ${exploit.websitetofree ? "Free" : "Website"} <i class="fas fa-external-link-alt"></i>
+            </button>
+            <button class="crd-btn unc-btn">
+              UNC <i class="fas fa-code"></i>
+            </button>
+            <button class="crd-btn info-btn expanded">
+              <div class="text-container">
+                <span class="text-switch visible" data-text="info">INFO</span>
+                <span class="text-switch hidden" data-text="more">MORE</span>
+              </div>
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </div>
+          <button class="${finalPriceButtonClasses}">
+            <div class="default-text">
+              <i class="fas fa-tag"></i> BUY
+            </div>
+            <div class="price-text">
+              <i class="fas fa-tag"></i> ${exploit.price} ${exploit.period ? `<span class="prc-prd">${exploit.period}</span>` : ""}
+            </div>
+          </button>
+        `
+      }
     }
   }
 
@@ -2080,6 +2122,21 @@ class UIManager {
     observer.observe(document.body, { childList: true, subtree: true })
 
     this.syncPriceButtonColors()
+
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      `
+      <style>
+        .crd-btn.expanded {
+          flex: 1;
+          min-width: 0;
+        }
+        .crd-btn.full-width {
+          width: 100%;
+        }
+      </style>
+    `,
+    )
   }
 
   findExploitByCardElement(element) {
@@ -2156,57 +2213,64 @@ class UIManager {
     element._countAnimation = requestAnimationFrame(updateCount)
   }
 
-  initTextSwitching() {
-    const containers = document.querySelectorAll(
+ initTextSwitching() {
+  const containers = document.querySelectorAll(
+    ".info-btn .text-container, .price-info-btn .text-container, .more-info-btn .text-container",
+  )
+
+  containers.forEach((container) => {
+    const texts = container.querySelectorAll(".text-switch")
+
+    container.style.position = "relative"
+    container.style.display = "inline-flex"
+    container.style.alignItems = "center"
+    container.style.justifyContent = "center"
+    container.style.minHeight = "20px"
+    container.style.minWidth = "40px"
+
+    texts.forEach((text) => {
+      text.style.position = "absolute"
+      text.style.top = "0"
+      text.style.left = "0"
+      text.style.width = "100%"
+      text.style.height = "100%"
+      text.style.display = "flex"
+      text.style.alignItems = "center"
+      text.style.justifyContent = "center"
+      text.style.transition = "opacity 0.5s ease-in-out"
+      text.style.opacity = text.classList.contains("visible") ? "1" : "0"
+      text.style.pointerEvents = "none" 
+    })
+  })
+
+  const animationInterval = setInterval(() => {
+    const currentContainers = document.querySelectorAll(
       ".info-btn .text-container, .price-info-btn .text-container, .more-info-btn .text-container",
     )
 
-    containers.forEach((container) => {
-      const texts = container.querySelectorAll(".text-switch")
+    currentContainers.forEach((container) => {
+      const visibleText = container.querySelector(".text-switch.visible")
+      const hiddenText = container.querySelector(".text-switch.hidden")
 
-      texts.forEach((text) => {
-        text.style.opacity = text.classList.contains("visible") ? "1" : "0"
-        text.style.transition = "opacity 0.5s ease-in-out"
-        text.style.position = "absolute"
-        text.style.width = "100%"
-        text.style.height = "100%"
-        text.style.display = "flex"
-        text.style.alignItems = "center"
-        text.style.justifyContent = "center"
-      })
+      if (visibleText && hiddenText) {
+        visibleText.style.opacity = "0"
 
-      container.style.position = "relative"
-      container.style.display = "inline-flex"
-      container.style.alignItems = "center"
-      container.style.justifyContent = "center"
-    })
-
-    setInterval(() => {
-      containers.forEach((container) => {
-        const visibleText = container.querySelector(".text-switch.visible")
-        const hiddenText = container.querySelector(".text-switch.hidden")
-
-        if (visibleText && hiddenText) {
-          visibleText.style.opacity = "0"
-
+        setTimeout(() => {
+          visibleText.classList.remove("visible")
+          visibleText.classList.add("hidden")
+          hiddenText.classList.remove("hidden")
+          hiddenText.classList.add("visible")
+          hiddenText.offsetWidth
           setTimeout(() => {
-            visibleText.classList.remove("visible")
-            visibleText.classList.add("hidden")
+            hiddenText.style.opacity = "1"
+          }, 50)
+        }, 250)
+      }
+    })
+  }, 3000)
 
-            hiddenText.classList.remove("hidden")
-            hiddenText.classList.add("visible")
-
-            hiddenText.style.opacity = "0"
-            void hiddenText.offsetWidth
-
-            setTimeout(() => {
-              hiddenText.style.opacity = "1"
-            }, 50)
-          }, 500)
-        }
-      })
-    }, 3000)
-  }
+  this.textSwitchingInterval = animationInterval
+}
 
   updateScrollbarStyles() {
     const scrollableElements = [
@@ -2220,7 +2284,6 @@ class UIManager {
 
     scrollableElements.forEach((selector) => {
       const elements = document.querySelectorAll(selector)
-
       elements.forEach((el) => {
         el.style.overflow = "hidden"
         void el.offsetHeight
@@ -2233,7 +2296,6 @@ class UIManager {
     const grid = this.getElement("grid")
     const menu = this.getElement("menu")
     const menuToggle = this.getElement("menuToggle")
-
     const windowWidth = window.innerWidth
 
     if (grid) {
@@ -2370,7 +2432,8 @@ class ModalManager {
     modalContainer.style.display = "none"
 
     modalContainer.innerHTML = `
-  <div class="unc-modal-overlay" id="uncModalOverlay"></div>
+  <div
+    class="unc-modal-overlay" id="uncModalOverlay"></div>
   <div class="unc-modal">
     <div class="unc-modal-header">
       <h2 class="unc-modal-title" id="uncModalTitle">UNC Code</h2>
@@ -2708,7 +2771,6 @@ class ModalManager {
     iconContainer.style.width = "32px"
     iconContainer.style.height = "32px"
     iconContainer.style.borderRadius = "50%"
-    iconContainer.style.background = "rgba(255, 255, 255, 0.25)"
     iconContainer.style.flexShrink = "0"
 
     const icon = document.createElement("i")
@@ -2776,7 +2838,6 @@ class ModalManager {
 
     content.appendChild(iconContainer)
     content.appendChild(messageContainer)
-    content.appendChild(closeBtn)
     notification.appendChild(content)
 
     const progressBarContainer = document.createElement("div")
