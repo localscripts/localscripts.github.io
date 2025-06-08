@@ -171,7 +171,7 @@ const expData = [
     price: "$9.99",
     period: "lifetime",
     plat: ["macos"],
-    pros: ["Has a Trial version", "Has a decompiler", "86% sUNC", "Level 8"],
+    pros: ["Has a Trial version", "Has a decompiler", "100% sUNC", "Level 8"],
     neutral: [],
     cons: [],
     verified: true,
@@ -183,7 +183,7 @@ const expData = [
     info: "\n## Exploit Performance\n- [MacSploit]() functions like a standard executor but is designed specifically for macOS. While its stability is generally acceptable, it has experienced significant periods of downtime. Since it is macOS-exclusive, [voxlis.NET]() cannot provide a deeper assessment at this time.\n\n## Background Information\n- In 2024, the [MacSploit]() source code was leaked by [@Peyton]() after [@managedhosts]() was accused of engaging in shady behavior, including alleged involvement with loggers and other suspicious practices.\n\n\n## Developer Information\n- [MacSploit](), owned by [Raptor](), was originally founded by [@Peyton]() and [@Nexus42](). Raptor initially began as a Windows executor collection. [@Peyton]() retired from the project in 2022 but later returned and reignited activity around [MacSploit]() following concerns about how the project was being handled.\n- [@Nexus42]() is currently the lead developer of [MacSploit](). However, he has a controversial reputation due to past involvement with logging tools, and the community remains critical of his role. Other contributors include [@atomic](), [@rcloll](), and [@Kohl](), who assist with the ongoing development of the project.  \n\n> Sources: [reddit.com/r/robloxhackers](), Raptor Development Discord, Raptor\n",
     hasKeySystem: false,
     free: false,
-    uncbuttonlink: "https://sunc.rubis.app/?scrap=9kH1EN8HIbXl9I2o&key=KrU695V4fbJuWZcwG9jMJen2M22mRbng",
+    uncbuttonlink: "https://sunc.rubis.app/?scrap=ReyTkVYD4QqK97h7&key=aFATK78bKJRCCDBraOE5bEupc8xec6m8",
     warning: false,
     warningInfo:
       "voxlis.NET recommends checking out “MORE INFO” for MacSploit so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
