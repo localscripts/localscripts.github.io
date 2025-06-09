@@ -1,31 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="classic">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOXLIS.NET - Ready to win?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-        
-        @font-face {
-            font-family: 'Bolt Sans';
-            src: url('https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.woff2') format('woff2'),
-                 url('https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        
-        @font-face {
-            font-family: 'Bolt Sans';
-            src: url('https://db.onlinewebfonts.com/t/2e5aa5d2ccb562a1a7fad9a97a25f309.woff2') format('woff2'),
-                 url('https://db.onlinewebfonts.com/t/2e5aa5d2ccb562a1a7fad9a97a25f309.woff') format('woff');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
-        }
 
         * {
             margin: 0;
@@ -34,7 +14,7 @@
         }
 
         body {
-            font-family: 'Bolt Sans', 'Montserrat', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: #ffffff;
             min-height: 100vh;
             width: 100%;
@@ -43,333 +23,53 @@
             background-color: #0a0a0a;
         }
 
-        :root {
-            --bg: #030712;
-            --fg: #ffffff;
-            --crd-bg: rgba(0, 0, 0, 0.4);
-            --crd-bdr: rgba(255, 255, 255, 0.1);
-            --crd-hvr: rgba(239, 68, 68, 0.2);
-            --prim: #ef4444;
-            --prim-hvr: #dc2626;
-            --prim-grd: linear-gradient(to right, #ef4444, #dc2626);
-            --prim-glw: rgba(239, 68, 68, 0.5);
-            --sec: rgba(0, 0, 0, 0.3);
-            --sec-bdr: rgba(255, 255, 255, 0.1);
-            --sec-hvr: rgba(239, 68, 68, 0.1);
-            --sec-hvr-bdr: rgba(239, 68, 68, 0.5);
-            --txt-mut: rgba(156, 163, 175, 1);
-            --rad: 0.5rem;
-            --hdr-h: 3.5rem;
-            --shd: 0 10px 25px rgba(0, 0, 0, 0.2);
-            --shd-hvr: 0 15px 30px rgba(0, 0, 0, 0.3);
-            --inp-color: rgba(239, 68, 68, 0.5);
-            --inp2-color: rgba(239, 68, 68, 0.3);
-        }
-
-        .hdr {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            transition: all 0.5s;
-            background-color: transparent;
-        }
-
-        .hdr.scrolled {
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-        }
-
-        .hdr-cntr {
-            display: flex;
-            height: var(--hdr-h);
-            align-items: center;
-            padding: 0 1rem;
-            position: relative;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hdr-lft {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-shrink: 0;
-            z-index: 10;
-        }
-
-        .hdr-nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-shrink: 0;
-            z-index: 10;
-            position: relative;
-        }
-
-        .nav-btn {
-            font-size: 0.875rem;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: var(--rad);
-            transition: all 0.2s;
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            background: none;
-            color: #ffffff;
-        }
-
-        .nav-lnk {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #ffffff;
-            transition: color 0.2s;
-            white-space: nowrap;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .mob-menu-tgl {
-            display: none;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 1.5rem;
-            transition: color 0.2s;
-            cursor: pointer;
-        }
-
-        .mob-menu-tgl:hover {
-            color: #ef4444;
-        }
-
-        .logo-lnk {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            transition: all 0.3s;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .logo-bar {
-            height: 1.5rem;
-            width: 0.25rem;
-            margin-right: 0.25rem;
-            background: #ef4444;
-            border-radius: 0.125rem;
-        }
-
-        .logo-txt-white {
-            color: #ffffff;
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 1.1rem;
-        }
-
-        .logo-txt-red {
-            color: #ef4444;
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 1.25rem;
-        }
-
-        .nav-btn.contribute {
-            background: #ef4444;
-            color: white;
-            border-radius: 8px;
-            padding: 0.5rem 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn.contribute:hover {
-            background: #dc2626;
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        .nav-lnk:hover {
-            color: #ef4444;
-        }
-
-        .nav-btn:hover {
-            color: #ef4444;
-        }
-
-        .mob-menu {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            position: fixed;
-            top: var(--hdr-h);
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 40;
-            overflow-y: auto;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .mob-menu.hidden {
-            transform: translateX(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .mob-menu:not(.hidden) {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .mob-menu-cntr {
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .mob-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .mob-nav-lnk {
-            padding: 0.75rem 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            border-radius: var(--rad);
-            transition: all 0.2s;
-            text-decoration: none;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .mob-nav-lnk:hover {
-            background-color: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-        }
-
-        .mob-nav-lnk.contribute {
-            background: #ef4444;
-            color: white;
-            text-align: center;
-            transition: background 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .mob-nav-lnk.contribute:hover {
-            background: #dc2626;
-            color: white;
-        }
-
-        .cntr {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .hdr-rgt {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .hdr-nav {
-                display: none;
-            }
-
-            .mob-menu-tgl {
-                display: block;
-            }
-            
-            .hdr-rgt {
-                display: none;
-            }
-        }
-
         .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #030712;
-            z-index: 1000;
+            background-color: #000000;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
         }
 
         .loading-logo {
-            display: flex;
-            align-items: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
             margin-bottom: 2rem;
-            transform: scale(1.5);
+            text-align: center;
         }
 
-        .loading-bar-container {
-            width: 200px;
+        .loading-progress {
+            width: 300px;
             height: 4px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
+            background-color: #333333;
+            margin-bottom: 1.5rem;
             position: relative;
+            overflow: hidden;
         }
 
-        .loading-bar {
+        .loading-progress-bar {
             position: absolute;
+            top: 0;
+            left: 0;
             height: 100%;
             width: 0%;
-            background: linear-gradient(to right, #ef4444, #dc2626);
-            border-radius: 2px;
-            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+            background-color: #ff3333;
+            transition: width 1s cubic-bezier(0.1, 0.5, 0.2, 1);
         }
 
-        .loading-text {
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            color: rgba(156, 163, 175, 1);
-        }
-
-        @keyframes fadeOut {
-            0% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
-        .loading-screen.hidden {
-            animation: fadeOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        .loading-message {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
         }
 
         .text-white {
@@ -377,7 +77,12 @@
         }
 
         .text-red {
-            color: #ef4444;
+            color: #ff3333;
+        }
+
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
         }
 
         .fade-out {
@@ -397,7 +102,7 @@
 
         .particle {
             position: absolute;
-            background-color: #ef4444;
+            background-color: #ff3333;
             border-radius: 50%;
             opacity: 0.1;
             pointer-events: none;
@@ -446,7 +151,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 6rem 1rem 2rem;
+            padding: 2rem 1rem;
             position: relative;
             z-index: 10;
             height: 100vh;
@@ -459,7 +164,7 @@
             display: none;
         }
 
-        .page-header {
+        header {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -488,7 +193,7 @@
             transform: translateX(-50%);
             width: 120px;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #ef4444, transparent);
+            background: linear-gradient(90deg, transparent, #ff3333, transparent);
             border-radius: 2px;
         }
 
@@ -540,7 +245,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #ef4444, transparent);
+            background: linear-gradient(90deg, transparent, #ff3333, transparent);
             border-radius: 2px;
         }
 
@@ -590,7 +295,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, #ef4444, #dc2626);
+            background: linear-gradient(90deg, #ff3333, #ff5555);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
@@ -598,8 +303,8 @@
 
         .game-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.3);
-            border-color: rgba(239, 68, 68, 0.2);
+            box-shadow: 0 15px 30px rgba(255, 51, 51, 0.3);
+            border-color: rgba(255, 51, 51, 0.2);
         }
 
         .game-card:hover::before {
@@ -628,6 +333,30 @@
             letter-spacing: 1px;
         }
 
+        .check-programs-btn {
+            background: linear-gradient(90deg, #ff3333, #ff5555);
+            color: white;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .check-programs-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 51, 51, 0.5);
+            background: linear-gradient(90deg, #ff5555, #ff3333);
+        }
+
         .roblox-card {
             position: relative;
             overflow: hidden;
@@ -653,97 +382,18 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         }
-
-        .check-programs-btn {
-            background-color: #ef4444;
-            color: white;
-            border: none;
-            padding: 0.85rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            font-family: 'Bolt Sans', 'Montserrat', sans-serif;
-            margin-top: auto;
-        }
-
-        .check-programs-btn:hover {
-            background-color: #dc2626;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .logo-txt-lt {
-            color: #ffffff;
-            font-weight: 300;
-            letter-spacing: -0.025em;
-            font-size: 1.25rem;
-            font-family: "Open Sans", sans-serif;
-        }
-
-        .logo-txt-grd {
-            background: linear-gradient(to right, #ef4444, #dc2626);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: #ef4444;
-            font-weight: 900;
-            letter-spacing: -0.025em;
-            font-size: 1.35rem;
-            transition: background 0.3s ease;
-            font-family: "Open Sans", sans-serif;
-        }
     </style>
 </head>
 <body>
-    <div id="loadingScreen" class="loading-screen">
+    <div class="loading-screen" id="loading-screen">
         <div class="loading-logo">
-            <div class="logo-bar"></div>
-            <span class="logo-txt-lt">WWW.</span>
-            <span class="logo-txt-grd">VOXLIS</span>
-            <span class="logo-txt-lt">.NET</span>
+            <span class="text-white">WWW.</span><span class="text-red">VOXLIS</span><span class="text-white">.NET</span>
         </div>
-        <div class="loading-bar-container">
-            <div class="loading-bar" id="loadingBar"></div>
+        <div class="loading-progress">
+            <div class="loading-progress-bar" id="progress-bar"></div>
         </div>
-        <div class="loading-text">Loading resources...</div>
+        <div class="loading-message" id="loading-message">Loading resources...</div>
     </div>
-
-    <header id="hdr" class="hdr">
-        <div class="cntr">
-            <div class="hdr-cntr">
-                <div class="hdr-lft">
-                    <a href="/" class="logo-lnk">
-                        <div class="logo-bar"></div>
-                        <span class="logo-txt-white">WWW.</span>
-                        <span class="logo-txt-red">VOXLIS</span>
-                        <span class="logo-txt-white">.NET</span>
-                    </a>
-                </div>
-                
-                <div class="hdr-rgt">
-                    <button id="mobMenuTgl" class="mob-menu-tgl">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <a href="#" class="nav-lnk">Home</a>
-                    <a href="#" class="nav-lnk">Discord</a>
-                    <button class="nav-btn contribute">Contribute</button>
-                </div>
-            </div>
-        </div>
-        <div id="mobMenu" class="mob-menu hidden">
-            <div class="cntr mob-menu-cntr">
-                <nav class="mob-nav">
-                    <a href="#" class="mob-nav-lnk">Home</a>
-                    <a href="#" class="mob-nav-lnk">Discord</a>
-                    <a href="#" class="mob-nav-lnk contribute">Contribute</a>
-                </nav>
-            </div>
-        </div>
-    </header>
 
     <video class="video-background" autoplay loop muted playsinline id="background-video">
         <source src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1313140/c80d1a3ea315f69f72cbb77bffe42c5ed0f7b945.mp4" type="video/mp4">
@@ -755,35 +405,35 @@
     <div class="particles-container" id="particles-container"></div>
     
     <div class="container">
-        <section class="page-header">
+        <header>
             <h1 class="logo">
                 <span class="text-white">WWW.</span><span class="text-red">VOXLIS</span><span class="text-white">.NET</span>
             </h1>
             <p class="tagline">
-                READY TO <span class="text-red">WIN</span>?
+                Ready to <span class="text-red">win</span>?
             </p>
-        </section>
+        </header>
     
         <section class="games-section">
-            <h2 class="section-title">PREMIUM PROGRAMS</h2>
+            <h2 class="section-title">Premium Programs</h2>
             
             <div class="game-grid">
                 <a href="https://beta.voxlis.net/" class="game-card">
-                    <img src="/assets/cs2.png" alt="Counter-Strike 2" class="game-icon">
+                    <img src="cs2.png" alt="Counter-Strike 2" class="game-icon">
                     <h3 class="game-title">Counter-Strike 2</h3>
-                    <button class="check-programs-btn">CHECK PROGRAMS</button>
+                    <button class="check-programs-btn">Check Programs</button>
                 </a>
                 
                 <a href="roblox.html" class="game-card roblox-card">
-                    <img src="/assets/roblox.png" alt="Roblox" class="game-icon">
+                    <img src="roblox.png" alt="Roblox" class="game-icon">
                     <h3 class="game-title">Roblox</h3>
-                    <button class="check-programs-btn">CHECK PROGRAMS</button>
+                    <button class="check-programs-btn">Check Programs</button>
                 </a>
                 
                 <a href="https://beta.voxlis.net/" class="game-card">
-                    <img src="/assets/minecraft.png" alt="Minecraft" class="game-icon">
+                    <img src="minecraft.png" alt="Minecraft" class="game-icon">
                     <h3 class="game-title">Minecraft</h3>
-                    <button class="check-programs-btn">CHECK PROGRAMS</button>
+                    <button class="check-programs-btn">Check Programs</button>
                 </a>
             </div>
         </section>
@@ -793,31 +443,14 @@
         </footer>
     </div>
     
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            const loadingBar = document.getElementById('loadingBar');
+            const loadingScreen = document.getElementById('loading-screen');
+            const progressBar = document.getElementById('progress-bar');
+            const loadingMessage = document.getElementById('loading-message');
             const backgroundVideo = document.getElementById('background-video');
             const particlesContainer = document.getElementById('particles-container');
-            const hdr = document.getElementById('hdr');
-            const mobMenuTgl = document.getElementById('mobMenuTgl');
-            const mobMenu = document.getElementById('mobMenu');
-            
-            mobMenuTgl.addEventListener('click', function() {
-                mobMenu.classList.toggle('hidden');
-                document.body.classList.toggle('menu-open');
-                this.innerHTML = mobMenu.classList.contains('hidden') ? 
-                    '<i class="fas fa-bars"></i>' : 
-                    '<i class="fas fa-times"></i>';
-            });
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    hdr.classList.add('scrolled');
-                } else {
-                    hdr.classList.remove('scrolled');
-                }
-            });
             
             function createFireParticles() {
                 particlesContainer.innerHTML = '';
@@ -849,59 +482,50 @@
             
             createFireParticles();
             
-            let progress = 0;
-            const startTime = performance.now();
-            const isSlowDevice = () => performance.now() - startTime > 300;
-
-            const loadingInterval = setInterval(
-                () => {
-                    if (progress < 100) {
-                        const increment = isSlowDevice() ? 5 : 10;
-                        progress += increment;
-                        if (progress > 100) progress = 100;
-                        requestAnimationFrame(() => {
-                            loadingBar.style.width = `${progress}%`;
-                        });
-                        const loadingText = document.querySelector(".loading-text");
-                        if (progress < 30) {
-                            loadingText.textContent = "Loading resources...";
-                        } else if (progress < 60) {
-                            loadingText.textContent = "Preparing content...";
-                        } else if (progress < 90) {
-                            loadingText.textContent = "Almost ready...";
-                        } else {
-                            loadingText.textContent = "Welcome to voxlis.NET";
-                        }
-                    } else {
-                        clearInterval(loadingInterval);
-                        setTimeout(
-                            () => {
-                                loadingScreen.style.transition = "opacity 0.8s ease, visibility 0.8s ease";
-                                loadingScreen.style.opacity = "0";
-                                loadingScreen.style.visibility = "hidden";
-
+            progressBar.style.width = '0%';
+            
+            setTimeout(() => {
+                progressBar.style.width = '30%';
+                
+                setTimeout(() => {
+                    loadingMessage.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        loadingMessage.textContent = "Almost ready!";
+                        loadingMessage.style.opacity = '1';
+                        progressBar.style.width = '70%';
+                        
+                        setTimeout(() => {
+                            loadingMessage.style.opacity = '0';
+                            
+                            setTimeout(() => {
+                                loadingMessage.textContent = "Welcome to voxlis.NET";
+                                loadingMessage.style.opacity = '1';
+                                progressBar.style.width = '100%';
+                                
                                 setTimeout(() => {
-                                    loadingScreen.remove();
-                                }, 800);
-                            },
-                            isSlowDevice() ? 500 : 200
-                        );
-                    }
-                },
-                isSlowDevice() ? 100 : 50
-            );
+                                    loadingScreen.classList.add('fade-out');
+                                    
+                                    setTimeout(() => {
+                                        loadingScreen.classList.add('hidden');
+                                    }, 800);
+                                }, 1200);
+                            }, 300);
+                        }, 800);
+                    }, 300);
+                }, 1000);
+            }, 500);
             
             setTimeout(() => {
                 if (!loadingScreen.classList.contains('hidden')) {
-                    loadingBar.style.width = '100%';
-                    document.querySelector(".loading-text").textContent = "Welcome to voxlis.NET";
+                    progressBar.style.width = '100%';
+                    loadingMessage.textContent = "Welcome to voxlis.NET";
                     
                     setTimeout(() => {
-                        loadingScreen.style.opacity = "0";
-                        loadingScreen.style.visibility = "hidden";
+                        loadingScreen.classList.add('fade-out');
                         
                         setTimeout(() => {
-                            loadingScreen.remove();
+                            loadingScreen.classList.add('hidden');
                         }, 800);
                     }, 1000);
                 }
