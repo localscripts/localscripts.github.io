@@ -77,7 +77,7 @@ const expData = [
     name: "Swift",
     desc: "The free Level 8 exploit to use.",
     lvl: 8,
-    price: ["FREE"],
+    price: "FREE", // This is FREE, so it should appear in keyless filter
     plat: ["windows"],
     pros: ["Has a lifetime option", "Has a decompiler", "100% sUNC", "Level 8"],
     neutral: [],
@@ -88,7 +88,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     premium: true,
     info: "## Exploit Performance\n- [Swift](/) performs reasonably well. While it occasionally experiences downtime and injection issues, it remains the best available option for Level 8 execution. Alternatives like [Argon]() and [Atlantis]() exist, but unlike those, [Swift](/) is not scamming or ratting its users.\n\n## Background Information\n- [Swift](/), originally launched as [bunni.lol](/) in May 2024, had a rocky start. It rebranded to [Swift](/) in August 2024, entering Beta and quickly building a positive reputation by offering a premium experience at no cost. In January 2025, [Swift](/) went temporarily offline due to a ROBLOX platform update. It returned in March 2025 with a major overhaul—introducing 98% sUNC compatibility, a built-in decompiler, and various improvements.\n\n\n## Developers Background Information\n\n* [Swift]() was originally owned by [@Peyton](), who joined the community in 2016 and began developing between 2021 and 2022. It was administered by [@Bass](), the owner of [Script-Ware.com]()—a project that launched in late 2020 and shut down following the introduction of Hyperion. The [Zenith]() team provided occasional support (see the Zenith card on voxlis.NET for more information). Swift is now owned by Bass, as [@Peyton]() has since left to work on [Visual]().\n\n\n\n> Sources: [reddit.com/r/robloxhackers](https://reddit.com/r/robloxhackers), bunni.lol Discord Archives, Swift Discord Archives\n",
-    hasKeySystem: true,
+    hasKeySystem: true, // Has key system but is FREE, so should NOT appear in keyless filter
     free: true,
     href: "http://getswift.gg/",
     priceHref: "http://getswift.gg/",
@@ -171,7 +171,7 @@ const expData = [
     price: "$9.99",
     period: "lifetime",
     plat: ["macos"],
-    pros: ["Has a Trial version", "Has a decompiler", "100% sUNC", "Level 8"],
+    pros: ["Has a Trial version", "Has a decompiler", "86% sUNC", "Level 8"],
     neutral: [],
     cons: [],
     verified: true,
@@ -183,7 +183,7 @@ const expData = [
     info: "\n## Exploit Performance\n- [MacSploit]() functions like a standard executor but is designed specifically for macOS. While its stability is generally acceptable, it has experienced significant periods of downtime. Since it is macOS-exclusive, [voxlis.NET]() cannot provide a deeper assessment at this time.\n\n## Background Information\n- In 2024, the [MacSploit]() source code was leaked by [@Peyton]() after [@managedhosts]() was accused of engaging in shady behavior, including alleged involvement with loggers and other suspicious practices.\n\n\n## Developer Information\n- [MacSploit](), owned by [Raptor](), was originally founded by [@Peyton]() and [@Nexus42](). Raptor initially began as a Windows executor collection. [@Peyton]() retired from the project in 2022 but later returned and reignited activity around [MacSploit]() following concerns about how the project was being handled.\n- [@Nexus42]() is currently the lead developer of [MacSploit](). However, he has a controversial reputation due to past involvement with logging tools, and the community remains critical of his role. Other contributors include [@atomic](), [@rcloll](), and [@Kohl](), who assist with the ongoing development of the project.  \n\n> Sources: [reddit.com/r/robloxhackers](), Raptor Development Discord, Raptor\n",
     hasKeySystem: false,
     free: false,
-    uncbuttonlink: "https://sunc.rubis.app/?scrap=ReyTkVYD4QqK97h7&key=aFATK78bKJRCCDBraOE5bEupc8xec6m8",
+    uncbuttonlink: "https://sunc.rubis.app/?scrap=9kH1EN8HIbXl9I2o&key=KrU695V4fbJuWZcwG9jMJen2M22mRbng",
     warning: false,
     warningInfo:
       "voxlis.NET recommends checking out “MORE INFO” for MacSploit so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
@@ -210,7 +210,7 @@ const expData = [
     hasKeySystem: true,
     free: false,
   },
-    {
+  {
     id: "milkers",
     name: "Milkers",
     desc: "A private undetected executor since 2013.",
@@ -357,9 +357,6 @@ const expData = [
     hide: false,
     hasKeySystem: false,
     free: true,
-    warning: true,
-    warningInfo:
-      "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Velocity website anyway?",
   },
   {
     id: "CSVM",
@@ -712,7 +709,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
-    info: '',
+    info: "",
     premium: false,
     hasKeySystem: false,
     href: "https://wearedevs.net/d/Plutora",
@@ -1189,8 +1186,13 @@ class AppState {
           return false
         }
 
-        if (this.noKeySystemOnly && exp.hasKeySystem) {
-          return false
+        if (this.noKeySystemOnly) {
+          if (exp.hasKeySystem) {
+            return false
+          }
+          if (exp.price !== "FREE" && !exp.free) {
+            return false
+          }
         }
 
         return true
@@ -2213,64 +2215,64 @@ class UIManager {
     element._countAnimation = requestAnimationFrame(updateCount)
   }
 
- initTextSwitching() {
-  const containers = document.querySelectorAll(
-    ".info-btn .text-container, .price-info-btn .text-container, .more-info-btn .text-container",
-  )
-
-  containers.forEach((container) => {
-    const texts = container.querySelectorAll(".text-switch")
-
-    container.style.position = "relative"
-    container.style.display = "inline-flex"
-    container.style.alignItems = "center"
-    container.style.justifyContent = "center"
-    container.style.minHeight = "20px"
-    container.style.minWidth = "40px"
-
-    texts.forEach((text) => {
-      text.style.position = "absolute"
-      text.style.top = "0"
-      text.style.left = "0"
-      text.style.width = "100%"
-      text.style.height = "100%"
-      text.style.display = "flex"
-      text.style.alignItems = "center"
-      text.style.justifyContent = "center"
-      text.style.transition = "opacity 0.5s ease-in-out"
-      text.style.opacity = text.classList.contains("visible") ? "1" : "0"
-      text.style.pointerEvents = "none" 
-    })
-  })
-
-  const animationInterval = setInterval(() => {
-    const currentContainers = document.querySelectorAll(
+  initTextSwitching() {
+    const containers = document.querySelectorAll(
       ".info-btn .text-container, .price-info-btn .text-container, .more-info-btn .text-container",
     )
 
-    currentContainers.forEach((container) => {
-      const visibleText = container.querySelector(".text-switch.visible")
-      const hiddenText = container.querySelector(".text-switch.hidden")
+    containers.forEach((container) => {
+      const texts = container.querySelectorAll(".text-switch")
 
-      if (visibleText && hiddenText) {
-        visibleText.style.opacity = "0"
+      container.style.position = "relative"
+      container.style.display = "inline-flex"
+      container.style.alignItems = "center"
+      container.style.justifyContent = "center"
+      container.style.minHeight = "20px"
+      container.style.minWidth = "40px"
 
-        setTimeout(() => {
-          visibleText.classList.remove("visible")
-          visibleText.classList.add("hidden")
-          hiddenText.classList.remove("hidden")
-          hiddenText.classList.add("visible")
-          hiddenText.offsetWidth
-          setTimeout(() => {
-            hiddenText.style.opacity = "1"
-          }, 50)
-        }, 250)
-      }
+      texts.forEach((text) => {
+        text.style.position = "absolute"
+        text.style.top = "0"
+        text.style.left = "0"
+        text.style.width = "100%"
+        text.style.height = "100%"
+        text.style.display = "flex"
+        text.style.alignItems = "center"
+        text.style.justifyContent = "center"
+        text.style.transition = "opacity 0.5s ease-in-out"
+        text.style.opacity = text.classList.contains("visible") ? "1" : "0"
+        text.style.pointerEvents = "none"
+      })
     })
-  }, 3000)
 
-  this.textSwitchingInterval = animationInterval
-}
+    const animationInterval = setInterval(() => {
+      const currentContainers = document.querySelectorAll(
+        ".info-btn .text-container, .price-info-btn .text-container, .more-info-btn .text-container",
+      )
+
+      currentContainers.forEach((container) => {
+        const visibleText = container.querySelector(".text-switch.visible")
+        const hiddenText = container.querySelector(".text-switch.hidden")
+
+        if (visibleText && hiddenText) {
+          visibleText.style.opacity = "0"
+
+          setTimeout(() => {
+            visibleText.classList.remove("visible")
+            visibleText.classList.add("hidden")
+            hiddenText.classList.remove("hidden")
+            hiddenText.classList.add("visible")
+            hiddenText.offsetWidth
+            setTimeout(() => {
+              hiddenText.style.opacity = "1"
+            }, 50)
+          }, 250)
+        }
+      })
+    }, 3000)
+
+    this.textSwitchingInterval = animationInterval
+  }
 
   updateScrollbarStyles() {
     const scrollableElements = [
@@ -3109,12 +3111,12 @@ class OptimizedHeartAnimation {
     if (!this.canvas) return
 
     this.ctx = this.canvas.getContext("2d")
-    this.heartImageSrc = "/assets/heart.svg"
-    this.numHearts = 25
+    this.heartImageSrc = "heart.svg"
     this.hearts = []
     this.heartImage = new Image()
     this.isRunning = false
     this.lastFrameTime = 0
+    this.lastFpsUpdate = 0
     this.frameCount = 0
     this.fps = 0
     this.targetFps = 30
@@ -3124,9 +3126,9 @@ class OptimizedHeartAnimation {
     window.addEventListener("resize", this.resizeCanvas.bind(this))
 
     this.heartImage.src = this.heartImageSrc
-
     this.heartImage.onload = () => {
       if (this.loader) this.loader.style.display = "none"
+      this.numHearts = this.calculateNumHearts()
       for (let i = 0; i < this.numHearts; i++) {
         this.hearts.push(this.createHeart())
       }
@@ -3141,10 +3143,36 @@ class OptimizedHeartAnimation {
     this.canvas.addEventListener("click", this.handleClick.bind(this))
   }
 
+  calculateNumHearts() {
+    const area = this.canvas.width * this.canvas.height
+    const density = 50000
+    return Math.max(10, Math.round(area / density))
+  }
+
   resizeCanvas() {
     if (!this.canvas) return
+    const oldWidth = this.canvas.width || window.innerWidth
+    const oldHeight = this.canvas.height || window.innerHeight
     this.canvas.width = window.innerWidth
     this.canvas.height = window.innerHeight
+    if (this.hearts.length && oldWidth && oldHeight) {
+      const scaleX = this.canvas.width / oldWidth
+      const scaleY = this.canvas.height / oldHeight
+      this.hearts.forEach((heart) => {
+        heart.x *= scaleX
+        heart.y *= scaleY
+      })
+    }
+    const newCount = this.calculateNumHearts()
+    if (newCount > this.hearts.length) {
+      const toAdd = newCount - this.hearts.length
+      for (let i = 0; i < toAdd; i++) {
+        this.hearts.push(this.createHeart())
+      }
+    } else if (newCount < this.hearts.length) {
+      this.hearts.splice(newCount)
+    }
+    this.numHearts = newCount
   }
 
   createHeart() {
@@ -3165,6 +3193,7 @@ class OptimizedHeartAnimation {
     if (this.isRunning) return
     this.isRunning = true
     this.lastFrameTime = performance.now()
+    this.lastFpsUpdate = this.lastFrameTime
     requestAnimationFrame(this.animate.bind(this))
   }
 
@@ -3174,12 +3203,9 @@ class OptimizedHeartAnimation {
 
   animate(timestamp) {
     if (!this.isRunning) return
-
     const elapsed = timestamp - this.lastFrameTime
-
     if (elapsed > this.fpsInterval) {
       this.lastFrameTime = timestamp - (elapsed % this.fpsInterval)
-
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
       for (const heart of this.hearts) {
@@ -3192,7 +3218,6 @@ class OptimizedHeartAnimation {
           heart.x = Math.random() * this.canvas.width
           heart.dy = Math.random() * 0.3 + 0.2
         }
-
         if (heart.x < -heart.size) heart.x = this.canvas.width + heart.size
         if (heart.x > this.canvas.width + heart.size) heart.x = -heart.size
 
@@ -3211,7 +3236,6 @@ class OptimizedHeartAnimation {
         this.lastFpsUpdate = timestamp
       }
     }
-
     requestAnimationFrame(this.animate.bind(this))
   }
 
