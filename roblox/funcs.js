@@ -120,11 +120,11 @@ const expData = [
   {
     id: "cryptic",
     name: "Cryptic",
-    desc: "An exploit for all platforms.",
+    desc: "An exploit for most platforms.",
     lvl: 8,
     price: "$4.99",
     period: "monthly",
-    plat: ["windows", "ios", "android"],
+    plat: ["ios", "android"],
     pros: ["Almost on all platforms", "Has a decompiler", "100% sUNC", "Level 8"],
     neutral: [],
     cons: [],
