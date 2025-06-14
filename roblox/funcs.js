@@ -752,6 +752,7 @@ const expData = [
   },
 ]
 
+
 class PerformanceMonitor {
   constructor() {
     this.fps = 0
@@ -1110,6 +1111,8 @@ class AppState {
     this.lazyLoader = new LazyLoader().init()
     this.paginationManager = null
     this.isLoading = false
+    this.scrollPosition = 0
+    this.isFilterDrawerOpen = false
   }
 
   init() {
@@ -1237,6 +1240,16 @@ class AppState {
 
     return getPriceValue(a.price) - getPriceValue(b.price)
   }
+
+  saveScrollPosition() {
+    this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop
+  }
+
+  restoreScrollPosition() {
+    if (this.scrollPosition > 0) {
+      window.scrollTo(0, this.scrollPosition)
+    }
+  }
 }
 
 class UIManager {
@@ -1244,6 +1257,7 @@ class UIManager {
     this.appState = appState
     this.elements = {}
     this.debounceTimers = {}
+    this.isUpdating = false
   }
 
   init() {
@@ -1435,8 +1449,26 @@ class UIManager {
     const closeButton = this.getElement("closeButton")
 
     const openDrawer = () => {
+      this.appState.saveScrollPosition()
+      this.appState.isFilterDrawerOpen = true
       drawer.classList.add("open")
       document.body.style.overflow = "hidden"
+      document.body.style.position = "fixed"
+      document.body.style.top = `-${this.appState.scrollPosition}px`
+      document.body.style.width = "100%"
+    }
+
+    const closeDrawer = () => {
+      this.appState.isFilterDrawerOpen = false
+      drawer.classList.remove("open")
+      document.body.style.overflow = ""
+      document.body.style.position = ""
+      document.body.style.top = ""
+      document.body.style.width = ""
+
+      setTimeout(() => {
+        this.appState.restoreScrollPosition()
+      }, 10)
     }
 
     if (filterButton && drawer) {
@@ -1450,12 +1482,8 @@ class UIManager {
         const menuToggle = this.getElement("menuToggle")
         if (menu) menu.classList.add("hidden")
         if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>'
+        document.body.classList.remove("menu-open")
       })
-    }
-
-    const closeDrawer = () => {
-      drawer.classList.remove("open")
-      document.body.style.overflow = ""
     }
 
     if (drawer) {
@@ -1766,22 +1794,35 @@ class UIManager {
   }
 
   updateExploits() {
-    const filteredData = this.appState.filterExploits()
-    const noResults = this.getElement("noResults")
+    if (this.isUpdating) return
+    this.isUpdating = true
 
-    if (filteredData.length === 0) {
-      if (noResults) noResults.classList.remove("hidden")
-    } else {
-      if (noResults) noResults.classList.add("hidden")
-    }
+    requestAnimationFrame(() => {
+      try {
+        const filteredData = this.appState.filterExploits()
+        const noResults = this.getElement("noResults")
 
-    if (this.appState.paginationManager && this.appState.view === "grid") {
-      this.appState.paginationManager.updateData(filteredData)
-    }
+        if (filteredData.length === 0) {
+          if (noResults) noResults.classList.remove("hidden")
+        } else {
+          if (noResults) noResults.classList.add("hidden")
+        }
 
-    this.updateCounts()
+        if (this.appState.paginationManager && this.appState.view === "grid") {
+          this.appState.paginationManager.updateData(filteredData)
+        }
 
-    setTimeout(() => this.setupCardButtons(), 50)
+        this.updateCounts()
+
+        setTimeout(() => {
+          this.setupCardButtons()
+          this.isUpdating = false
+        }, 50)
+      } catch (error) {
+        console.error("Error updating exploits:", error)
+        this.isUpdating = false
+      }
+    })
   }
 
   createCard(exploit) {
@@ -2492,7 +2533,7 @@ class ModalManager {
         const copyBtn = document.getElementById("uncModalCopyBtn")
         const originalText = copyBtn.innerHTML
 
-        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!'
+        copyBtn.innerHTML =  '<i class="fas fa-check"></i> Copied!'
 
         setTimeout(() => {
           copyBtn.innerHTML = originalText
@@ -3116,7 +3157,7 @@ class OptimizedHeartAnimation {
     if (!this.canvas) return
 
     this.ctx = this.canvas.getContext("2d")
-    this.heartImageSrc = "/assets/heart.svg"
+    this.heartImageSrc = "heart.svg"
     this.hearts = []
     this.heartImage = new Image()
     this.isRunning = false
