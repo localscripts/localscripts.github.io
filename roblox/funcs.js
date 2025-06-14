@@ -3157,7 +3157,7 @@ class OptimizedHeartAnimation {
     if (!this.canvas) return
 
     this.ctx = this.canvas.getContext("2d")
-    this.heartImageSrc = "heart.svg"
+    this.heartImageSrc = "/assets/heart.svg"
     this.hearts = []
     this.heartImage = new Image()
     this.isRunning = false
