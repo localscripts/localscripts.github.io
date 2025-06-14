@@ -20,6 +20,7 @@
   - [Local Server (On your computer)](#local-server-on-your-computer)
     - [Quick and Dirty](#quick-and-dirty)
     - [Slow and Robust](#slow-and-robust)
+- [JavaScript Definitions](#javascript-definitions)
 
 # Project Setup Guide
 
@@ -95,5 +96,46 @@ hosting on a personal computer. If you want to host a public website, refer to t
 > [!IMPORTANT]
 > NOTE: this is mostly irrelevant and *most* of the time your router will prevent anybody from accessing your computer directly the only times when someone might eb able to access this is if your router is exposing your private ip which does not happen by default or if someone on you same wifi or ethernet knows your private ip address
 
+## JavaScript Definitions
+
+needs a rewrite, 
+```js
+{
+    id: "ratware", // Unique identifier (used in paths like assets/unc/{id}.json)
+    name: "Milkers", // Display name shown on the card
+    desc: "A private undetected executor since 2013.", // Short description
+    lvl: 8, // Execution level, if external keep it empty
+    external: false // If its not an executor
+    price: "$20.00", // Displayed price
+    period: "lifetime", // License duration (e.g., "lifetime", "monthly")
+    plat: ["windows"], // Supported platforms: windows, mac, ios, android
+
+    pros: [ // Positive features
+        "Undetected since 2013",
+        "Has a decompiler",
+        "100% sUNC",
+        "Level 8"
+    ],
+    neutral: [], // Neutral traits (optional)
+    cons: [], // Drawbacks (optional)
+
+    verified: true, // Shows a verified blue badge
+    premium: false, // Shows a premium tag if true
+    editor: "voxlis.NET", // Editor or source of review
+
+    txtColor: "text-blue-500", // Tailwind text color class
+    accentColor: "from-green-600 to-green-700", // Tailwind gradient color for accents
+
+    info: "", // Optional text for "MORE INFO" button (leave empty to hide it)
+    href: "https://milkers.best", // Link for the "More Info" button
+    priceHref: "https://milkers.best", // Link for the Buy/Purchase button
+
+    warning: false, // Show a warning popup before proceeding if true
+    warningInfo: "", // Warning message text
+
+    hide: false, // If true, hides this card from being rendered
+    pricegray: true // If true, makes the buy button gray instead of green
+},
+ ```
 
 ![image](https://github.com/user-attachments/assets/1b15f6ac-d16b-419e-b541-baaab9c98761)
