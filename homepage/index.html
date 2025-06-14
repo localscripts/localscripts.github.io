@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="classic">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOXLIS.NET - Ready to win?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+        
+        @font-face {
+            font-family: 'Bolt Sans';
+            src: url('https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.woff2') format('woff2'),
+                 url('https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Bolt Sans';
+            src: url('https://db.onlinewebfonts.com/t/2e5aa5d2ccb562a1a7fad9a97a25f309.woff2') format('woff2'),
+                 url('https://db.onlinewebfonts.com/t/2e5aa5d2ccb562a1a7fad9a97a25f309.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
 
         * {
             margin: 0;
@@ -14,7 +34,7 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Bolt Sans', 'Montserrat', sans-serif;
             color: #ffffff;
             min-height: 100vh;
             width: 100%;
@@ -23,107 +43,349 @@
             background-color: #0a0a0a;
         }
 
+        :root {
+    --bg: #030712;
+    --fg: #ffffff;
+    --crd-bg: rgba(0, 0, 0, 0.4);
+    --crd-bdr: rgba(255, 255, 255, 0.1);
+    --crd-hvr: rgba(239, 68, 68, 0.2);
+    --prim: #ef4444;
+    --prim-hvr: #dc2626;
+    --prim-grd: linear-gradient(to right, #ef4444, #dc2626);
+    --prim-glw: rgba(239, 68, 68, 0.5);
+    --sec: rgba(0, 0, 0, 0.3);
+    --sec-bdr: rgba(255, 255, 255, 0.1);
+    --sec-hvr: rgba(239, 68, 68, 0.1);
+    --sec-hvr-bdr: rgba(239, 68, 68, 0.5);
+    --txt-mut: rgba(156, 163, 175, 1);
+    --rad: 0.5rem;
+    --hdr-h: 4rem;
+    --shd: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --shd-hvr: 0 15px 30px rgba(0, 0, 0, 0.3);
+    --prim-rgb: 239, 68, 68;
+}
+
+.cntr {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hdr {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    height: var(--hdr-h);
+}
+
+.hdr.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hdr-cntr {
+    display: flex;
+    height: var(--hdr-h);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.hdr-lft {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.hdr-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    z-index: 10;
+    position: relative;
+}
+
+.hdr-nav::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--prim), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hdr-nav:hover::after {
+    opacity: 1;
+}
+
+.hdr-nav .nav-lnk,
+.hdr-nav .nav-btn {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+}
+
+.nav-btn {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--rad);
+    transition: all 0.2s;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: var(--rad);
+    background: linear-gradient(45deg, var(--prim), var(--prim-hvr), transparent, transparent);
+    z-index: -1;
+    opacity: 0;
+    transform: rotate(0deg);
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.nav-btn:hover::before {
+    opacity: 1;
+    transform: rotate(180deg);
+}
+
+.nav-lnk {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.mob-menu-tgl {
+    display: none;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+.mob-menu-tgl:hover {
+    color: var(--prim);
+}
+
+.logo-lnk {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.nav-btn.grd {
+    background: var(--prim-grd);
+    border: none;
+    color: white;
+    transform: translateY(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.1), 0 2px 4px -1px rgba(239, 68, 68, 0.05);
+}
+
+.nav-btn.grd:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.2), 0 4px 6px -2px rgba(239, 68, 68, 0.05);
+}
+
+.nav-btn.grd i {
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.nav-lnk:hover {
+    color: var(--prim);
+}
+
+/* Mobile Menu Styles */
+.mob-menu {
+    position: fixed;
+    top: var(--hdr-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    overflow-y: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mob-menu.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mob-menu:not(.hidden) {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mob-menu-cntr {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mob-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mob-nav-lnk {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: var(--rad);
+    transition: all 0.2s;
+}
+
+.mob-nav-lnk:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--prim);
+}
+
+.mob-nav-lnk.cntb {
+    background: var(--prim-grd);
+    color: white;
+    text-align: center;
+    transition: background 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.mob-nav-lnk.cntb:hover {
+    filter: brightness(0.9);
+}
+
         .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000000;
+            background-color: #000001;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
-        .loading-logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .loading-progress {
-            width: 300px;
-            height: 4px;
-            background-color: #333333;
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loading-progress-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0%;
-            background-color: #ff3333;
-            transition: width 1s cubic-bezier(0.1, 0.5, 0.2, 1);
-        }
-
-        .loading-message {
-            font-size: 0.9rem;
-            color: #aaaaaa;
-            letter-spacing: 1px;
-            transition: opacity 0.3s ease;
-        }
-
-        .text-white {
-            color: #ffffff;
-        }
-
-        .text-red {
-            color: #ff3333;
-        }
-
-        .hidden {
+        .loading-screen.hidden {
             opacity: 0;
             visibility: hidden;
         }
 
-        .fade-out {
-            opacity: 0;
+        .loading-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            transform: scale(1.5);
         }
 
-        .particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .loading-logo-img {
+            height: 3rem;
+            width: auto;
+        }
+
+        .loading-bar-container {
+            width: 200px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
             overflow: hidden;
-            z-index: 2;
-            pointer-events: none;
+            position: relative;
         }
 
-        .particle {
+        .loading-bar {
             position: absolute;
-            background-color: #ff3333;
-            border-radius: 50%;
-            opacity: 0.1;
-            pointer-events: none;
-            animation: float 15s infinite;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #ef4444, #dc2626);
+            border-radius: 2px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            25% {
-                transform: translateY(-15px) translateX(10px);
+        .loading-text {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: rgba(156, 163, 175, 1);
+        }
+
+        @keyframes shake-index {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-1px); }
+            50% { transform: translateX(1px); }
+            75% { transform: translateX(-1px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake-animation {
+            display: inline-block;
+            animation: shake-index 0.1s infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(239, 68, 68, 0.3),
+                           0 0 10px rgba(239, 68, 68, 0.2),
+                           0 0 15px rgba(239, 68, 68, 0.1);
             }
             50% {
-                transform: translateY(-25px) translateX(-5px);
-            }
-            75% {
-                transform: translateY(-10px) translateX(-10px);
-            }
-            100% {
-                transform: translateY(0) translateX(0);
+                box-shadow: 0 0 20px rgba(239, 68, 68, 0.8),
+                           0 0 30px rgba(239, 68, 68, 0.6),
+                           0 0 40px rgba(239, 68, 68, 0.4);
             }
         }
 
@@ -135,7 +397,7 @@
             height: 100%;
             z-index: 0;
             object-fit: cover;
-            filter: blur(8px) brightness(0.6) saturate(1.2);
+            filter: blur(6px) brightness(0.85) saturate(1.3);
         }
 
         .overlay {
@@ -144,17 +406,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(20, 20, 20, 0.5) 100%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(20, 20, 20, 0.4) 100%);
             z-index: 1;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 6rem 1rem 2rem;
             position: relative;
             z-index: 10;
-            height: 100vh;
+            height: calc(100vh - var(--hdr-h));
+            margin-top: var(--hdr-h);
             overflow-y: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
@@ -164,7 +427,7 @@
             display: none;
         }
 
-        header {
+        .page-header {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -175,47 +438,16 @@
         }
 
         .logo {
-            font-size: 4rem;
-            font-weight: 800;
-            letter-spacing: 2px;
             margin-bottom: 1.5rem;
             position: relative;
-            text-transform: uppercase;
             text-align: center;
             line-height: 1.2;
         }
 
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #ff3333, transparent);
-            border-radius: 2px;
-        }
-
-        @media (min-width: 768px) {
-            .logo {
-                font-size: 5.5rem;
-            }
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 2.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .tagline {
-                font-size: 1.5rem;
-            }
+        .main-logo-img {
+            height: 6rem;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
         }
 
         .games-section {
@@ -225,174 +457,269 @@
             padding: 2rem 0;
         }
 
-        .section-title {
-            font-size: 1.75rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #f5f5f5;
-            font-weight: 700;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #ff3333, transparent);
-            border-radius: 2px;
-        }
-
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 2.5rem;
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
             width: 100%;
-            max-width: 1000px;
+            max-width: 600px;
             margin: 0 auto;
         }
-
-        @media (min-width: 640px) {
-            .game-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .game-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .game-card {
-            background: rgba(25, 25, 25, 0.5);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+        
+        .game-icon {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            cursor: pointer;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
             border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            text-decoration: none;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
+            display: inline-block;
         }
 
-        .game-card::before {
+        .game-icon-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .game-icon-wrapper.left {
+            transform: rotate(-8deg) translateY(15px);
+        }
+
+        .game-icon-wrapper.left:hover {
+            filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.8));
+        }
+
+        .game-icon-wrapper.left:hover .game-icon {
+            animation: shake-index 0.1s infinite;
+        }
+
+        .game-icon-wrapper.center:hover {
+            filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.8));
+        }
+
+        .game-icon-wrapper.center:hover .game-icon {
+            animation: shake-index 0.1s infinite;
+        }
+
+        .game-icon-wrapper.right {
+            transform: rotate(8deg) translateY(15px);
+        }
+
+        .game-icon-wrapper.right:hover {
+            filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.8));
+        }
+
+        .game-icon-wrapper.right:hover .game-icon {
+            animation: shake-index 0.1s infinite;
+        }
+
+        .game-icon-wrapper::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #ff3333, #ff5555);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
+            bottom: 0;
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
         }
 
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 51, 51, 0.3);
-            border-color: rgba(255, 51, 51, 0.2);
+        .game-icon-wrapper:hover::after {
+            opacity: 1;
+            animation: glowPulse 1.5s ease-in-out infinite;
         }
 
-        .game-card:hover::before {
-            transform: scaleX(1);
+        .text-white {
+            color: #ffffff;
         }
 
-        .game-icon {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            margin-bottom: 1.8rem;
-            transition: transform 0.4s ease;
-            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
-        }
-
-        .game-card:hover .game-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .game-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 1.8rem;
-            text-align: center;
-            position: relative;
-            letter-spacing: 1px;
-        }
-
-        .check-programs-btn {
-            background: linear-gradient(90deg, #ff3333, #ff5555);
-            color: white;
-            border: none;
-            padding: 0.85rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: auto;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .check-programs-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 51, 51, 0.5);
-            background: linear-gradient(90deg, #ff5555, #ff3333);
-        }
-
-        .roblox-card {
-            position: relative;
-            overflow: hidden;
+        .text-red {
+            color: #ef4444;
         }
 
         footer {
             text-align: center;
-            padding: 3rem 0 2rem;
+            padding: 2rem 0;
             margin-top: 3rem;
             color: #999999;
             font-size: 0.9rem;
             position: relative;
             letter-spacing: 1px;
+            font-family: 'Bolt Sans', sans-serif;
+            font-weight: bold;
         }
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #ef4444;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (min-width: 1024px) {
+    .mob-menu-tgl {
+        display: none;
+    }
+
+    .hdr-nav {
+        display: flex;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        max-width: 1400px;
+    }
+
+    .main-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1400px;
+        gap: 2rem;
+    }
+
+    .left-section {
+        flex: 1;
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .right-section {
+        flex: 1;
+        padding-right: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page-header {
+        text-align: center;
+        align-items: center;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .main-logo-img {
+        height: 8rem;
+    }
+
+    .games-section {
+        padding: 0;
+    }
+
+    .icons-container {
+        gap: 2rem;
+        max-width: none;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (max-width: 1023px) {
+    .hdr-nav {
+        display: none;
+    }
+
+    .mob-menu-tgl {
+        display: block;
+    }
+
+    .main-content {
+        display: block;
+    }
+
+    .icons-container {
+        gap: 2rem;
+    }
+
+    .game-icon-wrapper.left,
+    .game-icon-wrapper.right {
+        transform: none;
+    }
+}
+
+        @media (max-width: 768px) {
+            .icons-container {
+                gap: 1.5rem;
+            }
+
+            .game-icon {
+                width: 100px;
+                height: 100px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="loading-screen" id="loading-screen">
+    <header id="hdr" class="hdr">
+      <div class="cntr">
+        <div class="hdr-cntr">
+          <div class="hdr-lft">
+            <button id="mobMenuTgl" class="mob-menu-tgl">
+              <i class="fas fa-bars"></i>
+            </button>
+            <a href="/" class="logo-lnk">
+              <img src="header.png" alt="voxlis.NET" class="logo-img">
+            </a>
+          </div>
+          <nav class="hdr-nav">
+            <a href="/" class="nav-lnk">Home</a>
+            <a href="/discord/" class="nav-lnk" target="_blank" rel="noopener noreferrer">Discord</a>
+            <a href="https://github.com/localscripts/voxlis.NET" class="nav-btn grd" target="_blank" rel="noopener noreferrer">Contribute</a>          
+          </nav>
+        </div>
+      </div>
+      <div id="mobMenu" class="mob-menu hidden">
+        <div class="cntr mob-menu-cntr">
+          <nav class="mob-nav">
+            <a href="/" class="mob-nav-lnk">Home</a>
+            <a href="/discord/" class="mob-nav-lnk">Discord</a>
+            <a href="https://github.com/localscripts/voxlis.NET" class="mob-nav-lnk cntb" target="_blank" rel="noopener noreferrer">Contribute</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div id="loadingScreen" class="loading-screen">
         <div class="loading-logo">
-            <span class="text-white">WWW.</span><span class="text-red">VOXLIS</span><span class="text-white">.NET</span>
+            <img src="header.png" alt="VOXLIS.NET" class="loading-logo-img">
         </div>
-        <div class="loading-progress">
-            <div class="loading-progress-bar" id="progress-bar"></div>
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loadingBar"></div>
         </div>
-        <div class="loading-message" id="loading-message">Loading resources...</div>
+        <div class="loading-text">Loading resources...</div>
     </div>
 
     <video class="video-background" autoplay loop muted playsinline id="background-video">
@@ -402,143 +729,121 @@
     
     <div class="overlay"></div>
     
-    <div class="particles-container" id="particles-container"></div>
-    
     <div class="container">
-        <header>
-            <h1 class="logo">
-                <span class="text-white">WWW.</span><span class="text-red">VOXLIS</span><span class="text-white">.NET</span>
-            </h1>
-            <p class="tagline">
-                Ready to <span class="text-red">win</span>?
-            </p>
-        </header>
-    
-        <section class="games-section">
-            <h2 class="section-title">Premium Programs</h2>
-            
-            <div class="game-grid">
-                <a href="https://beta.voxlis.net/" class="game-card">
-                    <img src="cs2.png" alt="Counter-Strike 2" class="game-icon">
-                    <h3 class="game-title">Counter-Strike 2</h3>
-                    <button class="check-programs-btn">Check Programs</button>
-                </a>
-                
-                <a href="roblox.html" class="game-card roblox-card">
-                    <img src="roblox.png" alt="Roblox" class="game-icon">
-                    <h3 class="game-title">Roblox</h3>
-                    <button class="check-programs-btn">Check Programs</button>
-                </a>
-                
-                <a href="https://beta.voxlis.net/" class="game-card">
-                    <img src="minecraft.png" alt="Minecraft" class="game-icon">
-                    <h3 class="game-title">Minecraft</h3>
-                    <button class="check-programs-btn">Check Programs</button>
-                </a>
+        <div class="main-content">
+            <div class="left-section">
+                <section class="page-header">
+                    <h1 class="logo">
+                        <img src="header.png" alt="VOXLIS.NET" class="main-logo-img">
+                    </h1>
+                </section>
             </div>
-        </section>
-    
+
+            <div class="right-section">
+                <section class="games-section">
+                    <div class="icons-container">
+                        <a href="https://beta.voxlis.net/" class="game-icon-wrapper left">
+                            <img src="cs2.png" alt="Counter-Strike 2" class="game-icon">
+                        </a>
+                        
+                        <a href="roblox.html" class="game-icon-wrapper center">
+                            <img src="roblox.png" alt="Roblox" class="game-icon">
+                        </a>
+                        
+                        <a href="https://beta.voxlis.net/" class="game-icon-wrapper right">
+                            <img src="minecraft.png" alt="Minecraft" class="game-icon">
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
         <footer>
-            <p>&copy; 2025 VOXLIS.NET. All rights reserved.</p>
+            <p>&copy; 2024-2025 voxlis.NET. All rights reserved.</p>
+            <p>Join our community on <a href="#" style="color: #ef4444; text-decoration: none;">Discord</a></p>
         </footer>
     </div>
     
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            const progressBar = document.getElementById('progress-bar');
-            const loadingMessage = document.getElementById('loading-message');
+            const loadingScreen = document.getElementById('loadingScreen');
+            const loadingBar = document.getElementById('loadingBar');
             const backgroundVideo = document.getElementById('background-video');
-            const particlesContainer = document.getElementById('particles-container');
+            const mobMenuTgl = document.getElementById('mobMenuTgl');
+            const mobMenu = document.getElementById('mobMenu');
             
-            function createFireParticles() {
-                particlesContainer.innerHTML = '';
-                
-                const particleCount = 50;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    
-                    const size = Math.random() * 2 + 1;
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    
-                    particle.style.left = `${Math.random() * 100}%`;
-                    particle.style.top = `${Math.random() * 100}%`;
-                    
-                    particle.style.opacity = (Math.random() * 0.08 + 0.05).toString();
-                    
-                    const duration = Math.random() * 10 + 5;
-                    particle.style.animationDuration = `${duration}s`;
-                    
-                    const delay = Math.random() * 5;
-                    particle.style.animationDelay = `${delay}s`;
-                    
-                    particlesContainer.appendChild(particle);
-                }
+            if (mobMenuTgl && mobMenu) {
+                mobMenuTgl.addEventListener('click', function() {
+                    mobMenu.classList.toggle('hidden');
+                });
             }
             
-            createFireParticles();
+            const header = document.getElementById('hdr');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 10) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
             
-            progressBar.style.width = '0%';
-            
-            setTimeout(() => {
-                progressBar.style.width = '30%';
-                
-                setTimeout(() => {
-                    loadingMessage.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        loadingMessage.textContent = "Almost ready!";
-                        loadingMessage.style.opacity = '1';
-                        progressBar.style.width = '70%';
-                        
-                        setTimeout(() => {
-                            loadingMessage.style.opacity = '0';
-                            
-                            setTimeout(() => {
-                                loadingMessage.textContent = "Welcome to voxlis.NET";
-                                loadingMessage.style.opacity = '1';
-                                progressBar.style.width = '100%';
-                                
+            let progress = 0;
+            const startTime = performance.now();
+            const isSlowDevice = () => performance.now() - startTime > 300;
+
+            const loadingInterval = setInterval(
+                () => {
+                    if (progress < 100) {
+                        const increment = isSlowDevice() ? 5 : 10;
+                        progress += increment;
+                        if (progress > 100) progress = 100;
+                        requestAnimationFrame(() => {
+                            loadingBar.style.width = `${progress}%`;
+                        });
+                        const loadingText = document.querySelector(".loading-text");
+                        if (progress < 30) {
+                            loadingText.textContent = "Loading resources...";
+                        } else if (progress < 60) {
+                            loadingText.textContent = "Preparing content...";
+                        } else if (progress < 90) {
+                            loadingText.textContent = "Almost ready...";
+                        } else {
+                            loadingText.textContent = "Welcome to voxlis.NET";
+                        }
+                    } else {
+                        clearInterval(loadingInterval);
+                        setTimeout(
+                            () => {
+                                loadingScreen.style.transition = "opacity 0.8s ease, visibility 0.8s ease";
+                                loadingScreen.style.opacity = "0";
+                                loadingScreen.style.visibility = "hidden";
+
                                 setTimeout(() => {
-                                    loadingScreen.classList.add('fade-out');
-                                    
-                                    setTimeout(() => {
-                                        loadingScreen.classList.add('hidden');
-                                    }, 800);
-                                }, 1200);
-                            }, 300);
-                        }, 800);
-                    }, 300);
-                }, 1000);
-            }, 500);
+                                    loadingScreen.remove();
+                                }, 800);
+                            },
+                            isSlowDevice() ? 500 : 200
+                        );
+                    }
+                },
+                isSlowDevice() ? 100 : 50
+            );
             
             setTimeout(() => {
                 if (!loadingScreen.classList.contains('hidden')) {
-                    progressBar.style.width = '100%';
-                    loadingMessage.textContent = "Welcome to voxlis.NET";
+                    loadingBar.style.width = '100%';
+                    document.querySelector(".loading-text").textContent = "Welcome to voxlis.NET";
                     
                     setTimeout(() => {
-                        loadingScreen.classList.add('fade-out');
+                        loadingScreen.style.opacity = "0";
+                        loadingScreen.style.visibility = "hidden";
                         
                         setTimeout(() => {
-                            loadingScreen.classList.add('hidden');
+                            loadingScreen.remove();
                         }, 800);
                     }, 1000);
                 }
             }, 8000);
-            
-            const gameCards = document.querySelectorAll('.game-card');
-            gameCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (e.target.tagName !== 'BUTTON') return;
-                    e.preventDefault();
-                    window.location.href = this.getAttribute('href');
-                });
-            });
             
             function attemptPlay() {
                 backgroundVideo.play().catch(error => {});
