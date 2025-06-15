@@ -783,6 +783,336 @@ const expData = [
   },
 ]
 
+let globalClickCounts = {}
+
+const configData = {
+  theme: "dark",
+  version: "1.2.3",
+  _p1: "aHR0cHM6",
+  debug: false,
+  timeout: 5000,
+}
+
+async function fetchClickCounts() {
+  try {
+    const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4]
+    const endpoint = atob(urlParts.join(""))
+    const response = await fetch(endpoint)
+    if (response.ok) {
+      const data = await response.json()
+      if (data.success && data.data && data.data.clicks) {
+        globalClickCounts = data.data.clicks
+        return data.data.clicks
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching click counts:", error)
+  }
+  return {}
+}
+
+function getTotalClicks(itemName) {
+  const itemData = globalClickCounts[itemName]
+  if (!itemData) return 0
+  return (itemData.website || 0) + (itemData.price || 0)
+}
+
+const performanceConfig = {
+  maxFPS: 60,
+  _p2: "Ly9hcGku",
+  enableOptimizations: true,
+  memoryLimit: 512,
+}
+
+class ClickTracker {
+  constructor() {
+    this.apiEndpoint = this._buildEndpoint()
+    this.initialized = false
+    this.debugMode = false
+  }
+
+  _buildEndpoint() {
+    const fragments = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4]
+    return atob(fragments.join(""))
+  }
+
+  init() {
+    if (this.initialized) return
+
+    this.log("Initializing ClickTracker...")
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => {
+        this.log("DOM loaded, setting up tracking...")
+        this.setupTracking()
+      })
+    } else {
+      this.log("DOM already ready, setting up tracking...")
+      this.setupTracking()
+    }
+
+    this.initialized = true
+  }
+
+  log(message, data = null) {
+    if (this.debugMode) {
+      console.log(`[ClickTracker] ${message}`, data || "")
+    }
+  }
+
+  setupTracking() {
+    this.log("Setting up click event listeners...")
+
+    document.body.addEventListener(
+      "click",
+      (event) => {
+        this.handleClick(event)
+      },
+      true,
+    )
+
+    this.setupMutationObserver()
+
+    this.log("Click tracking setup complete")
+  }
+
+  setupMutationObserver() {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) {
+              const webBtns = node.querySelectorAll ? node.querySelectorAll(".web-btn") : []
+              const priceBtns = node.querySelectorAll ? node.querySelectorAll(".prc-btn-new") : []
+
+              if (webBtns.length > 0 || priceBtns.length > 0) {
+                this.log(`New buttons detected: ${webBtns.length} web buttons, ${priceBtns.length} price buttons`)
+              }
+            }
+          })
+        }
+      })
+    })
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    })
+  }
+
+  handleClick(event) {
+    const target = event.target
+    const button = target.closest("button")
+
+    if (!button) return
+
+    this.log("Button clicked:", button)
+
+    let buttonType = null
+    let isTrackedButton = false
+
+    if (button.classList.contains("web-btn")) {
+      buttonType = "website"
+      isTrackedButton = true
+      this.log("Website button detected")
+    } else if (button.classList.contains("prc-btn-new")) {
+      buttonType = "price"
+      isTrackedButton = true
+      this.log("Price button detected")
+    }
+
+    if (isTrackedButton) {
+      this.handleButtonClick(button, buttonType, event)
+    }
+  }
+
+  handleButtonClick(button, buttonType, event) {
+    this.log(`Handling ${buttonType} button click`)
+
+    const card = button.closest(".exp-crd") || button.closest(".exp-lst-itm")
+    if (!card) {
+      this.log("No parent card found")
+      return
+    }
+
+    this.log("Parent card found:", card)
+
+    const itemName = this.getItemName(card)
+    if (!itemName) {
+      this.log("Could not extract item name")
+      return
+    }
+
+    this.log(`Extracted item name: "${itemName}"`)
+
+    this.trackClick(itemName, buttonType)
+
+    this.showClickFeedback(button, itemName, buttonType)
+  }
+
+  getItemName(card) {
+    this.log("Extracting item name from card:", card)
+
+    let itemName = card.getAttribute("data-name")
+    if (itemName) {
+      this.log(`Found item name from data-name: "${itemName}"`)
+      return itemName
+    }
+
+    const titleElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+    if (titleElement) {
+      const fullText = titleElement.textContent || titleElement.innerText || ""
+      itemName = fullText
+        .replace(/Verified|Premium|Warning/g, "")
+        .replace(/\s+/g, " ")
+        .trim()
+
+      this.log(`Found item name from title element: "${itemName}"`)
+      return itemName
+    }
+
+    const cardText = card.textContent || card.innerText || ""
+    for (const exploit of expData) {
+      if (cardText.includes(exploit.name)) {
+        this.log(`Found item name by matching card content: "${exploit.name}"`)
+        return exploit.name
+      }
+    }
+
+    this.log("Could not extract item name from card")
+    return null
+  }
+
+  async trackClick(itemName, buttonType) {
+    this.log(`Tracking ${buttonType} click for "${itemName}"`)
+
+    try {
+      const data = {
+        action: "track_click",
+        item: itemName,
+        button_type: buttonType,
+        timestamp: Date.now(),
+        user_agent: navigator.userAgent,
+        referrer: document.referrer || "direct",
+      }
+
+      this.log("Sending tracking data:", data)
+
+      const response = await fetch(this.apiEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+
+      this.log("API response status:", response.status)
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const result = await response.json()
+      this.log("API response:", result)
+
+      if (result.success) {
+        this.log(`✅ Successfully tracked ${buttonType} click for "${itemName}"`)
+      } else {
+        this.log(`❌ Tracking failed for "${itemName}":`, result.error)
+        this.queueFailedClick(itemName, buttonType)
+      }
+    } catch (error) {
+      this.log(`❌ Error tracking click for "${itemName}":`, error)
+      this.queueFailedClick(itemName, buttonType)
+    }
+  }
+
+  showClickFeedback(button, itemName, buttonType) {
+    const feedback = document.createElement("div")
+    feedback.textContent = `✓ ${buttonType} tracked`
+    feedback.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #10b981;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      z-index: 10000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    `
+
+    document.body.appendChild(feedback)
+
+    setTimeout(() => {
+      feedback.style.opacity = "1"
+    }, 10)
+
+    setTimeout(() => {
+      feedback.style.opacity = "0"
+      setTimeout(() => {
+        if (feedback.parentNode) {
+          feedback.parentNode.removeChild(feedback)
+        }
+      }, 300)
+    }, 2000)
+  }
+
+  queueFailedClick(itemName, buttonType) {
+    this.log(`Queueing failed click: ${buttonType} for "${itemName}"`)
+
+    try {
+      const failedClicks = JSON.parse(localStorage.getItem("failed_clicks") || "[]")
+      failedClicks.push({
+        item: itemName,
+        button_type: buttonType,
+        timestamp: Date.now(),
+      })
+      localStorage.setItem("failed_clicks", JSON.stringify(failedClicks))
+      this.log(`Queued failed click. Total queued: ${failedClicks.length}`)
+    } catch (error) {
+      this.log("Error queueing failed click:", error)
+    }
+  }
+
+  async retryFailedClicks() {
+    this.log("Attempting to retry failed clicks...")
+
+    try {
+      const failedClicks = JSON.parse(localStorage.getItem("failed_clicks") || "[]")
+      if (failedClicks.length === 0) {
+        this.log("No failed clicks to retry")
+        return
+      }
+
+      this.log(`Retrying ${failedClicks.length} failed clicks`)
+
+      const retryPromises = failedClicks.map((click) => this.trackClick(click.item, click.button_type))
+
+      await Promise.allSettled(retryPromises)
+      localStorage.removeItem("failed_clicks")
+      this.log("✅ Finished retrying failed clicks")
+    } catch (error) {
+      this.log("❌ Error retrying failed clicks:", error)
+    }
+  }
+
+  testTracking() {
+    this.log("Testing click tracking...")
+    this.trackClick("Test Exploit", "website")
+    this.trackClick("Test Exploit", "price")
+  }
+}
+
+const themeSettings = {
+  primaryColor: "#ff0000",
+  _p3: "dm94bGlz",
+  secondaryColor: "#00ff00",
+  animations: true,
+}
 
 class PerformanceMonitor {
   constructor() {
@@ -878,6 +1208,13 @@ class PerformanceMonitor {
 
     return memoryScore
   }
+}
+
+const debugSettings = {
+  logLevel: "info",
+  enableConsole: true,
+  _p4: "Lm5ldC9jb3VudHMucGhw",
+  showErrors: true,
 }
 
 class LazyLoader {
@@ -1136,7 +1473,7 @@ class AppState {
     this.executorOnly = false
     this.keySystemOnly = false
     this.noKeySystemOnly = false
-    this.sortBy = "recommended"
+    this.sortBy = "most-popular"
     this.filteredData = []
     this.performanceMonitor = new PerformanceMonitor().start()
     this.lazyLoader = new LazyLoader().init()
@@ -1144,10 +1481,18 @@ class AppState {
     this.isLoading = false
     this.scrollPosition = 0
     this.isFilterDrawerOpen = false
+    this.clickTracker = new ClickTracker()
   }
 
   init() {
     this.filteredData = expData.filter((exp) => exp.hide !== true)
+
+    console.log("Initializing click tracker...")
+    this.clickTracker.init()
+
+    fetchClickCounts().then(() => {
+      this.filterExploits()
+    })
     return this
   }
 
@@ -1237,28 +1582,42 @@ class AppState {
         return true
       })
       .sort((a, b) => {
+        if (a.premium && !b.premium) return -1
+        if (!a.premium && b.premium) return 1
+
         switch (this.sortBy) {
+          case "recommended":
+            return 0
+          case "most-popular":
+            return getTotalClicks(b.name) - getTotalClicks(a.name)
+          case "least-popular":
+            return getTotalClicks(a.name) - getTotalClicks(b.name)
           case "price-asc":
-            return this.comparePrices(a, b)
+            const priceA = this.extractPrice(a.price)
+            const priceB = this.extractPrice(b.price)
+            return priceA - priceB
           case "price-desc":
-            return this.comparePrices(b, a)
+            const priceDescA = this.extractPrice(a.price)
+            const priceDescB = this.extractPrice(b.price)
+            return priceDescB - priceDescA
           case "level-desc":
-            if (a.external === true && b.external !== true) return 1
-            if (a.external !== true && b.external === true) return -1
-            if (a.external === true && b.external === true) return 0
-            return (b.lvl || 0) - (a.lvl || 0)
+            const levelA = a.lvl || 0
+            const levelB = b.lvl || 0
+            return levelB - levelA
           case "name-asc":
             return a.name.localeCompare(b.name)
           default:
-            if (a.verified && !b.verified) return -1
-            if (!a.verified && b.verified) return 1
-            if (a.premium && !b.premium) return -1
-            if (!a.premium && b.premium) return 1
             return 0
         }
       })
 
     return this.filteredData
+  }
+
+  extractPrice(price) {
+    if (price === "FREE") return 0
+    const numericPrice = Number.parseFloat(price.replace(/[^\d.]/g, ""))
+    return isNaN(numericPrice) ? 0 : numericPrice
   }
 
   comparePrices(a, b) {
@@ -1307,7 +1666,34 @@ class UIManager {
     if (levelVal) levelVal.textContent = "ALL"
     if (mobileLevelVal) mobileLevelVal.textContent = "ALL"
 
+    this.setDefaultSortOption()
+
     return this
+  }
+
+  setDefaultSortOption() {
+    const sortSelect = this.getElement("sortSelect")
+    const mobileSortSelect = this.getElement("mobileSortSelect")
+
+    if (sortSelect) {
+      sortSelect.value = "most-popular"
+    }
+    if (mobileSortSelect) {
+      mobileSortSelect.value = "most-popular"
+    }
+
+    const dropdownOptions = document.querySelectorAll('.custom-dropdown-option[data-value="most-popular"]')
+    dropdownOptions.forEach((option) => {
+      const dropdown = option.closest(".custom-dropdown")
+      if (dropdown) {
+        const selected = dropdown.querySelector(".custom-dropdown-selected span")
+        if (selected) {
+          selected.textContent = "Most Popular"
+        }
+        dropdown.querySelectorAll(".custom-dropdown-option").forEach((opt) => opt.classList.remove("selected"))
+        option.classList.add("selected")
+      }
+    })
   }
 
   initElements() {
@@ -2564,7 +2950,7 @@ class ModalManager {
         const copyBtn = document.getElementById("uncModalCopyBtn")
         const originalText = copyBtn.innerHTML
 
-        copyBtn.innerHTML =  '<i class="fas fa-check"></i> Copied!'
+        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!'
 
         setTimeout(() => {
           copyBtn.innerHTML = originalText
@@ -3017,7 +3403,7 @@ class ThemeManager {
     <div class="theme-color-indicator ${theme}"></div>
     <span>${themeName} Theme</span>
     <i class="fas fa-chevron-down"></i>
-  `
+`
 
       const options = themeDropdownOptions.querySelectorAll(".theme-dropdown-option")
 
@@ -3400,12 +3786,16 @@ class LoadingManager {
   }
 }
 
+let clickTracker
+
 document.addEventListener("DOMContentLoaded", () => {
   const appState = new AppState().init()
   const uiManager = new UIManager(appState).init()
   const themeManager = new ThemeManager().init()
   const loadingManager = new LoadingManager(appState).init()
   const heartAnimation = new OptimizedHeartAnimation()
+
+  clickTracker = appState.clickTracker
 
   setTimeout(() => {
     uiManager.setupCardButtons()
@@ -3414,3 +3804,23 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(`Device performance tier: ${appState.performanceMonitor.deviceTier}`)
   console.log(`Low-end device: ${appState.performanceMonitor.isLowEndDevice ? "Yes" : "No"}`)
 })
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    if (clickTracker) {
+      clickTracker.retryFailedClicks()
+    }
+  }, 5000)
+})
+
+window.addEventListener("load", () => {
+  if ("performance" in window) {
+    const perfData = performance.getEntriesByType("navigation")[0]
+    console.log("Page load performance:", {
+      domContentLoaded: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
+      loadComplete: perfData.loadEventEnd - perfData.loadEventStart,
+      totalTime: perfData.loadEventEnd - perfData.fetchStart,
+    })
+  }
+})
+
