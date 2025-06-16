@@ -783,8 +783,6 @@ const expData = [
   },
 ]
 
-let globalClickCounts = {}
-
 const configData = {
   theme: "dark",
   version: "1.2.3",
@@ -792,6 +790,8 @@ const configData = {
   debug: false,
   timeout: 5000,
 }
+
+let globalClickCounts = {}
 
 async function fetchClickCounts() {
   try {
@@ -1017,6 +1017,10 @@ class ClickTracker {
 
       if (result.success) {
         this.log(`✅ Successfully tracked ${buttonType} click for "${itemName}"`)
+        if (!globalClickCounts[itemName]) {
+          globalClickCounts[itemName] = { website: 0, price: 0 }
+        }
+        globalClickCounts[itemName][buttonType]++
       } else {
         this.log(`❌ Tracking failed for "${itemName}":`, result.error)
         this.queueFailedClick(itemName, buttonType)
@@ -1482,17 +1486,21 @@ class AppState {
     this.scrollPosition = 0
     this.isFilterDrawerOpen = false
     this.clickTracker = new ClickTracker()
+    this.clickDataLoaded = false
   }
 
-  init() {
-    this.filteredData = expData.filter((exp) => exp.hide !== true)
-
-    console.log("Initializing click tracker...")
+  async init() {
     this.clickTracker.init()
+    try {
+      await fetchClickCounts()
+      this.clickDataLoaded = true
+    } catch (error) {
+      this.clickDataLoaded = false
+    }
 
-    fetchClickCounts().then(() => {
-      this.filterExploits()
-    })
+    this.filteredData = expData.filter((exp) => exp.hide !== true)
+    this.filterExploits()
+
     return this
   }
 
@@ -1589,7 +1597,12 @@ class AppState {
           case "recommended":
             return 0
           case "most-popular":
-            return getTotalClicks(b.name) - getTotalClicks(a.name)
+            const clicksA = getTotalClicks(a.name)
+            const clicksB = getTotalClicks(b.name)
+            if (this.clickDataLoaded && clicksA !== clicksB) {
+              return clicksB - clicksA
+            }
+            return a.name.localeCompare(b.name)
           case "least-popular":
             return getTotalClicks(a.name) - getTotalClicks(b.name)
           case "price-asc":
@@ -2591,16 +2604,16 @@ class UIManager {
     document.head.insertAdjacentHTML(
       "beforeend",
       `
-      <style>
-        .crd-btn.expanded {
-          flex: 1;
-          min-width: 0;
-        }
-        .crd-btn.full-width {
-          width: 100%;
-        }
-      </style>
-    `,
+  <style>
+    .crd-btn.expanded {
+      flex: 1;
+      min-width: 0;
+    }
+    .crd-btn.full-width {
+      width: 100%;
+    }
+  </style>
+`,
     )
   }
 
@@ -3753,7 +3766,7 @@ class LoadingManager {
 
         if (this.loadingText) {
           if (progress < 30) {
-            this.loadingText.textContent = `Loading resources (${deviceTier} mode)...`
+            this.loadingText.textContent = `Loading click data (${deviceTier} mode)...`
           } else if (progress < 60) {
             this.loadingText.textContent = `Preparing exploits (${deviceTier} mode)...`
           } else if (progress < 90) {
@@ -3788,8 +3801,11 @@ class LoadingManager {
 
 let clickTracker
 
-document.addEventListener("DOMContentLoaded", () => {
-  const appState = new AppState().init()
+document.addEventListener("DOMContentLoaded", async () => {
+  const appState = new AppState()
+
+  await appState.init()
+
   const uiManager = new UIManager(appState).init()
   const themeManager = new ThemeManager().init()
   const loadingManager = new LoadingManager(appState).init()
@@ -3823,4 +3839,3 @@ window.addEventListener("load", () => {
     })
   }
 })
-
