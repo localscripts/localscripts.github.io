@@ -678,7 +678,7 @@ const expData = [
     accentColor: "from-yellow-600 to-yellow-700",
     info: "## Exploit Performance  \n- [Autumn]() offers a smooth experience and is bundled into a single `.exe` file, unlike many other exploits that come in `.zip` archives with multiple `.dll` files.\n\n## Background Information  \n- [Autumn](/) officially launched in June 7th 2025, created by a dedicated team of three developers: [@prlx](/), [@visor](/) and [@noir vod](/).\n\n## Developers Background Information  \n- [Autumn]() has no background information.\n\n> Sources: [reddit.com/r/robloxhackers](), Autumn Developers",
     premium: false,
-    href: "https://discord.gg/WY4juPkFv4",
+    href: "https://discord.gg/mmTGebPYnm",
     priceHref: "https://robloxcheatz.com/affiliate/voxlisnet",
     uncbuttonlink:
       "https://r.sunc.su/JgXWs9CVfx",
