@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click Graph Generator</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #121212;
+      color: #ffffff;
+    }
+    textarea {
+      width: 100%;
+      height: 300px;
+      font-family: monospace;
+      margin-bottom: 20px;
+      background: #1e1e1e;
+      color: #ffffff;
+      border: 1px solid #ff4c4c;
+      padding: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #ff4c4c;
+      color: #ffffff;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #e63939;
+    }
+    canvas {
+      background: #1e1e1e;
+      border: 1px solid #ff4c4c;
+      padding: 10px;
+    }
+    #downloadLink {
+      display: none;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #ff4c4c;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Click Graph Generator</h1>
+  <p>Paste your JSON data below:</p>
+
+  <textarea id="jsonInput" placeholder="Paste JSON here..."></textarea>
+  <br>
+  <button onclick="generateGraph()">Generate Graph</button>
+  <button onclick="downloadImage()">Download Image</button>
+  <a id="downloadLink" download="click_graph.png">Download Image (PNG)</a>
+
+  <h2>Website Clicks per Product</h2>
+  <canvas id="clickChart" width="800" height="400"></canvas>
+
+  <script>
+    let chart;
+
+    function generateGraph() {
+      const input = document.getElementById("jsonInput").value;
+      let parsed;
+
+      try {
+        parsed = JSON.parse(input);
+      } catch (e) {
+        alert("Invalid JSON");
+        return;
+      }
+
+      const clicks = parsed.clicks;
+      const entries = Object.entries(clicks)
+        .map(([name, data]) => ({ name, clicks: data.website || 0 }))
+        .sort((a, b) => a.clicks - b.clicks);
+
+      const labels = entries.map(entry => entry.name);
+      const data = entries.map(entry => entry.clicks);
+
+      const ctx = document.getElementById('clickChart').getContext('2d');
+
+      if (chart) chart.destroy();
+
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Downloads from voxlis.NET',
+            data,
+            backgroundColor: 'rgba(255, 76, 76, 0.6)',
+            borderColor: 'rgba(255, 76, 76, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: false,
+          animation: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: '#ffffff'
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: '#ffffff'
+              },
+              grid: {
+                color: '#333'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              ticks: {
+                color: '#ffffff'
+              },
+              grid: {
+                color: '#333'
+              }
+            }
+          }
+        }
+      });
+
+      document.getElementById("downloadLink").style.display = "inline";
+    }
+
+    function downloadImage() {
+      if (!chart) {
+        alert("Generate the graph first.");
+        return;
+      }
+
+      const canvas = document.getElementById("clickChart");
+      const link = document.getElementById("downloadLink");
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+  </script>
+
+</body>
+</html>
