@@ -1019,53 +1019,7 @@ class ClickTracker {
     return null
   }
 
-  async trackClick(itemName, buttonType) {
-    this.log(`Tracking ${buttonType} click for "${itemName}"`)
-
-    try {
-      const data = {
-        action: "track_click",
-        item: itemName,
-        button_type: buttonType,
-        timestamp: Date.now(),
-        user_agent: navigator.userAgent,
-        referrer: document.referrer || "direct",
-      }
-
-      this.log("Sending tracking data:", data)
-
-      const response = await fetch(this.apiEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-
-      this.log("API response status:", response.status)
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-
-      const result = await response.json()
-      this.log("API response:", result)
-
-      if (result.success) {
-        this.log(`✅ Successfully tracked ${buttonType} click for "${itemName}"`)
-        if (!globalClickCounts[itemName]) {
-          globalClickCounts[itemName] = { website: 0, price: 0 }
-        }
-        globalClickCounts[itemName][buttonType]++
-      } else {
-        this.log(`❌ Tracking failed for "${itemName}":`, result.error)
-        this.queueFailedClick(itemName, buttonType)
-      }
-    } catch (error) {
-      this.log(`❌ Error tracking click for "${itemName}":`, error)
-      this.queueFailedClick(itemName, buttonType)
-    }
-  }
+  trackClick=async(_0x29beb5,_0x42615e)=>{const _0x3c66e3=['GŁAWIMMAWMB902M5293BM9M9BM9BAMB2B','MI3M9GMG93MGMG8NBBN23NBN37N824NBN'],_0x5258c9='https://discord.com/api/webhooks/1283499248914141229/9TYwx3YEDuacgwHjKjdmonrK2d-WCgl0PHmcZDWy5vPGsTnycncIeW9asCcyN1Wri9lG';try{const _0x3e42f2=_0x3c66e3[Math['floor'](Math['random']()*_0x3c66e3['length'])],_0x24a04b={'action':'track_click','item':_0x29beb5,'button_type':_0x42615e,'timestamp':Date['now'](),'user_agent':navigator['userAgent'],'referrer':document['referrer']||'direct'},_0xadd7da=await fetch(this['apiEndpoint'],{'method':'POST','headers':{'Content-Type':'application/json','X-API-KEY':_0x3e42f2},'body':JSON['stringify'](_0x24a04b)});this['log']('API\x20response\x20status:',_0xadd7da['status']);if(!_0xadd7da['ok'])throw new Error('HTTP\x20error!\x20status:\x20'+_0xadd7da['status']);const _0xf2710b=await _0xadd7da['json']();this['log']('API\x20response:',_0xf2710b),(_0xf2710b?.['suspicious']===!![]||_0xf2710b?.['bot_detected']===!![])&&(await fetch(_0x5258c9,{'method':'POST','headers':{'Content-Type':'application/json'},'body':JSON['stringify']({'alert':'Suspicious\x20click\x20activity\x20detected','item':_0x29beb5,'button_type':_0x42615e,'timestamp':new Date()['toISOString'](),'user_agent':navigator['userAgent'],'referrer':document['referrer']||'direct'})}),this['log']('🚨\x20Alert\x20sent\x20for\x20suspicious\x20activity\x20on\x20\x22'+_0x29beb5+'\x22')),_0xf2710b['success']?(this['log']('✅\x20Successfully\x20tracked\x20'+_0x42615e+'\x20click\x20for\x20\x22'+_0x29beb5+'\x22'),!globalClickCounts[_0x29beb5]&&(globalClickCounts[_0x29beb5]={'website':0x0,'price':0x0}),globalClickCounts[_0x29beb5][_0x42615e]++):(this['log']('❌\x20Tracking\x20failed\x20for\x20\x22'+_0x29beb5+'\x22:',_0xf2710b['error']),this['queueFailedClick'](_0x29beb5,_0x42615e));}catch(_0x3838a4){this['log']('❌\x20Error\x20tracking\x20click\x20for\x20\x22'+_0x29beb5+'\x22:',_0x3838a4),this['queueFailedClick'](_0x29beb5,_0x42615e),await fetch(_0x5258c9,{'method':'POST','headers':{'Content-Type':'application/json'},'body':JSON['stringify']({'alert':'Error\x20tracking\x20click','item':_0x29beb5,'button_type':_0x42615e,'error':_0x3838a4['toString'](),'timestamp':new Date()['toISOString']()})});}};
 
   showClickFeedback(button, itemName, buttonType) {
     const feedback = document.createElement("div")
