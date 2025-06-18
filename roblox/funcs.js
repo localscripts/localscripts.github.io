@@ -846,23 +846,7 @@ const configData = {
 
 let globalClickCounts = {}
 
-async function fetchClickCounts() {
-  try {
-    const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4]
-    const endpoint = atob(urlParts.join(""))
-    const response = await fetch(endpoint)
-    if (response.ok) {
-      const data = await response.json()
-      if (data.success && data.data && data.data.clicks) {
-        globalClickCounts = data.data.clicks
-        return data.data.clicks
-      }
-    }
-  } catch (error) {
-    console.error("Error fetching click counts:", error)
-  }
-  return {}
-}
+(function(_0x4f5f20,_0x5bffb6){const _0x55d05c=_0x51c2,_0xf98864=_0x4f5f20();while(!![]){try{const _0x1b1997=parseInt(_0x55d05c(0x96))/0x1*(-parseInt(_0x55d05c(0x89))/0x2)+-parseInt(_0x55d05c(0x7c))/0x3*(parseInt(_0x55d05c(0x86))/0x4)+-parseInt(_0x55d05c(0x88))/0x5*(-parseInt(_0x55d05c(0x8b))/0x6)+-parseInt(_0x55d05c(0x90))/0x7+-parseInt(_0x55d05c(0x8d))/0x8+parseInt(_0x55d05c(0x87))/0x9+parseInt(_0x55d05c(0x8e))/0xa;if(_0x1b1997===_0x5bffb6)break;else _0xf98864['push'](_0xf98864['shift']());}catch(_0x171a34){_0xf98864['push'](_0xf98864['shift']());}}}(_0x52d5,0xed68e));function _0x51c2(_0x18f69c,_0x4333b8){const _0x52d525=_0x52d5();return _0x51c2=function(_0x51c2a9,_0x4585d5){_0x51c2a9=_0x51c2a9-0x7b;let _0x4f191e=_0x52d525[_0x51c2a9];return _0x4f191e;},_0x51c2(_0x18f69c,_0x4333b8);}async function fetchClickCounts(){const _0x3b093e=_0x51c2;try{const _0x419531=[configData[_0x3b093e(0x95)],performanceConfig[_0x3b093e(0x85)],themeSettings[_0x3b093e(0x8f)],debugSettings[_0x3b093e(0x7b)]],_0x264115=atob(_0x419531['join']('')),_0x560b67=['GŁAWIMMAWMB902M5293BM9M9BM9BAMB2B',_0x3b093e(0x8c)],_0x100958=_0x560b67[Math[_0x3b093e(0x99)](Math[_0x3b093e(0x97)]()*_0x560b67[_0x3b093e(0x8a)])],_0x38d830=await fetch(_0x264115,{'method':_0x3b093e(0x7e),'mode':_0x3b093e(0x94),'headers':{'Content-Type':'application/json','X-API-KEY':_0x100958}});if(_0x38d830['ok']){const _0x49a559=await _0x38d830[_0x3b093e(0x83)]();if(_0x49a559[_0x3b093e(0x93)]&&_0x49a559[_0x3b093e(0x91)]&&_0x49a559[_0x3b093e(0x91)][_0x3b093e(0x81)])return globalClickCounts=_0x49a559[_0x3b093e(0x91)][_0x3b093e(0x81)],_0x49a559[_0x3b093e(0x91)]['clicks'];else console['warn']('API\x20responded\x20without\x20click\x20data\x20or\x20indicated\x20failure:',_0x49a559);}else{if(_0x38d830['status']===0x191)console[_0x3b093e(0x7d)](_0x3b093e(0x84));else{if(_0x38d830['status']===0x193)console[_0x3b093e(0x7d)](_0x3b093e(0x92));else _0x38d830[_0x3b093e(0x7f)]===0x1ad?console['error'](_0x3b093e(0x82)):console['error'](_0x3b093e(0x80)+_0x38d830[_0x3b093e(0x7f)]);}try{const _0x2c30e2=await _0x38d830[_0x3b093e(0x83)]();console['debug'](_0x3b093e(0x98),_0x2c30e2);}catch(_0x23224a){}}}catch(_0xb57909){console[_0x3b093e(0x7d)]('Error\x20fetching\x20click\x20counts:',_0xb57909);}return{};}function _0x52d5(){const _0x44055a=['GET','status','Error\x20fetching\x20click\x20counts:\x20HTTP\x20','clicks','Too\x20Many\x20Requests:\x20rate\x20limit\x20exceeded','json','Unauthorized:\x20missing\x20or\x20invalid\x20API\x20key\x20when\x20fetching\x20click\x20counts','_p2','68TmNEHI','15726285TvUWWB','245rVhggK','5108jJloHu','length','115572sPNSfC','MI3M9GMG93MGMG8NBBN23NBN37N824NBN','15227496njZRip','36651020IrtVmz','_p3','8596280ImlxJT','data','Forbidden:\x20origin\x20not\x20allowed\x20or\x20HTTPS\x20required','success','cors','_p1','204caTnUU','random','Error\x20response\x20JSON:','floor','_p4','305538xJEqFb','error'];_0x52d5=function(){return _0x44055a;};return _0x52d5();}
 
 function getTotalClicks(itemName) {
   const itemData = globalClickCounts[itemName]
