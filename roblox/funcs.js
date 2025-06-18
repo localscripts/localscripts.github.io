@@ -429,7 +429,7 @@ const expData = [
     price: "FREE",
     plat: ["windows"],
     pros: ["Has a decompiler", "No keysystem", "98% sUNC", "Level 8"],
-    neutral: ["New exploit- Safety is unknown"],
+    neutral: [],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
