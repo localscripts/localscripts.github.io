@@ -1023,21 +1023,6 @@ class ClickTracker {
 
   showClickFeedback(button, itemName, buttonType) {
     const feedback = document.createElement("div")
-    feedback.textContent = `✓ ${buttonType} tracked`
-    feedback.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #10b981;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 12px;
-      z-index: 10000;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `
 
     document.body.appendChild(feedback)
 
