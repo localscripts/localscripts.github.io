@@ -252,8 +252,7 @@ const expData = [
     name: "Milkers",
     desc: "A private undetected executor since 2013.",
     lvl: 8,
-    price: "$20.00",
-    period: "lifetime",
+    price: "Invite Only",
     plat: ["windows"],
     pros: ["Undetected since 2013", "Has a decompiler", "100% sUNC", "Level 8"],
     neutral: [],
@@ -266,7 +265,7 @@ const expData = [
     premium: false,
     href: "https://milkers.best",
     priceHref: "https://milkers.best",
-    hide: true,
+    hide: false,
     pricegray: true,
   },
     {
