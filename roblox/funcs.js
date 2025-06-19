@@ -843,7 +843,61 @@ const configData = {
   timeout: 5000,
 }
 
+const API_EP = 'https://voxlis.net/counts.php';
+let API_KEY = null;
+
+async function fetchApiKey() {
+  try {
+    const res = await fetch(`${API_EP}?action=get_api_key`, {
+      credentials: 'include'
+    });
+    const { success, api_key } = await res.json();
+    if (success) API_KEY = api_key;
+    else console.error('API key error', success);
+  } catch (e) { console.error('Fetch API key failed', e); }
+}
+
+fetchApiKey();
+
 let globalClickCounts = {}
+
+async function fetchClickCounts() {
+  if (!API_KEY) {
+    console.warn('No API_KEY, fetching again…');
+    await fetchApiKey();
+    if (!API_KEY) {
+      console.error('Unable to obtain API key; aborting fetchClickCounts');
+      return {};
+    }
+  }
+
+  try {
+    const res = await fetch(`${API_ENDPOINT}?action=get_stats`, {
+      method:      "GET",
+      credentials: "include",
+      headers: {
+        "X-Api-Key": API_KEY
+      }
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const json = await res.json();
+    if (json.success && json.data && json.data.clicks) {
+      console.log('✅ Fetched click counts');
+      window.globalClickCounts = json.data.clicks;
+      return json.data.clicks;
+    } else {
+      console.error('❌ Failed to fetch click counts:', json);
+      return {};
+    }
+  } catch (error) {
+    console.error("❌ Error fetching click counts:", error);
+    return {};
+  }
+}
 
 function getTotalClicks(itemName) {
   const itemData = globalClickCounts[itemName]
@@ -1018,164 +1072,68 @@ class ClickTracker {
   }
 
   async trackClick(itemName, buttonType) {
-    this.log(`Tracking ${buttonType} click for "${itemName}"`);
-    
+    console.log(`Tracking ${buttonType} click for "${itemName}"`);
+
+    if (!API_KEY) {
+      console.warn('No API_KEY, fetching again…');
+      await fetchApiKey();
+      if (!API_KEY) {
+        console.error('Unable to obtain API key; aborting trackClick');
+        return;
+      }
+    }
+
+    const payload = {
+      action:      "track_click",
+      item:        itemName,
+      button_type: buttonType,
+      user_agent:  navigator.userAgent,
+      referrer:    document.referrer || "direct"
+    };
+
+    console.log("Sending tracking data:", payload);
+
     try {
-      const token = await this.getCurrentToken();
-      const signature = this.getSecuritySignature();
-
-      const data = {
-        action: "track_click",
-        item: itemName,
-        button_type: buttonType,
-        timestamp: Date.now(),
-        user_agent: navigator.userAgent,
-        referrer: document.referrer || "direct",
-        security_signature: signature
-      };
-
-      this.log("Sending tracking data:", data);
-
-      const response = await fetch(this.apiEndpoint, {
-        method: "POST",
+      const response = await fetch(API_ENDPOINT, {
+        method:      "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          "X-Auth-Token": token,
-          "X-Security-Signature": signature
+          "X-Api-Key":     API_KEY
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload)
       });
 
-      this.log("API response status:", response.status);
-
-      if (response.status === 401) {
-        this.log("⚠️ Token expired, refreshing...");
-        await this.refreshToken();
-        return this.trackClick(itemName, buttonType);
-      }
+      console.log("API response status:", response.status);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const result = await response.json();
-      this.log("API response:", result);
+      console.log("API response:", result);
 
       if (result.success) {
-        this.log(`✅ Successfully tracked ${buttonType} click for "${itemName}"`);
+        console.log(`✅ Successfully tracked ${buttonType} click for "${itemName}"`);
+        if (!window.globalClickCounts) {
+          window.globalClickCounts = {};
+        }
         if (!globalClickCounts[itemName]) {
           globalClickCounts[itemName] = { website: 0, price: 0 };
         }
         globalClickCounts[itemName][buttonType]++;
       } else {
-        this.log(`❌ Tracking failed for "${itemName}":`, result.error);
-        this.queueFailedClick(itemName, buttonType, data);
-      }
-    } catch (error) {
-      this.log(`❌ Error tracking click for "${itemName}":`, error);
-      this.queueFailedClick(itemName, buttonType, {
-        ...data,
-        error: error.message
-      });
-    }
-  }
-
-  async fetchClickCounts() {
-    try {
-      const token = await this.getCurrentToken();
-      const signature = this.getSecuritySignature();
-      
-      const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4];
-      const endpoint = atob(urlParts.join(""));
-      
-      const response = await fetch(endpoint, {
-        headers: {
-          "X-Auth-Token": token,
-          "X-Security-Signature": signature
-        }
-      });
-      
-      if (response.status === 401) {
-        this.log("⚠️ Token expired, refreshing...");
-        await this.refreshToken();
-        return this.fetchClickCounts();
-      }
-      
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success && data.data && data.data.clicks) {
-          globalClickCounts = data.data.clicks;
-          return data.data.clicks;
+        console.error(`❌ Tracking failed for "${itemName}":`, result.message || result.error);
+        if (typeof queueFailedClick === 'function') {
+          queueFailedClick(itemName, buttonType);
         }
       }
-      throw new Error(`Request failed with status ${response.status}`);
     } catch (error) {
-      console.error("Error fetching click counts:", error);
-      return {};
-    }
-  }
-
-  async getCurrentToken() {
-    if (!this.currentToken || Date.now() > this.tokenExpiry - 30000) {
-      await this.refreshToken();
-    }
-    return this.currentToken;
-  }
-
-  async refreshToken() {
-    try {
-      const response = await fetch(this.tokenEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Security-Signature': this.getSecuritySignature(),
-          'X-Request-Origin': window.location.origin
-        },
-        body: JSON.stringify({ 
-          client_id: 'voxlis_frontend',
-          session_id: this.getSessionId()
-        })
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        this.currentToken = data.token;
-        this.tokenExpiry = data.expires * 1000;
-        return true;
+      console.error(`❌ Error tracking click for "${itemName}":`, error);
+      if (typeof queueFailedClick === 'function') {
+        queueFailedClick(itemName, buttonType);
       }
-      throw new Error('Token refresh failed');
-    } catch (error) {
-      console.error('Token refresh error:', error);
-      throw error;
     }
-  }
-
-  getSessionId() {
-    if (!sessionStorage.getItem('voxlis_session')) {
-      sessionStorage.setItem('voxlis_session', crypto.randomUUID());
-    }
-    return sessionStorage.getItem('voxlis_session');
-  }
-
-  getSecuritySignature() {
-    if (!this.securitySignature) {
-      const salt = Math.random().toString(36).substring(2, 15);
-      const timestamp = Date.now();
-      this.securitySignature = btoa(`${salt}|${timestamp}|${navigator.userAgent}`);
-    }
-    return this.securitySignature;
-  }
-
-  queueFailedClick(itemName, buttonType, data) {
-    const failedClicks = JSON.parse(localStorage.getItem('failed_clicks') || '[]');
-    failedClicks.push({
-      item: itemName,
-      button_type: buttonType,
-      data: data,
-      timestamp: Date.now()
-    });
-    localStorage.setItem('failed_clicks', JSON.stringify(failedClicks));
-    this.log('⚠️ Click queued for retry');
   }
 
   showClickFeedback(button, itemName, buttonType) {
