@@ -1072,7 +1072,7 @@ class ClickTracker {
     return null
   }
 
-  async trackClick(itemName, buttonType) {
+async trackClick(itemName, buttonType) {
     try {
         const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4];
         const apiEndpoint = atob(urlParts.join(''));
@@ -1082,20 +1082,23 @@ class ClickTracker {
             const tokenResp = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
             if (!tokenResp.ok) throw new Error(`Token fetch failed: ${tokenResp.status}`);
             const tokenData = await tokenResp.json();
-            if (!tokenData.success || !tokenData.token || !tokenData.expires) throw new Error('Token fetch returned invalid data: ' + JSON.stringify(tokenData));
+            if (!tokenData.success || !tokenData.token || !tokenData.expires) {
+                throw new Error('Token fetch returned invalid data: ' + JSON.stringify(tokenData));
+            }
             this.authToken = tokenData.token;
             this.tokenExpires = tokenData.expires;
             if (this.log) this.log('Obtained new auth token, expires at', new Date(this.tokenExpires * 1000).toISOString());
         }
-        const recaptchaToken = await grecaptcha.execute(this.siteKey, { action: 'click' });
+        
         const fingerprint = await computeFingerprint();
+        
         const payload = {
             action: 'track_click',
             item: itemName,
             button_type: buttonType,
-            recaptcha_token: recaptchaToken,
             fingerprint: fingerprint
         };
+        
         let response = await fetch(apiEndpoint, {
             method: 'POST',
             headers: {
@@ -1104,6 +1107,7 @@ class ClickTracker {
             },
             body: JSON.stringify(payload)
         });
+        
         if (response.status === 401) {
             if (this.log) this.log('Auth token invalid or expired; refreshing token and retrying');
             this.authToken = null;
@@ -1111,10 +1115,13 @@ class ClickTracker {
             const tokenResp2 = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
             if (!tokenResp2.ok) throw new Error(`Token fetch failed on retry: ${tokenResp2.status}`);
             const tokenData2 = await tokenResp2.json();
-            if (!tokenData2.success || !tokenData2.token || !tokenData2.expires) throw new Error('Token fetch retry returned invalid data: ' + JSON.stringify(tokenData2));
+            if (!tokenData2.success || !tokenData2.token || !tokenData2.expires) {
+                throw new Error('Token fetch retry returned invalid data: ' + JSON.stringify(tokenData2));
+            }
             this.authToken = tokenData2.token;
             this.tokenExpires = tokenData2.expires;
             if (this.log) this.log('Obtained new auth token on retry, expires at', new Date(this.tokenExpires * 1000).toISOString());
+            
             response = await fetch(apiEndpoint, {
                 method: 'POST',
                 headers: {
@@ -1124,15 +1131,18 @@ class ClickTracker {
                 body: JSON.stringify(payload)
             });
         }
+        
         if (response.status === 429) {
             if (this.log) this.log(`❌ Rate limited when tracking "${itemName}"`);
             if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
             return;
         }
+        
         if (!response.ok) {
             const text = await response.text().catch(() => '');
             throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
         }
+        
         const result = await response.json();
         if (this.log) this.log('API response:', result);
         if (result.success) {
