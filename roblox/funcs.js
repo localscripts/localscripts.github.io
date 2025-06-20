@@ -1087,17 +1087,6 @@ class ClickTracker {
             this.tokenExpires = tokenData.expires;
             if (this.log) this.log('Obtained new auth token, expires at', new Date(this.tokenExpires * 1000).toISOString());
         }
-        
-        if (typeof grecaptcha === 'undefined') {
-          await new Promise((resolve, reject) => {
-              const script = document.createElement('script');
-              script.src = `https://www.google.com/recaptcha/api.js?render=${this.siteKey}`;
-              script.onload = resolve;
-              script.onerror = reject;
-              document.head.appendChild(script);
-          });
-        }
-        await new Promise(resolve => grecaptcha.ready(resolve));
         const recaptchaToken = await grecaptcha.execute(this.siteKey, { action: 'click' });
         const fingerprint = await computeFingerprint();
         const payload = {
