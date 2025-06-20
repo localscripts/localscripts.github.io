@@ -962,7 +962,51 @@ class APIClient {
         }
     }
 
-
+    async trackClick(itemName, buttonType) {
+        if (!this.initialized) await this.initialize();
+        
+        try {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+                await this.getToken();
+            }
+            
+            const fingerprint = await this.generateFingerprint();
+            
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.token}`,
+                    'X-Session-Token': this.sessionId,
+                    'X-Nonce': this.nonce
+                },
+                body: JSON.stringify({
+                    item: itemName,
+                    button_type: buttonType,
+                    fingerprint: fingerprint
+                })
+            });
+            
+            if (response.status === 401) {
+                await this.getToken();
+                return this.trackClick(itemName, buttonType);
+            }
+            
+            if (!response.ok) throw new Error(`API error: ${response.status}`);
+            
+            const data = await response.json();
+            if (data.success && data.data.nonce) {
+                this.nonce = data.data.nonce;
+                return true;
+            }
+            
+            throw new Error('Click tracking failed');
+        } catch (error) {
+            console.error('Tracking error:', error);
+            return false;
+        }
+    }
 
     async fetchStats() {
         if (!this.initialized) await this.initialize();
@@ -1015,12 +1059,6 @@ class APIClient {
 }
 
 window.apiClient = new APIClient();
-
-document.addEventListener('DOMContentLoaded', () => {
-    window.apiClient.initialize().catch(e => {
-        console.error('API pre-initialization failed:', e);
-    });
-});
 
 async function fetchClickCounts() {
     return window.apiClient.fetchStats();
