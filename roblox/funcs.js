@@ -1062,7 +1062,7 @@ class ClickTracker {
   constructor() {
     this.apiEndpoint = this._buildEndpoint()
     this.initialized = false
-    this.debugMode = true
+    this.debugMode = false
   }
 
   _buildEndpoint() {
