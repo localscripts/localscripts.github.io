@@ -870,9 +870,13 @@ class APIClient {
         this.nonce = '';
         this.token = '';
         this.tokenExpiry = 0;
+        this.initialized = false;
     }
 
-    async initSession() {
+    // Initialize session and HMAC key on page load
+    async initialize() {
+        if (this.initialized) return;
+        
         try {
             const res = await fetch(`${this.apiUrl}?action=init_session`, {
                 method: 'GET',
@@ -884,19 +888,22 @@ class APIClient {
             const data = await res.json();
             if (!data.success) throw new Error('Invalid session response');
             
-            this.sessionId = data.session_id;
-            this.sessionSecret = data.session_secret || '';
-            this.nonce = data.nonce;
+            this.sessionId = data.data.session_id;
+            this.sessionSecret = data.data.session_secret;
+            this.nonce = data.data.nonce;
+            this.initialized = true;
             
             return true;
         } catch (error) {
-            console.error('Session initialization failed:', error);
+            console.error('Initialization failed:', error);
             throw error;
         }
     }
 
     async generateSignature(data) {
-        if (!this.sessionSecret) return '';
+        if (!this.sessionSecret) {
+            throw new Error('Session secret not available');
+        }
         
         try {
             const encoder = new TextEncoder();
@@ -919,12 +926,12 @@ class APIClient {
                 .join('');
         } catch (error) {
             console.error('Signature generation failed:', error);
-            return '';
+            throw error;
         }
     }
 
     async getToken() {
-        if (!this.sessionId) await this.initSession();
+        if (!this.initialized) await this.initialize();
         
         try {
             const signature = await this.generateSignature(this.nonce);
@@ -945,9 +952,9 @@ class APIClient {
             const data = await res.json();
             if (!data.success) throw new Error('Invalid token response');
             
-            this.token = data.token;
-            this.tokenExpiry = data.expires;
-            this.nonce = data.nonce;
+            this.token = data.data.token;
+            this.tokenExpiry = data.data.expires;
+            this.nonce = data.data.nonce;
             
             return this.token;
         } catch (error) {
@@ -957,10 +964,14 @@ class APIClient {
     }
 
     async trackClick(itemName, buttonType) {
+        if (!this.initialized) await this.initialize();
+        
         try {
             if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
                 await this.getToken();
             }
+            
+            const fingerprint = await this.generateFingerprint();
             
             const response = await fetch(this.apiUrl, {
                 method: 'POST',
@@ -972,9 +983,9 @@ class APIClient {
                     'X-Nonce': this.nonce
                 },
                 body: JSON.stringify({
-                    action: 'track_click',
                     item: itemName,
-                    button_type: buttonType
+                    button_type: buttonType,
+                    fingerprint: fingerprint
                 })
             });
             
@@ -986,8 +997,8 @@ class APIClient {
             if (!response.ok) throw new Error(`API error: ${response.status}`);
             
             const data = await response.json();
-            if (data.success && data.nonce) {
-                this.nonce = data.nonce;
+            if (data.success && data.data.nonce) {
+                this.nonce = data.data.nonce;
                 return true;
             }
             
@@ -999,6 +1010,8 @@ class APIClient {
     }
 
     async fetchStats() {
+        if (!this.initialized) await this.initialize();
+        
         try {
             if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
                 await this.getToken();
@@ -1012,8 +1025,8 @@ class APIClient {
             if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
             
             const data = await response.json();
-            if (data.success && data.stats) {
-                return data.stats;
+            if (data.success && data.data.stats) {
+                return data.data.stats;
             }
             
             throw new Error('Invalid stats response');
@@ -1022,11 +1035,37 @@ class APIClient {
             return {};
         }
     }
+
+    async generateFingerprint() {
+        try {
+            const parts = [
+                navigator.userAgent,
+                navigator.platform,
+                screen.width + 'x' + screen.height,
+                new Date().getTimezoneOffset(),
+                navigator.hardwareConcurrency || '',
+                navigator.deviceMemory || '',
+                screen.colorDepth
+            ].join('|');
+            
+            const buffer = new TextEncoder().encode(parts);
+            const hash = await crypto.subtle.digest('SHA-256', buffer);
+            return Array.from(new Uint8Array(hash))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        } catch {
+            return 'fp-' + Math.random().toString(36).substr(2, 10);
+        }
+    }
 }
 
-if (!window.apiClient) {
-    window.apiClient = new APIClient();
-}
+window.apiClient = new APIClient();
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.apiClient.initialize().catch(e => {
+        console.error('API pre-initialization failed:', e);
+    });
+});
 
 async function fetchClickCounts() {
     return window.apiClient.fetchStats();
