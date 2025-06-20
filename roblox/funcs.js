@@ -1015,16 +1015,30 @@ class APIClient {
             if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
                 await this.getToken();
             }
+            const timestamp = new Date().getTime();
+            const url = `${this.apiUrl}?action=get_stats&_=${timestamp}`;
             
-            const response = await fetch(`${this.apiUrl}?action=get_stats`, {
+            const response = await fetch(url, {
                 method: 'GET',
-                headers: { 'Authorization': `Bearer ${this.token}` }
+                headers: { 
+                    'Authorization': `Bearer ${this.token}`,
+                    'X-Session-Token': this.sessionId,
+                    'X-Nonce': this.nonce
+                }
             });
+            
+            if (response.status === 401) {
+                await this.getToken();
+                return this.fetchStats();
+            }
             
             if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
             
             const data = await response.json();
             if (data.success && data.data.stats) {
+                if (data.data.nonce) {
+                    this.nonce = data.data.nonce;
+                }
                 return data.data.stats;
             }
             
@@ -1034,7 +1048,6 @@ class APIClient {
             return {};
         }
     }
-
     async generateFingerprint() {
         try {
             const parts = [
