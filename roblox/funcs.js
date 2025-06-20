@@ -1018,10 +1018,7 @@ class APIClient {
             
             const response = await fetch(`${this.apiUrl}?action=get_stats`, {
                 method: 'GET',
-                headers: { 
-                    'Authorization': `Bearer ${this.token}`,
-                    'X-Session-Token': this.sessionId
-                }
+                headers: { 'Authorization': `Bearer ${this.token}` }
             });
             
             if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
@@ -1067,19 +1064,29 @@ async function fetchClickCounts() {
     return window.apiClient.fetchStats();
 }
 
+async function generateFingerprint() {
+    try {
+        const data = [
+            navigator.userAgent,
+            navigator.platform,
+            screen.width + 'x' + screen.height,
+            new Date().getTimezoneOffset()
+        ].join('|');
+        
+        const buffer = new TextEncoder().encode(data);
+        const hash = await crypto.subtle.digest('SHA-256', buffer);
+        return Array.from(new Uint8Array(hash))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    } catch {
+        return 'default-fingerprint';
+    }
+}
+
 function getTotalClicks(itemName) {
-  if (typeof globalClickCounts === 'undefined') {
-    console.error('globalClickCounts is not defined');
-    return 0;
-  }
-  
-  const itemData = globalClickCounts[itemName];
-  if (!itemData) return 0;
-  
-  const websiteClicks = itemData.website || 0;
-  const priceClicks = itemData.price || 0;
-  
-  return websiteClicks + priceClicks;
+  const itemData = globalClickCounts[itemName]
+  if (!itemData) return 0
+  return (itemData.website || 0) + (itemData.price || 0)
 }
 
 const performanceConfig = {
