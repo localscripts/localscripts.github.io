@@ -862,137 +862,192 @@ async function computeFingerprint() {
 
 let globalClickCounts = {}
 
-class RnxqPvbClient {
+class APIClient {
     constructor() {
-        this.qpwYtzr = 'https://api.voxlis.net/counts.php';
-        this.kshAvbt = '';
-        this.ewzRgio = '';
-        this.vxqBfjo = '';
-        this.umoLrkc = '';
-        this.chnGxdv = 0;
-        this.log = console.log;
+        this.apiUrl = 'https://api.voxlis.net/counts.php';
+        this.sessionId = '';
+        this.sessionSecret = '';
+        this.nonce = '';
+        this.token = '';
+        this.tokenExpiry = 0;
     }
 
-    async bpdKfro() {
+    async initSession() {
         try {
-            const res = await fetch(`${this.qpwYtzr}?action=init_session`, {
+            const res = await fetch(`${this.apiUrl}?action=init_session`, {
                 method: 'GET',
                 credentials: 'include'
             });
+            
             if (!res.ok) throw new Error(`Session init failed: ${res.status}`);
+            
             const data = await res.json();
             if (!data.success) throw new Error('Invalid session response');
-
-            this.kshAvbt = data.session_id;
-            this.vxqBfjo = data.nonce;
+            
+            this.sessionId = data.session_id;
+            this.sessionSecret = data.session_secret || '';
+            this.nonce = data.nonce;
+            
             return true;
-        } catch (e) {
-            this.log('Session initialization failed:', e);
-            throw e;
+        } catch (error) {
+            console.error('Session initialization failed:', error);
+            throw error;
         }
     }
 
-    async mkgWvlu(data) {
-        if (!this.ewzRgio) return '';
-        const encoder = new TextEncoder();
-        const buf = encoder.encode(data);
-        const key = await crypto.subtle.importKey(
-            'raw',
-            encoder.encode(this.ewzRgio),
-            { name: 'HMAC', hash: 'SHA-384' },
-            false,
-            ['sign']
-        );
-        const sig = await crypto.subtle.sign('HMAC', key, buf);
-        return Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('');
+    async generateSignature(data) {
+        if (!this.sessionSecret) return '';
+        
+        try {
+            const encoder = new TextEncoder();
+            const key = await crypto.subtle.importKey(
+                'raw',
+                encoder.encode(this.sessionSecret),
+                { name: 'HMAC', hash: 'SHA-384' },
+                false,
+                ['sign']
+            );
+            
+            const signature = await crypto.subtle.sign(
+                'HMAC',
+                key,
+                encoder.encode(data)
+            );
+            
+            return Array.from(new Uint8Array(signature))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        } catch (error) {
+            console.error('Signature generation failed:', error);
+            return '';
+        }
     }
 
-    async hsyVgkt() {
-        if (!this.kshAvbt) await this.bpdKfro();
+    async getToken() {
+        if (!this.sessionId) await this.initSession();
+        
         try {
-            const signature = await this.mkgWvlu(this.vxqBfjo);
+            const signature = await this.generateSignature(this.nonce);
             const headers = {
-                'X-Session-Token': this.kshAvbt,
-                'X-Nonce': this.vxqBfjo
+                'X-Session-Token': this.sessionId,
+                'X-Nonce': this.nonce,
+                'X-Signature': signature
             };
-            if (signature) headers['X-Signature'] = signature;
-
-            const res = await fetch(`${this.qpwYtzr}?action=get_token`, {
+            
+            const res = await fetch(`${this.apiUrl}?action=get_token`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: headers
             });
+            
             if (!res.ok) throw new Error(`Token fetch failed: ${res.status}`);
-
-            const d = await res.json();
-            if (!d.success) throw new Error('Invalid token response');
-
-            this.umoLrkc = d.token;
-            this.chnGxdv = d.expires;
-            this.vxqBfjo = d.nonce;
-            return true;
-        } catch (e) {
-            this.log('Token request failed:', e);
-            throw e;
+            
+            const data = await res.json();
+            if (!data.success) throw new Error('Invalid token response');
+            
+            this.token = data.token;
+            this.tokenExpiry = data.expires;
+            this.nonce = data.nonce;
+            
+            return this.token;
+        } catch (error) {
+            console.error('Token request failed:', error);
+            throw error;
         }
     }
 
-    async jklDtrn() {
+    async trackClick(itemName, buttonType) {
         try {
-            const parts = [
-                navigator.userAgent,
-                navigator.platform,
-                navigator.hardwareConcurrency,
-                screen.width,
-                screen.height,
-                screen.colorDepth,
-                new Date().getTimezoneOffset()
-            ];
-            const data = parts.join('|');
-            const buf = new TextEncoder().encode(data);
-            const hash = await crypto.subtle.digest('SHA-256', buf);
-            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
-        } catch {
-            return 'error';
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+                await this.getToken();
+            }
+            
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.token}`,
+                    'X-Session-Token': this.sessionId,
+                    'X-Nonce': this.nonce
+                },
+                body: JSON.stringify({
+                    action: 'track_click',
+                    item: itemName,
+                    button_type: buttonType
+                })
+            });
+            
+            if (response.status === 401) {
+                await this.getToken();
+                return this.trackClick(itemName, buttonType);
+            }
+            
+            if (!response.ok) throw new Error(`API error: ${response.status}`);
+            
+            const data = await response.json();
+            if (data.success && data.nonce) {
+                this.nonce = data.nonce;
+                return true;
+            }
+            
+            throw new Error('Click tracking failed');
+        } catch (error) {
+            console.error('Tracking error:', error);
+            return false;
+        }
+    }
+
+    async fetchStats() {
+        try {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+                await this.getToken();
+            }
+            
+            const response = await fetch(`${this.apiUrl}?action=get_stats`, {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${this.token}` }
+            });
+            
+            if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
+            
+            const data = await response.json();
+            if (data.success && data.stats) {
+                return data.stats;
+            }
+            
+            throw new Error('Invalid stats response');
+        } catch (error) {
+            console.error('Error fetching stats:', error);
+            return {};
         }
     }
 }
 
-if (!window.__rnxqPvbClient) {
-    window.__rnxqPvbClient = new RnxqPvbClient();
+if (!window.apiClient) {
+    window.apiClient = new APIClient();
 }
 
 async function fetchClickCounts() {
-    const client = window.__rnxqPvbClient;
-    const api = client.qpwYtzr;
+    return window.apiClient.fetchStats();
+}
 
+async function generateFingerprint() {
     try {
-        if (!client.umoLrkc || Date.now() / 1000 >= client.chnGxdv) {
-            await client.hsyVgkt();
-        }
-
-        const statsUrl = `${api}?action=get_stats`;
-        const response = await fetch(statsUrl, {
-            method: 'GET',
-            headers: { 'Authorization': `Bearer ${client.umoLrkc}` }
-        });
-
-        if (!response.ok) {
-            console.error('Error fetching click counts:', response.status);
-            return {};
-        }
-
-        const data = await response.json();
-        if (data.success && data.data && data.data.clicks) {
-            window.globalClickCounts = data.data.clicks;
-            return data.data.clicks;
-        } else {
-            console.error('Unexpected data format from fetchClickCounts:', data);
-            return {};
-        }
-    } catch (error) {
-        console.error('Error fetching click counts:', error);
-        return {};
+        const data = [
+            navigator.userAgent,
+            navigator.platform,
+            screen.width + 'x' + screen.height,
+            new Date().getTimezoneOffset()
+        ].join('|');
+        
+        const buffer = new TextEncoder().encode(data);
+        const hash = await crypto.subtle.digest('SHA-256', buffer);
+        return Array.from(new Uint8Array(hash))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    } catch {
+        return 'default-fingerprint';
     }
 }
 
@@ -1169,51 +1224,7 @@ class ClickTracker {
   }
 
   async trackClick(itemName, buttonType) {
-      try {
-          const client = window.__rnxqPvbClient;
-
-          if (!client.umoLrkc || Date.now() / 1000 >= client.chnGxdv) {
-              await client.hsyVgkt();
-          }
-
-          const fingerprint = await client.jklDtrn();
-
-          const payload = {
-              item: itemName,
-              button_type: buttonType,
-              fingerprint: fingerprint
-          };
-
-          const response = await fetch(client.qpwYtzr, {
-              method: 'POST',
-              credentials: 'include',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${client.umoLrkc}`,
-                  'X-Session-Token': client.kshAvbt,
-                  'X-Nonce': client.vxqBfjo
-              },
-              body: JSON.stringify(payload)
-          });
-
-          if (response.status === 401) {
-              await client.hsyVgkt();
-              return trackClick(itemName, buttonType);
-          }
-
-          if (!response.ok) throw new Error(`API error: ${response.status}`);
-
-          const data = await response.json();
-          if (data.success) {
-              client.vxqBfjo = data.nonce;
-              return true;
-          }
-
-          throw new Error('Click tracking failed');
-      } catch (error) {
-          console.error('Tracking error:', error);
-          return false;
-      }
+      return window.apiClient.trackClick(itemName, buttonType);
   }
 
   showClickFeedback(button, itemName, buttonType) {
