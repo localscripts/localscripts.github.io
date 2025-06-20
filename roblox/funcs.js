@@ -1015,30 +1015,19 @@ class APIClient {
             if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
                 await this.getToken();
             }
-            const timestamp = new Date().getTime();
-            const url = `${this.apiUrl}?action=get_stats&_=${timestamp}`;
             
-            const response = await fetch(url, {
+            const response = await fetch(`${this.apiUrl}?action=get_stats`, {
                 method: 'GET',
                 headers: { 
                     'Authorization': `Bearer ${this.token}`,
-                    'X-Session-Token': this.sessionId,
-                    'X-Nonce': this.nonce
+                    'X-Session-Token': this.sessionId
                 }
             });
-            
-            if (response.status === 401) {
-                await this.getToken();
-                return this.fetchStats();
-            }
             
             if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
             
             const data = await response.json();
             if (data.success && data.data.stats) {
-                if (data.data.nonce) {
-                    this.nonce = data.data.nonce;
-                }
                 return data.data.stats;
             }
             
@@ -1048,6 +1037,7 @@ class APIClient {
             return {};
         }
     }
+
     async generateFingerprint() {
         try {
             const parts = [
@@ -1073,37 +1063,23 @@ class APIClient {
 
 window.apiClient = new APIClient();
 
-async function trackClick(itemName, buttonType) {
-    return window.apiClient.trackClick(itemName, buttonType);
-}
-
 async function fetchClickCounts() {
     return window.apiClient.fetchStats();
 }
 
-async function generateFingerprint() {
-    try {
-        const data = [
-            navigator.userAgent,
-            navigator.platform,
-            screen.width + 'x' + screen.height,
-            new Date().getTimezoneOffset()
-        ].join('|');
-        
-        const buffer = new TextEncoder().encode(data);
-        const hash = await crypto.subtle.digest('SHA-256', buffer);
-        return Array.from(new Uint8Array(hash))
-            .map(b => b.toString(16).padStart(2, '0'))
-            .join('');
-    } catch {
-        return 'default-fingerprint';
-    }
-}
-
 function getTotalClicks(itemName) {
-  const itemData = globalClickCounts[itemName]
-  if (!itemData) return 0
-  return (itemData.website || 0) + (itemData.price || 0)
+  if (typeof globalClickCounts === 'undefined') {
+    console.error('globalClickCounts is not defined');
+    return 0;
+  }
+  
+  const itemData = globalClickCounts[itemName];
+  if (!itemData) return 0;
+  
+  const websiteClicks = itemData.website || 0;
+  const priceClicks = itemData.price || 0;
+  
+  return websiteClicks + priceClicks;
 }
 
 const performanceConfig = {
