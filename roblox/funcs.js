@@ -981,8 +981,6 @@ async function generateFingerprint() {
     }
 }
 
-window.apiClient = new APIClient();
-
 document.addEventListener('DOMContentLoaded', () => {
     window.apiClient.initialize().catch(e => {
         console.error('API pre-initialization failed:', e);
