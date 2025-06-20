@@ -992,9 +992,9 @@ const gpbRsfk = new XzqvNryAPIClient();
 
 
 async function fetchClickCounts() {
+    const apiEndpoint = 'https://api.voxlis.net/counts.php';
+
     try {
-        const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4];
-        const apiEndpoint = atob(urlParts.join(''));
         const tokenResp = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
         if (!tokenResp.ok) {
             console.error('Token fetch failed for fetchClickCounts:', tokenResp.status);
@@ -1006,15 +1006,18 @@ async function fetchClickCounts() {
             return {};
         }
         const authToken = tokenData.token;
+
         const statsUrl = `${apiEndpoint}?action=get_stats`;
         const response = await fetch(statsUrl, {
             method: 'GET',
-            headers: { 'Authorization': 'Bearer ' + authToken }
+            headers: { 'Authorization': `Bearer ${authToken}` }
         });
+
         if (!response.ok) {
             console.error('Error fetching click counts:', response.status);
             return {};
         }
+
         const data = await response.json();
         if (data.success && data.data && data.data.clicks) {
             globalClickCounts = data.data.clicks;
@@ -1028,6 +1031,7 @@ async function fetchClickCounts() {
         return {};
     }
 }
+
 
 function getTotalClicks(itemName) {
   const itemData = globalClickCounts[itemName]
