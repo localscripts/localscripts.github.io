@@ -962,7 +962,6 @@ if (!window.__rnxqPvbClient) {
     window.__rnxqPvbClient = new RnxqPvbClient();
 }
 
-
 async function fetchClickCounts() {
     const client = window.__rnxqPvbClient;
     const api = client.qpwYtzr;
@@ -996,7 +995,6 @@ async function fetchClickCounts() {
         return {};
     }
 }
-
 
 function getTotalClicks(itemName) {
   const itemData = globalClickCounts[itemName]
