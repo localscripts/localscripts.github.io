@@ -862,6 +862,135 @@ async function computeFingerprint() {
 
 let globalClickCounts = {}
 
+class XzqvNryAPIClient {
+    constructor() {
+        this.uqwLdbs = this.decodeEndpoint();
+        this.tgjKxma = '';
+        this.pohVjre = '';
+        this.wyzFcdn = '';
+        this.nbsEqtp = '';
+        this.zyvDmtc = 0;
+        this.log = console.log;
+    }
+
+  decodeEndpoint() {
+      return 'https://api.voxlis.net/counts.php';
+  }
+
+    async ltwBvjo() {
+        try {
+            const elwRpcs = await fetch(`${this.uqwLdbs}?action=init_session`, {
+                method: 'GET',
+                credentials: 'include'
+            });
+            
+            if (!elwRpcs.ok) {
+                throw new Error(`Session init failed: ${elwRpcs.status}`);
+            }
+            
+            const qzwHjet = await elwRpcs.json();
+            if (!qzwHjet.success) {
+                throw new Error('Invalid session response');
+            }
+            
+            this.tgjKxma = qzwHjet.session_id;
+            this.wyzFcdn = qzwHjet.nonce;
+            
+            return true;
+        } catch (error) {
+            this.log('Session initialization failed:', error);
+            throw error;
+        }
+    }
+
+    async jnvPcxy() {
+        if (!this.tgjKxma) {
+            await this.ltwBvjo();
+        }
+        return this.pohVjre;
+    }
+
+    async gqpXysv(data) {
+        const encoder = new TextEncoder();
+        const dataBuffer = encoder.encode(data);
+        const key = await crypto.subtle.importKey(
+            'raw',
+            encoder.encode(this.pohVjre),
+            { name: 'HMAC', hash: 'SHA-384' },
+            false,
+            ['sign']
+        );
+        const signature = await crypto.subtle.sign('HMAC', key, dataBuffer);
+        return Array.from(new Uint8Array(signature))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    }
+
+    async mrfSlbw() {
+        if (!this.tgjKxma) {
+            await this.ltwBvjo();
+        }
+        
+        try {
+            const signature = await this.gqpXysv(this.wyzFcdn);
+            
+            const res = await fetch(`${this.uqwLdbs}?action=get_token`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'X-Session-Token': this.tgjKxma,
+                    'X-Nonce': this.wyzFcdn,
+                    'X-Signature': signature
+                }
+            });
+            
+            if (!res.ok) {
+                throw new Error(`Token fetch failed: ${res.status}`);
+            }
+            
+            const d = await res.json();
+            if (!d.success) {
+                throw new Error('Invalid token response');
+            }
+            
+            this.nbsEqtp = d.token;
+            this.zyvDmtc = d.expires;
+            this.wyzFcdn = d.nonce;
+            
+            return true;
+        } catch (error) {
+            this.log('Token request failed:', error);
+            throw error;
+        }
+    }
+
+    async zdoWqmv() {
+        try {
+            const components = [
+                navigator.userAgent,
+                navigator.platform,
+                navigator.hardwareConcurrency,
+                screen.width,
+                screen.height,
+                screen.colorDepth,
+                new Date().getTimezoneOffset()
+            ];
+            
+            const data = components.join('|');
+            const buffer = new TextEncoder().encode(data);
+            const hash = await crypto.subtle.digest('SHA-256', buffer);
+            return Array.from(new Uint8Array(hash))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        } catch (error) {
+            return 'error';
+        }
+    }
+}
+
+const gpbRsfk = new XzqvNryAPIClient();
+
+
 async function fetchClickCounts() {
     try {
         const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4];
@@ -917,7 +1046,7 @@ class ClickTracker {
   constructor() {
     this.apiEndpoint = this._buildEndpoint()
     this.initialized = false
-    this.debugMode = false
+    this.debugMode = true
   }
 
   _buildEndpoint() {
@@ -1072,95 +1201,53 @@ class ClickTracker {
     return null
   }
 
-async trackClick(itemName, buttonType) {
-    try {
-        const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4];
-        const apiEndpoint = atob(urlParts.join(''));
-        if (this.log) this.log(`Tracking ${buttonType} click for "${itemName}"`);
-        const nowSec = Date.now() / 1000;
-        if (!this.authToken || !this.tokenExpires || nowSec >= this.tokenExpires) {
-            const tokenResp = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
-            if (!tokenResp.ok) throw new Error(`Token fetch failed: ${tokenResp.status}`);
-            const tokenData = await tokenResp.json();
-            if (!tokenData.success || !tokenData.token || !tokenData.expires) {
-                throw new Error('Token fetch returned invalid data: ' + JSON.stringify(tokenData));
-            }
-            this.authToken = tokenData.token;
-            this.tokenExpires = tokenData.expires;
-            if (this.log) this.log('Obtained new auth token, expires at', new Date(this.tokenExpires * 1000).toISOString());
-        }
-        
-        const fingerprint = await computeFingerprint();
-        
-        const payload = {
-            action: 'track_click',
-            item: itemName,
-            button_type: buttonType,
-            fingerprint: fingerprint
-        };
-        
-        let response = await fetch(apiEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + this.authToken
-            },
-            body: JSON.stringify(payload)
-        });
-        
-        if (response.status === 401) {
-            if (this.log) this.log('Auth token invalid or expired; refreshing token and retrying');
-            this.authToken = null;
-            this.tokenExpires = 0;
-            const tokenResp2 = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
-            if (!tokenResp2.ok) throw new Error(`Token fetch failed on retry: ${tokenResp2.status}`);
-            const tokenData2 = await tokenResp2.json();
-            if (!tokenData2.success || !tokenData2.token || !tokenData2.expires) {
-                throw new Error('Token fetch retry returned invalid data: ' + JSON.stringify(tokenData2));
-            }
-            this.authToken = tokenData2.token;
-            this.tokenExpires = tokenData2.expires;
-            if (this.log) this.log('Obtained new auth token on retry, expires at', new Date(this.tokenExpires * 1000).toISOString());
-            
-            response = await fetch(apiEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.authToken
-                },
-                body: JSON.stringify(payload)
-            });
-        }
-        
-        if (response.status === 429) {
-            if (this.log) this.log(`❌ Rate limited when tracking "${itemName}"`);
-            if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
-            return;
-        }
-        
-        if (!response.ok) {
-            const text = await response.text().catch(() => '');
-            throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
-        }
-        
-        const result = await response.json();
-        if (this.log) this.log('API response:', result);
-        if (result.success) {
-            if (this.log) this.log(`✅ Successfully tracked ${buttonType} click for "${itemName}"`);
-            if (typeof globalClickCounts !== 'undefined') {
-                if (!globalClickCounts[itemName]) globalClickCounts[itemName] = { website: 0, price: 0 };
-                globalClickCounts[itemName][buttonType]++;
-            }
-        } else {
-            if (this.log) this.log(`❌ Tracking failed for "${itemName}":`, result.message || result.error || result);
-            if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
-        }
-    } catch (error) {
-        if (this.log) this.log(`❌ Error tracking click for "${itemName}":`, error);
-        else console.error(`Error in trackClick for "${itemName}":`, error);
-        if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
-    }
-}
+  async trackClick(itemName, buttonType) {
+      try {
+          if (!gpbRsfk.nbsEqtp || Date.now() / 1000 >= gpbRsfk.zyvDmtc) {
+              await gpbRsfk.mrfSlbw();
+          }
+          
+          const fingerprint = await gpbRsfk.zdoWqmv();
+          
+          const payload = {
+              item: itemName,
+              button_type: buttonType,
+              fingerprint: fingerprint
+          };
+          
+          const response = await fetch(gpbRsfk.uqwLdbs, {
+              method: 'POST',
+              credentials: 'include',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${gpbRsfk.nbsEqtp}`,
+                  'X-Session-Token': gpbRsfk.tgjKxma,
+                  'X-Nonce': gpbRsfk.wyzFcdn
+              },
+              body: JSON.stringify(payload)
+          });
+          
+          if (response.status === 401) {
+              await gpbRsfk.mrfSlbw();
+              return trackClick(itemName, buttonType);
+          }
+          
+          if (!response.ok) {
+              throw new Error(`API error: ${response.status}`);
+          }
+          
+          const data = await response.json();
+          if (data.success) {
+              gpbRsfk.wyzFcdn = data.nonce;
+              return true;
+          }
+          
+          throw new Error('Click tracking failed');
+      } catch (error) {
+          gpbRsfk.log('Tracking error:', error);
+          return false;
+      }
+  }
 
   showClickFeedback(button, itemName, buttonType) {
     const feedback = document.createElement("div")
