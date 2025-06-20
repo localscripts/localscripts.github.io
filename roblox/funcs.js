@@ -873,7 +873,6 @@ class APIClient {
         this.initialized = false;
     }
 
-    // Initialize session and HMAC key on page load
     async initialize() {
         if (this.initialized) return;
         
@@ -963,79 +962,6 @@ class APIClient {
         }
     }
 
-    async trackClick(itemName, buttonType) {
-        if (!this.initialized) await this.initialize();
-        
-        try {
-            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
-                await this.getToken();
-            }
-            
-            const fingerprint = await this.generateFingerprint();
-            
-            const response = await fetch(this.apiUrl, {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.token}`,
-                    'X-Session-Token': this.sessionId,
-                    'X-Nonce': this.nonce
-                },
-                body: JSON.stringify({
-                    item: itemName,
-                    button_type: buttonType,
-                    fingerprint: fingerprint
-                })
-            });
-            
-            if (response.status === 401) {
-                await this.getToken();
-                return this.trackClick(itemName, buttonType);
-            }
-            
-            if (!response.ok) throw new Error(`API error: ${response.status}`);
-            
-            const data = await response.json();
-            if (data.success && data.data.nonce) {
-                this.nonce = data.data.nonce;
-                return true;
-            }
-            
-            throw new Error('Click tracking failed');
-        } catch (error) {
-            console.error('Tracking error:', error);
-            return false;
-        }
-    }
-
-    async fetchStats() {
-        if (!this.initialized) await this.initialize();
-        
-        try {
-            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
-                await this.getToken();
-            }
-            
-            const response = await fetch(`${this.apiUrl}?action=get_stats`, {
-                method: 'GET',
-                headers: { 'Authorization': `Bearer ${this.token}` }
-            });
-            
-            if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
-            
-            const data = await response.json();
-            if (data.success && data.data.stats) {
-                return data.data.stats;
-            }
-            
-            throw new Error('Invalid stats response');
-        } catch (error) {
-            console.error('Error fetching stats:', error);
-            return {};
-        }
-    }
-
     async generateFingerprint() {
         try {
             const parts = [
@@ -1068,7 +994,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchClickCounts() {
-    return window.apiClient.fetchStats();
+  if (!this.initialized) await this.initialize();
+    try {
+        if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+            await this.getToken();
+        }
+        
+        const response = await fetch(`${this.apiUrl}?action=get_stats`, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${this.token}` }
+        });
+        
+        if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
+        
+        const data = await response.json();
+        if (data.success && data.data.stats) {
+            return data.data.stats;
+        }
+        
+        throw new Error('Invalid stats response');
+    } catch (error) {
+        console.error('Error fetching stats:', error);
+        return {};
+    }
 }
 
 async function generateFingerprint() {
@@ -1262,9 +1210,51 @@ class ClickTracker {
     return null
   }
 
-  async trackClick(itemName, buttonType) {
-      return window.apiClient.trackClick(itemName, buttonType);
-  }
+    async trackClick(itemName, buttonType) {
+        if (!this.initialized) await this.initialize();
+        
+        try {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+                await this.getToken();
+            }
+            
+            const fingerprint = await this.generateFingerprint();
+            
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.token}`,
+                    'X-Session-Token': this.sessionId,
+                    'X-Nonce': this.nonce
+                },
+                body: JSON.stringify({
+                    item: itemName,
+                    button_type: buttonType,
+                    fingerprint: fingerprint
+                })
+            });
+            
+            if (response.status === 401) {
+                await this.getToken();
+                return this.trackClick(itemName, buttonType);
+            }
+            
+            if (!response.ok) throw new Error(`API error: ${response.status}`);
+            
+            const data = await response.json();
+            if (data.success && data.data.nonce) {
+                this.nonce = data.data.nonce;
+                return true;
+            }
+            
+            throw new Error('Click tracking failed');
+        } catch (error) {
+            console.error('Tracking error:', error);
+            return false;
+        }
+    }
 
   showClickFeedback(button, itemName, buttonType) {
     const feedback = document.createElement("div")
