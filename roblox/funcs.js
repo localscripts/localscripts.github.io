@@ -862,7 +862,211 @@ async function computeFingerprint() {
 
 let globalClickCounts = {}
 
-class APIClient{constructor(){this['apiUrl']='https://api.voxlis.net/counts.php',this['sessionId']='',this['sessionSecret']='',this['nonce']='',this['token']='',this['tokenExpiry']=0x0,this['initialized']=![];}async['initialize'](){if(this['initialized'])return;try{const A=await fetch(this['apiUrl']+'?action=init_session',{'method':'GET','credentials':'include'});if(!A['ok'])throw new Error('Session\x20init\x20failed:\x20'+A['status']);const Q=await A['json']();if(!Q['success'])throw new Error('Invalid\x20session\x20response');return this['sessionId']=Q['data']['session_id'],this['sessionSecret']=Q['data']['session_secret'],this['nonce']=Q['data']['nonce'],this['initialized']=!![],!![];}catch(Z){console['error']('Initialization\x20failed:',Z);throw Z;}}async['generateSignature'](A){if(!this['sessionSecret'])throw new Error('Session\x20secret\x20not\x20available');try{const Q=new TextEncoder(),Z=await crypto['subtle']['importKey']('raw',Q['encode'](this['sessionSecret']),{'name':'HMAC','hash':'SHA-384'},![],['sign']),Y=await crypto['subtle']['sign']('HMAC',Z,Q['encode'](A));return Array['from'](new Uint8Array(Y))['map'](m=>m['toString'](0x10)['padStart'](0x2,'0'))['join']('');}catch(m){console['error']('Signature\x20generation\x20failed:',m);throw m;}}async['getToken'](){if(!this['initialized'])await this['initialize']();try{const A=await this['generateSignature'](this['nonce']),Q={'X-Session-Token':this['sessionId'],'X-Nonce':this['nonce'],'X-Signature':A},Z=await fetch(this['apiUrl']+'?action=get_token',{'method':'GET','credentials':'include','headers':Q});if(!Z['ok'])throw new Error('Token\x20fetch\x20failed:\x20'+Z['status']);const Y=await Z['json']();if(!Y['success'])throw new Error('Invalid\x20token\x20response');return this['token']=Y['data']['token'],this['tokenExpiry']=Y['data']['expires'],this['nonce']=Y['data']['nonce'],this['token'];}catch(m){console['error']('Token\x20request\x20failed:',m);throw m;}}async['trackClick'](A,Q){if(!this['initialized'])await this['initialize']();try{(!this['token']||Date['now']()>=this['tokenExpiry']*0x3e8)&&await this['getToken']();const Z=await this['generateFingerprint'](),Y=await fetch(this['apiUrl'],{'method':'POST','credentials':'include','headers':{'Content-Type':'application/json','Authorization':'Bearer\x20'+this['token'],'X-Session-Token':this['sessionId'],'X-Nonce':this['nonce']},'body':JSON['stringify']({'item':A,'button_type':Q,'fingerprint':Z})});if(Y['status']===0x191)return await this['getToken'](),this['trackClick'](A,Q);if(!Y['ok'])throw new Error('API\x20error:\x20'+Y['status']);const m=await Y['json']();if(m['success']&&m['data']['nonce'])return this['nonce']=m['data']['nonce'],!![];throw new Error('Click\x20tracking\x20failed');}catch(U){return console['error']('Tracking\x20error:',U),![];}}async['fetchStats'](){if(!this['initialized'])await this['initialize']();try{(!this['token']||Date['now']()>=this['tokenExpiry']*0x3e8)&&await this['getToken']();const A=await fetch(this['apiUrl']+'?action=get_stats',{'method':'GET','headers':{'Authorization':'Bearer\x20'+this['token']}});if(!A['ok'])throw new Error('Stats\x20fetch\x20failed:\x20'+A['status']);const Q=await A['json']();if(Q['success']&&Q['data']['stats'])return Q['data']['stats'];throw new Error('Invalid\x20stats\x20response');}catch(Z){return console['error']('Error\x20fetching\x20stats:',Z),{};}}async['generateFingerprint'](){try{const A=[navigator['userAgent'],navigator['platform'],screen['width']+'x'+screen['height'],new Date()['getTimezoneOffset'](),navigator['hardwareConcurrency']||'',navigator['deviceMemory']||'',screen['colorDepth']]['join']('|'),Q=new TextEncoder()['encode'](A),Z=await crypto['subtle']['digest']('SHA-256',Q);return Array['from'](new Uint8Array(Z))['map'](Y=>Y['toString'](0x10)['padStart'](0x2,'0'))['join']('');}catch{return'fp-'+Math['random']()['toString'](0x24)['substr'](0x2,0xa);}}}window['apiClient']=new APIClient();async function trackClick(A,Q){return window['apiClient']['trackClick'](A,Q);}async function fetchClickCounts(){return window['apiClient']['fetchStats']();}
+class APIClient {
+    constructor() {
+        this.apiUrl = 'https://api.voxlis.net/counts.php';
+        this.sessionId = '';
+        this.sessionSecret = '';
+        this.nonce = '';
+        this.token = '';
+        this.tokenExpiry = 0;
+        this.initialized = false;
+    }
+
+    async initialize() {
+        if (this.initialized) return;
+        
+        try {
+            const res = await fetch(`${this.apiUrl}?action=init_session`, {
+                method: 'GET',
+                credentials: 'include'
+            });
+            
+            if (!res.ok) throw new Error(`Session init failed: ${res.status}`);
+            
+            const data = await res.json();
+            if (!data.success) throw new Error('Invalid session response');
+            
+            this.sessionId = data.data.session_id;
+            this.sessionSecret = data.data.session_secret;
+            this.nonce = data.data.nonce;
+            this.initialized = true;
+            
+            return true;
+        } catch (error) {
+            console.error('Initialization failed:', error);
+            throw error;
+        }
+    }
+
+    async generateSignature(data) {
+        if (!this.sessionSecret) {
+            throw new Error('Session secret not available');
+        }
+        
+        try {
+            const encoder = new TextEncoder();
+            const key = await crypto.subtle.importKey(
+                'raw',
+                encoder.encode(this.sessionSecret),
+                { name: 'HMAC', hash: 'SHA-384' },
+                false,
+                ['sign']
+            );
+            
+            const signature = await crypto.subtle.sign(
+                'HMAC',
+                key,
+                encoder.encode(data)
+            );
+            
+            return Array.from(new Uint8Array(signature))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        } catch (error) {
+            console.error('Signature generation failed:', error);
+            throw error;
+        }
+    }
+
+    async getToken() {
+        if (!this.initialized) await this.initialize();
+        
+        try {
+            const signature = await this.generateSignature(this.nonce);
+            const headers = {
+                'X-Session-Token': this.sessionId,
+                'X-Nonce': this.nonce,
+                'X-Signature': signature
+            };
+            
+            const res = await fetch(`${this.apiUrl}?action=get_token`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: headers
+            });
+            
+            if (!res.ok) throw new Error(`Token fetch failed: ${res.status}`);
+            
+            const data = await res.json();
+            if (!data.success) throw new Error('Invalid token response');
+            
+            this.token = data.data.token;
+            this.tokenExpiry = data.data.expires;
+            this.nonce = data.data.nonce;
+            
+            return this.token;
+        } catch (error) {
+            console.error('Token request failed:', error);
+            throw error;
+        }
+    }
+
+    async trackClick(itemName, buttonType) {
+        if (!this.initialized) await this.initialize();
+        
+        try {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+                await this.getToken();
+            }
+            
+            const fingerprint = await this.generateFingerprint();
+            
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.token}`,
+                    'X-Session-Token': this.sessionId,
+                    'X-Nonce': this.nonce
+                },
+                body: JSON.stringify({
+                    item: itemName,
+                    button_type: buttonType,
+                    fingerprint: fingerprint
+                })
+            });
+            
+            if (response.status === 401) {
+                await this.getToken();
+                return this.trackClick(itemName, buttonType);
+            }
+            
+            if (!response.ok) throw new Error(`API error: ${response.status}`);
+            
+            const data = await response.json();
+            if (data.success && data.data.nonce) {
+                this.nonce = data.data.nonce;
+                return true;
+            }
+            
+            throw new Error('Click tracking failed');
+        } catch (error) {
+            console.error('Tracking error:', error);
+            return false;
+        }
+    }
+
+    async fetchStats() {
+        if (!this.initialized) await this.initialize();
+        
+        try {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+                await this.getToken();
+            }
+            
+            const response = await fetch(`${this.apiUrl}?action=get_stats`, {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${this.token}` }
+            });
+            
+            if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
+            
+            const data = await response.json();
+            if (data.success && data.data.stats) {
+                return data.data.stats;
+            }
+            
+            throw new Error('Invalid stats response');
+        } catch (error) {
+            console.error('Error fetching stats:', error);
+            return {};
+        }
+    }
+
+    async generateFingerprint() {
+        try {
+            const parts = [
+                navigator.userAgent,
+                navigator.platform,
+                screen.width + 'x' + screen.height,
+                new Date().getTimezoneOffset(),
+                navigator.hardwareConcurrency || '',
+                navigator.deviceMemory || '',
+                screen.colorDepth
+            ].join('|');
+            
+            const buffer = new TextEncoder().encode(parts);
+            const hash = await crypto.subtle.digest('SHA-256', buffer);
+            return Array.from(new Uint8Array(hash))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        } catch {
+            return 'fp-' + Math.random().toString(36).substr(2, 10);
+        }
+    }
+}
+
+window.apiClient = new APIClient();
+
+async function trackClick(itemName, buttonType) {
+    return window.apiClient.trackClick(itemName, buttonType);
+}
+
+async function fetchClickCounts() {
+    return window.apiClient.fetchStats();
+}
 
 async function generateFingerprint() {
     try {
