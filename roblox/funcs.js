@@ -862,126 +862,122 @@ async function computeFingerprint() {
 
 let globalClickCounts = {}
 
-class APIClient {
-    constructor() {
-        this.apiUrl = 'https://api.voxlis.net/counts.php';
-        this.sessionId = '';
-        this.sessionSecret = '';
-        this.nonce = '';
-        this.token = '';
-        this.tokenExpiry = 0;
-        this.initialized = false;
-    }
+this.apiUrl = 'https://api.voxlis.net/counts.php';
+this.sessionId = '';
+this.sessionSecret = '';
+this.nonce = '';
+this.token = '';
+this.tokenExpiry = 0;
+this.initialized = false;
 
-    async initialize() {
-        if (this.initialized) return;
+async function initialize() {
+    if (this.initialized) return;
+    
+    try {
+        const res = await fetch(`${this.apiUrl}?action=init_session`, {
+            method: 'GET',
+            credentials: 'include'
+        });
         
-        try {
-            const res = await fetch(`${this.apiUrl}?action=init_session`, {
-                method: 'GET',
-                credentials: 'include'
-            });
-            
-            if (!res.ok) throw new Error(`Session init failed: ${res.status}`);
-            
-            const data = await res.json();
-            if (!data.success) throw new Error('Invalid session response');
-            
-            this.sessionId = data.data.session_id;
-            this.sessionSecret = data.data.session_secret;
-            this.nonce = data.data.nonce;
-            this.initialized = true;
-            
-            return true;
-        } catch (error) {
-            console.error('Initialization failed:', error);
-            throw error;
-        }
-    }
-
-    async generateSignature(data) {
-        if (!this.sessionSecret) {
-            throw new Error('Session secret not available');
-        }
+        if (!res.ok) throw new Error(`Session init failed: ${res.status}`);
         
-        try {
-            const encoder = new TextEncoder();
-            const key = await crypto.subtle.importKey(
-                'raw',
-                encoder.encode(this.sessionSecret),
-                { name: 'HMAC', hash: 'SHA-384' },
-                false,
-                ['sign']
-            );
-            
-            const signature = await crypto.subtle.sign(
-                'HMAC',
-                key,
-                encoder.encode(data)
-            );
-            
-            return Array.from(new Uint8Array(signature))
-                .map(b => b.toString(16).padStart(2, '0'))
-                .join('');
-        } catch (error) {
-            console.error('Signature generation failed:', error);
-            throw error;
-        }
-    }
-
-    async getToken() {
-        if (!this.initialized) await this.initialize();
+        const data = await res.json();
+        if (!data.success) throw new Error('Invalid session response');
         
-        try {
-            const signature = await this.generateSignature(this.nonce);
-            const headers = {
-                'X-Session-Token': this.sessionId,
-                'X-Nonce': this.nonce,
-                'X-Signature': signature
-            };
-            
-            const res = await fetch(`${this.apiUrl}?action=get_token`, {
-                method: 'GET',
-                credentials: 'include',
-                headers: headers
-            });
-            
-            if (!res.ok) throw new Error(`Token fetch failed: ${res.status}`);
-            
-            const data = await res.json();
-            if (!data.success) throw new Error('Invalid token response');
-            
-            this.token = data.data.token;
-            this.tokenExpiry = data.data.expires;
-            this.nonce = data.data.nonce;
-            
-            return this.token;
-        } catch (error) {
-            console.error('Token request failed:', error);
-            throw error;
-        }
+        this.sessionId = data.data.session_id;
+        this.sessionSecret = data.data.session_secret;
+        this.nonce = data.data.nonce;
+        this.initialized = true;
+        
+        return true;
+    } catch (error) {
+        console.error('Initialization failed:', error);
+        throw error;
     }
+}
 
-    async generateFingerprint() {
-        try {
-            const parts = [
-                navigator.userAgent,
-                navigator.platform,
-                screen.width + 'x' + screen.height,
-                new Date().getTimezoneOffset(),
-                navigator.hardwareConcurrency || '',
-                navigator.deviceMemory || '',
-                screen.colorDepth
-            ].join('|');
-            
-            const buffer = new TextEncoder().encode(parts);
-            const hash = await crypto.subtle.digest('SHA-256', buffer);
-            return Array.from(new Uint8Array(hash))
-                .map(b => b.toString(16).padStart(2, '0'))
-                .join('');
-        } catch {
-            return 'fp-' + Math.random().toString(36).substr(2, 10);
-        }
+async function generateSignature(data) {
+    if (!this.sessionSecret) {
+        throw new Error('Session secret not available');
+    }
+    
+    try {
+        const encoder = new TextEncoder();
+        const key = await crypto.subtle.importKey(
+            'raw',
+            encoder.encode(this.sessionSecret),
+            { name: 'HMAC', hash: 'SHA-384' },
+            false,
+            ['sign']
+        );
+        
+        const signature = await crypto.subtle.sign(
+            'HMAC',
+            key,
+            encoder.encode(data)
+        );
+        
+        return Array.from(new Uint8Array(signature))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    } catch (error) {
+        console.error('Signature generation failed:', error);
+        throw error;
+    }
+}
+
+async function getToken() {
+    if (!this.initialized) await this.initialize();
+    
+    try {
+        const signature = await this.generateSignature(this.nonce);
+        const headers = {
+            'X-Session-Token': this.sessionId,
+            'X-Nonce': this.nonce,
+            'X-Signature': signature
+        };
+        
+        const res = await fetch(`${this.apiUrl}?action=get_token`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: headers
+        });
+        
+        if (!res.ok) throw new Error(`Token fetch failed: ${res.status}`);
+        
+        const data = await res.json();
+        if (!data.success) throw new Error('Invalid token response');
+        
+        this.token = data.data.token;
+        this.tokenExpiry = data.data.expires;
+        this.nonce = data.data.nonce;
+        
+        return this.token;
+    } catch (error) {
+        console.error('Token request failed:', error);
+        throw error;
+    }
+}
+
+async function generateFingerprint() {
+    try {
+        const parts = [
+            navigator.userAgent,
+            navigator.platform,
+            screen.width + 'x' + screen.height,
+            new Date().getTimezoneOffset(),
+            navigator.hardwareConcurrency || '',
+            navigator.deviceMemory || '',
+            screen.colorDepth
+        ].join('|');
+        
+        const buffer = new TextEncoder().encode(parts);
+        const hash = await crypto.subtle.digest('SHA-256', buffer);
+        return Array.from(new Uint8Array(hash))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    } catch {
+        return 'fp-' + Math.random().toString(36).substr(2, 10);
     }
 }
 
