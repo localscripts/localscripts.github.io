@@ -1082,6 +1082,7 @@ async function fetchClickCounts() {
 }
 
 function getTotalClicks(itemName) {
+    console.debug('getTotalClicks called for', itemName, 'globalClickCounts:', globalClickCounts);
     if (!globalClickCounts || typeof globalClickCounts !== 'object') return 0;
     const itemData = globalClickCounts[itemName];
     if (!itemData || typeof itemData !== 'object') return 0;
