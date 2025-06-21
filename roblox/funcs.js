@@ -1009,21 +1009,27 @@ class APIClient {
     }
 
     async fetchStats() {
-      try {
-        const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4]
-        const endpoint = atob(urlParts.join(""))
-        const response = await fetch(endpoint)
-        if (response.ok) {
-          const data = await response.json()
-          if (data.success && data.data && data.data.clicks) {
-            globalClickCounts = data.data.clicks
-            return data.data.clicks
-          }
+        try {
+            const urlParts = [
+                'aHR0cHM6Ly9hcGkudm94bGlzLm5ldC9jb3VudHMucGhw', 
+                'P2FjdGlvbj1nZXRfc3RhdHMmdD0=',                 
+                Date.now().toString()                          
+            ];
+            
+            const endpoint = atob(urlParts[0]) + atob(urlParts[1]) + urlParts[2];
+            const response = await fetch(endpoint);
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.data && data.data.clicks) {
+                    return data.data.clicks;
+                }
+            }
+            return {};
+        } catch (error) {
+            console.error("Error fetching click counts:", error);
+            return {};
         }
-      } catch (error) {
-        console.error("Error fetching click counts:", error)
-      }
-      return {}
     }
 
     async generateFingerprint() {
@@ -1050,9 +1056,17 @@ class APIClient {
 }
 
 window.apiClient = new APIClient();
+window.globalClickCounts = window.globalClickCounts || {};
 
 async function fetchClickCounts() {
-    return window.apiClient.fetchStats();
+    try {
+        const counts = await window.apiClient.fetchStats();
+        window.globalClickCounts = counts;
+        return counts;
+    } catch (error) {
+        console.error("Error fetching click counts:", error);
+        return {};
+    }
 }
 
 async function generateFingerprint() {
