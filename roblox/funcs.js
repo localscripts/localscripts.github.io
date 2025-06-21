@@ -1073,7 +1073,21 @@ class APIClient {
 window.apiClient = new APIClient();
 
 async function fetchClickCounts() {
-    return window.apiClient.fetchStats();
+    try {
+        const stats = await window.apiClient.fetchStats();
+        return stats || {};
+    } catch {
+        return {};
+    }
+}
+
+function getTotalClicks(itemName) {
+    if (!globalClickCounts || typeof globalClickCounts !== 'object') return 0;
+    const itemData = globalClickCounts[itemName];
+    if (!itemData || typeof itemData !== 'object') return 0;
+    const website = Number(itemData.website) || 0;
+    const price = Number(itemData.price) || 0;
+    return website + price;
 }
 
 async function generateFingerprint() {
@@ -1093,12 +1107,6 @@ async function generateFingerprint() {
     } catch {
         return 'default-fingerprint';
     }
-}
-
-function getTotalClicks(itemName) {
-  const itemData = globalClickCounts[itemName]
-  if (!itemData) return 0
-  return (itemData.website || 0) + (itemData.price || 0)
 }
 
 const performanceConfig = {
@@ -1129,6 +1137,7 @@ class ClickTracker {
       document.addEventListener("DOMContentLoaded", () => {
         this.log("DOM loaded, setting up tracking...")
         this.setupTracking()
+        
       })
     } else {
       this.log("DOM already ready, setting up tracking...")
@@ -4028,6 +4037,7 @@ let clickTracker
 
 document.addEventListener("DOMContentLoaded", async () => {
   const appState = new AppState()
+  globalClickCounts = await fetchClickCounts();
 
   await appState.init()
 
