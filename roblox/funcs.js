@@ -1096,8 +1096,9 @@ async function generateFingerprint() {
 }
 
 function getTotalClicks(itemName) {
-    const itemData = window.globalClickCounts[itemName] || {};
-    return (itemData.website || 0) + (itemData.price || 0);
+  const itemData = globalClickCounts[itemName]
+  if (!itemData) return 0
+  return (itemData.website || 0) + (itemData.price || 0)
 }
 
 const performanceConfig = {
