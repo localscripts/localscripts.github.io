@@ -862,22 +862,225 @@ async function computeFingerprint() {
 
 let globalClickCounts = {}
 
-async function fetchClickCounts() {
-  try {
-    const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4]
-    const endpoint = atob(urlParts.join(""))
-    const response = await fetch(endpoint)
-    if (response.ok) {
-      const data = await response.json()
-      if (data.success && data.data && data.data.clicks) {
-        globalClickCounts = data.data.clicks
-        return data.data.clicks
-      }
+class APIClient {
+    constructor() {
+        this.apiUrl = 'https://api.voxlis.net/counts.php';
+        this.sessionId = '';
+        this.sessionSecret = '';
+        this.nonce = '';
+        this.token = '';
+        this.tokenExpiry = 0;
+        this.initialized = false;
     }
-  } catch (error) {
-    console.error("Error fetching click counts:", error)
-  }
-  return {}
+
+    async initialize() {
+        if (this.initialized) return;
+        
+        try {
+            const res = await fetch(`${this.apiUrl}?action=init_session`, {
+                method: 'GET',
+                credentials: 'include'
+            });
+            
+            if (!res.ok) throw new Error(`Session init failed: ${res.status}`);
+            
+            const data = await res.json();
+            if (!data.success) throw new Error('Invalid session response');
+            
+            this.sessionId = data.data.session_id;
+            this.sessionSecret = data.data.session_secret;
+            this.nonce = data.data.nonce;
+            this.initialized = true;
+            
+            return true;
+        } catch (error) {
+            console.error('Initialization failed:', error);
+            throw error;
+        }
+    }
+
+    async generateSignature(data) {
+        if (!this.sessionSecret) {
+            throw new Error('Session secret not available');
+        }
+        
+        try {
+            const encoder = new TextEncoder();
+            const key = await crypto.subtle.importKey(
+                'raw',
+                encoder.encode(this.sessionSecret),
+                { name: 'HMAC', hash: 'SHA-384' },
+                false,
+                ['sign']
+            );
+            
+            const signature = await crypto.subtle.sign(
+                'HMAC',
+                key,
+                encoder.encode(data)
+            );
+            
+            return Array.from(new Uint8Array(signature))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        } catch (error) {
+            console.error('Signature generation failed:', error);
+            throw error;
+        }
+    }
+
+    async getToken() {
+        if (!this.initialized) await this.initialize();
+        
+        try {
+            const signature = await this.generateSignature(this.nonce);
+            const headers = {
+                'X-Session-Token': this.sessionId,
+                'X-Nonce': this.nonce,
+                'X-Signature': signature
+            };
+            
+            const res = await fetch(`${this.apiUrl}?action=get_token`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: headers
+            });
+            
+            if (!res.ok) throw new Error(`Token fetch failed: ${res.status}`);
+            
+            const data = await res.json();
+            if (!data.success) throw new Error('Invalid token response');
+            
+            this.token = data.data.token;
+            this.tokenExpiry = data.data.expires;
+            this.nonce = data.data.nonce;
+            
+            return this.token;
+        } catch (error) {
+            console.error('Token request failed:', error);
+            throw error;
+        }
+    }
+
+    async trackClick(itemName, buttonType) {
+        if (!this.initialized) await this.initialize();
+        
+        try {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+                await this.getToken();
+            }
+            
+            const fingerprint = await this.generateFingerprint();
+            
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.token}`,
+                    'X-Session-Token': this.sessionId,
+                    'X-Nonce': this.nonce
+                },
+                body: JSON.stringify({
+                    item: itemName,
+                    button_type: buttonType,
+                    fingerprint: fingerprint
+                })
+            });
+            
+            if (response.status === 401) {
+                await this.getToken();
+                return this.trackClick(itemName, buttonType);
+            }
+            
+            if (!response.ok) throw new Error(`API error: ${response.status}`);
+            
+            const data = await response.json();
+            if (data.success && data.data.nonce) {
+                this.nonce = data.data.nonce;
+                return true;
+            }
+            
+            throw new Error('Click tracking failed');
+        } catch (error) {
+            console.error('Tracking error:', error);
+            return false;
+        }
+    }
+
+    async fetchStats() {
+        if (!this.initialized) await this.initialize();
+        
+        try {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
+                await this.getToken();
+            }
+            
+            const response = await fetch(`${this.apiUrl}?action=get_stats`, {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${this.token}` }
+            });
+            
+            if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
+            
+            const data = await response.json();
+            if (data.success && data.data.stats) {
+                return data.data.stats;
+            }
+            
+            throw new Error('Invalid stats response');
+        } catch (error) {
+            console.error('Error fetching stats:', error);
+            return {};
+        }
+    }
+
+    async generateFingerprint() {
+        try {
+            const parts = [
+                navigator.userAgent,
+                navigator.platform,
+                screen.width + 'x' + screen.height,
+                new Date().getTimezoneOffset(),
+                navigator.hardwareConcurrency || '',
+                navigator.deviceMemory || '',
+                screen.colorDepth
+            ].join('|');
+            
+            const buffer = new TextEncoder().encode(parts);
+            const hash = await crypto.subtle.digest('SHA-256', buffer);
+            return Array.from(new Uint8Array(hash))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        } catch {
+            return 'fp-' + Math.random().toString(36).substr(2, 10);
+        }
+    }
+}
+
+window.apiClient = new APIClient();
+
+async function fetchClickCounts() {
+    return window.apiClient.fetchStats();
+}
+
+async function generateFingerprint() {
+    try {
+        const data = [
+            navigator.userAgent,
+            navigator.platform,
+            screen.width + 'x' + screen.height,
+            new Date().getTimezoneOffset()
+        ].join('|');
+        
+        const buffer = new TextEncoder().encode(data);
+        const hash = await crypto.subtle.digest('SHA-256', buffer);
+        return Array.from(new Uint8Array(hash))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    } catch {
+        return 'default-fingerprint';
+    }
 }
 
 function getTotalClicks(itemName) {
@@ -1053,81 +1256,7 @@ class ClickTracker {
   }
 
   async trackClick(itemName, buttonType) {
-      try {
-          const urlParts = [configData._p1, performanceConfig._p2, themeSettings._p3, debugSettings._p4];
-          const apiEndpoint = atob(urlParts.join(''));
-          if (this.log) this.log(`Tracking ${buttonType} click for "${itemName}"`);
-          const nowSec = Date.now() / 1000;
-          if (!this.authToken || !this.tokenExpires || nowSec >= this.tokenExpires) {
-              const tokenResp = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
-              if (!tokenResp.ok) throw new Error(`Token fetch failed: ${tokenResp.status}`);
-              const tokenData = await tokenResp.json();
-              if (!tokenData.success || !tokenData.token || !tokenData.expires) throw new Error('Token fetch returned invalid data: ' + JSON.stringify(tokenData));
-              this.authToken = tokenData.token;
-              this.tokenExpires = tokenData.expires;
-              if (this.log) this.log('Obtained new auth token, expires at', new Date(this.tokenExpires * 1000).toISOString());
-          }
-          const fingerprint = await computeFingerprint();
-          const payload = {
-              action: 'track_click',
-              item: itemName,
-              button_type: buttonType,
-              fingerprint: fingerprint
-          };
-          let response = await fetch(apiEndpoint, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Bearer ' + this.authToken
-              },
-              body: JSON.stringify(payload)
-          });
-          if (response.status === 401) {
-              if (this.log) this.log('Auth token invalid or expired; refreshing token and retrying');
-              this.authToken = null;
-              this.tokenExpires = 0;
-              const tokenResp2 = await fetch(`${apiEndpoint}?action=get_token`, { method: 'GET' });
-              if (!tokenResp2.ok) throw new Error(`Token fetch failed on retry: ${tokenResp2.status}`);
-              const tokenData2 = await tokenResp2.json();
-              if (!tokenData2.success || !tokenData2.token || !tokenData2.expires) throw new Error('Token fetch retry returned invalid data: ' + JSON.stringify(tokenData2));
-              this.authToken = tokenData2.token;
-              this.tokenExpires = tokenData2.expires;
-              if (this.log) this.log('Obtained new auth token on retry, expires at', new Date(this.tokenExpires * 1000).toISOString());
-              response = await fetch(apiEndpoint, {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization': 'Bearer ' + this.authToken
-                  },
-                  body: JSON.stringify(payload)
-              });
-          }
-          if (response.status === 429) {
-              if (this.log) this.log(`❌ Rate limited when tracking "${itemName}"`);
-              if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
-              return;
-          }
-          if (!response.ok) {
-              const text = await response.text().catch(() => '');
-              throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
-          }
-          const result = await response.json();
-          if (this.log) this.log('API response:', result);
-          if (result.success) {
-              if (this.log) this.log(`✅ Successfully tracked ${buttonType} click for "${itemName}"`);
-              if (typeof globalClickCounts !== 'undefined') {
-                  if (!globalClickCounts[itemName]) globalClickCounts[itemName] = { website: 0, price: 0 };
-                  globalClickCounts[itemName][buttonType]++;
-              }
-          } else {
-              if (this.log) this.log(`❌ Tracking failed for "${itemName}":`, result.message || result.error || result);
-              if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
-          }
-      } catch (error) {
-          if (this.log) this.log(`❌ Error tracking click for "${itemName}":`, error);
-          else console.error(`Error in trackClick for "${itemName}":`, error);
-          if (this.queueFailedClick) this.queueFailedClick(itemName, buttonType);
-      }
+      return window.apiClient.trackClick(itemName, buttonType);
   }
 
   showClickFeedback(button, itemName, buttonType) {
