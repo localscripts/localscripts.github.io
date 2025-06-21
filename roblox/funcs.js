@@ -815,7 +815,7 @@ info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and
     lvl: 8,
     price: "FREE",
     plat: ["windows"],
-    pros: ["No keysystem", "100% sUNC", "Level 8"],
+    pros: ["Has a decompiler", "No keysystem", "100% sUNC", "Level 8"],
     neutral: [],
     cons: [],
     verified: true,
