@@ -870,25 +870,28 @@ class APIClient {
         this.nonce = '';
         this.token = '';
         this.tokenExpiry = 0;
-        this.tokenObtainedAt = 0;
         this.initialized = false;
     }
 
     async initialize() {
         if (this.initialized) return;
+        
         try {
             const res = await fetch(`${this.apiUrl}?action=init_session`, {
                 method: 'GET',
-                credentials: 'include',
-                cache: 'no-cache'
+                credentials: 'include'
             });
+            
             if (!res.ok) throw new Error(`Session init failed: ${res.status}`);
+            
             const data = await res.json();
             if (!data.success) throw new Error('Invalid session response');
+            
             this.sessionId = data.data.session_id;
             this.sessionSecret = data.data.session_secret;
             this.nonce = data.data.nonce;
             this.initialized = true;
+            
             return true;
         } catch (error) {
             console.error('Initialization failed:', error);
@@ -900,6 +903,7 @@ class APIClient {
         if (!this.sessionSecret) {
             throw new Error('Session secret not available');
         }
+        
         try {
             const encoder = new TextEncoder();
             const key = await crypto.subtle.importKey(
@@ -909,11 +913,13 @@ class APIClient {
                 false,
                 ['sign']
             );
+            
             const signature = await crypto.subtle.sign(
                 'HMAC',
                 key,
                 encoder.encode(data)
             );
+            
             return Array.from(new Uint8Array(signature))
                 .map(b => b.toString(16).padStart(2, '0'))
                 .join('');
@@ -925,6 +931,7 @@ class APIClient {
 
     async getToken() {
         if (!this.initialized) await this.initialize();
+        
         try {
             const signature = await this.generateSignature(this.nonce);
             const headers = {
@@ -932,29 +939,22 @@ class APIClient {
                 'X-Nonce': this.nonce,
                 'X-Signature': signature
             };
+            
             const res = await fetch(`${this.apiUrl}?action=get_token`, {
                 method: 'GET',
                 credentials: 'include',
-                cache: 'no-cache',
-                headers
+                headers: headers
             });
+            
             if (!res.ok) throw new Error(`Token fetch failed: ${res.status}`);
+            
             const data = await res.json();
             if (!data.success) throw new Error('Invalid token response');
+            
             this.token = data.data.token;
-            if (typeof data.data.expires === 'number') {
-                this.tokenExpiry = data.data.expires;
-                this.tokenObtainedAt = Date.now();
-            } else {
-                const ttlSec = parseInt(data.data.expires, 10);
-                if (!isNaN(ttlSec)) {
-                    this.tokenObtainedAt = Date.now();
-                    this.tokenExpiry = Math.floor((Date.now() + ttlSec * 1000) / 1000);
-                }
-            }
-            if (data.data.nonce) {
-                this.nonce = data.data.nonce;
-            }
+            this.tokenExpiry = data.data.expires;
+            this.nonce = data.data.nonce;
+            
             return this.token;
         } catch (error) {
             console.error('Token request failed:', error);
@@ -962,47 +962,45 @@ class APIClient {
         }
     }
 
-    _isTokenExpired() {
-        if (!this.token) return true;
-        return Date.now() >= this.tokenExpiry * 1000;
-    }
-
     async trackClick(itemName, buttonType) {
         if (!this.initialized) await this.initialize();
+        
         try {
-            if (this._isTokenExpired()) {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
                 await this.getToken();
             }
+            
             const fingerprint = await this.generateFingerprint();
-            const headers = {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.token}`,
-                'X-Session-Token': this.sessionId,
-                'X-Nonce': this.nonce
-            };
+            
             const response = await fetch(this.apiUrl, {
                 method: 'POST',
                 credentials: 'include',
-                cache: 'no-cache',
-                headers,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.token}`,
+                    'X-Session-Token': this.sessionId,
+                    'X-Nonce': this.nonce
+                },
                 body: JSON.stringify({
                     item: itemName,
                     button_type: buttonType,
                     fingerprint: fingerprint
                 })
             });
+            
             if (response.status === 401) {
                 await this.getToken();
                 return this.trackClick(itemName, buttonType);
             }
+            
             if (!response.ok) throw new Error(`API error: ${response.status}`);
+            
             const data = await response.json();
-            if (data.success) {
-                if (data.data.nonce) {
-                    this.nonce = data.data.nonce;
-                }
+            if (data.success && data.data.nonce) {
+                this.nonce = data.data.nonce;
                 return true;
             }
+            
             throw new Error('Click tracking failed');
         } catch (error) {
             console.error('Tracking error:', error);
@@ -1012,35 +1010,28 @@ class APIClient {
 
     async fetchStats() {
         if (!this.initialized) await this.initialize();
+        
         try {
-            if (this._isTokenExpired()) {
+            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
                 await this.getToken();
             }
-            const headers = {
-                'Authorization': `Bearer ${this.token}`,
-                'X-Session-Token': this.sessionId,
-                'X-Nonce': this.nonce
-            };
-            const url = `${this.apiUrl}?action=get_stats&_ts=${Date.now()}`;
-            const response = await fetch(url, {
+            
+            const response = await fetch(`${this.apiUrl}?action=get_stats&t=${Date.now()}`, {
                 method: 'GET',
-                credentials: 'include',
-                cache: 'no-cache',
-                headers
+                headers: { 'Authorization': `Bearer ${this.token}` }
             });
-            if (response.status === 401) {
-                await this.getToken();
-                return this.fetchStats();
-            }
+            
             if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
+            
             const data = await response.json();
-            if (data.success && data.data && data.data.stats) {
-                if (data.data.nonce) {
-                    this.nonce = data.data.nonce;
-                }
-                return data.data.stats;
+            
+            console.debug('Raw stats API response:', data);
+            
+            if (data.success && data.data.clicks) {
+                console.log('Fetched clicks:', data.data.clicks);
+                return data.data.clicks;
             }
-            console.warn('Invalid stats response format:', data);
+            
             throw new Error('Invalid stats response');
         } catch (error) {
             console.error('Error fetching stats:', error);
@@ -1059,6 +1050,7 @@ class APIClient {
                 navigator.deviceMemory || '',
                 screen.colorDepth
             ].join('|');
+            
             const buffer = new TextEncoder().encode(parts);
             const hash = await crypto.subtle.digest('SHA-256', buffer);
             return Array.from(new Uint8Array(hash))
@@ -1073,41 +1065,8 @@ class APIClient {
 window.apiClient = new APIClient();
 
 async function fetchClickCounts() {
-    try {
-        const stats = await window.apiClient.fetchStats();
-        return stats || {};
-    } catch {
-        return {};
-    }
+    return window.apiClient.fetchStats();
 }
-
-function getTotalClicks(itemName) {
-  console.debug('getTotalClicks called for', itemName, 'globalClickCounts:', globalClickCounts);
-    if (!globalClickCounts || typeof globalClickCounts !== 'object') return 0;
-    const itemData = globalClickCounts[itemName];
-    if (!itemData || typeof itemData !== 'object') return 0;
-    const website = Number(itemData.website) || 0;
-    const price = Number(itemData.price) || 0;
-    return website + price;
-}
-
-async function initializeClickCounts() {
-    globalClickCounts = await fetchClickCounts();
-    console.log('Fetched globalClickCounts:', globalClickCounts);
-
-    if (Object.keys(globalClickCounts).length === 0) {
-        console.warn('globalClickCounts is empty');
-    }
-    for (const itemName in globalClickCounts) {
-        const total = getTotalClicks(itemName);
-        console.log(`Total clicks for "${itemName}":`, total);
-    }
-    console.log('Test getTotalClicks("Cryptic"):', getTotalClicks('Cryptic'));
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    initializeClickCounts();
-});
 
 async function generateFingerprint() {
     try {
@@ -1128,6 +1087,30 @@ async function generateFingerprint() {
     }
 }
 
+function getTotalClicks(itemName) {
+  const itemData = globalClickCounts[itemName]
+  if (!itemData) return 0
+  return (itemData.website || 0) + (itemData.price || 0)
+}
+
+function debugGlobalClickCounts() {
+    console.group('Global Click Counts Debug');
+    console.log('Last Updated:', new Date().toISOString());
+    console.log('Total Items:', Object.keys(globalClickCounts).length);
+    
+    const sampleItems = Object.keys(globalClickCounts).slice(0, 5);
+    if (sampleItems.length > 0) {
+        console.log('Sample Items:', sampleItems);
+        sampleItems.forEach(item => {
+            console.log(`- ${item}:`, globalClickCounts[item]);
+        });
+    } else {
+        console.warn('No click data available');
+    }
+    
+    console.groupEnd();
+}
+
 const performanceConfig = {
   maxFPS: 60,
   _p2: "Ly9hcGku",
@@ -1139,7 +1122,7 @@ class ClickTracker {
   constructor() {
     this.apiEndpoint = this._buildEndpoint()
     this.initialized = false
-    this.debugMode = false
+    this.debugMode = true
   }
 
   _buildEndpoint() {
@@ -1156,7 +1139,6 @@ class ClickTracker {
       document.addEventListener("DOMContentLoaded", () => {
         this.log("DOM loaded, setting up tracking...")
         this.setupTracking()
-        
       })
     } else {
       this.log("DOM already ready, setting up tracking...")
@@ -4056,7 +4038,6 @@ let clickTracker
 
 document.addEventListener("DOMContentLoaded", async () => {
   const appState = new AppState()
-  globalClickCounts = await fetchClickCounts();
 
   await appState.init()
 
