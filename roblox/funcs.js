@@ -1082,7 +1082,7 @@ async function fetchClickCounts() {
 }
 
 function getTotalClicks(itemName) {
-    console.debug('getTotalClicks called for', itemName, 'globalClickCounts:', globalClickCounts);
+  console.debug('getTotalClicks called for', itemName, 'globalClickCounts:', globalClickCounts);
     if (!globalClickCounts || typeof globalClickCounts !== 'object') return 0;
     const itemData = globalClickCounts[itemName];
     if (!itemData || typeof itemData !== 'object') return 0;
@@ -1090,6 +1090,24 @@ function getTotalClicks(itemName) {
     const price = Number(itemData.price) || 0;
     return website + price;
 }
+
+async function initializeClickCounts() {
+    globalClickCounts = await fetchClickCounts();
+    console.log('Fetched globalClickCounts:', globalClickCounts);
+
+    if (Object.keys(globalClickCounts).length === 0) {
+        console.warn('globalClickCounts is empty');
+    }
+    for (const itemName in globalClickCounts) {
+        const total = getTotalClicks(itemName);
+        console.log(`Total clicks for "${itemName}":`, total);
+    }
+    console.log('Test getTotalClicks("Cryptic"):', getTotalClicks('Cryptic'));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initializeClickCounts();
+});
 
 async function generateFingerprint() {
     try {
