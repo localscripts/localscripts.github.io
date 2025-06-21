@@ -1056,24 +1056,14 @@ class APIClient {
 }
 
 window.apiClient = new APIClient();
-window.globalClickCounts = window.globalClickCounts || {};
+window.globalClickCounts = {};
 
 async function fetchClickCounts() {
     try {
-        const urlParts = [
-            'aHR0cHM6Ly9hcGkudm94bGlzLm5ldC9jb3VudHMucGhw', 
-            'P2FjdGlvbj1nZXRfc3RhdHMmdD0=',                 
-            Date.now().toString()                          
-        ];
-        
-        const endpoint = atob(urlParts[0]) + atob(urlParts[1]) + urlParts[2];
-        const response = await fetch(endpoint);
-        
-        if (response.ok) {
-            const data = await response.json();
-            if (data.success && data.data && data.data.clicks) {
-                return data.data.clicks;
-            }
+        const response = await window.apiClient.fetchStats();
+        if (response.success && response.data.clicks) {
+            window.globalClickCounts = response.data.clicks;
+            return response.data.clicks;
         }
         return {};
     } catch (error) {
@@ -1081,6 +1071,7 @@ async function fetchClickCounts() {
         return {};
     }
 }
+
 
 async function generateFingerprint() {
     try {
@@ -1102,10 +1093,19 @@ async function generateFingerprint() {
 }
 
 function getTotalClicks(itemName) {
-  const itemData = globalClickCounts[itemName]
-  if (!itemData) return 0
-  return (itemData.website || 0) + (itemData.price || 0)
+    const itemData = window.globalClickCounts[itemName] || {};
+    return (itemData.website || 0) + (itemData.price || 0);
 }
+
+(async function initPage() {
+    try {
+        await window.apiClient.initialize();
+        await fetchClickCounts();
+        console.log('Click counts loaded:', window.globalClickCounts);
+    } catch (error) {
+        console.error('Initialization error:', error);
+    }
+})();
 
 const performanceConfig = {
   maxFPS: 60,
