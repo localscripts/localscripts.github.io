@@ -1009,25 +1009,14 @@ class APIClient {
     }
 
     async fetchStats() {
-        if (!this.initialized) await this.initialize();
-        
         try {
-            if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
-                await this.getToken();
-            }
-            
-            const response = await fetch(`${this.apiUrl}?action=get_stats`, {
-                method: 'GET',
-                headers: { 'Authorization': `Bearer ${this.token}` }
-            });
-            
+            const response = await fetch(`${this.apiUrl}?action=get_stats&t=${Date.now()}`);
             if (!response.ok) throw new Error(`Stats fetch failed: ${response.status}`);
             
             const data = await response.json();
-            if (data.success && data.data.stats) {
-                return data.data.stats;
+            if (data.success && data.data.clicks) {  
+                return data.data.clicks;             
             }
-            
             throw new Error('Invalid stats response');
         } catch (error) {
             console.error('Error fetching stats:', error);
