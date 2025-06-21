@@ -835,6 +835,7 @@ info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and
       "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
   },
 ]
+
 const configData = {
   theme: "dark",
   version: "1.2.3",
@@ -998,6 +999,9 @@ class APIClient {
             const data = await response.json();
             if (data.success && data.data.nonce) {
                 this.nonce = data.data.nonce;
+                
+                await this.refreshClickCounts();
+                
                 return true;
             }
             
@@ -1035,6 +1039,22 @@ class APIClient {
         }
     }
 
+    async refreshClickCounts() {
+        try {
+            const stats = await this.fetchStats();
+            globalClickCounts = stats;
+            
+            if (window.uiManager && typeof window.uiManager.updateCounts === 'function') {
+                window.uiManager.updateCounts();
+            }
+            
+            return stats;
+        } catch (error) {
+            console.error('Error refreshing click counts:', error);
+            return {};
+        }
+    }
+
     async generateFingerprint() {
         try {
             const parts = [
@@ -1061,7 +1081,14 @@ class APIClient {
 window.apiClient = new APIClient();
 
 async function fetchClickCounts() {
-    return window.apiClient.fetchStats();
+    try {
+        const stats = await window.apiClient.fetchStats();
+        globalClickCounts = stats;
+        return stats;
+    } catch (error) {
+        console.error('Error fetching click counts:', error);
+        return {};
+    }
 }
 
 async function generateFingerprint() {
@@ -1894,6 +1921,8 @@ class UIManager {
 
     this.setDefaultSortOption()
 
+    window.uiManager = this
+
     return this
   }
 
@@ -2393,6 +2422,7 @@ class UIManager {
       if (button) {
         button.addEventListener("click", resetFilters)
       }
+    
     })
   }
 
