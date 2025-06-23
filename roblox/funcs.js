@@ -882,6 +882,13 @@ class APIClient {
             credentials: 'include'
         });
         if (!res.ok) throw new Error(`Session init failed: ${res.status}`);
+        
+        const contentType = res.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await res.text();
+            throw new Error(`Invalid response: ${text.slice(0, 100)}`);
+        }
+        
         const data = await res.json();
         if (!data.success) throw new Error('Invalid session response');
         this.sessionId = data.data.session_id;
@@ -921,6 +928,13 @@ class APIClient {
             headers
         });
         if (!res.ok) throw new Error(`Token fetch failed: ${res.status}`);
+        
+        const contentType = res.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await res.text();
+            throw new Error(`Invalid response: ${text.slice(0, 100)}`);
+        }
+        
         const data = await res.json();
         if (!data.success) throw new Error('Invalid token response');
         this.token = data.data.token;
@@ -978,6 +992,15 @@ class APIClient {
                 fingerprint: fingerprint
             })
         });
+        
+        const contentType = res.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await res.text();
+            throw new Error(`Invalid response: ${text.slice(0, 100)}`);
+        }
+        
+        const data = await res.json();
+        
         if (res.status === 401) {
             await this.getToken();
             return this.trackClick(itemName, buttonType);
@@ -985,8 +1008,8 @@ class APIClient {
         if (res.status === 403) {
             throw new Error('Challenge required');
         }
-        if (!res.ok) throw new Error(`API error: ${res.status}`);
-        const data = await res.json();
+        if (!res.ok) throw new Error(`API error: ${res.status} - ${data.message || 'No message'}`);
+        
         if (data.success && data.data.nonce) {
             this.nonce = data.data.nonce;
             await this.refreshClickCounts();
@@ -1000,6 +1023,7 @@ class APIClient {
         if (!this.token || Date.now() >= this.tokenExpiry * 1000) {
             await this.getToken();
         }
+        
         const res = await fetch(`${this.apiUrl}?action=get_stats`, {
             method: 'GET',
             credentials: 'include',
@@ -1009,12 +1033,24 @@ class APIClient {
                 'X-Nonce': this.nonce
             }
         });
-        if (!res.ok) throw new Error(`Stats fetch failed: ${res.status}`);
+
+        const contentType = res.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await res.text();
+            throw new Error(`Invalid response: ${text.slice(0, 100)}`);
+        }
+
         const data = await res.json();
+        
+        if (!res.ok) {
+            throw new Error(`Stats fetch failed: ${res.status} - ${data.message || 'No message'}`);
+        }
+        
         if (data.success && data.data.stats) {
             this.nonce = data.data.nonce || this.nonce;
             return data.data.stats;
         }
+        
         throw new Error('Invalid stats response');
     }
 
