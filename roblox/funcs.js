@@ -978,6 +978,13 @@ class APIClient {
             'X-Session-Token': this.sessionId,
             'X-Nonce': this.nonce
         };
+        try {
+            const signature = await this.generateSignature(this.nonce);
+            headers['X-Signature'] = signature;
+        } catch (e) {
+            console.error('Signature generation failed:', e);
+            throw new Error('Security handshake failed');
+        }
         if (this.powToken && powNonce) {
             headers['X-PoW-Token'] = this.powToken;
             headers['X-PoW-Nonce'] = powNonce;
