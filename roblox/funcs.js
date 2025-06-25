@@ -265,7 +265,7 @@ const expData = [
     premium: false,
     href: "https://milkers.best",
     priceHref: "https://milkers.best",
-    hide: false,
+    hide: true,
     pricegray: true,
   },
     {
@@ -681,7 +681,7 @@ const expData = [
     priceHref: "https://robloxcheatz.com/affiliate/voxlisnet",
     uncbuttonlink:
       "https://r.sunc.su/JgXWs9CVfx",
-    hide: false,
+    hide: true,
     warning: true,
     warningInfo:
       "voxlis.NET has flagged this executor as potentially suspicious and does not recommend its use. Do you still want to proceed to the executor?",
@@ -787,6 +787,26 @@ info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and
     warningInfo:
       "voxlis.NET recommends checking out “MORE INFO” for RatWare so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
   },
+  {
+      id: "assembly",
+      name: "Assembly",
+      desc: "The best value external exploit.",
+      lvl: 8,
+      price: "$9.99",
+      plat: ["windows", "windows"],
+      pros: ["Usermode", "Very customizable"],
+      neutral: ["Beta- expect bugs"],
+      cons: [],
+      verified: true,
+      editor: "voxlis.NET",
+      txtColor: "text-yellow-500",
+      accentColor: "from-purple-600 to-purple-700",
+      info: "## Exploit Performance\n- [Assembly](/) operates similarly to other competitors, but with it's own twist. [Assembly](/) delivers a seamless user experience and is packaged into a single .exe, making it a lot more convenient compared to other alternatives that require extracting a .zip file containing multiple folders and other executables.\n## Background Information\n- [Assembly](/) started out as a small external with little promotion made by [@esnesemag](/) (david), as a small passion project to see how far he could go. Yet, when he started making good progress, [david]() saw his friends really liked it and pressured him into making it a real official product. \n- Since then, [Assembly](/) has been getting rapid growth & attention, receiving a ton of updates. Even though [david]() is balancing school and developing [Assembly](/), he still makes a lot of progress daily. \n- Releasing only months ago, [Assembly](/) has grown insanely high and continues to grow even more into the future.\n## Developer Background\n- [Assembly](/) is developed solely by [david](/), who handles everything about the actual software itself. \n- After [Assembly](/) released, though, [yakazt](/) joined the staff team, and is now the primary manager of [Assembly](/), managing public relations and [Assembly](/)'s [Discord server](https://discord.gg/asmlol).\n\n> Sources: [assembly.lol](https://assembly.lol), Assembly staff\n",
+      premium: true,
+      href: "https://assembly.lol",
+      priceHref: "https://discord.gg/asmlol",
+      hide: true,
+    },
   {
     id: "kernel",
     name: "Kernel",
