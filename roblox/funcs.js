@@ -836,7 +836,7 @@ info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and
     price: "FREE",
     plat: ["windows"],
     pros: ["No keysystem", "97% sUNC", "Level 8"],
-    neutral: ["Has no decompiler"],
+    neutral: ["Visual - rebranded", "Has no decompiler"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
