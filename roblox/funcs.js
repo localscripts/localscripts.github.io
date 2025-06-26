@@ -756,7 +756,7 @@ info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and
     hasKeySystem: false,
     href: "https://wearedevs.net/d/Plutora",
     priceHref: "",
-    hide: false,
+    hide: true,
     free: true,
     warning: false,
     warningInfo:
