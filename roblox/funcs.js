@@ -94,7 +94,7 @@ const expData = [
     href: "https://awp.gg",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#AWP",
     uncbuttonlink: "https://sunc.rubis.app/?scrap=HvuHEiAG9iQJ0BTq&key=CwgWgiTmw4bM6OEGKK5quxUWxBJiHWEz",
-    hide: false,
+    hide: true,
   },
     {
     id: "wave",
