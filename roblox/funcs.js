@@ -595,6 +595,7 @@ const expData = [
     hasKeySystem: false,
     free: true,
   },
+  
   {
     id: "sirhurt",
     name: "SirHurt",
@@ -715,6 +716,30 @@ info: "## Exploit Performance  \n- [Potassium](/) offers a smooth experience and
     warningInfo:
       "voxlis.NET has flagged this executor as potentially suspicious and does not recommend its use. Do you still want to proceed to the executor?",
     pricegray: true,
+  },
+    {
+    id: "cloudy",
+    name: "Cloudy",
+    desc: "A free Level 8 executor",
+    lvl: 8,
+    price: "FREE",
+    plat: ["Windows"],
+    pros: ["Has a decompiler", "90% sUNC", "Level 8"],
+    neutral: [],
+    cons: [],
+    verified: false,
+    editor: "voxlis.NET",
+    txtColor: "text-yellow-500",
+    accentColor: "from-yellow-600 to-yellow-700",
+    premium: false,
+    href: "",
+    priceHref: "",
+    hide: true,
+    hasKeySystem: false,
+    uncbuttonlink: "https://sunc.rubis.app/?scrap=AuzuME96xLlkLH86&key=9bIsSz3LzqR4TsoPp91UJauf2NZxqEbb",
+    warning: true,
+    warningInfo:
+      "voxlis.NET recommends checking out “MORE INFO” for ArceusX NEO so you know what you’re getting. Would you like to continue to ArceusX NEO's website anyway?",
   },
   {
     id: "arceusx",
